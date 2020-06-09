@@ -1,0 +1,68 @@
+//DAS Account header
+.das-account-header {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #fff;
+    padding: 5px 0;
+    margin-top: -10px;
+}
+
+@media print {
+    .das-account-header {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .das-account-header {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579
+    }
+}
+
+@media print {
+    .das-account-header {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .das-account-header {
+        padding: 0
+    }
+}
+
+.das-account-header>.govuk-width-container:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.das-account-header--provider {
+    background: #f47738
+}
+
+.das-account-header--employer {
+    background: #6f72af
+}
+
+.das-account-header__title {
+    margin: 0 -15px;
+    padding: 10px 15px;
+    font-weight: 700;
+    color: #FFFFFF
+}
+
+@media (min-width: 40.0625em) {
+    .das-account-header__title {
+        float: left;
+        padding: 8px 15px
+    }
+}

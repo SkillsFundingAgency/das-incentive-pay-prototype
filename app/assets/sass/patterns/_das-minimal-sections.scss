@@ -1,0 +1,58 @@
+.das-minimal-section__wrapper {
+	@include govuk-responsive-margin(6, "bottom");
+
+	.das-minimal-section__header {
+		@extend .govuk-heading-l;
+		border-bottom: 1px solid $govuk-border-colour;
+		padding-bottom: $govuk-gutter / 2;
+		@include govuk-responsive-margin(4, "bottom");
+	}
+
+	.das-minimal-section {
+		@include govuk-responsive-margin(8, "bottom");
+
+		.das-minimal-section__heading {
+			@include govuk-font(24, $weight: bold);
+			@include govuk-responsive-margin(2, "bottom");
+			margin-top: 0.25em;
+
+			a, a:link {
+				text-decoration: none;
+			}
+
+			&.das-minimal-section__heading--large {
+				@include govuk-font(36, $weight: bold);
+				@include govuk-responsive-margin(3, "bottom");
+
+			}
+		}
+
+		.das-minimal-section__description {
+			@include govuk-font(19);
+		}
+
+		.das-minimal-section__links {
+			@extend .govuk-list;
+
+			li {
+				@include govuk-font(19);
+				@include govuk-responsive-margin(2, "bottom");
+			}
+		}
+
+		&.das-minimal-section--action {
+			background: govuk-colour("blue");
+			// border: 4px solid govuk-colour("blue");
+			padding: $govuk-gutter;
+
+			* {
+				color: #fff;
+			}
+		}
+
+		&.das-minimal-section--info {
+			border: 4px solid govuk-colour("blue");
+			padding: $govuk-gutter;
+		}
+	}
+}

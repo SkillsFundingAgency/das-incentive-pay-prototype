@@ -2,11 +2,49 @@
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
 {% for scriptUrl in extensionConfig.scripts %}
-  <script src="{{scriptUrl}}"></script>
+<script src="{{scriptUrl}}"></script>
 {% endfor %}
 
 <script src="/public/javascripts/application.js"></script>
 
 {% if useAutoStoreData %}
-  <script src="/public/javascripts/auto-store-data.js"></script>
+<script src="/public/javascripts/auto-store-data.js"></script>
 {% endif %}
+
+<!-- DAS scripts -->
+<!-- <script src="https://das-at-frnt-end.azureedge.net/js/das-all.js"></script> -->
+<script src="https://das-at-frnt-end.azureedge.net/libs/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+<script src="https://das-at-frnt-end.azureedge.net/js/app.min.js"></script>
+<script>
+	$(function () {
+        var $link = $('#other-tasks-link'),
+            $pageContent = $('.das-panels'),
+            $target = $('#das-dashboard-other-tasks'),
+            activeClass = 'das-dashboard-header__tasks-link--active';
+        $link.on('click', function (e) {
+            if ($link.hasClass(activeClass)) {
+                $link.removeClass(activeClass);
+                $target.hide();
+                $pageContent.show();
+            } else {
+                $link.addClass(activeClass);
+                $target.show();
+                $pageContent.hide();
+            }
+            e.preventDefault();
+        });
+        $link.on('keydown', function (e) {
+            if (e.which === 9 && $link.hasClass(activeClass)) {
+                $('.das-section__inner-wrap').focus();
+            }
+        });
+    });
+</script>
+<script>
+function alertUser(evt) {
+    evt.preventDefault();
+    alert('Sorry, this has not been built yet');
+  }
+
+  $('body').on('click', 'a[href="#"]', alertUser);
+</script>

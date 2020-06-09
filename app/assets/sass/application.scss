@@ -5,6 +5,7 @@ $govuk-global-styles: true;
 $govuk-assets-path: '/govuk/assets/';
 
 // Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "node_modules/govuk_frontend_toolkit/stylesheets/_grid_layout";
 @import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
@@ -16,5 +17,40 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Components that aren't in Frontend
 @import "components/cookie-banner";
+@import "components/panels";
+@import "node_modules/accessible-autocomplete/src/autocomplete";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+// DAS patterns
+@import "helpers/das-utilities";
+@import "helpers/das-arrows";
+@import "helpers/das-colours";
+@import "helpers/das-images";
+@import "patterns/das-sections";
+@import "patterns/das-panels";
+@import "patterns/das-panel";
+@import "components/das-buttons";
+@import "components/das-definition-lists";
+@import "components/das-section-break";
+@import "components/das-dashboard-header";
+@import "components/das-promo";
+@import "components/das-dashboard-footer";
+@import "patterns/das-account-header";
+@import "components/das-header";
+@import "components/das-user-navigation";
+@import "components/das-search";
+@import "components/das-nav";
+@import "components/das-tabs--apprentices";
+@import "components/das-item-list";
+@import "patterns/das-minimal-sections";
+@import "components/sfa-menu";
+@import "components/das-account-header";
+@import "components/app-tags";
+@import "components/app-summary-list";
+@import "components/app-task-list";
+@import "components/app-alert";
+@import "components/das-account-header-v2";
+@import "components/raa-card";
+@import "patterns/app-interruption-card";
+@import "patterns/floating-menu";

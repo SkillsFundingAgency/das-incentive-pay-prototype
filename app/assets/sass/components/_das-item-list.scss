@@ -1,0 +1,80 @@
+// ACTIVITY LOG: Vertical line with bulleted list
+#item-list {
+  position: relative;
+  padding-left: 1px;
+  line-height: 18px;
+  border-left: 1px solid $govuk-border-colour;
+  margin-left: 10px;
+  margin-top: 10px;
+  .item {
+    position: relative;
+    text-align: left;
+    display: block;
+    padding: 0 18px;
+    margin-bottom: 40px;
+    .item-label {
+      position: relative;
+      color: govuk-colour("dark-grey", $legacy: "grey-1");
+    }
+    .item-description {
+      .grey-text {
+        color: govuk-colour("dark-grey", $legacy: "grey-1");
+      }
+      p {
+        margin-bottom: 5px;
+      }
+    }
+    .item-label:before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: -28px;
+      width: 17px;
+      height: 17px;
+      border-radius: 100%;
+      background: $govuk-border-colour;
+    }
+  }
+  .all-activity {
+    margin-bottom: 10px;
+    .item-label {
+      a {
+        padding-top: 16px;
+        display: block;
+        color: $govuk-link-colour;
+      }
+    }
+    .item-label:before {
+      top: 15px;
+      width: 22px;
+      height: 22px;
+      left: -30px;
+    }
+  }
+}
+
+
+.task-list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    list-style: none;
+    border-bottom: 1px solid $govuk-border-colour;
+    padding: 10px 0;
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      border: none;
+      padding-bottom: 0;
+    }
+    p {
+      margin: 0;
+    }
+    a {
+      display: block;
+    }
+  }
+}

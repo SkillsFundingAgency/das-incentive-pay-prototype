@@ -1,0 +1,13 @@
+.govuk-summary-list--long-question {
+	.govuk-summary-list__key {
+		@include govuk-media-query($from: tablet) {
+			width: 60%;
+		}
+	}
+
+	.govuk-summary-list__value {
+		@include govuk-media-query($from: tablet) {
+			width: 20%;
+		}
+	}
+}

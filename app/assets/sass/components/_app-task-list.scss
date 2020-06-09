@@ -1,0 +1,43 @@
+.app-task-list {
+	.app-task-list__status {
+		vertical-align: top;
+		text-align: right;
+		min-width: 135px !important;
+	}
+
+	.app-task-list__toggle {
+		color: govuk-colour("black");
+
+		span {
+			color: govuk-colour("blue");
+		}
+
+		&:hover {
+			color: govuk-colour("blue");
+			span {
+				text-decoration: underline;
+			}
+		}
+
+		outline: none;
+		background: none;
+	}
+
+	.app-task-list__heading {
+		@include govuk-font(24,bold);
+		margin-top: govuk-spacing(1);
+		margin-bottom: govuk-spacing(1);
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	.app-task-list__content {
+		margin: ($govuk-gutter) 0
+	}
+
+	tr th p {
+		color: govuk-colour("dark-grey", $legacy: "grey-1")
+	}
+}

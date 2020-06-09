@@ -1,0 +1,41 @@
+.js-enabled {
+	.das-tabs--apprentices {
+		margin-bottom: 0;
+		
+		.govuk-tabs__tab {
+			@include govuk-media-query($until: desktop) {
+				max-width: 25%;
+				width: auto;
+				overflow: hidden;
+				font-size: 14px;
+				padding: 0.5em 0.75em;
+
+				&.govuk-tabs__tab--selected {
+					padding-bottom: 12px;
+					margin-bottom: -1px;
+				}
+			}
+
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 16px;
+			max-width: 24.2%;
+			overflow: hidden;
+
+			@include govuk-media-query($until: tablet) {
+				width: auto;
+				max-width: 100%;
+				overflow: inherit;
+				font-size: inherit;
+				padding: auto;
+				white-space: inherit;
+			}
+		}
+
+		.govuk-tabs__panel {
+			border: none;
+			padding: 0;
+			padding-top: $govuk-gutter;
+		}
+	}
+}

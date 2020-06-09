@@ -1,0 +1,78 @@
+
+// Description: Filled colour panel
+
+.das-panel {
+  padding: $das-dashboard-gutter;
+  background: #fff;
+  margin-bottom: $govuk-gutter / 2;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+    padding: 30px;
+  }
+}
+
+.das-panels .das-panel {
+  @include govuk-media-query($from: tablet) {
+    border-top: $das-dashboard-gutter solid $das-dashboard-bg;
+
+    // Dan's modifications
+    // border: 1px solid $govuk-border-colour;
+  }
+
+  // Dan's modifications
+  // border: 1px solid $govuk-border-colour;
+  // margin-bottom: $govuk-gutter / 1.5;
+}
+
+.das-panel--featured {
+  background: govuk-colour("blue");
+  color: #fff;
+
+  // Dan's modifications
+  // border: none !important;
+
+  & > p {
+    color: #fff;
+  }
+  & > dl {
+    color: #fff;
+    font-size: 1em;
+    & > dd.das-definition-list__definition {
+      border-color: rgba(255, 255, 255, .5);
+    }
+  }
+  .das-panel__link {
+    color: #fff;
+    font-weight: $govuk-font-weight-bold;
+    @include govuk-link-common;
+    &:focus {
+      color: #000;
+    }
+  }
+}
+
+.das-panel__heading {
+  @include govuk-font($size: 19, $weight: bold);
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include govuk-media-query($from: tablet) {
+    font-size: 24px;
+  }
+
+  .das-panel--featured & {
+    font-size: 24px;
+    @include govuk-media-query($from: tablet) {
+      font-size: 36px;
+      line-height: 1.2;
+    }
+  }
+  & + .govuk-list {
+    margin-top: 20px;
+  }
+}
+
+.das-panel__button {
+  margin-bottom: 0;
+}
