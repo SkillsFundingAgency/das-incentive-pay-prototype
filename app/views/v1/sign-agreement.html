@@ -27,13 +27,11 @@
         }) }}
         {% endif %}
 
-      <h1 class="govuk-heading-xl">Sign agreement</h1>
-      <p>Agreement example</p>
-      <p>Agreement example</p>
+      <h1 class="govuk-heading-xl">Accept the incentive conditions</h1>
+      <p>By accepting, you agree that:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>Example 1</li>
-        <li>Example 2</li>
-        <li>Example 3</li>
+        <li>all of the apprentices in your application are new to your payroll</li>
+        <li>you'll use your incentives appropriately</li>
       </ul>
     <form action="" method="post" class="form">
     {% if data['error-sign-agreement'] == true %}
@@ -42,7 +40,7 @@
       name: "submitconfirm-1",
       classes: "govuk-checkboxes--small",
       errorMessage: {
-        text: "Sign agreement"
+        text: "I agree"
       },
       items: [
         {
@@ -67,7 +65,7 @@
     {% endif %}
 
       {{ govukButton({
-        text: "Continue"
+        text: "Accept"
       }) }}
       </form>
 
