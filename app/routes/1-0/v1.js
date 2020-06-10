@@ -14,6 +14,9 @@ module.exports = function (router) {
 		if (req.session.data['taken-on-new-apprentices'] === "no"){
 			res.redirect(v + '/error/shutter')
 		}
+		else {
+			res.redirect(v + '/taken-on-new-apprentices')
+		}
 	})
 
 	router.post(v + '/select-new-apprentices', function (req, res) {
