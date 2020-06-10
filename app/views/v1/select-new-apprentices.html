@@ -1,0 +1,111 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    {% if data['error-select-apprentices'] == true %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select new apprentices",
+          href: "#new-apprentices"
+        }
+      ]
+    }) }}
+    {% endif %}
+
+      <form action="" method="post" class="form">
+
+    {% if data['error-select-apprentices'] == true %}
+
+      {{ govukCheckboxes({
+        idPrefix: "new-apprentices",
+        fieldset: {
+          legend: {
+            text: "Select new apprentices",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        errorMessage: {
+          text: "Select new apprentices"
+        },
+        items: [
+          {
+            value: "apprentice1",
+            name: "apprentice1",
+            text: "Michael Johnson"
+          },
+          {
+            value: "apprentice2",
+            name: "apprentice2",
+            text: "Jack Roberts"
+          },
+          {
+            value: "apprentice3",
+            name: "apprentice3",
+            text: "Steven Smith"
+          }
+        ]
+      }) }}
+
+    {% else %}
+      {{ govukCheckboxes({
+        idPrefix: "new-apprentices",
+        fieldset: {
+          legend: {
+            text: "Select new apprentices",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            value: "apprentice1",
+            name: "apprentice1",
+            text: "Michael Johnson"
+          },
+          {
+            value: "apprentice2",
+            name: "apprentice2",
+            text: "Jack Roberts"
+          },
+          {
+            value: "apprentice3",
+            name: "apprentice3",
+            text: "Steven Smith"
+          }
+        ]
+      }) }}
+    {% endif %}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

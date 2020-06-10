@@ -1,0 +1,63 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     <h1 class="govuk-heading-xl">Check your incentive claim</h1>
+      <form action="" method="post" class="form">
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Name of apprentice</th>
+            <th scope="col" class="govuk-table__header">Incentive payment</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+        {% if data['apprentice1'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Michael Johnson</th>
+            <td class="govuk-table__cell">£3,000</td>
+          </tr>
+        {% endif %}
+        {% if data['apprentice2'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Jack Roberts</th>
+            <td class="govuk-table__cell">£3,000</td>
+          </tr>
+        {% endif %}
+        {% if data['apprentice3'] %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Steven Smith</th>
+            <td class="govuk-table__cell">£3,000</td>
+          </tr>
+        {% endif %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Total estimated payment</th>
+            <td class="govuk-table__cell">£{{ data['totalPay'] }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

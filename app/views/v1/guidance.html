@@ -6,8 +6,8 @@
 
 {% block beforeContent %}
     {{ govukBackLink({
-      text: "Back to Apprentices",
-      href: "javascript:preventDefault();"
+      text: "Back",
+      href: "javascript:window.history.back();"
     }) }}
 {% endblock %}
 
@@ -27,7 +27,7 @@
       </ul>
       {{ govukButton({
         text: "Start now",
-        href: "#",
+        href: "select-new-apprentices",
         classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
         isStartButton: true
       }) }}
