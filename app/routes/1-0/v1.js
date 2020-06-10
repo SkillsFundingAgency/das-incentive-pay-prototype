@@ -12,7 +12,7 @@ module.exports = function (router) {
 			res.redirect(v + '/select-new-apprentices')
 		}
 		if (req.session.data['taken-on-new-apprentices'] === "no"){
-			res.redirect(v + '/error/shutter')
+			res.redirect(v + '/shutter/no-new-apprentices')
 		}
 		else {
 			res.redirect(v + '/taken-on-new-apprentices')
