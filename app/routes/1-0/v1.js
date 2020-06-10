@@ -46,7 +46,14 @@ module.exports = function (router) {
 	})
 
 	router.post(v + '/bank-details', function (req, res) {
-		res.redirect(v + '/confirmation')
+		if (req.session.data['sort-code'] === "" || req.session.data['account-number'] === "") {
+			req.session.data['error-bank-details'] = true
+			res.redirect(v + '/bank-details')
+		}
+		else {
+			req.session.data['error-bank-details'] = false
+			res.redirect(v + '/confirmation')
+		}
 	})
 
 
