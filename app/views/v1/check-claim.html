@@ -23,30 +23,35 @@
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Name of apprentice</th>
-            <th scope="col" class="govuk-table__header">Incentive</th>
+            <th scope="col" class="govuk-table__header">Course name</th>
+            <th scope="col" class="govuk-table__header">Incentive amount</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
         {% if data['apprentice1'] %}
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Michael Johnson</td>
+            <th scope="row" class="govuk-table__header">Michael Johnson</th>
+            <td scope="row" class="govuk-table__cell">Water Treatment Technician, Level: 3 (Standard)</td>
             <td class="govuk-table__cell">£3,000</td>
           </tr>
         {% endif %}
         {% if data['apprentice2'] %}
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Jack Roberts</td>
+            <th scope="row" class="govuk-table__header">Jack Roberts</th>
+            <td scope="row" class="govuk-table__cell">Relationship Manager (Banking), Level: 6 (Standard)</td>
             <td class="govuk-table__cell">£3,000</td>
           </tr>
         {% endif %}
         {% if data['apprentice3'] %}
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Steven Smith</td>
+            <th scope="row" class="govuk-table__header">Steven Smith</th>
+            <td scope="row" class="govuk-table__cell">Non-destructive testing (NDT) operator, Level: 2 (Standard)</td>
             <td class="govuk-table__cell">£3,000</td>
           </tr>
         {% endif %}
           <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Total estimated payment</th>
+            <th scope="row" class="govuk-table__header">Total amount</th>
+            <td class="govuk-table__cell"></td>
             <td class="govuk-table__cell">£{{ data['totalPay'] }}</td>
           </tr>
         </tbody>
