@@ -48,3 +48,31 @@ function alertUser(evt) {
 
   $('body').on('click', 'a[href="#"]', alertUser);
 </script>
+
+<script type="text/javascript">
+	$(function(){
+
+	// add multiple select / deselect functionality
+     $("a#selectAll").click(function(){
+       if($(':checkbox:checked').length > 0){
+         $(':checkbox').prop('checked', false);
+         $('a#selectAll').html('Select all');
+        }else{
+         $(':checkbox').prop('checked', true);
+         $('a#selectAll').html('Unselect all');
+         }
+       });
+});
+      $(document).ready(function () {
+        $("input[type=checkbox]").click(updateCount);
+
+        updateCount();
+
+        function updateCount () {
+          var count = $("input[type=checkbox].govuk-checkboxes__input:checked").length;
+
+          $("#count").text(count);
+          $("#status").toggle(count > 0);
+        };
+      });
+</script>

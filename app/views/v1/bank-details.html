@@ -37,6 +37,18 @@
       <form action="" method="post" class="form">
       <h1 class="govuk-heading-l">Enter your bank or building society account details</h1>
 
+      {{ govukInput({
+        label: {
+          text: "Name on the account"
+        },
+        id: "name-on-the-account",
+        classes: "govuk-input--width-20",
+        name: "name-on-the-account",
+        attributes: {
+          spellcheck: "false"
+        }
+      }) }}
+
     {% if data['error-select-apprentices'] == true %}
     {% if data['sort-code'] == "" %}
       {{ govukInput({

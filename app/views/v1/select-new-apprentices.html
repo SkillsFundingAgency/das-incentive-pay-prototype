@@ -28,92 +28,110 @@
     {% endif %}
 
       <form action="" method="post" class="form">
-
     {% if data['error-select-apprentices'] == true %}
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="new-apprentices-hint new-apprentices-error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Select new apprentices
+                </h1>
+            </legend>
 
-      {{ govukCheckboxes({
-        idPrefix: "new-apprentices",
-        fieldset: {
-          legend: {
-            text: "Select new apprentices",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        hint: {
-          text: "Select all that apply."
-        },
-        errorMessage: {
-          text: "Select new apprentices"
-        },
-        items: [
-          {
-            value: "apprentice1",
-            name: "apprentice1",
-            text: "Michael Johnson",
-            hint: {
-                text: "Water Treatment Technician, Level: 3 (Standard)"
-            }
-          },
-          {
-            value: "apprentice2",
-            name: "apprentice2",
-            text: "Jack Roberts",
-            hint: {
-                text: "Relationship Manager (Banking), Level: 6 (Standard)"
-            }
-          },
-          {
-            value: "apprentice3",
-            name: "apprentice3",
-            text: "Steven Smith",
-            hint: {
-                text: "Non-destructive testing (NDT) operator, Level: 2 (Standard)"
-            }
-          }
-        ]
-      }) }}
+            <span id="new-apprentices-hint" class="govuk-hint">
+                Select all that apply.
+            </span>
+            <div style="text-align: right;"><a href="##" id="selectAll">Select all</a></div>
+
+            <span id="new-apprentices-error" class="govuk-error-message"> <span class="govuk-visually-hidden">Error:</span> Select new apprentices </span>
+
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices" name="apprentice1" type="checkbox" value="apprentice1" aria-describedby="new-apprentices-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices">
+                        Michael Johnson
+                    </label>
+
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Water Treatment Technician, Level: 3 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-2" name="apprentice2" type="checkbox" value="apprentice2" aria-describedby="new-apprentices-2-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-2">
+                        Jack Roberts
+                    </label>
+
+                    <span id="new-apprentices-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Relationship Manager (Banking), Level: 6 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-3" name="apprentice3" type="checkbox" value="apprentice3" aria-describedby="new-apprentices-3-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-3">
+                        Steven Smith
+                    </label>
+
+                    <span id="new-apprentices-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Non-destructive testing (NDT) operator, Level: 2 (Standard)
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
 
     {% else %}
-      {{ govukCheckboxes({
-        idPrefix: "new-apprentices",
-        fieldset: {
-          legend: {
-            text: "Select new apprentices",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        hint: {
-          text: "Select all that apply."
-        },
-        items: [
-          {
-            value: "apprentice1",
-            name: "apprentice1",
-            text: "Michael Johnson",
-            hint: {
-                text: "Water Treatment Technician, Level: 3 (Standard)"
-            }
-          },
-          {
-            value: "apprentice2",
-            name: "apprentice2",
-            text: "Jack Roberts",
-            hint: {
-                text: "Relationship Manager (Banking), Level: 6 (Standard)"
-            }
-          },
-          {
-            value: "apprentice3",
-            name: "apprentice3",
-            text: "Steven Smith",
-            hint: {
-                text: "Non-destructive testing (NDT) operator, Level: 2 (Standard)"
-            }
-          }
-        ]
-      }) }}
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="new-apprentices-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Select new apprentices
+                </h1>
+            </legend>
+
+            <span id="new-apprentices-hint" class="govuk-hint">
+                Select all that apply.
+            </span>
+            <div style="text-align: right;"><a id="selectAll" href="##">Select all</a></div>
+
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices" name="apprentice1" type="checkbox" value="apprentice1" aria-describedby="new-apprentices-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices">
+                        Michael Johnson
+                    </label>
+
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Water Treatment Technician, Level: 3 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-2" name="apprentice2" type="checkbox" value="apprentice2" aria-describedby="new-apprentices-2-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-2">
+                        Jack Roberts
+                    </label>
+
+                    <span id="new-apprentices-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Relationship Manager (Banking), Level: 6 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-3" name="apprentice3" type="checkbox" value="apprentice3" aria-describedby="new-apprentices-3-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-3">
+                        Steven Smith
+                    </label>
+
+                    <span id="new-apprentices-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Non-destructive testing (NDT) operator, Level: 2 (Standard)
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
     {% endif %}
 
 
