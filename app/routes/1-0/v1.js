@@ -19,11 +19,6 @@ module.exports = function (router) {
 			res.redirect(v + '/taken-on-new-apprentices')
 		}
 	})
-	//
-	// router.get(v + '/select-new-apprentices', function (req, res) {
-	// 	req.session.data['apprenticeData'] = require('./../../../app/data/apprentices.json')
-	// 	res.render(vx + '/select-new-apprentices')
-	// })
 
 	router.post(v + '/select-new-apprentices', function (req, res) {
 		req.session.data['total'] = 0
