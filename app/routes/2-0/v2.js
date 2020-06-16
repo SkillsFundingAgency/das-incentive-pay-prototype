@@ -1,6 +1,7 @@
-// Routes for v1
-var v = '/v1';
-var vx = 'v1';
+// Routes for v2
+var v = '/v2';
+var vx = 'v2';
+var apprentices = require('./../../../app/data/apprentices.json');
 
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -19,11 +20,13 @@ module.exports = function (router) {
 			res.redirect(v + '/taken-on-new-apprentices')
 		}
 	})
-	//
-	// router.get(v + '/select-new-apprentices', function (req, res) {
-	// 	req.session.data['apprenticeData'] = require('./../../../app/data/apprentices.json')
-	// 	res.render(vx + '/select-new-apprentices')
-	// })
+
+	router.get(v + '/select-new-apprentices', function (req, res) {
+		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
+		res.render(vx + '/select-new-apprentices', {
+			apprenticeData:req.session.apprenticeData
+		});
+	})
 
 	router.post(v + '/select-new-apprentices', function (req, res) {
 		req.session.data['total'] = 0
@@ -70,9 +73,18 @@ module.exports = function (router) {
 		// }
 	})
 
+
 	// V1 CHECK ANSWERS
 	router.post(v + '/check-claim', function (req, res) {
 		res.redirect(v + '/confirmation')
+	})
+
+	router.get(v + '/check-answers', function (req, res) {
+		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
+		res.render(vx + '/check-answers', {
+			apprenticeData:req.session.apprenticeData,
+			data:req.session.data
+		});
 	})
 
 	// V2 CHECK ANSWERS

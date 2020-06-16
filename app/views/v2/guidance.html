@@ -1,0 +1,42 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Apply for the 16 to 24 apprentice grant</h1>
+      <p>The 16 to 24 apprentice grant is available for employers that take on new apprentices from September 2020. Employers can apply for the grant after they add each apprentice to their apprenticeship service account.</p>
+
+      <h2 class="govuk-heading-m">What you'll get</h2>
+      <p>For apprentices aged 16 to 24, employers will receive £3,000. We’ll pay the grant in 2 equal instalments, 90 and 365 days after you apply.</p>
+      <p>Employers can only get this grant for apprentices that are new to their payroll. We’ll pay the grant for all eligible apprentices from each application at the same time.</p>
+
+      <h2 class="govuk-heading-m">Apprentices who were made redundant</h2>
+      <p>Employers can take on and apply for the grant for apprentices who were made redundant by their previous employer. This includes apprentices who are going to either: </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>start a new apprenticeship</li>
+        <li>continue with their previous apprenticeship</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "taken-on-new-apprentices",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "name": "Michael Johnson",
+      "course": "Water Treatment Technician, Level: 3 (Standard)"
+    },
+    {
+      "id": 2,
+      "name": "Jack Roberts",
+      "course": "Relationship Manager (Banking), Level: 6 (Standard)"
+    },
+    {
+      "id": 3,
+      "name": "Steven Smith",
+      "course": "Non-destructive testing (NDT) operator, Level: 2 (Standard)"
+    }
+  ]
+}

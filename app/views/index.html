@@ -6,8 +6,14 @@
     <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Employer incentives design history</h1>
     <h2 class="govuk-heading-m">What is employer incentives?</h2>
-    <p>We are designing and implementing the functionality to provide financial incentives to Employers to employ new apprentices and pre-workplace employees from September 2020 onwards.</p>
-    <p>This functionality is part of a set of Covid Recovery initiatives being run by ESFA.</p>
+    <p>We are designing and implementing the functionality to provide financial incentives to employers who newly employ apprentices aged between 16-24 from September 2020 onwards.</p>
+    <p>This functionality is part of a set of Covid-19 recovery initiatives being run by ESFA.</p>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Design team on this project</h2>
+    <ul class="govuk-list govuk-list--bullet">
+        <li><a href="mailto:jas.johal@digital.education.gov.uk">Jas Johal</a> - interaction designer</li>
+        <li><a href="mailto:oli.rose@digital.education.gov.uk">Oli Rose</a> - content designer</li>
+        <li><a href="mailto:ben.towers@digital.education.gov.uk">Ben Towers</a> - user researcher</li>
+    </ul>
 
     <h2 class="govuk-heading-m">Prototypes</h2>
     {{ govukAccordion({
@@ -20,10 +26,26 @@
           content: {
             html:
             "
-            <h2 class='govuk-heading-s'>Applying for 16-24 incentive</h2>
-            <p><a href='v1/account-home'>Starting within apprentices area in employer account</a></p>
-            <p><a href='v1/account-home-2'>Starting under finance section in employer account</a></p>
-            <p><a href='v1/account-home-3'>Banner on account homepage and starting under apprentice area in employer account</a></p>
+            <h2 class='govuk-heading-s'>V2 - linear journey</h2>
+            <p>Content iterations. Added a shutter page for employers with no apprentices in account that are 16-24/start date after September.</p>
+            <ul class='govuk-list govuk-list--bullet'>
+            <li><a href='v2/account-home'>Start point 1: apprentices area in employer account</a></li>
+            <li><a href='v2/account-home-2'>Start point 2: finance section in employer account</a></li>
+            <li><a href='v2/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
+            <li><a href='v2/guidance'>Guidance (start) page</a></li>
+            <li><a href='v2/shutter/cannot-apply-yet'>Shutter page when no apprentices in account</a></li>
+            </ul>
+
+            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
+
+            <h2 class='govuk-heading-s'>V1 - linear journey</h2>
+            <p>Initial prototype design. Content may iterate to add more body text to pages.</p>
+            <ul class='govuk-list govuk-list--bullet'>
+            <li><a href='v1/account-home'>Start point 1: apprentices area in employer account</a></li>
+            <li><a href='v1/account-home-2'>Start point 2: finance section in employer account</a></li>
+            <li><a href='v1/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
+            <li><a href='v1/guidance'>Guidance (start) page</a></li>
+            </ul>
             "
           }
         }
