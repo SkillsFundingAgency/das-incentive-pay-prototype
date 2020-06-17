@@ -5,5 +5,6 @@ const router = express.Router()
 
   require('./routes/1-0/v1.js')(router);
   require('./routes/2-0/v2.js')(router);
+  require('./routes/3-0/v3.js')(router);
 
 module.exports = router
