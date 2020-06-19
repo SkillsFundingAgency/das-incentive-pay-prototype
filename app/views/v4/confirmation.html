@@ -14,21 +14,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
-        titleText: "Application successful"
+        titleText: "We've received your information"
       }) }}
 
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+
         {% if data['bank-skipped'] === true %}
-        <div class="govuk-inset-text">
-          You have chose to add bank details later. If you don't do it, you won't get paid etc.
-        </div>
-        {% endif %}
+        <p>You must <a href="view-bank-accounts">add your organisation’s bank account details</a>, so that we can pay the 16 to 24 apprentice grant.</p>
 
-      <p class="govuk-body">We’ve sent you an email to confirm that you’ll receive the 16 to 24 apprentice grant.</p>
+        <p>If you add your organisation’s bank details, you’ll receive the first payment in 90 days. We’ll make the second payment in 365 days.</p>
 
-      <h2 class="govuk-heading-m">What happens next</h2>
-
+        {% else %}
       <p class="govuk-body">You’ll receive the first payment in 90 days. We’ll make the second payment in 365 days.</p>
       <p class="govuk-body">We’ll pay your grant using the bank details in your application. You do not need to do anything else.</p>
+        {% endif %}
 
       <a class="govuk-button" href="account-home">Return to account home</a>
 

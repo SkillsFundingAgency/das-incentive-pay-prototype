@@ -81,30 +81,8 @@
 
        <form method="post">
 
-       {{ govukRadios({
-         classes: "govuk-radios--inline",
-         idPrefix: "confirm-bank",
-         name: "confirm-bank",
-         fieldset: {
-           legend: {
-             text: "Are these details correct?",
-             classes: "govuk-fieldset__legend--m"
-           }
-         },
-         items: [
-           {
-             value: "yes",
-             text: "Yes"
-           },
-           {
-             value: "no",
-             text: "No"
-           }
-         ]
-       }) }}
-
        {{ govukButton({
-         text: "Continue"
+         text: "Confirm"
        }) }}
 
        </form>

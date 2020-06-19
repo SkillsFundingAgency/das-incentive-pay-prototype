@@ -67,15 +67,9 @@ module.exports = function (router) {
 	})
 
 	router.post(v + '/check-bank-details', function (req, res) {
-		if (req.session.data['confirm-bank'] === "no") {
-			res.redirect(v + '/add-bank-details')
-		}
-		else {
 			req.session.data['bank-details'] = true
 			req.session.data['bank-skipped'] = false
 			res.redirect(v + '/bank-confirmation')
-		}
-		// }
 	})
 
 	router.post(v + '/bank-details', function (req, res) {

@@ -9,6 +9,11 @@ function numberWithCommas(x) {
 
 module.exports = function (router) {
 
+	router.get(v + '/account-no-bank', function (req, res) {
+		req.session.data['bank-details'] = false
+		res.redirect(v + '/account-home')
+	})
+
 	router.get(v + '/check-for-bank-details', function (req, res) {
 		if (req.session.data['bank-details'] === true){
 			res.redirect(v + '/taken-on-new-apprentices')
@@ -83,13 +88,9 @@ module.exports = function (router) {
 	})
 
 	router.post(v + '/check-bank-details', function (req, res) {
-		if (req.session.data['confirm-bank'] === "no") {
-			res.redirect(v + '/bank-details')
-		}
-		else {
-			req.session.data['bank-details'] = true
-			res.redirect(v + '/bank-confirmation')
-		}
+		req.session.data['bank-details'] = true
+		res.redirect(v + '/bank-confirmation')
+
 		// }
 	})
 
