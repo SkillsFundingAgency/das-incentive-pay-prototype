@@ -34,43 +34,18 @@
         {% endif %}
 
       <h1 class="govuk-heading-l">Terms and conditions</h1>
-      <p>By accepting, you agree that:</p>
+      <p>By accepting, you confirm that:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>placeholder 1</li>
-        <li>placeholder 2</li>
-        <li>placeholder 3</li>
-        <li>placeholder 4</li>
+        <li>all the information in this application is correct</li>
+        <li>your organisation will tell Education and Skills Funding Agency (ESFA) and the training provider about any change to the information you provided</li>
+        <li>you’ll use the grant appropriately and follow the apprenticeship funding rules</li>
+        <li>ESFA has the right to stop, hold or reclaim this grant and can stop you from claiming any grants in the future</li>
+        <li>your organisation is not committing fraud and does not have a conflict of interest with the training provider or apprentice</li>
+        <li>ESFA will only pay this grant if the training provider confirms the apprentice has started their apprenticeship</li>
+        <li>ESFA may change these terms and conditions in the future</li>
       </ul>
+      <p>You must follow the <a href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency/about/complaints-procedure" target="_blank">ESFA’s official complaints procedure</a> if you need to dispute these terms and conditions.</p>
     <form action="" method="post" class="form">
-    {% if data['error-sign-agreement'] == true %}
-    {{ govukCheckboxes({
-      idPrefix: "submitconfirm-1",
-      name: "submitconfirm-1",
-      classes: "govuk-checkboxes--small",
-      errorMessage: {
-        text: "I agree"
-      },
-      items: [
-        {
-          value: "confirm",
-          text: "I accept the terms and conditions"
-        }
-      ]
-    }) }}
-
-    {% else %}
-    {{ govukCheckboxes({
-      idPrefix: "submitconfirm-1",
-      name: "submitconfirm-1",
-      classes: "govuk-checkboxes--small",
-      items: [
-        {
-          value: "confirm",
-          text: "I accept the terms and conditions"
-        }
-      ]
-    }) }}
-    {% endif %}
 
       {{ govukButton({
         text: "Accept"

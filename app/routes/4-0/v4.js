@@ -52,14 +52,7 @@ module.exports = function (router) {
 	})
 
 	router.post(v + '/sign-agreement', function (req, res) {
-		if (req.session.data['submitconfirm-1'] === undefined) {
-			req.session.data['error-sign-agreement'] = true
-			res.redirect(v + '/sign-agreement')
-		}
-		else {
-			req.session.data['error-sign-agreement'] = false
-			res.redirect(v + '/bank-details')
-		}
+		res.redirect(v + '/bank-details')
 	})
 
 	router.post(v + '/add-bank-details', function (req, res) {
