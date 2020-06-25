@@ -1,0 +1,81 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v5/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: "account-home"
+        },
+        {
+          text: "Apprentices"
+        }
+      ]
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    <section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
+    	<h1 class="govuk-heading-l das-account__account-name">Apprentices</h1>
+    </section>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+    <div class="das-cards">
+        <div class="govuk-grid-row">
+    	    <div class="das-card govuk-grid-column-one-half">
+    		    <h3 class="govuk-heading-m das-card__heading"><a href="#">Add an apprentice</a></h3>
+    			<p>Add apprentices to a new cohort or ask your training provider to add them.</p>
+    	</div>
+
+        <div class="das-card govuk-grid-column-one-half">
+            <h3 class="govuk-heading-m das-card__heading"><a href="#">Your cohorts</a></h3>
+            <p>Review, edit, approve and add more apprentices to cohorts you've already started.</p>
+        </div>
+    </div>
+        <div class="govuk-grid-row">
+    	    <div class="das-card govuk-grid-column-one-half">
+    		    <h3 class="govuk-heading-m das-card__heading"><a href="#">Manage your apprentices</a></h3>
+    			<p>View approved apprentices, update details of existing apprentices or stop and pause payments to training providers.</p>
+    	</div>
+
+        <div class="das-card govuk-grid-column-one-half">
+            <h3 class="govuk-heading-m das-card__heading"><a href="#">Set payment order</a></h3>
+            <p>View and change the order in which your providers are paid from your available funds.</p>
+        </div>
+    </div>
+    <hr class="das-section-break das-section-break--heavy govuk-!-margin-bottom-6">
+        <div class="govuk-grid-row">
+    	    <div class="das-card govuk-grid-column-one-half">
+    		    <h3 class="govuk-heading-m das-card__heading"><a href="guidance">Apply for the recruit a new apprentice grant</a></h3>
+    			<p>You can apply for a grant if you take on new apprentices after 1 September 2020.</p>
+    	</div>
+
+    </div>
+    <hr class="das-section-break das-section-break--heavy govuk-!-margin-bottom-6">
+        <div class="govuk-grid-row">
+    	    <div class="das-card govuk-grid-column-one-half">
+    		    <h3 class="govuk-heading-m das-card__heading"><a href="#">Report public sector apprenticeship target</a></h3>
+    			<p>Submit data on your progress towards the public sector apprenticeship target</p>
+    	</div>
+
+    </div>
+
+    </div>
+    </div>
+  </div>
+
+{% endblock %}

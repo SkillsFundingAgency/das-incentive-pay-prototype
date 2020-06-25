@@ -1,0 +1,25 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v5/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You cannot apply for this grant yet</h1>
+    <p>You can only apply for this grant if you have new apprentices:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>aged 16 to 24</li>
+    <li>who joined your organisation after 1 September 2020</li>
+    </ul>
+    <p>If you have apprentices who are eligible for this grant, you'll need to <a href="">add them to your apprenticeship service account</a>.</p>
+    </div>
+  </div>
+{% endblock %}
