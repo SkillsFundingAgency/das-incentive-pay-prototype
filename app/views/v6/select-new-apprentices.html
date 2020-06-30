@@ -114,13 +114,13 @@
                 </h1>
             </legend>
 
-            <p>Choose from your apprentices with a planned start date after 1 September 2020.</p>
+            <p>You can only choose from your apprentices:</p>
+            <ul class="govuk-list govuk-list--bullet">
+            <li>with a planned start date after 1 September 2020</li>
+            <li>that you have not applied for already</li>
+            </ul>
             <div class="govuk-inset-text"><p>You must only select apprentices that joined your payroll after 1 September 2020.</p></div>
 
-
-            {% if data['already-applied'] === true %}
-            <p class="govuk-hint">The apprentices you have previously applied for are hidden etc.</p>
-            {% endif %}
             <span id="new-apprentices-hint" class="govuk-hint">
                 Select all that apply.
             </span>
