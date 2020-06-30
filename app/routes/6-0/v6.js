@@ -1,6 +1,6 @@
-// Routes for v5
-var v = '/v5';
-var vx = 'v5';
+// Routes for v6
+var v = '/v6';
+var vx = 'v6';
 var apprentices = require('./../../../app/data/apprentices.json');
 
 function numberWithCommas(x) {
@@ -52,7 +52,12 @@ module.exports = function (router) {
 	})
 
 	router.post(v + '/sign-agreement', function (req, res) {
-		res.redirect(v + '/bank-details')
+		if (req.session.data['already-applied'] === true) {
+			res.redirect(v + '/check-answers')
+		}
+		else {
+			res.redirect(v + '/bank-details')
+		}
 	})
 
 	router.post(v + '/add-bank-details', function (req, res) {
@@ -78,7 +83,8 @@ module.exports = function (router) {
 	})
 
 	router.get(v + '/account-home-not-applied', function (req, res) {
-		req.session.data['bank-skipped'] = false
+		req.session.data['bank-skipped'] = null
+		req.session.data['already-applied'] = false
 		res.redirect(v + '/account-home')
 	})
 
@@ -88,9 +94,15 @@ module.exports = function (router) {
 		res.redirect(v + '/guidance')
 	})
 
+	router.get(v + '/account-subsequent-application', function (req, res) {
+		req.session.data['bank-skipped'] = false
+		req.session.data['already-applied'] = true
+		res.redirect(v + '/account-home')
+	})
 
 	router.get(v + '/account-with-bank-skipped', function (req, res) {
 		req.session.data['bank-skipped'] = true
+		req.session.data['already-applied'] = false
 		res.redirect(v + '/account-home')
 	})
 
@@ -109,7 +121,11 @@ module.exports = function (router) {
 
 	// V2 CHECK ANSWERS
 	router.post(v + '/check-answers', function (req, res) {
-		res.redirect(v + '/confirmation')
+		if (req.session.data['bank-skipped'] !== true)
+		{
+			req.session.data['already-applied'] = true
+		}
+			res.redirect(v + '/confirmation')
 	})
 
 
