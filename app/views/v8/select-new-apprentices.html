@@ -1,0 +1,178 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v8/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    {% if data['error-select-apprentices'] == true %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select new apprentices",
+          href: "#new-apprentices"
+        }
+      ]
+    }) }}
+    {% endif %}
+
+      <form action="" method="post" class="form">
+    {% if data['error-select-apprentices'] == true %}
+    <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="new-apprentices-hint new-apprentices-error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Select the apprentices you want to apply for
+                </h1>
+            </legend>
+
+            <p>Choose from your new apprentices.</p>
+            <div class="govuk-inset-text"><p>You must only select apprentices that joined your payroll after 1 August 2020.</p></div>
+
+            <span id="new-apprentices-hint" class="govuk-hint">
+                Select all that apply.
+            </span>
+            <div style="text-align: right;"><a href="##" id="selectAll">Select all</a></div>
+
+            <span id="new-apprentices-error" class="govuk-error-message"> <span class="govuk-visually-hidden">Error:</span> Select new apprentices </span>
+
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices" name="apprentice1" type="checkbox" value="apprentice1" aria-describedby="new-apprentices-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices">
+                        Michael Johnson
+                    </label>
+
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Water Treatment Technician, Level: 3 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-2" name="apprentice2" type="checkbox" value="apprentice2" aria-describedby="new-apprentices-2-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-2">
+                        Jack Roberts
+                    </label>
+
+                    <span id="new-apprentices-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Relationship Manager (Banking), Level: 6 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-3" name="apprentice3" type="checkbox" value="apprentice3" aria-describedby="new-apprentices-3-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-3">
+                        Steven Smith
+                    </label>
+
+                    <span id="new-apprentices-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Non-destructive testing (NDT) operator, Level: 2 (Standard)
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    {% else %}
+
+    <!-- JSON
+            {% for items in apprenticeData.list %}
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-{{items.id}}" name="apprentice{{items.id}}" type="checkbox" value="apprentice{{items.id}}" aria-describedby="new-apprentices-{{items.id}}-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-{{items.id}}">
+                        {{ items.name }}
+                    </label>
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        {{ items.course }}
+                    </span>
+                </div>
+            {% endfor %}
+    !-->
+
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="new-apprentices-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Select the apprentices you want to apply for
+                </h1>
+            </legend>
+
+            <p>You can only choose from your apprentices:</p>
+            <ul class="govuk-list govuk-list--bullet">
+            <li>with a planned start date after 1 August 2020</li>
+            <li>that you have not applied for already</li>
+            </ul>
+            <div class="govuk-inset-text"><p>You must only select apprentices that joined your payroll after 1 August 2020.</p></div>
+
+            <span id="new-apprentices-hint" class="govuk-hint">
+                Select all that apply.
+            </span>
+
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices" name="apprentice1" type="checkbox" value="apprentice1" aria-describedby="new-apprentices-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices">
+                        Michael Johnson
+                    </label>
+
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Water Treatment Technician, Level: 3 (Standard)
+                    </span>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-2" name="apprentice2" type="checkbox" value="apprentice2" aria-describedby="new-apprentices-2-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-2">
+                        Jack Roberts
+                    </label>
+
+                    <span id="new-apprentices-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Relationship Manager (Banking), Level: 6 (Standard)
+                    </span>
+                </div>
+
+            {% if data['already-applied'] !== true %}
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-3" name="apprentice3" type="checkbox" value="apprentice3" aria-describedby="new-apprentices-3-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-3">
+                        Steven Smith
+                    </label>
+
+                    <span id="new-apprentices-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        Non-destructive testing (NDT) operator, Level: 2 (Standard)
+                    </span>
+                </div>
+             {% endif %}
+            </div>
+        </fieldset>
+    </div>
+
+    {% endif %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

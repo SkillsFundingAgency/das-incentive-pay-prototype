@@ -10,5 +10,6 @@ const router = express.Router()
   require('./routes/5-0/v5.js')(router);
   require('./routes/6-0/v6.js')(router);
   require('./routes/7-0/v7.js')(router);
+  require('./routes/8-0/v8.js')(router);
 
 module.exports = router

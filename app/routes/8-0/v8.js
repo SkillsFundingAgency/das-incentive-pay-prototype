@@ -1,6 +1,6 @@
-// Routes for v7
-var v = '/v7';
-var vx = 'v7';
+// Routes for v8
+var v = '/v8';
+var vx = 'v8';
 var apprentices = require('./../../../app/data/apprentices.json');
 
 function numberWithCommas(x) {
