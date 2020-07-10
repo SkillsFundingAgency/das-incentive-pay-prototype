@@ -1,0 +1,70 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v8/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Bank information needed</h1>
+
+    <p>We'll need:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>the details of the person submitting this information to us</li>
+        <li>the address of your organisation</li>
+        <li>the bank account details for your organisation</li>
+    </ul>
+    <p>If you cannot provide us this information now, we will send you an email with the link to completing it later. You'll also be able to complete it from your employer account.</p>
+
+      <form action="" method="post" class="form">
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "bank-now",
+        name: "bank-now",
+        fieldset: {
+         legend: {
+           text: "Can you provide this information now?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -9,6 +9,10 @@ function numberWithCommas(x) {
 
 module.exports = function (router) {
 
+	router.post(v + '/select-legal-entity', function (req, res) {
+		res.redirect(v + '/taken-on-new-apprentices')
+	})
+
 	router.post(v + '/taken-on-new-apprentices', function (req, res) {
 		if (req.session.data['taken-on-new-apprentices'] === "yes"){
 			res.redirect(v + '/select-new-apprentices')
@@ -58,7 +62,7 @@ module.exports = function (router) {
 			res.redirect(v + '/check-answers')
 		}
 		else {
-			res.redirect(v + '/bank-details')
+			res.redirect(v + '/check-answers')
 		}
 	})
 
@@ -153,7 +157,18 @@ module.exports = function (router) {
 		{
 			req.session.data['already-applied'] = true
 		}
-			res.redirect(v + '/confirmation')
+			res.redirect(v + '/bank-details-needed')
+	})
+
+	router.post(v + '/bank-details-needed', function (req, res) {
+		if (req.session.data['bank-now'] === 'yes')
+		{
+			res.redirect(v + '/bc/start')
+		}
+		if (req.session.data['bank-now'] === 'no')
+		{
+			res.redirect(v + '/need-bank-information')
+		}
 	})
 
 
