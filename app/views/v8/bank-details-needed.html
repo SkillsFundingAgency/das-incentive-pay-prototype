@@ -22,15 +22,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Bank information needed</h1>
+    <h1 class="govuk-heading-l">We need your organisation’s bank details</h1>
 
-    <p>We'll need:</p>
+    <p>You must provide information about your banking and payments to DfE, so that we can make the new apprentice payment.</p>
+    <p>You’ll need to give us your:</p>
     <ul class="govuk-list govuk-list--bullet">
-        <li>the details of the person submitting this information to us</li>
-        <li>the address of your organisation</li>
-        <li>the bank account details for your organisation</li>
+        <li>contact details</li>
+        <li>organisation’s address and bank account details </li>
     </ul>
-    <p>If you cannot provide us this information now, we will send you an email with the link to completing it later. You'll also be able to complete it from your employer account.</p>
+    <h3 class="govuk-heading-m">Can you add your organisation’s bank details now?</h3>
+    <p>If you do not have these details, someone else from your organisation can add them later.</p>
 
       <form action="" method="post" class="form">
 
@@ -38,13 +39,6 @@
         classes: "govuk-radios--inline",
         idPrefix: "bank-now",
         name: "bank-now",
-        fieldset: {
-         legend: {
-           text: "Can you provide this information now?",
-            isPageHeading: false,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
         items: [
           {
             value: "yes",

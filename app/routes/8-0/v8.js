@@ -167,9 +167,16 @@ module.exports = function (router) {
 		}
 		if (req.session.data['bank-now'] === 'no')
 		{
+			req.session.data['bank-incomplete'] = true
 			res.redirect(v + '/need-bank-information')
 		}
 	})
 
+	router.get(v + '/complete-all', function (req, res) {
+		req.session.data['bank-incomplete'] = false
+		req.session.data['bank-details'] = true
+		req.session.data['bank-skipped'] = false
+		res.redirect(v + '/confirmation')
+	})
 
 }
