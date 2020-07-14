@@ -19,17 +19,8 @@
 
       <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
 
-        {% if data['bank-skipped'] === true %}
-        <p>You must <a href="add-bank-details">add your organisation’s bank account details</a>, so that we can pay the hire a new apprentice payment.</p>
-
-        <p>If you add your organisation’s bank details, you’ll receive the first payment after the apprentice completes 90 days of their apprenticeship. You’ll get the second payment after 365 days.</p>
-        <p>We make payments on the 10th of each month.</p>
-
-        {% else %}
       <p class="govuk-body">You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship and the second payment after 365 days.</p>
-      <p class="govuk-body">We make payments on the 10th of each month.</p>
-      <p class="govuk-body">We’ll pay your grant using the bank details in your application. You do not need to do anything else.</p>
-        {% endif %}
+      <p class="govuk-body">We make payments on the 10th working day of each month, using the bank details in your application. You do not need to do anything else.</p>
 
       <a class="govuk-button" href="account-home">Return to account home</a>
 

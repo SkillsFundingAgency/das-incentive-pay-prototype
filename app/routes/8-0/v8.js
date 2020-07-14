@@ -51,7 +51,7 @@ module.exports = function (router) {
 		}
 		else {
 			req.session.data['error-select-apprentices'] = false
-			res.redirect(v + '/sign-agreement')
+			res.redirect(v + '/check-answers')
 		}
 	})
 
@@ -59,10 +59,10 @@ module.exports = function (router) {
 		req.session.data['saved-application'] = false
 		req.session.data['saved-at-terms'] = false
 		if (req.session.data['already-applied'] === true) {
-			res.redirect(v + '/check-answers')
+			res.redirect(v + '/bank-details-needed')
 		}
 		else {
-			res.redirect(v + '/check-answers')
+			res.redirect(v + '/bank-details-needed')
 		}
 	})
 
@@ -157,7 +157,7 @@ module.exports = function (router) {
 		{
 			req.session.data['already-applied'] = true
 		}
-			res.redirect(v + '/bank-details-needed')
+			res.redirect(v + '/sign-agreement')
 	})
 
 	router.post(v + '/bank-details-needed', function (req, res) {

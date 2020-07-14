@@ -21,36 +21,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        {% if data['error-sign-agreement'] == true %}
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Sign agreement",
-              href: "#submit-confirm-1"
-            }
-          ]
-        }) }}
-        {% endif %}
 
-      <h1 class="govuk-heading-l">Terms and conditions</h1>
-      <p>By accepting, you confirm that:</p>
+      <h1 class="govuk-heading-l">Declaration</h1>
+      <p>You are about to submit your application for the new apprentice payment.</p>
+      <p>By submitting this application, you declare that:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>all the information in this application is correct</li>
-        <li>your organisation will tell Education and Skills Funding Agency (ESFA) and the training provider about any change to the information you provided</li>
-        <li>ESFA has the right to stop, hold or reclaim this grant and can stop you from claiming any grants in the future</li>
-        <li>your organisation is not committing fraud and does not have a conflict of interest with the training provider or apprentice</li>
-        <li>ESFA will only pay this grant if the training provider confirms the apprentice has started their apprenticeship</li>
-        <li>ESFA may change these terms and conditions in the future</li>
+        <li>all the apprentices in this application are new employees who joined your payroll after 1 August 2020</li>
+        <li>you understand that your organisation must tell Education and Skills Funding Agency about any change to any of the information provided</li>
+        <li>you have read and understood the agreement</li>
       </ul>
-      <p>You must follow the <a href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency/about/complaints-procedure" target="_blank">ESFA’s official complaints procedure</a> if you need to dispute these terms and conditions.</p>
     <form action="" method="post" class="form">
 
       {{ govukButton({
-        text: "Accept"
+        text: "Confirm"
       }) }}
 
-      <p><a href="save-at-terms">Save and complete later</a></p>
       </form>
 
     </div>
