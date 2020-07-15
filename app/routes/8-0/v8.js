@@ -150,6 +150,11 @@ module.exports = function (router) {
 		res.redirect(v + '/account-home')
 	})
 
+	router.get(v + '/account-bank-needed', function (req, res) {
+		req.session.data['bank-incomplete'] = true
+		res.redirect(v + '/account-home')
+	})
+
 	router.get(v + '/skip-legal', function (req, res) {
 		req.session.data['agreement-needed'] = false
 		res.redirect(v + '/select-new-apprentices')
