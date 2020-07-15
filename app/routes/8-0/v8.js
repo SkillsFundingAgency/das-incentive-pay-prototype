@@ -15,7 +15,15 @@ module.exports = function (router) {
 
 	router.post(v + '/taken-on-new-apprentices', function (req, res) {
 		if (req.session.data['taken-on-new-apprentices'] === "yes"){
-			res.redirect(v + '/select-new-apprentices')
+
+			if (req.session.data['agreement-needed'] === true){
+				res.redirect(v + '/shutter/legal-agreement')
+			}
+			else
+			{
+				res.redirect(v + '/select-new-apprentices')
+			}
+
 		}
 		if (req.session.data['taken-on-new-apprentices'] === "no"){
 			res.redirect(v + '/shutter/no-new-apprentices')
@@ -44,7 +52,6 @@ module.exports = function (router) {
 			req.session.data['total'] = req.session.data['total'] + 2000
 		}
 		req.session.data['totalPay'] = numberWithCommas(req.session.data['total'])
-
 		if (req.session.data['apprentice1'] === undefined && req.session.data['apprentice2'] === undefined && req.session.data['apprentice3'] === undefined) {
 			req.session.data['error-select-apprentices'] = true
 			res.redirect(v + '/select-new-apprentices')
@@ -59,7 +66,7 @@ module.exports = function (router) {
 		req.session.data['saved-application'] = false
 		req.session.data['saved-at-terms'] = false
 		if (req.session.data['already-applied'] === true) {
-			res.redirect(v + '/bank-details-needed')
+			res.redirect(v + '/confirmation')
 		}
 		else {
 			res.redirect(v + '/bank-details-needed')
@@ -138,10 +145,18 @@ module.exports = function (router) {
 		res.redirect(v + '/account-home')
 	})
 
-	// V1 CHECK ANSWERS
-	router.post(v + '/check-claim', function (req, res) {
-		res.redirect(v + '/confirmation')
+	router.get(v + '/account-no-agreement', function (req, res) {
+		req.session.data['agreement-needed'] = true
+		res.redirect(v + '/account-home')
 	})
+
+	router.get(v + '/skip-legal', function (req, res) {
+		req.session.data['agreement-needed'] = false
+		res.redirect(v + '/select-new-apprentices')
+	})
+
+
+	// V1 CHECK ANSWERS
 
 	router.get(v + '/check-answers', function (req, res) {
 		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
@@ -153,10 +168,6 @@ module.exports = function (router) {
 
 	// V2 CHECK ANSWERS
 	router.post(v + '/check-answers', function (req, res) {
-		if (req.session.data['bank-skipped'] !== true)
-		{
-			req.session.data['already-applied'] = true
-		}
 			res.redirect(v + '/sign-agreement')
 	})
 
@@ -176,6 +187,7 @@ module.exports = function (router) {
 		req.session.data['bank-incomplete'] = false
 		req.session.data['bank-details'] = true
 		req.session.data['bank-skipped'] = false
+		req.session.data['already-applied'] = true
 		res.redirect(v + '/confirmation')
 	})
 

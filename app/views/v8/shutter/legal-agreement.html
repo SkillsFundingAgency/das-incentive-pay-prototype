@@ -1,0 +1,52 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v8/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You need to sign a new agreement</h1>
+    <p>Before you can apply for the new apprentice payment, your organisation must sign a new agreement with the Education and Skills Funding Agency.</p>
+
+      <form action="" method="post">
+
+        {{ govukButton({
+          text: "View agreement"
+        }) }}
+
+      </form>
+
+      <p><a href="../account-home">Return to account home</a></p>
+
+    </div>
+  </div>
+{% endblock %}
+
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          },
+          {
+            href: "../skip-legal",
+            text: "Skip (for test purposes)"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}
