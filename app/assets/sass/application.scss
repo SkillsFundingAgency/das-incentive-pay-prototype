@@ -54,3 +54,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/raa-card";
 @import "patterns/app-interruption-card";
 @import "patterns/floating-menu";
+
+.no-bottom-header {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
