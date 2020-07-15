@@ -160,7 +160,6 @@ module.exports = function (router) {
 		res.redirect(v + '/select-new-apprentices')
 	})
 
-
 	// V1 CHECK ANSWERS
 
 	router.get(v + '/check-answers', function (req, res) {
