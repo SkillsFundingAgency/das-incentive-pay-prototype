@@ -122,6 +122,7 @@ module.exports = function (router) {
 	})
 
 	router.get(v + '/account-home-not-applied', function (req, res) {
+		req.session.data['agreement-needed'] = false
 		req.session.data['bank-skipped'] = null
 		req.session.data['already-applied'] = false
 		res.redirect(v + '/account-home')
