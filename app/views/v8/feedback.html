@@ -23,8 +23,8 @@
       <form action="" method="post" class="form">
 
     {{ govukRadios({
-      idPrefix: "give-feedback",
-      name: "give-feedback",
+      idPrefix: "service-feedback",
+      name: "service-feedback",
       fieldset: {
         legend: {
           text: "Overall, how did you feel about the service you received today?",
@@ -34,24 +34,58 @@
       },
       items: [
         {
-          value: "very-satisifed",
-          text: "Very satisifed"
+          value: "very-good",
+          text: "Very good"
         },
         {
-          value: "satisifed",
-          text: "Satisifed"
+          value: "good",
+          text: "Good"
         },
         {
           value: "neither",
-          text: "Neither satisifed or dissatisifed"
+          text: "Neither good or bad"
         },
         {
-          value: "dissatisifed",
-          text: "Dissatisifed"
+          value: "bad",
+          text: "Bad"
         },
         {
-          value: "very-dissatisifed",
-          text: "Very dissatisifed"
+          value: "very-bad",
+          text: "Very bad"
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      idPrefix: "experience-feedback",
+      name: "experience-feedback",
+      fieldset: {
+        legend: {
+          text: "How would you describe your experience applying for the hire a new apprentice payment?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "very-easy",
+          text: "Very easy"
+        },
+        {
+          value: "easy",
+          text: "Easy"
+        },
+        {
+          value: "neither",
+          text: "Neither easy or difficult"
+        },
+        {
+          value: "difficult",
+          text: "Difficult"
+        },
+        {
+          value: "very-difficult",
+          text: "Very difficult"
         }
       ]
     }) }}
@@ -64,10 +98,33 @@
       maxlength: 1200
     }) }}
 
-    <p>Please do not include any personal or financial information.</p>
+    <p>Do not include any personal or financial information, for example your National Insurance or credit card numbers.</p>
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "contact-you",
+      name: "contact-you",
+      fieldset: {
+        legend: {
+          text: "Can we contact you about taking part in a feedback session to help us improve our service?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
 
       {{ govukButton({
-        text: "Continue",
+        text: "Send feedback",
         href: "feedback-confirmation"
       }) }}
 
