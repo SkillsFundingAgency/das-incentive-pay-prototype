@@ -1,0 +1,25 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v9/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Application saved</h1>
+
+      <p>We’ve saved your progress, so you can return and complete your application from your apprenticeship service account.</p>
+      <p>You must complete your application to receive the grant.</p>
+
+      <a class="govuk-button" href="account-home">Return to account home</a>
+
+    </div>
+  </div>
+{% endblock %}
