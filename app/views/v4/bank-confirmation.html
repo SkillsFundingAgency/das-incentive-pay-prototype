@@ -1,0 +1,31 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v4/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "You've added your organisation's bank account details"
+      }) }}
+
+      <p>We’ve sent you an email to confirm that you’ll receive the 16 to 24 apprentice grant.</p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>You’ll receive the first payment in 90 days. We’ll make the second payment in 365 days.</p>
+      <p>We’ll pay your grant using the bank details you just added. You do not need to do anything else.</p>
+
+      <a class="govuk-button" href="account-home">Return to account home</a>
+
+    </div>
+  </div>
+{% endblock %}

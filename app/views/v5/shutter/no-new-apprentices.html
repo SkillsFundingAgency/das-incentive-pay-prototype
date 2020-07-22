@@ -1,0 +1,21 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v5/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You can only apply for apprentices who joined your payroll after 1 September 2020</h1>
+    <p>You cannot apply for this grant because you have not added any new apprentices who joined your payroll after 1 September 2020.</p>
+    <a class="govuk-button" href="../account-home">Return to account home</a>
+    </div>
+  </div>
+{% endblock %}

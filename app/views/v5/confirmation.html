@@ -1,0 +1,39 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v5/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "We've received your information"
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+
+        {% if data['bank-skipped'] === true %}
+        <p>You must <a href="add-bank-details">add your organisation’s bank account details</a>, so that we can pay the recruit a new apprentice grant.</p>
+
+        <p>If you add your organisation’s bank details, you’ll receive the first payment after the apprentice completes 90 days of their apprenticeship. You’ll get the second payment after 365 days.</p>
+        <p>We make payments on the 10th of each month.</p>
+
+        {% else %}
+      <p class="govuk-body">You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship and the second payment after 365 days.</p>
+      <p class="govuk-body">We make payments on the 10th of each month.</p>
+      <p class="govuk-body">We’ll pay your grant using the bank details in your application. You do not need to do anything else.</p>
+        {% endif %}
+
+      <a class="govuk-button" href="account-home">Return to account home</a>
+
+      <p class="govuk-body"><a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)</p>
+    </div>
+  </div>
+{% endblock %}

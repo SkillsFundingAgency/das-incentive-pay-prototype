@@ -1,0 +1,22 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v7/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You cannot apply for this grant</h1>
+    <p>You can only apply for this grant if you have new apprentices with a planned start date after 1 August 2020.</p>
+
+    <p>If you have apprentices who are eligible for this grant, you'll need to <a href="">add them to your apprenticeship service account</a>.</p>
+    </div>
+  </div>
+{% endblock %}

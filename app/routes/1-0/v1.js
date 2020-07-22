@@ -1,5 +1,6 @@
 // Routes for v1
 var v = '/v1';
+var vx = 'v1';
 
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -38,12 +39,8 @@ module.exports = function (router) {
 		}
 		else {
 			req.session.data['error-select-apprentices'] = false
-			res.redirect(v + '/check-claim')
+			res.redirect(v + '/sign-agreement')
 		}
-	})
-
-	router.post(v + '/check-claim', function (req, res) {
-		res.redirect(v + '/sign-agreement')
 	})
 
 	router.post(v + '/sign-agreement', function (req, res) {
@@ -64,8 +61,18 @@ module.exports = function (router) {
 		// }
 		// else {
 			req.session.data['error-bank-details'] = false
-			res.redirect(v + '/confirmation')
+			res.redirect(v + '/check-answers')
 		// }
+	})
+
+	// V1 CHECK ANSWERS
+	router.post(v + '/check-claim', function (req, res) {
+		res.redirect(v + '/confirmation')
+	})
+
+	// V2 CHECK ANSWERS
+	router.post(v + '/check-answers', function (req, res) {
+		res.redirect(v + '/confirmation')
 	})
 
 

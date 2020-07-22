@@ -1,0 +1,136 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v8/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Give feedback</h1>
+
+      <form action="" method="post" class="form">
+
+    {{ govukRadios({
+      idPrefix: "service-feedback",
+      name: "service-feedback",
+      fieldset: {
+        legend: {
+          text: "Overall, how did you feel about the service you received today?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "very-good",
+          text: "Very good"
+        },
+        {
+          value: "good",
+          text: "Good"
+        },
+        {
+          value: "neither",
+          text: "Neither good or bad"
+        },
+        {
+          value: "bad",
+          text: "Bad"
+        },
+        {
+          value: "very-bad",
+          text: "Very bad"
+        }
+      ]
+    }) }}
+
+    {{ govukRadios({
+      idPrefix: "experience-feedback",
+      name: "experience-feedback",
+      fieldset: {
+        legend: {
+          text: "How would you describe your experience applying for the hire a new apprentice payment?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "very-easy",
+          text: "Very easy"
+        },
+        {
+          value: "easy",
+          text: "Easy"
+        },
+        {
+          value: "neither",
+          text: "Neither easy or difficult"
+        },
+        {
+          value: "difficult",
+          text: "Difficult"
+        },
+        {
+          value: "very-difficult",
+          text: "Very difficult"
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">How could we improve the service?</h2>
+
+    {{ govukCharacterCount({
+      name: "feedback",
+      id: "feedback",
+      maxlength: 1200
+    }) }}
+
+    <p>Do not include any personal or financial information, for example your National Insurance or credit card numbers.</p>
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "contact-you",
+      name: "contact-you",
+      fieldset: {
+        legend: {
+          text: "Can we contact you about taking part in a feedback session to help us improve our service?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ]
+    }) }}
+
+      {{ govukButton({
+        text: "Send feedback",
+        href: "feedback-confirmation"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

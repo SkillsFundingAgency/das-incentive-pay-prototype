@@ -1,0 +1,37 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+
+{% endset %}
+
+{% block header %}
+  {% include "includes/header-bar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Set up to get payments from ESFA</h1>
+      <p>In order to receive funding and payments from the DfE and its associated bodies or agencies you will need to provide details of your organisation to the DfE Standing Data team.</p>
+      <p class="govuk-inset-text">Please note, we will maintain one set of banking details for your organisation which will be used for all payments from the DfE and its associated bodies or agencies.</p>
+      <p>If you have any queries please contact the DfE Standing Data team directly by emailing <a href="#">DfE.StandingData@education.gov.uk</a>.</p>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "contact-information",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: false
+      }) }}
+    </div>
+  </div>
+{% endblock %}

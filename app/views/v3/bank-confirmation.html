@@ -1,0 +1,26 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v3/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Bank account details added"
+      }) }}
+
+      <p>You can <a href="guidance">apply for the 16 to 24 apprentice grant</a>.</p>
+
+      <a class="govuk-button" href="account-home">Return to account home</a>
+
+    </div>
+  </div>
+{% endblock %}

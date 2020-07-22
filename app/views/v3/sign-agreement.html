@@ -1,0 +1,83 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v3/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        {% if data['error-sign-agreement'] == true %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Sign agreement",
+              href: "#submit-confirm-1"
+            }
+          ]
+        }) }}
+        {% endif %}
+
+      <h1 class="govuk-heading-l">Terms and conditions</h1>
+      <p>By accepting, you agree that:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>placeholder 1</li>
+        <li>placeholder 2</li>
+        <li>placeholder 3</li>
+        <li>placeholder 4</li>
+      </ul>
+    <form action="" method="post" class="form">
+    {% if data['error-sign-agreement'] == true %}
+    {{ govukCheckboxes({
+      idPrefix: "submitconfirm-1",
+      name: "submitconfirm-1",
+      classes: "govuk-checkboxes--small",
+      errorMessage: {
+        text: "I agree"
+      },
+      items: [
+        {
+          value: "confirm",
+          text: "I accept the terms and conditions"
+        }
+      ]
+    }) }}
+
+    {% else %}
+    {{ govukCheckboxes({
+      idPrefix: "submitconfirm-1",
+      name: "submitconfirm-1",
+      classes: "govuk-checkboxes--small",
+      items: [
+        {
+          value: "confirm",
+          text: "I accept the terms and conditions"
+        }
+      ]
+    }) }}
+    {% endif %}
+
+      {{ govukButton({
+        text: "Accept"
+      }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

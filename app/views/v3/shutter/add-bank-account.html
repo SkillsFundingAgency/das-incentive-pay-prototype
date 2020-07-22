@@ -1,0 +1,25 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v3/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Add your organisation’s bank details</h1>
+    <p>We’ll use these bank details:</p>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>to pay the 16 to 24 grant into (if your application is successful)</li>
+    <li>for any future applications or payments</li>
+    </ul>
+    <a class="govuk-button" href="../bank-details">Continue</a>
+    </div>
+  </div>
+{% endblock %}
