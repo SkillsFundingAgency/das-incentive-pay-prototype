@@ -169,25 +169,15 @@
       !-->
       <form action="" method="post">
 
-        <h3 class="govuk-heading-m">Did all of these apprentices start their contract of employment between 1 August 2020 and 31 January 2021?</h3>
 
-          <form action="" method="post" class="form">
+        <div class="govuk-checkboxes">
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+      <label class="govuk-label govuk-checkboxes__label" for="waste">
+        I confirm that all apprentices started their contract of employment between 1 August 2020 and 31 January 2021.      </label>
+    </div>
+    <br>
 
-            {{ govukRadios({
-              classes: "govuk-radios--inline",
-              idPrefix: "bank-now",
-              name: "bank-now",
-              items: [
-                {
-                  value: "yes",
-                  text: "Yes"
-                },
-                {
-                  value: "no",
-                  text: "No"
-                }
-              ]
-            }) }}
 
         {{ govukButton({
           text: "Confirm"
