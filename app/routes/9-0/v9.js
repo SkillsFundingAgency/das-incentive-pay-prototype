@@ -153,7 +153,7 @@ module.exports = function (router) {
 
 	router.get(v + '/account-bank-needed', function (req, res) {
 		req.session.data['bank-incomplete'] = true
-		res.redirect(v + '/account-home')
+		res.redirect(v + '/bc/start')
 	})
 
 	router.get(v + '/skip-legal', function (req, res) {
@@ -193,7 +193,7 @@ module.exports = function (router) {
 		req.session.data['bank-details'] = true
 		req.session.data['bank-skipped'] = false
 		req.session.data['already-applied'] = true
-		res.redirect(v + '/confirmation')
+		res.redirect(v + '/bc/complete')
 	})
 
 }
