@@ -33,9 +33,9 @@ module.exports = function (router) {
 		}
 	})
 
-	router.get(v + '/select-new-apprentices', function (req, res) {
+	router.get(v + '/lots-of-apprentices', function (req, res) {
 		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
-		res.render(vx + '/select-new-apprentices', {
+		res.render(vx + '/lots-of-apprentices', {
 			apprenticeData:req.session.apprenticeData
 		});
 	})

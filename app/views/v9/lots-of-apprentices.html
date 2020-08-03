@@ -57,40 +57,19 @@
             </span>
 
             <div class="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="new-apprentices" name="apprentice1" type="checkbox" value="apprentice1" aria-describedby="new-apprentices-item-hint" />
-                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices">
-                        Michael Johnson
-                    </label>
+                        {% for items in apprenticeData.list %}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="new-apprentices-{{items.id}}" name="apprentice{{items.id}}" type="checkbox" value="apprentice{{items.id}}" aria-describedby="new-apprentices-{{items.id}}-item-hint" />
+                                <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-{{items.id}}">
+                                    {{ items.name }}
+                                </label>
+                                <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                                    Course: {{ items.course }}<br>
+                                    Planned start date: {{ items.start }}
+                                </span>
 
-                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                        Water Treatment Technician, Level: 3 (Standard)
-                    </span>
-                </div>
-
-                <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="new-apprentices-2" name="apprentice2" type="checkbox" value="apprentice2" aria-describedby="new-apprentices-2-item-hint" />
-                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-2">
-                        Jack Roberts
-                    </label>
-
-                    <span id="new-apprentices-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                        Relationship Manager (Banking), Level: 6 (Standard)
-                    </span>
-                </div>
-
-            {% if data['already-applied'] !== true %}
-                <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="new-apprentices-3" name="apprentice3" type="checkbox" value="apprentice3" aria-describedby="new-apprentices-3-item-hint" />
-                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-3">
-                        Steven Smith
-                    </label>
-
-                    <span id="new-apprentices-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                        Non-destructive testing (NDT) operator, Level: 2 (Standard)
-                    </span>
-                </div>
-             {% endif %}
+                            </div>
+                        {% endfor %}
             </div>
         </fieldset>
     </div>
