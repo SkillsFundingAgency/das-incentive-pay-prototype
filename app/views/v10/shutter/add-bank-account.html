@@ -1,0 +1,21 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v10/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">You must add your bank account details to your account before you apply</h1>
+    <p>You cannot apply for this payment because you have not added your bank account details to your account.</p>
+    <a class="govuk-button" href="../bank-details">Add bank account details</a>
+    </div>
+  </div>
+{% endblock %}

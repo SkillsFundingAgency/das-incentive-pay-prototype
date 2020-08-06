@@ -12,5 +12,6 @@ const router = express.Router()
   require('./routes/7-0/v7.js')(router);
   require('./routes/8-0/v8.js')(router);
   require('./routes/9-0/v9.js')(router);
+  require('./routes/10-0/v10.js')(router);
 
 module.exports = router
