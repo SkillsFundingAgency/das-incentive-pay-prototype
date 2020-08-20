@@ -142,6 +142,7 @@ module.exports = function (router) {
 
 	router.get(v + '/account-with-bank-skipped', function (req, res) {
 		req.session.data['bank-skipped'] = true
+		req.session.data['bank-incomplete'] = true
 		req.session.data['already-applied'] = false
 		res.redirect(v + '/account-home')
 	})

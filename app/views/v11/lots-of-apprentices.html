@@ -1,0 +1,86 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v11/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" class="form">
+    <!-- JSON
+            {% for items in apprenticeData.list %}
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="new-apprentices-{{items.id}}" name="apprentice{{items.id}}" type="checkbox" value="apprentice{{items.id}}" aria-describedby="new-apprentices-{{items.id}}-item-hint" />
+                    <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-{{items.id}}">
+                        {{ items.name }}
+                    </label>
+                    <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                        {{ items.course }}
+                    </span>
+                </div>
+            {% endfor %}
+    !-->
+
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="new-apprentices-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Select the apprentices you want to apply for
+                </h1>
+            </legend>
+
+            <p>You can only choose from your apprentices:</p>
+            <ul class="govuk-list govuk-list--bullet">
+            <li>with a planned start date from 1 August 2020</li>
+            <li>that you have not applied for already</li>
+            </ul>
+            <div class="govuk-inset-text"><p>You must only select apprentices who started their contract of employment between 1 August 2020 and 31 January 2021.</p></div>
+
+            <span id="new-apprentices-hint" class="govuk-hint">
+                Select all that apply.
+            </span>
+
+            <div class="govuk-checkboxes">
+                        {% for items in apprenticeData.list %}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="new-apprentices-{{items.id}}" name="apprentice{{items.id}}" type="checkbox" value="apprentice{{items.id}}" aria-describedby="new-apprentices-{{items.id}}-item-hint" />
+                                <label class="govuk-label govuk-checkboxes__label" for="new-apprentices-{{items.id}}">
+                                    {{ items.name }}
+                                </label>
+                                <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                                    Course: {{ items.course }}<br>
+                                    Planned start date: {{ items.start }}
+                                </span>
+
+                            </div>
+                        {% endfor %}
+            </div>
+        </fieldset>
+    </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
