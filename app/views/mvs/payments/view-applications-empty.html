@@ -1,0 +1,61 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "mvs/includes/account-header.html" %}
+  <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
+      <p>You have not applied for the hire a new apprentice payment.</p>
+      <p>You can <a href="../guidance">apply for the payment</a> if you hire new apprentices from 1 August 2020 to 31 January 2021.</p>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+	<script>
+		new MOJFrontend.SortableTable({
+			table: [
+				$('table')[0]
+			]
+		});
+
+		new MOJFrontend.SortableTable({
+			table: [
+				$('table')[1]
+			]
+		});
+
+		new MOJFrontend.SortableTable({
+			table: [
+				$('table')[2]
+			]
+		});
+
+		new MOJFrontend.SortableTable({
+			table: [
+				$('table')[3]
+			]
+		});
+
+		new MOJFrontend.SortableTable({
+			table: [
+				$('table')[4]
+			]
+		});
+
+	</script>
+
+{% endblock %}
