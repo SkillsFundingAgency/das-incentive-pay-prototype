@@ -9,6 +9,7 @@
   {% include "includes/header-bar.html" %}
   {% include "mvs/includes/account-header.html" %}
   <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
+
 {% endblock %}
 
 {% block content %}
@@ -16,6 +17,10 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
+      <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">We're reviewing your organisation’s bank details</h2>
+      <p>We may contact someone from your organisation to verify the information you’ve provided.</p>
+      </div>
 
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
@@ -30,6 +35,7 @@
         </div>
       </details>
 
+      <h2 class="govuk-heading-m">Your applications</h2>
 
       <table class="govuk-table">
         <thead class="govuk-table__head">
@@ -61,6 +67,44 @@
           </tr>
         </tbody>
       </table>
+    <nav role="navigation" aria-label="Pagination">
+                <div class="das-pagination__summary">
+                    Showing 1 to 100 of 6984
+                    applications
+                </div>
+            <ul class="das-pagination">
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link current" aria-current="aria-current" aria-label="Page 1" href="#">
+                            1
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 2" href="#">
+                            2
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 3" href="#">
+                            3
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 4" href="#">
+                            4
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 5" href="#">
+                            5
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Next page" href="#">
+                            Next
+                        </a>
+                    </li>
+            </ul>
+        </nav>
 
     </div>
   </div>
