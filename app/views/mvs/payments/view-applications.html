@@ -8,13 +8,14 @@
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
   {% include "mvs/includes/account-header.html" %}
+  <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-xl">View your hire a new apprentice applications</h1>
+      <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
 
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
@@ -23,14 +24,9 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-        <p>You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days. Your training provider will confirm the apprenticeship start date and we’ll add 90 days to the last calendar day of the month.</p>
-        <p>We make payments on the 10th working day of each month, starting from January 2021. It will take longer to get your first payment for any apprentices who start their training in August or September.</p>
-        <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
-        <ul class="govuk-list govuk-list--bullet">
-        <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
-        <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
-        </ul>
-
+      <p class="govuk-body">You’re eligible for the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days.</p>
+      <p class="govuk-body">Before we can make a payment, we need your training provider to confirm whether the apprentice is still on their apprenticeship. Training providers usually submit information about their apprentices at the start of every month.</p>
+      <p class="govuk-body">We'll start making payments from January 2021. It will take longer to get your first payment for any apprentices who start their training in August 2020.</p>
         </div>
       </details>
 
@@ -40,7 +36,8 @@
           <tr class="govuk-table__row">
             <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
             <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
-            <th aria-sort="none" scope="col" class="govuk-table__header">Amount</th>
+            <th aria-sort="none" scope="col" class="govuk-table__header">Estimated payment</th>
+            <th aria-sort="none" scope="col" class="govuk-table__header">Organisation</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -48,19 +45,61 @@
             <td class="govuk-table__cell">Steven Smith</td>
             <td class="govuk-table__cell">5 September 2020</td>
             <td class="govuk-table__cell">£2,000</td>
+            <td class="govuk-table__cell">ABC LTD</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Jack Roberts</td>
             <td class="govuk-table__cell">5 September 2020</td>
             <td class="govuk-table__cell">£1,500</td>
+            <td class="govuk-table__cell">ABC LTD</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Michael Johnson</td>
             <td class="govuk-table__cell">5 September 2020</td>
             <td class="govuk-table__cell">£2,000</td>
+            <td class="govuk-table__cell">ABC LTD</td>
           </tr>
         </tbody>
       </table>
+    <nav role="navigation" aria-label="Pagination">
+                <div class="das-pagination__summary">
+                    Showing 1 to 100 of 6984
+                    applications
+                </div>
+            <ul class="das-pagination">
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link current" aria-current="aria-current" aria-label="Page 1" href="#">
+                            1
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 2" href="#">
+                            2
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 3" href="#">
+                            3
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 4" href="#">
+                            4
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Page 5" href="#">
+                            5
+                        </a>
+                    </li>
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Next page" href="#">
+                            Next
+                        </a>
+                    </li>
+            </ul>
+        </nav>
+
     </div>
   </div>
 {% endblock %}
