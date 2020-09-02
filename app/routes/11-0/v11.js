@@ -212,5 +212,4 @@ module.exports = function (router) {
 		req.session.data['already-applied'] = true
 		res.redirect(v + '/bc/complete')
 	})
-
 }
