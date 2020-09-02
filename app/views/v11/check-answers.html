@@ -72,7 +72,11 @@
          {% endif %}
         </tbody>
       </table>
+        {% if data['lots'] === true %}
+      <p><a href="lots-of-apprentices-1">Change the apprentices you want to apply for</a></p>
+        {% else %}
       <p><a href="select-new-apprentices">Change the apprentices you want to apply for</a></p>
+        {% endif %}
       <form action="" method="post">
 
           <form action="" method="post" class="form">
