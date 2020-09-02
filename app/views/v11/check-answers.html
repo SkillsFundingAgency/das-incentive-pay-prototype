@@ -32,7 +32,17 @@
             <th scope="col" class="govuk-table__header">Payment amount</th>
           </tr>
         </thead>
+
         <tbody class="govuk-table__body">
+        {% if data['lots'] === true %}
+         {% for items in apprenticeData.list %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{ items.name }}</th>
+            <td scope="row" class="govuk-table__cell">{{ items.course }}</td>
+            <td class="govuk-table__cell">£2,000</td>
+          </tr>
+         {% endfor %}
+        {% else %}
         {% if data['apprentice1'] %}
           <tr class="govuk-table__row">
             <th scope="row" class="govuk-table__header">Michael Johnson</th>
@@ -59,6 +69,7 @@
             <td class="govuk-table__cell"></td>
             <td class="govuk-table__cell">£{{ data['totalPay'] }}</td>
           </tr>
+         {% endif %}
         </tbody>
       </table>
       <p><a href="select-new-apprentices">Change the apprentices you want to apply for</a></p>

@@ -8,6 +8,7 @@
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
   {% include "v11/includes/account-header.html" %}
+   <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
 {% endblock %}
 
 {% block beforeContent %}
@@ -45,12 +46,9 @@
                 </h1>
             </legend>
 
-            <p>You can only choose from your apprentices:</p>
-            <ul class="govuk-list govuk-list--bullet">
-            <li>with a planned start date from 1 August 2020</li>
-            <li>that you have not applied for already</li>
-            </ul>
-            <div class="govuk-inset-text"><p>You must only select apprentices who started their contract of employment between 1 August 2020 and 31 January 2021.</p></div>
+            <p>Choose from the apprentices in your apprenticeship service account with a planned start date from 1 August 2020.</p>
+            <p>You cannot view any apprentices that you've already applied for.</p>
+            <div class="govuk-inset-text"><p>You must only select apprentices who started their contract of employment with your organisation from 1 August 2020 to 31 January 2021.</p></div>
 
             <span id="new-apprentices-hint" class="govuk-hint">
                 Select all that apply.
@@ -64,8 +62,7 @@
                                     {{ items.name }}
                                 </label>
                                 <span id="new-apprentices-item-hint" class="govuk-hint govuk-checkboxes__hint">
-                                    Course: {{ items.course }}<br>
-                                    Planned start date: {{ items.start }}
+                                    Course: {{ items.course }}
                                 </span>
 
                             </div>
@@ -74,8 +71,35 @@
         </fieldset>
     </div>
 
+    <div style="display: flow-root;">
+    <nav role="navigation" aria-label="Pagination" style="float: right">
+            <ul class="das-pagination">
+            {% if data['page2'] === true %}
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Next page" href="lots-of-apprentices-1">
+                            Previous
+                        </a>
+                    </li>
+            {% endif %}
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link current" aria-current="aria-current" aria-label="Page 1" href="#">
+                            {% if data['page2'] === true %}2{%else%}1{%endif%}
+                        </a>
+                    </li>
+            {% if data['page2'] !== true %}
+                    <li class="das-pagination__item">
+                        <a class="das-pagination__link " aria-label="Next page" href="lots-of-apprentices-2">
+                            Next
+                        </a>
+                    </li>
+            {% endif %}
+            </ul>
+        </nav>
+        </div>
+
       {{ govukButton({
-        text: "Continue"
+        text: "Continue",
+        href: "check-answers-lots"
       }) }}
 
       </form>

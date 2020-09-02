@@ -40,6 +40,16 @@ module.exports = function (router) {
 		});
 	})
 
+	router.get(v + '/lots-of-apprentices-1', function (req, res) {
+		req.session.data['page2'] = false
+		res.redirect(v + '/lots-of-apprentices')
+	})
+
+	router.get(v + '/lots-of-apprentices-2', function (req, res) {
+		req.session.data['page2'] = true
+		res.redirect(v + '/lots-of-apprentices')
+	})
+
 	router.post(v + '/select-new-apprentices', function (req, res) {
 		req.session.data['total'] = 0
 		if (req.session.data['apprentice1']) {
@@ -65,6 +75,7 @@ module.exports = function (router) {
 	router.post(v + '/sign-agreement', function (req, res) {
 		req.session.data['saved-application'] = false
 		req.session.data['saved-at-terms'] = false
+		req.session.data['lots'] = false
 		if (req.session.data['already-applied'] === true) {
 			res.redirect(v + '/confirmation')
 		}
@@ -164,6 +175,11 @@ module.exports = function (router) {
 
 	// V1 CHECK ANSWERS
 
+	router.get(v + '/check-answers-lots', function (req, res) {
+		req.session.data['lots'] = true
+		res.redirect(v + '/check-answers')
+	})
+
 	router.get(v + '/check-answers', function (req, res) {
 		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
 		res.render(vx + '/check-answers', {
@@ -174,7 +190,7 @@ module.exports = function (router) {
 
 	// V2 CHECK ANSWERS
 	router.post(v + '/check-answers', function (req, res) {
-			res.redirect(v + '/sign-agreement')
+		res.redirect(v + '/sign-agreement')
 	})
 
 	router.post(v + '/bank-details-needed', function (req, res) {
