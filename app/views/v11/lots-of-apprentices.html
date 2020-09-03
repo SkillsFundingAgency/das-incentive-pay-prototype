@@ -9,6 +9,8 @@
   {% include "includes/header-bar.html" %}
   {% include "v11/includes/account-header.html" %}
    <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="/public/javascripts/checked.js"></script>
 {% endblock %}
 
 {% block beforeContent %}
@@ -50,9 +52,16 @@
             <p>You cannot view any apprentices that you've already applied for.</p>
             <div class="govuk-inset-text"><p>You must only select apprentices who started their contract of employment with your organisation from 1 August 2020 to 31 January 2021.</p></div>
 
+            {% if data['page2'] === true %}
+            <p class="govuk-body govuk-!-font-weight-bold"><span id="count-checked-checkboxes-2">17</span> apprentices selected</p>
+            {% else %}
+            <p class="govuk-body govuk-!-font-weight-bold"><span id="count-checked-checkboxes">0</span> apprentices selected</p>
+            {% endif %}
+
             <span id="new-apprentices-hint" class="govuk-hint">
                 Select all that apply.
             </span>
+
 
             <div class="govuk-checkboxes">
                         {% for items in apprenticeData.list %}
