@@ -1,0 +1,42 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "mvs/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Add your organisation’s bank account details</h1>
+      <p>We need your organisation’s bank account details, so that we can make your hire a new apprentice payment.</p>
+      <p>You can only add one bank account for your organisation. We’ll use this account to make all of your payments.</p>
+
+      <h2 class="govuk-heading-m govuk-!">Before you start</h2>
+      <p class="govuk-body">To help us verify your bank details, you must answer all questions that apply to your organisation.</p>
+      <p class="govuk-body">You’ll need to give us your organisation's:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>legal name, registered address and contact details</li>
+        <li>Companies House number (if your organisation has one)</li>
+        <li>remittance email address</li>
+        <li>finance director or finance lead’s contact details</li>
+        <li>bank account details</li>
+      </ul>
+
+      <div class="govuk-inset-text">We may contact someone from your organisation to verify the information you provide.</div>
+
+      {{ govukButton({
+        text: "Continue",
+        href: "contact-information",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: false
+      }) }}
+    </div>
+  </div>
+{% endblock %}

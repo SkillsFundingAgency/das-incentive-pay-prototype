@@ -1,0 +1,80 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v12/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Manage your bank account details</h1>
+
+      {% if data['bank-skipped'] == false %}
+
+      <p>The bank account details we have for your account are below.</p>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name on the account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              ABC LTD
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sort code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              040004
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              72952415
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Building society roll number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              15343356
+            </dd>
+          </div>
+        </dl>
+
+      <a class="govuk-button" href="bank-details">Change bank account details</a>
+      <p><a class="" href="account-home">Back to employer account</a></p>
+
+
+      {% else %}
+      <p>There are no bank accounts associated with this account.</p>
+      <p>You'll need to add your bank account details before you can receive financial grant payments.</p>
+
+      <a class="govuk-button" href="add-bank-details">Add bank account</a>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}
