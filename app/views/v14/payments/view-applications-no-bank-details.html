@@ -15,16 +15,15 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
 
-      <div class="govuk-grid-row govuk-grid-column-two-thirds">
       <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
          <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
          <p>We need your organisation’s bank details, so that we can make the hire a new apprentice payment.</p>
          <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
-      </div>
+      
       </div>
 
       <details class="govuk-details" data-module="govuk-details" open="">
@@ -33,7 +32,7 @@
   </summary>
   <div class="govuk-details__text"><p>Before we can make a payment, your training provider must confirm that the apprentice has completed 90 or 365 days of their apprenticeship.</p>
     <p>Training providers usually submit their apprentice information to ESFA at the start of each month. Your payment date can change if your training provider:</p>
-    <ul class="“govuk-list govuk-list--bullet”">
+    <ul class="govuk-list govuk-list--bullet">
       <li>does not confirm that your apprentice started their apprenticeship</li>
       <li>does not submit their information on time</li>
       <li>confirms a different apprenticeship start date</li>
@@ -44,6 +43,7 @@
 
       <h2 class="govuk-heading-m">Your applications</h2>
 
+      <div class="govuk-grid-column-full-width">
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
@@ -56,7 +56,7 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-        
+
 
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Jack Roberts</td>
@@ -93,6 +93,8 @@
           </tr>
         </tbody>
       </table>
+      </div> <!--end of table full width-->
+
       <p class="govuk-body"><a href="remove-apprentice">Remove an apprentice</a></p>
     <nav role="navigation" aria-label="Pagination">
                 <div class="das-pagination__summary">
