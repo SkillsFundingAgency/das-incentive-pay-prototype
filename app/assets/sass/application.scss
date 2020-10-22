@@ -2,7 +2,7 @@
 $govuk-global-styles: true;
 
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
-$govuk-assets-path: '/govuk/assets/';
+$govuk-assets-path: "/govuk/assets/";
 
 // Import GOV.UK Frontend and any extension styles if extensions have been configured
 @import "node_modules/govuk_frontend_toolkit/stylesheets/_grid_layout";
@@ -116,7 +116,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 [aria-sort="ascending"] button:after {
   content: " \25b2";
-  font-size: .8em;
+  font-size: 0.8em;
   position: absolute;
   right: -2px;
   top: 2px;
@@ -124,7 +124,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 [aria-sort="descending"] button:after {
   content: " \25bc";
-  font-size: .8em;
+  font-size: 0.8em;
   position: absolute;
   right: -2px;
   top: 2px;
@@ -134,68 +134,267 @@ $govuk-assets-path: '/govuk/assets/';
   background: #fff;
   margin: 0 -15px;
   flex-wrap: wrap;
-  -ms-flex-wrap: wrap
+  -ms-flex-wrap: wrap;
 }
 
-@media(min-width: 641px) {
+@media (min-width: 641px) {
   .cards {
-    display:flex;
-    display: -ms-flex
+    display: flex;
+    display: -ms-flex;
   }
 }
 
 .card {
   padding: 0 15px;
   margin-bottom: 15px;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
-@media(min-width: 641px) {
+@media (min-width: 641px) {
   .card {
-    width:50%
+    width: 50%;
   }
 }
 
-.card>h3 {
+.card > h3 {
   margin-top: 0;
-  margin-bottom: .5em
+  margin-bottom: 0.5em;
 }
 
-.card>p {
-  font-size: 14px
+.card > p {
+  font-size: 14px;
 }
 
-@media(min-width: 641px) {
-  .card>p {
-    font-size:16px
+@media (min-width: 641px) {
+  .card > p {
+    font-size: 16px;
   }
 }
 .das-section-break {
   margin: 0;
-  border: 0
+  border: 0;
 }
 
 .das-section-break--s {
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .das-section-break--m {
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .das-section-break--l {
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 
 .das-section-break--heavy {
-  border-top: 5px solid #000
+  border-top: 5px solid #000;
 }
 
 .das-section-break--heavy-grey {
-  border-top: 5px solid #bfc1c3
+  border-top: 5px solid #bfc1c3;
 }
 
 .das-section-break--gutters {
   margin-left: 15px;
-  margin-right: 15px
+  margin-right: 15px;
+}
+
+// notify email styles
+
+.email-message {
+  background: #fff;
+}
+
+.email-message table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.email-message table td,
+.email-message table th {
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.25;
+  padding: 0.63158em 1.05263em 0.47368em 0;
+  text-align: left;
+  border-bottom: 1px solid #bfc1c3;
+}
+
+@media (min-width: 641px) {
+  .email-message table td,
+  .email-message table th {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
+
+.email-message table thead th {
+  font-weight: 700;
+}
+
+.email-message table td:last-child,
+.email-message table th:last-child {
+  padding-right: 0;
+}
+
+.email-message table .numeric {
+  text-align: right;
+}
+
+.email-message table td.numeric {
+  font-family: ntatabularnumbers, "GDS Transport", Arial, sans-serif;
+}
+
+.email-message table caption {
+  text-align: left;
+}
+
+.email-message .table-font-xsmall th {
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+}
+
+@media (min-width: 641px) {
+  .email-message .table-font-xsmall th {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.email-message .table-font-xsmall td {
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+}
+
+@media (min-width: 641px) {
+  .email-message .table-font-xsmall td {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.email-message .table-font-xsmall td,
+.email-message .table-font-xsmall th {
+  padding: 0.75em 1.25em 0.5625em 0;
+}
+
+.email-message {
+  margin-bottom: 30px;
+  border: 1px solid #bfc1c3;
+}
+
+.email-message .email-message-meta {
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (min-width: 641px) {
+  .email-message .email-message-meta {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
+
+.email-message .email-message-meta td,
+.email-message .email-message-meta th {
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 16px;
+  line-height: 1.25;
+  border-top: 0;
+  border-bottom: 1px solid #bfc1c3;
+  vertical-align: top;
+}
+
+@media (min-width: 641px) {
+  .email-message .email-message-meta td,
+  .email-message .email-message-meta th {
+    font-size: 19px;
+    line-height: 1.31579;
+  }
+}
+
+.email-message .email-message-meta th {
+  color: #6f777b;
+  padding-left: 60px;
+}
+
+.email-message .email-message-meta td {
+  width: 99%;
+  padding-right: 60px;
+  word-break: break-word;
+}
+
+.email-message .email-message-meta td:last-child {
+  padding-right: 60px;
+}
+
+.email-message-from {
+  padding-top: 15px;
+}
+
+.email-message-body {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 60px 0 60px;
+  margin: 0;
+  clear: both;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.email-message-body table {
+  margin: 0 0 20px 0;
+}
+
+.email-message-body table td {
+  border: 0;
+  padding: 0;
+  font-family: inherit !important;
+}
+
+.email-message-body table li:first-child {
+  margin-top: 0 !important;
+}
+
+.placeholder,
+.placeholder-conditional,
+.placeholder-no-brackets {
+  display: inline;
+  background: #fd0;
+  color: #0b0c0c;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  border-radius: 20px;
+  box-shadow: inset 0.47em 0 0 0 #fff, inset -0.47em 0 0 0 #fff,
+    inset 0 -0.15em 0 0 #fff, inset 0 0.15em 0 0 #fff;
+}
+
+.placeholder-no-brackets {
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 1px;
+  box-shadow: inset 0 -0.1em 0 0 #fff, inset 0 0.1em 0 0 #fff;
+}
+
+.email-message-body p {
+  margin: 0 0 20px 0;
+  font-size: 19px;
+  line-height: 25px;
+  color: #0b0c0c;
 }
