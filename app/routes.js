@@ -18,5 +18,6 @@ require('./routes/11-0/v11.js')(router);
 require('./routes/12-0/v12.js')(router);
 require('./routes/13-0/v13.js')(router);
 require('./routes/14-0/v14.js')(router);
+require('./routes/15-0/v15.js')(router);
 
 module.exports = router

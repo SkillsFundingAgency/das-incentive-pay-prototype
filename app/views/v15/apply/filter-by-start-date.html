@@ -1,0 +1,129 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+Manage apprenticeships
+{% endset %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/header-bar.html" %}
+{% include "v13/includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back();"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="start month-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Filter by apprenticeship start date
+          </h1>
+        </legend>
+        <p id="" class="govuk-body">
+          Your organisation has over 100 apprentices with a planned start date from <span class="das-no-wrap">1 August
+            2020</span>. You can filter your
+          apprentices by their apprenticeship start date.
+        </p>
+        <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="start month" name="start month" type="radio" value="email"
+              data-aria-controls="conditional-start month">
+            <label class="govuk-label govuk-radios__label" for="start month">
+              September 2020
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-start month">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="September-2020">
+                September 2020
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="September-2020" name="September-2020" type="email"
+                spellcheck="false"></div>
+
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="start month-2" name="start month" type="radio" value="October"
+              data-aria-controls="conditional-start month-2">
+            <label class="govuk-label govuk-radios__label" for="start month-2">
+              October 2020
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-start month-2">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="start month-by-October">
+                October 2020
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="start month-by-October"
+                name="start month-by-October" type="tel"></div>
+
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="start month-3" name="start month" type="radio" value="November"
+              data-aria-controls="conditional-start month-3">
+            <label class="govuk-label govuk-radios__label" for="start month-3">
+              November 2020
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-start month-3">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="start month-by-November">
+                November 2020
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="start month-by-November"
+                name="start month-by-November" type="tel"></div>
+
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="start month-3" name="start month" type="radio" value="December"
+              data-aria-controls="conditional-start month-3">
+            <label class="govuk-label govuk-radios__label" for="start month-3">
+              December 2020
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-start month-3">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="start month-by-December">
+                December 2020
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="start month-by-December"
+                name="start month-by-December" type="tel"></div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="start month-3" name="start month" type="radio" value="January"
+              data-aria-controls="conditional-start month-3">
+            <label class="govuk-label govuk-radios__label" for="start month-3">
+              January 2021
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-start month-3">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="start month-by-January">
+                January 2021
+              </label>
+              <input class="govuk-input govuk-!-width-one-third" id="start month-by-January"
+                name="start month-by-January" type="tel"></div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <a href="select-apprentice-to-apply-for" class="govuk-button" data-module="govuk-button">
+      Continue
+    </a>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout-email.html" %}
+
+{% set serviceName %}
+Email
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    <img src="/public/images/ESFA-logo.jpg" style="height: 20%; width: 20%; margin-bottom: 20px">
+    <p class="govuk-body govuk-!-font-weight-bold">From: Apprenticeship Service &lt;apprenticeship-service.gov.uk&gt;</p>
+    <p class="govuk-body govuk-!-font-weight-bold">Subject: We still need your organisation’s bank details</p>
+    <p>You’ve applied for the hire a new apprentice payment.</p>
+    <p>Before we can make the payment, you need to sign in to your apprenticeship service account <a href="../bc/start">(https://accounts.manage-apprenticeships.service.gov.uk/service/index)</a> and add your organisation's bank details.</p>
+    <h3 class="govuk-heading-s">What happens next</h3>
+    <p>After you add the bank details, we’ll review them and may contact someone from your organisation to verify the information you provide.</p>
+    <p>You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days.</p>
+    <p>We make payments on the 10th working day of each month.</p>
+    <p class="govuk-body govuk-!-font-weight-bold">From</p>
+    <p class="govuk-body govuk-!-font-weight-bold">ESFA (Education and Skills Funding Agency)</p>
+    </div>
+  </div>
+{% endblock %}

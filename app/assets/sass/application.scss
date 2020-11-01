@@ -27,23 +27,18 @@ $govuk-assets-path: "/govuk/assets/";
 @import "helpers/das-arrows";
 @import "helpers/das-colours";
 @import "helpers/das-images";
-@import "patterns/das-sections";
-@import "patterns/das-panels";
-@import "patterns/das-panel";
 @import "components/das-buttons";
 @import "components/das-definition-lists";
 @import "components/das-section-break";
 @import "components/das-dashboard-header";
 @import "components/das-promo";
 @import "components/das-dashboard-footer";
-@import "patterns/das-account-header";
 @import "components/das-header";
 @import "components/das-user-navigation";
 @import "components/das-search";
 @import "components/das-nav";
 @import "components/das-tabs--apprentices";
 @import "components/das-item-list";
-@import "patterns/das-minimal-sections";
 @import "components/sfa-menu";
 @import "components/das-account-header";
 @import "components/app-tags";
@@ -52,6 +47,12 @@ $govuk-assets-path: "/govuk/assets/";
 @import "components/app-alert";
 @import "components/das-account-header-v2";
 @import "components/raa-card";
+@import "components/das-pagination";
+@import "patterns/das-account-header";
+@import "patterns/das-minimal-sections";
+@import "patterns/das-sections";
+@import "patterns/das-panels";
+@import "patterns/das-panel";
 @import "patterns/app-interruption-card";
 @import "patterns/floating-menu";
 
@@ -397,4 +398,22 @@ $govuk-assets-path: "/govuk/assets/";
   font-size: 19px;
   line-height: 25px;
   color: #0b0c0c;
+}
+
+/* v15 */
+
+.das-no-wrap {
+  white-space: nowrap;
+}
+.das-table--no-borders .govuk-table__header,
+.das-table--no-borders .govuk-table__cell {
+  border-bottom: none;
+}
+
+#selected-apprentices-accordion .govuk-accordion__controls {
+  display: none;
+}
+
+.das-selected-apprentices-table {
+  display: none;
 }
