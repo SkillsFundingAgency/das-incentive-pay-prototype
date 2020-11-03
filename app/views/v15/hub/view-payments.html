@@ -1,13 +1,13 @@
 {% extends "layout-account.html" %}
 
 {% set serviceName %}
-  Manage apprenticeships
+Manage apprenticeships
 {% endset %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {% include "includes/header-bar.html" %}
-  {% include "v13/includes/account-header.html" %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/header-bar.html" %}
+{% include "v13/includes/account-header.html" %}
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,8 @@
 
     <h1 class="govuk-heading-xl">Your hire a new apprentice applications</h1>
     <div class="govuk-inset-text">
-      <p>Before we can make your payment, your training provider must confirm the information in your application. Your payment dates are estimated and may change.</p>
+      <p>Before we can make your payment, your training provider must confirm the information in your application. Your
+        payment dates are estimated and may change.</p>
     </div>
 
     <details class="govuk-details" data-module="govuk-details">
@@ -26,13 +27,17 @@
           Why your payment date is an estimate
         </span>
       </summary>
-      <div class="govuk-details__text"><p>Before we can make a payment, your training provider must confirm that the apprentice has completed 90 or 365 days of their apprenticeship.</p>
-        <p>Training providers usually submit their apprentice information to ESFA at the start of each month. Your payment date can change if your training provider:</p>
+      <div class="govuk-details__text">
+        <p>Before we can make a payment, your training provider must confirm that the apprentice has completed 90 or 365
+          days of their apprenticeship.</p>
+        <p>Training providers usually submit their apprentice information to ESFA at the start of each month. Your
+          payment date can change if your training provider:</p>
         <ul class="“govuk-list govuk-list--bullet”">
           <li>does not confirm that your apprentice started their apprenticeship</li>
           <li>does not submit their information on time</li>
           <li>confirms a different apprenticeship start date</li>
-          <li>gives us information that’s different to your apprenticeship service account (also known as a ‘data lock’)</li>
+          <li>gives us information that’s different to your apprenticeship service account (also known as a ‘data lock’)
+          </li>
         </ul>
       </div>
     </details>
@@ -42,7 +47,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <table class="govuk-table govuk-!-margin-bottom-2 js-payments-table">
+    <table class="govuk-table govuk-!-margin-bottom-3 js-payments-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
@@ -58,15 +63,18 @@
           <td class="govuk-table__cell">Steven Smith</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£2,000</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>7 August 2020</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>7 August 2020
+          </td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Paid</strong><br>20 January 2021</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 September 2021</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 September
+            2021</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Corina Carver</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£1,500</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>7 August 2020</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>7 August 2020
+          </td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Payment issue</strong><br></td>
           <td class="govuk-table__cell">
         </tr>
@@ -74,16 +82,20 @@
           <td class="govuk-table__cell">Jack Roberts</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£1,500</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>12 September 2020</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 January 2021</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 October 2021</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Confirmed</strong><br>12 September
+            2020</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 January 2021
+          </td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 October 2021
+          </td>
         </tr>
 
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Michael Johnson</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£2,000</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow" style="line-height: 1.3">Waiting for training provider to confirm</strong></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow" style="line-height: 1.3">Waiting for
+              training provider to confirm</strong></td>
           <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell"></td>
         </tr>
@@ -91,7 +103,8 @@
           <td class="govuk-table__cell">John Peters</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£2,000</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red" style="line-height: 1.3">Apprentice withdrawn</strong></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red" style="line-height: 1.3">Apprentice
+              withdrawn</strong></td>
           <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell"></td>
         </tr>
@@ -99,7 +112,8 @@
           <td class="govuk-table__cell">Jas Johal</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">£2,000</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red" style="line-height: 1.3">Application removed</strong></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red" style="line-height: 1.3">Application
+              removed</strong></td>
           <td class="govuk-table__cell"></td>
           <td class="govuk-table__cell"></td>
         </tr>
@@ -110,11 +124,12 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body">
+    <p class="govuk-body govuk-!-margin-bottom-7">
       <a href="remove-apprentice">Remove an apprentice</a>
     </p>
 
-    <p class="govuk-body">We’ll pay your organisation by Bacs on the 14th working day of the month. It usually takes 3 working days to process your payment.</p>
+    <p class="govuk-body">We’ll pay your organisation by Bacs on the 14th working day of the month. It usually takes 3
+      working days to process your payment.</p>
   </div>
 </div>
 

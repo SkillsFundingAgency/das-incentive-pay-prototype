@@ -1,13 +1,13 @@
 {% extends "layout-account.html" %}
 
 {% set serviceName %}
-  Manage apprenticeships
+Manage apprenticeships
 {% endset %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {% include "includes/header-bar.html" %}
-  {% include "v13/includes/account-header.html" %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/header-bar.html" %}
+{% include "v13/includes/account-header.html" %}
 {% endblock %}
 
 {% block content %}
@@ -22,86 +22,109 @@
 
   </div>
 </div>
-<p class="govuk-body">Select all that apply.</p>
+<p class="govuk-body">Select all that apply</p>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
-    <table class="govuk-table govuk-!-margin-bottom-2 js-payments-table">
+    <table class="govuk-table govuk-!-margin-bottom-7 js-payments-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-
-
-
-          <th aria-sort="none" scope="col" class="govuk-table__header"style="width: 25%;">Apprentice name</th>
-          <th aria-sort="ascending" scope="col" class="govuk-table__header"style="width: 30%;">Application date</th>
-          <th aria-sort="none" scope="col" class="govuk-table__header"style="width: 20%;">Unique learner number (ULN)</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Unique learner number (ULN)
+          </th>
           <th aria-sort="none" scope="col" class="govuk-table__header">Remove</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Steven Smith</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">79-509-6824</td>
-          
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-1">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-1" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
-
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Corina Carver</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">21-098-8908</td>
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-2">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-2" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Jack Roberts</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">47-169-3682</td>
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-3">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-3" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
         </tr>
-
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Michael Johnson</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">96-511-9940</td>
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-4">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-4" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">John Peters</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">09-934-5434</td>
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-5">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-5" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Jas Johal</td>
           <td class="govuk-table__cell">5 September 2020</td>
           <td class="govuk-table__cell">27-121-9672</td>
-          <td class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="row1">
-            <label class="govuk-label govuk-checkboxes__label" for="waste">
-            </label>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-6">
+                </label>
+                <input class="govuk-checkboxes__input" id="remove-apprentice-6" name="remove-apprentice" type="checkbox"
+                  value="row1">
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -112,7 +135,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body">
-      <a href="confirmation" class="govuk-button" data-module="govuk-button"> Continue</a>
+      <a href="confirmation" class="govuk-button" data-module="govuk-button">Continue</a>
     </p>
 
   </div>
@@ -122,10 +145,10 @@
 
 {% block pageScripts %}
 
-<script>
+<!-- <script>
   new MOJFrontend.SortableTable({
     table: $(".js-payments-table")
   });
-</script>
+</script> -->
 
 {% endblock %}
