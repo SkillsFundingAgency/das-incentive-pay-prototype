@@ -1,8 +1,16 @@
-{% extends "layout-email.html" %}
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-{% set serviceName %}
-Email
-{% endset %}
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -21,5 +29,10 @@ Email
     <p class="govuk-body govuk-!-font-weight-bold">Apprenticeship Service</p>
     <p>This is an automated message - do not reply.</p>
     </div>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p>
   </div>
+</div>
 {% endblock %}

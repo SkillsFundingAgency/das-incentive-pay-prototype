@@ -1,7 +1,7 @@
 {% extends "layout-account.html" %}
 
 {% set serviceName %}
-  Manage apprenticeships
+Manage apprenticeships
 {% endset %}
 
 {% block header %}
@@ -11,94 +11,62 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="more-detail"style="width: 80%;">
-          Confirm these are the apprentices you want to apply for
-          </label>
-        </h1>
-      </div>
-      <div class="das-highlight">
-        <h2 class="govuk-heading-l">
-         
-        
-          
-          
-        </form>
-      </div>
-      
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th aria-sort="ascending" scope="col" class="govuk-table__header" style="width: 25%;">Apprentice name</th>
-            <th aria-sort="none" scope="col" class="govuk-table__header"style="width: 20%;">Unique learner number (ULN)</th>
-            <th aria-sort="none" scope="col" class="govuk-table__header">Start date</th>
-            <th aria-sort="none" scope="col" class="govuk-table__header">Remove</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Adham Tyalo</th>
-            <td class="govuk-table__cell">61-021-8094</td>
-            <td class="govuk-table__cell"> September 2020</td>
-            <td ><a href="select-apprentice-to-apply-for">Remove</a></td>
-          </tr>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Abel Fogden</th>
-            <td class="govuk-table__cell">21-098-8908</td>
-            <td class="govuk-table__cell"> September 2020</td>
-            <td ><a href="select-apprentice-to-apply-for">Remove</a></td>
-          </tr>
-
-          </tr>
-        </tbody>
-      </table>
-
-      <p><a href="select-apprentice-to-apply-for">Do you want to add more apprentices</a></p>
-      <a href="../sign-agreement" class="govuk-button" data-module="govuk-button"> Continue</a>
-
-        </fieldset>
-      </div>
+    <div class="govuk-form-group">
+      <h1 class="govuk-heading-l">
+        Confirm these are the apprentices you want to apply for
+      </h1>
     </div>
-    
   </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Apprentice name</th>
+          <th scope="col" class="govuk-table__header">Unique learner number (ULN)</th>
+          <th scope="col" class="govuk-table__header">Start date</th>
+          <th scope="col" class="govuk-table__header"></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Adham Tyalo</th>
+          <td class="govuk-table__cell">61-021-8094</td>
+          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="select-apprentice-to-apply-for">Remove</a>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Abel Fogden</th>
+          <td class="govuk-table__cell">21-098-8908</td>
+          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="select-apprentice-to-apply-for">Remove</a>
+          </td>
+        </tr>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+    <a href="confirmation" class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
+      Continue
+    </a>
+    <a href="select-apprentice-to-apply-for" class="govuk-button govuk-button--secondary" data-module="govuk-button">Add
+      more apprentices</a>
+
+    </fieldset>
+  </div>
+</div>
+
+</div>
 {% endblock %}
 
 {% block pageScripts %}
-
-	<script>
-		new MOJFrontend.SortableTable({
-			table: [
-				$('table')[0]
-			]
-		});
-
-		new MOJFrontend.SortableTable({
-			table: [
-				$('table')[1]
-			]
-		});
-
-		new MOJFrontend.SortableTable({
-			table: [
-				$('table')[2]
-			]
-		});
-
-		new MOJFrontend.SortableTable({
-			table: [
-				$('table')[3]
-			]
-		});
-
-		new MOJFrontend.SortableTable({
-			table: [
-				$('table')[4]
-			]
-		});
-
-	</script>
 
 {% endblock %}
