@@ -5,9 +5,9 @@ Manage apprenticeships
 {% endset %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {% include "includes/header-bar.html" %}
-  {% include "v15/includes/account-header.html" %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/header-bar.html" %}
+{% include "v15/includes/account-header.html" %}
 {% endblock %}
 
 {% block content %}
@@ -100,15 +100,15 @@ Manage apprenticeships
             <div class="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="apprentice-1" name="apprentices" type="checkbox"
-                  value="apprentice-1">
+                  value="Adham Tyalo, 61-021-8094, Water Treatment Technician, September 2020">
                 <label class="govuk-label govuk-checkboxes__label" for="apprentice-1"></label>
               </div>
             </div>
           </td>
           <td class="govuk-table__cell">Adham Tyalo</td>
           <td class="govuk-table__cell">61-021-8094</td>
-          <td class="govuk-table__cell"> Water Treatment Technician</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">Water Treatment Technician</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -123,7 +123,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Abel Fogden</td>
           <td class="govuk-table__cell">21-098-8908</td>
           <td class="govuk-table__cell">Electronics</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -138,7 +138,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Harlin Bahlmann</td>
           <td class="govuk-table__cell">47-169-3682</td>
           <td class="govuk-table__cell">Toys</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -152,8 +152,8 @@ Manage apprenticeships
           </td>
           <td class="govuk-table__cell">Valry Brandenberg</td>
           <td class="govuk-table__cell">96-511-9940</td>
-          <td class="govuk-table__cell"> Water Treatment Technician</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">Water Treatment Technician</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -168,7 +168,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Gabi Ubanks</td>
           <td class="govuk-table__cell">09-934-5434</td>
           <td class="govuk-table__cell">Electronics</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -183,7 +183,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Gabriel Wennington</td>
           <td class="govuk-table__cell">35-283-3384</td>
           <td class="govuk-table__cell">Toys</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -197,8 +197,8 @@ Manage apprenticeships
           </td>
           <td class="govuk-table__cell">Shayne Snoday</td>
           <td class="govuk-table__cell">14-127-0956</td>
-          <td class="govuk-table__cell"> Water Treatment Technician</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">Water Treatment Technician</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -213,7 +213,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Randell O'Carroll</td>
           <td class="govuk-table__cell">68-604-2601</td>
           <td class="govuk-table__cell">Electronics</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
@@ -229,7 +229,7 @@ Manage apprenticeships
           <td class="govuk-table__cell">Elsy Jenteau</td>
           <td class="govuk-table__cell">39-632-2315</td>
           <td class="govuk-table__cell">Toys</td>
-          <td class="govuk-table__cell"> September 2020</td>
+          <td class="govuk-table__cell">September 2020</td>
         </tr>
       </tbody>
     </table>
@@ -313,10 +313,6 @@ Manage apprenticeships
     } else {
       noApprenticesMessage.style.display = 'none'
     }
-
-
-
-
   }
 
 
@@ -352,7 +348,6 @@ Manage apprenticeships
 
   const checkboxes = document.querySelectorAll("input[name='apprentices']");
   checkboxes.forEach(checkbox => checkbox.addEventListener("click", handleCheckboxClick));
-
 
 </script>
 
