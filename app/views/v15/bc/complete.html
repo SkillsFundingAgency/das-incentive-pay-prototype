@@ -1,20 +1,13 @@
 {% extends "layout-account.html" %}
 
 {% set serviceName %}
-
+Manage apprenticeships
 {% endset %}
 
 {% block header %}
+  {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
-{% endblock %}
-
-{% block beforeContent %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "beta"
-      },
-      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-    }) }}
+  {% include "v15/includes/account-header.html" %}
 {% endblock %}
 
 {% block content %}
