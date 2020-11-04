@@ -7,7 +7,19 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-module.exports = function (router) {
+module.exports = function (router,_myData) {
+
+	function reset(req){
+        req.session.myData = JSON.parse(JSON.stringify(_myData))
+    }
+
+    // Every GET and POST
+    router.all(v + '/*', function (req, res, next) {
+        if(!req.session.myData || req.query.r) {
+            reset(req)
+        }
+        next()
+    });
 
 	router.post(v + '/taken-on-new-apprentices', function (req, res) {
 		if (req.session.data['taken-on-new-apprentices'] === "yes"){
