@@ -10,16 +10,56 @@ function numberWithCommas(x) {
 module.exports = function (router,_myData) {
 
 	function reset(req){
-        req.session.myData = JSON.parse(JSON.stringify(_myData))
+		req.session.myData = JSON.parse(JSON.stringify(_myData))
+		
+		// Default setup
+		req.session.myData.legalagreement = "true"
+		req.session.myData.bankdetails = "false"
+		
     }
 
     // Every GET and POST
     router.all(v + '/*', function (req, res, next) {
         if(!req.session.myData || req.query.r) {
             reset(req)
-        }
+		}
+
+		//version
+		req.session.myData.version = vx
+
+		//defaults for setup
+        req.session.myData.legalagreement =  req.query.la || req.session.myData.legalagreement
+        req.session.myData.bankdetails =  req.query.bd || req.session.myData.bankdetails
+		
         next()
-    });
+	});
+	
+	// Prototype setup
+    router.get(v + '/setup', function (req, res) {
+        res.render(vx + '/setup', {
+            myData:req.session.myData
+        });
+	});
+
+	// Hub - home
+    router.get(v + '/hub/home', function (req, res) {
+        res.render(vx + '/hub/home', {
+            myData:req.session.myData
+        });
+	});
+	
+
+
+
+
+
+
+
+
+
+
+
+	// OLD
 
 	router.post(v + '/select-legal-entity', function (req, res) {
 		res.redirect(v + '/taken-on-new-apprentices')

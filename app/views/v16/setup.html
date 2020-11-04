@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-m">Prototype {{myData.version}} setup</h1>
+
+        <p class="govuk-body" >
+              <a href="setup?r=true" class="govuk-link govuk-link--no-visited-state">Reset</a>
+          </p>  
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+
+        <h2 class="govuk-heading-m">Applying</h2>
+
+        <!-- Legal agreement -->
+        <div class="govuk-form-group legalagreement">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="legalagreement" name="legalagreement" type="checkbox" value="true" data-option="legalagreement" {% if myData.legalagreement == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="legalagreement">
+                        Legal agreement signed
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank details -->
+        <div class="govuk-form-group bankdetails">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="bankdetails" name="bankdetails" type="checkbox" value="true" data-option="bankdetails" {% if myData.bankdetails == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="bankdetails">
+                        Bank details added previously
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half" >
+
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <p class="govuk-body" id="start-url" style="display:none">
+            <a href="#" role="button" draggable="false" class="govuk-button">Start prototype</a>
+        </p>
+
+        <p class="govuk-body" >
+            <span class="govuk-!-font-weight-bold">Shareable link:</span><br>
+            <span class="govuk-body" id="start-url-label" style="display:none"></span>
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-m">Full page list</h2>
+        <table class="govuk-table">
+
+            <tbody class="govuk-table__body">    
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4">Emails</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application complete</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/application-complete?r=t">/application-complete</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Estimated payment</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/estimated-payment?r=t">/estimated-payment</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Changed estimated payment</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/changed-estimated-payment?r=t">/changed-estimated-payment</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Need bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/need-bank-details?r=t">/need-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">May need bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/may-need-bank-details?r=t">/may-need-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Skipped bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/skipped-bank-details?r=t">/skipped-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remittance</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/remittance?r=t">/remittance</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Removed apprentice</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/removed-apprentice?r=t">/removed-apprentice</a></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    $(document).ready(function(){
+
+        var _startURL = $("#start-url a"),
+            _startURLLabel = $("#start-url-label"),
+            _options = $("[data-option]");
+
+        _options.change(function(){
+            setValues()
+        }).trigger("change");
+
+        //SET VALUES
+        function setValues(){
+            
+            //Base URL
+            var _urlBase = "https://das-incentive-pay-prototype.herokuapp.com/" + {{myData.version|dump|safe}} + "/";
+            
+            //Queries
+            var _urlComponents = "",
+                _urlReset = "r=t",
+                _urlPage = "account-home?",
+                _urlLegalAgreement = "&la=" + ($('input[name=legalagreement]:checked').val() || false),
+                _urlBankDetails = "&bd=" + ($('input[name=bankdetails]:checked').val() || false);
+
+            //Queries combined
+            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlBankDetails;
+
+            //URL text
+            var _startURLText = _urlBase + _urlPageQueries,
+                _startURLHREF =  _urlPageQueries;
+
+            // update label
+            _startURLLabel
+                .text(_startURLText)
+                .show()
+
+            //update link
+            _startURL
+                .attr("href", _startURLHREF)
+                .parent().show()
+        }
+
+    });
+</script>
+{% endblock %}
