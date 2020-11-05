@@ -15,6 +15,9 @@ module.exports = function (router,_myData) {
 		// Default setup
 		req.session.myData.legalagreement = "true"
 		req.session.myData.bankdetails = "false"
+		req.session.myData.apprenticesavailable = "6"
+		req.session.myData.apprenticesapplied = "6"
+		req.session.myData.vrf = "added"
 		
     }
 
@@ -28,8 +31,11 @@ module.exports = function (router,_myData) {
 		req.session.myData.version = vx
 
 		//defaults for setup
-        req.session.myData.legalagreement =  req.query.la || req.session.myData.legalagreement
-        req.session.myData.bankdetails =  req.query.bd || req.session.myData.bankdetails
+        req.session.myData.legalagreement =  req.query.legal || req.session.myData.legalagreement
+        req.session.myData.bankdetails =  req.query.bank || req.session.myData.bankdetails
+        req.session.myData.apprenticesavailable =  req.query.apprentices || req.session.myData.apprenticesavailable
+        req.session.myData.apprenticesapplied =  req.query.applied || req.session.myData.apprenticesapplied
+        req.session.myData.vrf =  req.query.vrf || req.session.myData.vrf
 		
         next()
 	});
