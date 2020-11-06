@@ -8,6 +8,17 @@
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
   {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
 {% endblock %}
 
 {% block content %}
@@ -15,7 +26,31 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    
+
     <h1 class="govuk-heading-xl">Your hire a new apprentice applications</h1>
+
+    {% if myData.vrf == "notadded" %}
+    <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+      <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
+      <p>
+        We need your organisation’s bank details, so that we can make the hire a
+        new apprentice payment.
+      </p>
+      <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
+    </div>
+    {% elif myData.vrf == "inprogress" %}
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">
+        We're reviewing your organisation’s bank details
+      </h2>
+      <p>
+        We may contact someone from your organisation to verify the information
+        you’ve provided.
+      </p>
+    </div>
+    {% endif %}
+
     <div class="govuk-inset-text">
       <p>Before we can make your payment, your training provider must confirm the information in your application. Your payment dates are estimated and may change.</p>
     </div>
@@ -54,6 +89,8 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
+        
+        {% if myData.removedapplication != true %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Steven Smith</td>
           <td class="govuk-table__cell">5 September 2020</td>
@@ -62,6 +99,17 @@
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Paid</strong><br>20 January 2021</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Estimated</strong><br>20 September 2021</td>
         </tr>
+        {% else %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Steven Smith</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red" style="line-height: 1.3">Application removed</strong></td>
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell"></td>
+        </tr>
+        {% endif %}
+          
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Corina Carver</td>
           <td class="govuk-table__cell">5 September 2020</td>

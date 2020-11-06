@@ -291,36 +291,32 @@ module.exports = function (router,_myData) {
 	});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-	// OLD
-	router.get(v + '/lots-of-apprentices', function (req, res) {
-		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
-		res.render(vx + '/lots-of-apprentices', {
-			apprenticeData: req.session.apprenticeData
+	// View applications
+	router.get(v + '/hub/view-payments', function (req, res) {
+		res.render(vx + '/hub/view-payments', {
+			myData: req.session.myData
 		});
-	})
-	router.get(v + '/lots-of-apprentices-1', function (req, res) {
-		req.session.data['page2'] = false
-		res.redirect(v + '/lots-of-apprentices')
-	})
-	router.get(v + '/lots-of-apprentices-2', function (req, res) {
-		req.session.data['page2'] = true
-		res.redirect(v + '/lots-of-apprentices')
-	})
-	// V1 CHECK ANSWERS
-	router.get(v + '/check-answers-lots', function (req, res) {
-		req.session.data['lots'] = true
-		res.redirect(v + '/check-answers')
-	})
+	});
+
+	// Remove application
+	router.get(v + '/hub/remove-apprentice', function (req, res) {
+		res.render(vx + '/hub/remove-apprentice', {
+			myData: req.session.myData
+		});
+	});
+	// Remove application - check answers
+	router.get(v + '/hub/confirmation', function (req, res) {
+		res.render(vx + '/hub/confirmation', {
+			myData: req.session.myData
+		});
+	});
+	// Remove application - removed
+	router.get(v + '/hub/removed', function (req, res) {
+		req.session.myData.removedapplication = true
+		res.render(vx + '/hub/removed', {
+			myData: req.session.myData
+		});
+	});
+
+
 }

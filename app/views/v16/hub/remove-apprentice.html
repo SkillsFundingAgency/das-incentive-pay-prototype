@@ -1,24 +1,154 @@
-{% extends "layout.html" %}
+{% extends "layout-account.html" %}
 
-{% block pageTitle %}
-  Blank page
+{% set serviceName %}
+Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
 {% endblock %}
 
 {% block content %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-<h1 class="govuk-heading-xl">Contact apprenticeship service support</h1>
-<p class="govuk-body">To remove an apprentice from your hire a new apprentice applications, you need to contact apprenticeship service support. You can contact us by:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>email at <a href="#">helpdesk@manage-apprenticeships.service.gov.uk</a></li>
-  <li>phone on 08000 150 600</li>
-</ul>
-<p class="govuk-body">We are open from 8am to 8pm, Monday to Friday.</p>
-</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Select the apprentices you want to remove</h1>
+    <div class="govuk-inset-text">
+      <p>Only remove an apprentice if they are not eligible for the hire a new apprentice payment.</p>
     </div>
 
-</main>
+  </div>
 </div>
+<p class="govuk-body">Select all that apply</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table govuk-!-margin-bottom-7 js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Unique learner number (ULN)
+          </th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Remove</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Steven Smith</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">79-509-6824</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-1" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-1">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Corina Carver</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">21-098-8908</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-2" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-2">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Jack Roberts</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">47-169-3682</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-3" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-3">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Michael Johnson</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">96-511-9940</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-4" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-4">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">John Peters</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">09-934-5434</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-5" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-5">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Jas Johal</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">27-121-9672</td>
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="remove-apprentice-6" name="remove-apprentice" type="checkbox"
+                  value="row1">
+                <label class="govuk-label govuk-checkboxes__label" for="remove-apprentice-6">
+                </label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">
+      <a href="confirmation" class="govuk-button" data-module="govuk-button">Continue</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<!-- <script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script> -->
+
 {% endblock %}
