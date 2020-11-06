@@ -1,0 +1,39 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v15/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+   <h1 class="govuk-heading-xl">We have received your details</h1>
+
+   <p class="govuk-inset-text">Your reference number is ABC123456. We have sent a confirmation email to abc@123.com.</p>
+
+   <h2 class="govuk-heading-m">What happens next</h2>
+
+   <p>We will review your information and may contact a person with significant control to verify the information you’ve provided.</p>
+
+   <p>You can also <a href="#" target="_blank">download a copy of your bank details (PDF)</a>.</p>
+
+      <form action="" method="post">
+
+        {{ govukButton({
+          text: "Continue",
+          href: "../confirmation"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -7,13 +7,13 @@
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
-  {% include "v15/includes/account-header.html" %}
+  {% include "./includes/account-header.html" %}
 {% endblock %}
 
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: "javascript:window.history.back();"
+      href: "check-answers"
     }) }}
 {% endblock %}
 
@@ -34,10 +34,9 @@
       </ul>
     <form action="" method="post" class="form">
 
-      <a href="bank-details-needed.html" class="govuk-button govuk-!-margin-right-1" data-module="govuk-button">
-        Confirm and submit
-      </a>
-
+      {{ govukButton({
+        text: "Confirm and submit"
+      }) }}
 
       </form>
 

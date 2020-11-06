@@ -10,57 +10,166 @@ function numberWithCommas(x) {
 module.exports = function (router,_myData) {
 
 	function reset(req){
-        req.session.myData = JSON.parse(JSON.stringify(_myData))
+		req.session.myData = JSON.parse(JSON.stringify(_myData))
+		
+		// Default setup
+		req.session.myData.legalagreement = "true"
+		req.session.myData.vrf = "notadded"
+		req.session.myData.apprenticesavailable = 6
+		req.session.myData.apprenticesapplied = 6
+		req.session.myData.mvs = "nonmvs"
+		
     }
 
     // Every GET and POST
     router.all(v + '/*', function (req, res, next) {
         if(!req.session.myData || req.query.r) {
             reset(req)
-        }
+		}
+
+		//version
+		req.session.myData.version = vx
+
+		// Reset page validation to false by default. Will only be set to true, if applicable, on a POST of a page
+        req.session.myData.validationErrors = {}
+        req.session.myData.validationError = "false"
+        req.session.myData.includeValidation =  req.query.includeValidation || req.session.myData.includeValidation
+
+		//defaults for setup
+        req.session.myData.legalagreement =  req.query.legal || req.session.myData.legalagreement
+        req.session.myData.vrf =  req.query.vrf || req.session.myData.vrf
+        req.session.myData.apprenticesavailable =  req.query.apprentices || req.session.myData.apprenticesavailable
+        req.session.myData.apprenticesapplied =  req.query.applied || req.session.myData.apprenticesapplied
+        req.session.myData.mvs =  req.query.mvs || req.session.myData.mvs
+		
         next()
+	});
+	
+	// Prototype setup
+    router.get(v + '/setup', function (req, res) {
+        res.render(vx + '/setup', {
+            myData:req.session.myData
+        });
+	});
+
+	// Account - home
+    router.get(v + '/account-home', function (req, res) {
+        res.render(vx + '/account-home', {
+            myData:req.session.myData
+        });
+	});
+
+	// Hub - home
+    router.get(v + '/hub/home', function (req, res) {
+        res.render(vx + '/hub/home', {
+            myData:req.session.myData
+        });
+	});
+
+	// Apply - start
+    router.get(v + '/guidance', function (req, res) {
+        res.render(vx + '/guidance', {
+            myData:req.session.myData
+        });
+	});
+
+	// Apply - choose org
+    router.get(v + '/select-legal-entity', function (req, res) {
+        res.render(vx + '/select-legal-entity', {
+            myData: req.session.myData
+        });
+    });
+    router.post(v + '/select-legal-entity', function (req, res) {
+        req.session.myData.selectLegalEntityAnswerTemp = req.body.selectLegalEntityAnswer
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.selectLegalEntityAnswerTemp = req.session.myData.selectLegalEntityAnswerTemp || "ABC LTD"
+        }
+        if(!req.session.myData.selectLegalEntityAnswerTemp){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.selectLegalEntityAnswer = {
+                "anchor": "selectLegalEntity-1",
+                "message": "Select an organisation"
+            }
+        }
+
+        if(req.session.myData.validationError == "true") {
+            res.render(vx + '/select-legal-entity', {
+                myData: req.session.myData
+            });
+        } else {
+            req.session.myData.selectLegalEntityAnswer = req.session.myData.selectLegalEntityAnswerTemp
+            req.session.myData.selectLegalEntityAnswerTemp = ''
+			res.redirect(301, v + '/taken-on-new-apprentices');
+        }
     });
 
-	router.post(v + '/select-legal-entity', function (req, res) {
-		res.redirect(v + '/taken-on-new-apprentices')
-	})
+	// Apply - taken-on-new-apprentices
+    router.get(v + '/taken-on-new-apprentices', function (req, res) {
+        res.render(vx + '/taken-on-new-apprentices', {
+            myData: req.session.myData
+        });
+    });
+    router.post(v + '/taken-on-new-apprentices', function (req, res) {
+        req.session.myData.takenOnNewApprenticesAnswerTemp = req.body.takenOnNewApprenticesAnswer
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.takenOnNewApprenticesAnswerTemp = req.session.myData.takenOnNewApprenticesAnswerTemp || "ABC LTD"
+        }
+        if(!req.session.myData.takenOnNewApprenticesAnswerTemp){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.takenOnNewApprenticesAnswer = {
+                "anchor": "takenOnNewApprentices-1",
+                "message": "Select yes if you’ve taken on new apprentices who started their contract of employment between 1 August 2020 and 31 January 2021"
+            }
+        }
 
-	router.post(v + '/taken-on-new-apprentices', function (req, res) {
-		if (req.session.data['taken-on-new-apprentices'] === "yes") {
+        if(req.session.myData.validationError == "true") {
+            res.render(vx + '/taken-on-new-apprentices', {
+                myData: req.session.myData
+            });
+        } else {
+            req.session.myData.takenOnNewApprenticesAnswer = req.session.myData.takenOnNewApprenticesAnswerTemp
+			req.session.myData.takenOnNewApprenticesAnswerTemp = ''
 
-			if (req.session.data['agreement-needed'] === true) {
-				res.redirect(v + '/shutter/legal-agreement')
+			// NO
+			if(req.session.myData.takenOnNewApprenticesAnswer == "no"){
+				res.redirect(v + '/shutter/no-new-apprentices')
+			} else {
+			//YES
+				if(req.session.myData.legalagreement == "false"){
+					res.redirect(v + '/shutter/legal-agreement')
+				} else {
+					if(req.session.myData.apprenticesavailable > 100){
+						res.redirect(v + '/filter-by-start-date')
+					} else {
+						res.redirect(v + '/select-new-apprentices')
+					}
+				}
 			}
-			else {
-				res.redirect(v + '/select-new-apprentices')
-			}
 
-		}
-		if (req.session.data['taken-on-new-apprentices'] === "no") {
-			res.redirect(v + '/shutter/no-new-apprentices')
-		}
-		else {
-			res.redirect(v + '/taken-on-new-apprentices')
-		}
-	})
-
-	router.get(v + '/lots-of-apprentices', function (req, res) {
-		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
-		res.render(vx + '/lots-of-apprentices', {
-			apprenticeData: req.session.apprenticeData
-		});
-	})
-
-	router.get(v + '/lots-of-apprentices-1', function (req, res) {
-		req.session.data['page2'] = false
-		res.redirect(v + '/lots-of-apprentices')
-	})
-
-	router.get(v + '/lots-of-apprentices-2', function (req, res) {
-		req.session.data['page2'] = true
-		res.redirect(v + '/lots-of-apprentices')
-	})
-
+        }
+	});
+	
+	// Apply - shutter - no new apprentices
+    router.get(v + '/shutter/no-new-apprentices', function (req, res) {
+        res.render(vx + '/shutter/no-new-apprentices', {
+            myData: req.session.myData
+        });
+	});
+	
+	// Apply - shutter - legal agreement
+    router.get(v + '/shutter/legal-agreement', function (req, res) {
+        res.render(vx + '/shutter/legal-agreement', {
+            myData: req.session.myData
+        });
+    });
+	
+	// Apply - select-new-apprentices - small list
+    router.get(v + '/select-new-apprentices', function (req, res) {
+        res.render(vx + '/select-new-apprentices', {
+            myData: req.session.myData
+        });
+	});
+	// TO DO - improve
 	router.post(v + '/select-new-apprentices', function (req, res) {
 		req.session.data['total'] = 0
 		if (req.session.data['apprentice1']) {
@@ -83,142 +192,132 @@ module.exports = function (router,_myData) {
 		}
 	})
 
-	router.post(v + '/sign-agreement', function (req, res) {
-		req.session.data['saved-application'] = false
-		req.session.data['saved-at-terms'] = false
-		req.session.data['lots'] = false
-		if (req.session.data['already-applied'] === true) {
-			res.redirect(v + '/confirmation')
-		}
-		else {
-			res.redirect(v + '/bank-details-needed')
-		}
-	})
+	// Apply - select-new-apprentices - long list - select date
+	router.get(v + '/filter-by-start-date', function (req, res) {
+        res.render(vx + '/filter-by-start-date', {
+            myData: req.session.myData
+        });
+	});
+	// Apply - select-new-apprentices - long list
+	router.get(v + '/select-apprentice-to-apply-for', function (req, res) {
+        res.render(vx + '/select-apprentice-to-apply-for', {
+            myData: req.session.myData
+        });
+	});
 
-	router.post(v + '/add-bank-details', function (req, res) {
-		res.redirect(v + '/check-bank-details')
-	})
-
-	router.post(v + '/check-bank-details', function (req, res) {
-		req.session.data['bank-details'] = true
-		req.session.data['bank-skipped'] = false
-		res.redirect(v + '/bank-confirmation')
-	})
-
-	router.post(v + '/bank-details', function (req, res) {
-		req.session.data['error-bank-details'] = false
-		req.session.data['bank-skipped'] = false
-		req.session.data['saved-application'] = false
-		req.session.data['saved-at-bank-details'] = false
-		res.redirect(v + '/check-answers')
-	})
-
-	router.get(v + '/skip-bank-details', function (req, res) {
-		req.session.data['bank-details'] = false
-		req.session.data['bank-skipped'] = true
-		res.redirect(v + '/check-answers')
-	})
-
-	router.get(v + '/save-at-terms', function (req, res) {
-		req.session.data['saved-application'] = true
-		req.session.data['saved-at-terms'] = true
-		res.redirect(v + '/save-confirmation')
-	})
-
-	router.get(v + '/save-at-bank-details', function (req, res) {
-		req.session.data['saved-application'] = true
-		req.session.data['saved-at-bank-details'] = true
-		res.redirect(v + '/save-confirmation')
-	})
-
-	router.get(v + '/continue-from-terms', function (req, res) {
-		req.session.data['saved-application'] = false
-		req.session.data['saved-at-terms'] = false
-		res.redirect(v + '/sign-agreement')
-	})
-
-	router.get(v + '/continue-from-bank-details', function (req, res) {
-		req.session.data['saved-application'] = false
-		req.session.data['saved-at-bank-details'] = false
-		res.redirect(v + '/bank-details')
-	})
-
-	router.get(v + '/account-home-not-applied', function (req, res) {
-		req.session.data['agreement-needed'] = false
-		req.session.data['bank-skipped'] = null
-		req.session.data['already-applied'] = false
-		res.redirect(v + '/account-home')
-	})
-
-	router.get(v + '/guidance-not-applied', function (req, res) {
-		req.session.data['bank-skipped'] = null
-		req.session.data['already-applied'] = false
-		res.redirect(v + '/guidance')
-	})
-
-	router.get(v + '/account-subsequent-application', function (req, res) {
-		req.session.data['bank-skipped'] = false
-		req.session.data['already-applied'] = true
-		res.redirect(v + '/account-home')
-	})
-
-	router.get(v + '/account-with-bank-skipped', function (req, res) {
-		req.session.data['bank-skipped'] = true
-		req.session.data['bank-incomplete'] = true
-		req.session.data['already-applied'] = false
-		res.redirect(v + '/account-home')
-	})
-
-	router.get(v + '/account-no-agreement', function (req, res) {
-		req.session.data['agreement-needed'] = true
-		res.redirect(v + '/account-home')
-	})
-
-	router.get(v + '/account-bank-needed', function (req, res) {
-		req.session.data['bank-incomplete'] = true
-		res.redirect(v + '/bc/start')
-	})
-
-	router.get(v + '/skip-legal', function (req, res) {
-		req.session.data['agreement-needed'] = false
-		res.redirect(v + '/select-new-apprentices')
-	})
-
-	// V1 CHECK ANSWERS
-
-	router.get(v + '/check-answers-lots', function (req, res) {
-		req.session.data['lots'] = true
-		res.redirect(v + '/check-answers')
-	})
-
+	// Apply - check answers
 	router.get(v + '/check-answers', function (req, res) {
+		// TO DO - improve req.session.apprenticeData
 		req.session.apprenticeData = JSON.parse(JSON.stringify(apprentices))
 		res.render(vx + '/check-answers', {
+			myData: req.session.myData,
 			apprenticeData: req.session.apprenticeData,
 			data: req.session.data
 		});
 	})
-
-	// V2 CHECK ANSWERS
 	router.post(v + '/check-answers', function (req, res) {
 		res.redirect(v + '/sign-agreement')
 	})
 
-	router.post(v + '/bank-details-needed', function (req, res) {
-		if (req.session.data['bank-now'] === 'yes') {
-			res.redirect(v + '/bc/start')
-		}
-		if (req.session.data['bank-now'] === 'no') {
-			req.session.data['bank-incomplete'] = true
-			res.redirect(v + '/need-bank-information')
+	// Apply - sign declaration
+    router.get(v + '/sign-agreement', function (req, res) {
+        res.render(vx + '/sign-agreement', {
+            myData: req.session.myData
+        });
+	});
+	router.post(v + '/sign-agreement', function (req, res) {
+		if(req.session.myData.vrf == "notadded"){
+			res.redirect(v + '/bank-details-needed')
+		} else {
+			res.redirect(v + '/confirmation')
 		}
 	})
 
-	router.get(v + '/complete-all', function (req, res) {
-		req.session.data['bank-incomplete'] = false
-		req.session.data['bank-details'] = true
-		req.session.data['bank-skipped'] = false
-		req.session.data['already-applied'] = true
-		res.redirect(v + '/bc/complete')
+	// Bank details - needed
+	router.get(v + '/bank-details-needed', function (req, res) {
+        res.render(vx + '/bank-details-needed', {
+            myData: req.session.myData
+        });
+	});
+	router.post(v + '/bank-details-needed', function (req, res) {
+		if (req.body["bank-now"] === 'yes') {
+			res.redirect(v + '/bc/start')
+		} else {
+			res.redirect(v + '/need-bank-information')
+		}
 	})
+	// Bank details - start
+	router.get(v + '/bc/start', function (req, res) {
+        res.render(vx + '/bc/start', {
+            myData: req.session.myData
+        });
+	});
+	// Bank details - contact info
+	router.get(v + '/bc/contact-information', function (req, res) {
+        res.render(vx + '/bc/contact-information', {
+            myData: req.session.myData
+        });
+	});
+	// Bank details - organisation info
+	router.get(v + '/bc/organisation-information', function (req, res) {
+        res.render(vx + '/bc/organisation-information', {
+            myData: req.session.myData
+        });
+	});
+	// Bank details - bank account info
+	router.get(v + '/bc/bank-acc', function (req, res) {
+        res.render(vx + '/bc/bank-acc', {
+            myData: req.session.myData
+        });
+	});
+	// Bank details - complete
+	router.get(v + '/bc/complete', function (req, res) {
+		req.session.myData.vrf = "inprogress"
+        res.render(vx + '/bc/complete', {
+            myData: req.session.myData
+        });
+	});
+
+	// Application saved (still need bank information)
+	router.get(v + '/need-bank-information', function (req, res) {
+		res.render(vx + '/need-bank-information', {
+			myData: req.session.myData
+		});
+	});
+	// Application complete
+	router.get(v + '/confirmation', function (req, res) {
+		res.render(vx + '/confirmation', {
+			myData: req.session.myData
+		});
+	});
+
+
+	// View applications
+	router.get(v + '/hub/view-payments', function (req, res) {
+		res.render(vx + '/hub/view-payments', {
+			myData: req.session.myData
+		});
+	});
+
+	// Remove application
+	router.get(v + '/hub/remove-apprentice', function (req, res) {
+		res.render(vx + '/hub/remove-apprentice', {
+			myData: req.session.myData
+		});
+	});
+	// Remove application - check answers
+	router.get(v + '/hub/confirmation', function (req, res) {
+		res.render(vx + '/hub/confirmation', {
+			myData: req.session.myData
+		});
+	});
+	// Remove application - removed
+	router.get(v + '/hub/removed', function (req, res) {
+		req.session.myData.removedapplication = true
+		res.render(vx + '/hub/removed', {
+			myData: req.session.myData
+		});
+	});
+
+
 }

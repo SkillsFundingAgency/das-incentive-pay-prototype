@@ -1,0 +1,75 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "mvs/includes/account-header.html" %}
+  <link rel="stylesheet" type="text/css" href="https://das-pp-frnt-end.azureedge.net/css/main.css">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Your hire a new apprentice payment applications
+    </h1>
+    <div class="govuk-inset-text">
+      <h2 class="govuk-heading-m">
+        We're reviewing your organisation’s bank details
+      </h2>
+      <p>
+        We may contact someone from your organisation to verify the information
+        you’ve provided.
+      </p>
+    </div>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Why your payment date is an estimate
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <p>
+          Before we can make a payment, your training provider must confirm that
+          the apprentice has completed 90 or 365 days of their apprenticeship.
+        </p>
+        <p>
+          Training providers usually submit their apprentice information to ESFA
+          at the start of each month. Your payment date can change if your
+          training provider:
+        </p>
+        <ul class="“govuk-list govuk-list--bullet”">
+          <li>
+            does not confirm that your apprentice started their apprenticeship
+          </li>
+          <li>does not submit their information on time</li>
+          <li>confirms a different apprenticeship start date</li>
+          <li>
+            gives us information that’s different to your apprenticeship service
+            account (also known as a ‘data lock’)
+          </li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</div>
+
+{% include "includes/payments-table.html" %} {% endblock %} {% block pageScripts
+%}
+
+{% block pageScripts %}
+
+<script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script>
+
+{% endblock %}

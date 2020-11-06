@@ -1,0 +1,35 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v15/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Hire a new apprentice payment</h1>
+      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view applications and change your payment details.</p>
+        <hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
+        <div class="cards govuk-!-margin-top-8" style="width: 66%">
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="../guidance">Apply for the hire a new apprentice payment</a></h3>
+            <p>You can apply for the payment if you hire new apprentices from 1 August 2020 to 31 January 2021</p>
+            </div>
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="view-payments">Your applications</a></h3>
+            <p>View your applications and estimated payments.</p>
+            </div>
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="#">Your payment details</a></h3>
+            <p>Add or change where we’ll make your payment.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}

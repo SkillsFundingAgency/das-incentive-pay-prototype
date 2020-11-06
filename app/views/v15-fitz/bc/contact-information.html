@@ -1,0 +1,53 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "v15/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Contact information</h1>
+
+    <p>We’ll only use these details if we need to contact you about your organisation’s bank account.</p>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="full-name">
+        Full name
+      </label>
+      <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="email">
+        Email address
+      </label>
+      <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint" autocomplete="email" spellcheck="false">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="telephone-number">
+        Phone number
+      </label>
+      <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel">
+    </div>
+
+      <form action="" method="post">
+
+        {{ govukButton({
+          text: "Continue",
+          href: "organisation-information"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

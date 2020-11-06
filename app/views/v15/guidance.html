@@ -7,13 +7,18 @@
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
-  {% include "v15/includes/account-header.html" %}
+  {% include "./includes/account-header.html" %}
 {% endblock %}
+
+{% set _backlink = "./hub/home" %}
+{% if myData.mvs == "mvs" %}
+  {% set _backlink = "account-home" %}
+{% endif %}
 
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: "javascript:window.history.back();"
+      href: _backlink
     }) }}
 {% endblock %}
 
@@ -23,7 +28,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Apply for the hire a new apprentice payment</h1>
-      <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 January 2021. Employers can apply for the payment until 30 April 2021, after they add new apprentices to their apprenticeship service account.</p>
+      <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 January 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
       <p>The payment is in addition to the existing £1,000 you’ll already get for taking on an apprentice who is either:</p>
       <ul class="govuk-list govuk-list--bullet">
       <li>aged 16 to 18 years old</li>
