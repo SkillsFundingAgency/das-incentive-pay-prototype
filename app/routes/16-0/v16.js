@@ -272,6 +272,7 @@ module.exports = function (router,_myData) {
 	});
 	// Bank details - complete
 	router.get(v + '/bc/complete', function (req, res) {
+		req.session.myData.vrf = "inprogress"
         res.render(vx + '/bc/complete', {
             myData: req.session.myData
         });
