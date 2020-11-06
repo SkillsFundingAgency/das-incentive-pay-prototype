@@ -12,8 +12,7 @@
 
 {% set _backLink = "select-new-apprentices" %}
 {% if myData.apprenticesavailable > 100 %}
-<!-- TO DO - different back link -->
-{% set _backLink = "select-new-apprentices" %}
+{% set _backLink = "select-apprentice-to-apply-for" %}
 {% endif %}
 
 {% block beforeContent %}
@@ -40,42 +39,49 @@
         </thead>
 
         <tbody class="govuk-table__body">
-        {% if data['lots'] === true %}
-         {% for items in apprenticeData.list %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">{{ items.name }}</th>
-            <td scope="row" class="govuk-table__cell">{{ items.course }}</td>
-            <td class="govuk-table__cell">£2,000</td>
-          </tr>
-         {% endfor %}
+          {% if myData.apprenticesavailable > 100 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Adham Tyalo</th>
+              <td scope="row" class="govuk-table__cell">Water Treatment Technician, Level: 3 (Standard)</td>
+              <td class="govuk-table__cell">£2,000</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Abel Fogden</th>
+              <td scope="row" class="govuk-table__cell">Relationship Manager (Banking), Level: 6 (Standard)</td>
+              <td class="govuk-table__cell">£1,500</td>
+            </tr>
         {% else %}
-        {% if data['apprentice1'] %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Michael Johnson</th>
-            <td scope="row" class="govuk-table__cell">Water Treatment Technician, Level: 3 (Standard)</td>
-            <td class="govuk-table__cell">£2,000</td>
-          </tr>
-        {% endif %}
-        {% if data['apprentice2'] %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Jack Roberts</th>
-            <td scope="row" class="govuk-table__cell">Relationship Manager (Banking), Level: 6 (Standard)</td>
-            <td class="govuk-table__cell">£1,500</td>
-          </tr>
-        {% endif %}
-        {% if data['apprentice3'] %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Steven Smith</th>
-            <td scope="row" class="govuk-table__cell">Non-destructive testing (NDT) operator, Level: 2 (Standard)</td>
-            <td class="govuk-table__cell">£2,000</td>
-          </tr>
-        {% endif %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">Total amount</th>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell">£{{ data['totalPay'] }}</td>
-          </tr>
+            {% if data['apprentice1'] %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Michael Johnson</th>
+                <td scope="row" class="govuk-table__cell">Water Treatment Technician, Level: 3 (Standard)</td>
+                <td class="govuk-table__cell">£2,000</td>
+              </tr>
+            {% endif %}
+            {% if data['apprentice2'] %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Jack Roberts</th>
+                <td scope="row" class="govuk-table__cell">Relationship Manager (Banking), Level: 6 (Standard)</td>
+                <td class="govuk-table__cell">£1,500</td>
+              </tr>
+            {% endif %}
+            {% if data['apprentice3'] %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">Steven Smith</th>
+                <td scope="row" class="govuk-table__cell">Non-destructive testing (NDT) operator, Level: 2 (Standard)</td>
+                <td class="govuk-table__cell">£2,000</td>
+              </tr>
+            {% endif %}
          {% endif %}
+         <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Total amount</th>
+          <td class="govuk-table__cell"></td>
+          {% if myData.apprenticesavailable > 100 %}
+          <td class="govuk-table__cell">£3,500</td>
+          {% else %}
+          <td class="govuk-table__cell">£{{ data['totalPay'] }}</td>
+          {% endif %}
+        </tr>
         </tbody>
       </table>
 

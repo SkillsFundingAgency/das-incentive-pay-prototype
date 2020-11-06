@@ -16,7 +16,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.legalagreement = "true"
 		req.session.myData.vrf = "notadded"
 		req.session.myData.apprenticesavailable = 6
-		req.session.myData.apprenticesapplied = 0
+		req.session.myData.apprenticesapplied = 6
 		req.session.myData.mvs = "nonmvs"
 		
     }
@@ -138,14 +138,11 @@ module.exports = function (router,_myData) {
 				if(req.session.myData.legalagreement == "false"){
 					res.redirect(v + '/shutter/legal-agreement')
 				} else {
-					
-					// BIG or SMALL apprentices - 
-					
-					//
-					// TO DO - copy fitzroy's work from v15
-					//
-
-					res.redirect(v + '/select-new-apprentices')
+					if(req.session.myData.apprenticesavailable > 100){
+						res.redirect(v + '/filter-by-start-date')
+					} else {
+						res.redirect(v + '/select-new-apprentices')
+					}
 				}
 			}
 
@@ -194,6 +191,19 @@ module.exports = function (router,_myData) {
 			res.redirect(v + '/check-answers')
 		}
 	})
+
+	// Apply - select-new-apprentices - long list - select date
+	router.get(v + '/filter-by-start-date', function (req, res) {
+        res.render(vx + '/filter-by-start-date', {
+            myData: req.session.myData
+        });
+	});
+	// Apply - select-new-apprentices - long list
+	router.get(v + '/select-apprentice-to-apply-for', function (req, res) {
+        res.render(vx + '/select-apprentice-to-apply-for', {
+            myData: req.session.myData
+        });
+	});
 
 	// Apply - check answers
 	router.get(v + '/check-answers', function (req, res) {

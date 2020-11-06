@@ -59,8 +59,8 @@
                 Number of apprentices available
             </label>
             <select class="govuk-select" style="min-width: 100%" id="apprenticesavailable" name="apprenticesavailable" data-option="apprenticesavailable">
-              <option {% if myData.apprenticesavailable == "6" %}selected{% endif %} value="6">6</option>
-              <option {% if myData.apprenticesavailable == "101" %}selected{% endif %} value="101">101</option>
+              <option {% if myData.apprenticesavailable == "6" %}selected{% endif %} value="6">Some</option>
+              <option {% if myData.apprenticesavailable == "101" %}selected{% endif %} value="101">Lots</option>
             </select>
         </div>
 
@@ -73,8 +73,8 @@
             </label>
             <select class="govuk-select" style="min-width: 100%" id="apprenticesapplied" name="apprenticesapplied" data-option="apprenticesapplied">
               <option {% if myData.apprenticesapplied == "0" %}selected{% endif %} value="0">0</option>
-              <option {% if myData.apprenticesapplied == "6" %}selected{% endif %} value="6">6</option>
-              <option {% if myData.apprenticesapplied == "100" %}selected{% endif %} value="100">100</option>
+              <option {% if myData.apprenticesapplied == "6" %}selected{% endif %} value="6">Some</option>
+              <option {% if myData.apprenticesapplied == "101" %}selected{% endif %} value="101">Lots</option>
             </select>
         </div>
 
@@ -166,6 +166,14 @@
                 <tr class="govuk-table__row">
                     <th class="govuk-table__cell">Select apprentices (small list)</th>
                     <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="select-new-apprentices?r=t"><span class="govuk-!-font-weight-bold">/select-new-apprentices</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Select apprentices (long list) - select date</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="filter-by-start-date?r=t&apprentices=101"><span class="govuk-!-font-weight-bold">/filter-by-start-date</span>?r=t&apprentices=101</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Select apprentices (long list)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="select-apprentice-to-apply-for?r=t&apprentices=101"><span class="govuk-!-font-weight-bold">/select-apprentice-to-apply-for</span>?r=t&apprentices=101</a></td>
                 </tr>
                 <tr class="govuk-table__row">
                     <th class="govuk-table__cell">Check answers</th>
