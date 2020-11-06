@@ -10,10 +10,16 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
+{% set _backLink = "select-new-apprentices" %}
+{% if myData.apprenticesavailable > 100 %}
+<!-- TO DO - different back link -->
+{% set _backLink = "select-new-apprentices" %}
+{% endif %}
+
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: "javascript:window.history.back();"
+      href: _backLink
     }) }}
 {% endblock %}
 
@@ -72,11 +78,9 @@
          {% endif %}
         </tbody>
       </table>
-        {% if data['lots'] === true %}
-      <p><a href="lots-of-apprentices-1">Change the apprentices you want to apply for</a></p>
-        {% else %}
-      <p><a href="select-new-apprentices">Change the apprentices you want to apply for</a></p>
-        {% endif %}
+
+      <p><a href="{{_backLink}}">Change the apprentices you want to apply for</a></p>
+
       <form action="" method="post">
 
           <form action="" method="post" class="form">

@@ -3,7 +3,9 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
-var _myData = {}
+var _myData = {
+    "includeValidation": "true"
+}
 
 require('./routes/1-0/v1.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/2-0/v2.js')(router,JSON.parse(JSON.stringify(_myData)));

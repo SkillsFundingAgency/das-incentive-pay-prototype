@@ -10,10 +10,15 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
+{% set _backlink = "./hub/home" %}
+{% if myData.mvs == "mvs" %}
+  {% set _backlink = "account-home" %}
+{% endif %}
+
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: "javascript:window.history.back();"
+      href: _backlink
     }) }}
 {% endblock %}
 
