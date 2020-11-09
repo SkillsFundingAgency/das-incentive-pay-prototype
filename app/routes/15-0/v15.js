@@ -286,11 +286,11 @@ module.exports = function (router,_myData) {
 	});
 	// Application complete
 	router.get(v + '/confirmation', function (req, res) {
+		req.session.myData.apprenticesapplied = req.session.myData.apprenticesavailable
 		res.render(vx + '/confirmation', {
 			myData: req.session.myData
 		});
 	});
-
 
 	// View applications
 	router.get(v + '/hub/view-payments', function (req, res) {
