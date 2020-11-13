@@ -140,14 +140,6 @@
     <div class="grid-row">
         <div class="column-two-thirds">
 
-        {% if myData.mvs == "mvs" and myData.vrf == "notadded" and myData.apprenticesapplied > 0 %}
-        <!-- <div class="das-panel das-panel--interruption">
-            <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
-            <p>We need your organisation’s bank details, so that we can make any hire a new apprentice payments.</p>
-            <p><a href="bc/start" class="das-panel__link">Add bank details</a></p>
-        </div> -->
-        {% endif %}
-
             <section class="dashboard-section">
                 <div class="grid-row">
                     <div class="column-two-thirds">
@@ -193,7 +185,7 @@
                         <p>View your financial transactions, connect with other employers and receive transfer funds.</p>
                     </div>
 
-                {% if myData.mvs == "mvs" %}
+                {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
                     <div class="card">
                         <h3 class="govuk-heading-m"><a href="guidance">Apply for the hire a new apprentice payment</a></h3>
                         <p>You can apply for the payment if you hire new apprentices from 1 August 2020 to 31 January 2021</p>

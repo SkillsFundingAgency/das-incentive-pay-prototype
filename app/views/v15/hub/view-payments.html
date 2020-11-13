@@ -21,6 +21,18 @@
 />
 {% endblock %}
 
+{% set _backlink = "home" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../account-home" %}
+{% endif %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: _backlink
+    }) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -29,6 +41,7 @@
     
 
     <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
+
 
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
@@ -46,6 +59,26 @@
       <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
     </div> -->
     {% endif %}
+
+    {% if myData.mvs == "mvslive" %}
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          When you'll get paid
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+      <p>You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days. Your training provider will confirm the apprenticeship start date and we’ll add 90 days to the last calendar day of the month.</p>
+      <p>We make payments on the 10th working day of each month, starting from January 2021. It will take longer to get your first payment for any apprentices who start their training in August or September.</p>
+      <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
+      <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
+      </ul>
+
+      </div>
+    </details>
+    {% else %}
 
     <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. Your training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
 
@@ -77,7 +110,9 @@
       </div>
     </details>
 
-    {% if myData.mvs == "mvs" %}
+    {% endif %}
+
+    {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
     <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application or to change your organisation’s bank details.</p>
     {% else %}
     <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
@@ -89,6 +124,36 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+
+    {% if myData.mvs == "mvslive" %}
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Estimated payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Steven Smith</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Jack Roberts</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£1,500</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Michael Johnson</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+      </tbody>
+    </table>
+    {% else %}
+    <!-- mvs and nonmvs table -->
     <table class="govuk-table govuk-!-margin-bottom-2 js-payments-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -165,6 +230,8 @@
           
       </tbody>
     </table>
+    {% endif %}
+
   </div>
 </div>
 

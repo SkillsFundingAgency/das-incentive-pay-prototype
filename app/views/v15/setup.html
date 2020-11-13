@@ -23,6 +23,7 @@
             <select class="govuk-select" style="min-width: 100%" id="mvsversion" name="mvsversion" data-option="mvsversion">
                 <option {% if myData.mvsversion == "nonmvs" %}selected{% endif %} value="nonmvs">Non-MVS</option>
                 <option {% if myData.mvsversion == "mvs" %}selected{% endif %} value="mvs">MVS</option>
+                <option {% if myData.mvsversion == "mvslive" %}selected{% endif %} value="mvs">MVS (live)</option>
             </select>
         </div>
 
@@ -36,18 +37,6 @@
                 <input class="govuk-checkboxes__input" id="legalagreement" name="legalagreement" type="checkbox" value="true" data-option="legalagreement" {% if myData.legalagreement == 'true' %}checked{% endif %}>
                     <label class="govuk-label govuk-checkboxes__label" for="legalagreement">
                         Legal agreement signed
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bank details -->
-        <div class="govuk-form-group bankdetails">
-            <div class="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="bankdetails" name="bankdetails" type="checkbox" value="true" data-option="bankdetails" {% if myData.bankdetails == 'true' %}checked{% endif %}>
-                    <label class="govuk-label govuk-checkboxes__label" for="bankdetails">
-                        Bank details added previously
                     </label>
                 </div>
             </div>
@@ -81,7 +70,7 @@
         <!-- VRF -->
         <div class="govuk-form-group vrf">
             <label class="govuk-label" >
-                VRF
+                VRF (bank details)
             </label>
             <select class="govuk-select" style="min-width: 100%" id="vrf" name="vrf" data-option="vrf">
               <option {% if myData.vrf == "added" %}selected{% endif %} value="added">Added</option>
@@ -380,14 +369,14 @@
                 _urlReset = "r=t",
                 _urlPage = "account-home?",
                 _urlLegalAgreement = "&legal=" + ($('input[name=legalagreement]:checked').val() || false),
-                _urlBankDetails = "&bank=" + ($('input[name=bankdetails]:checked').val() || false),
+                // _urlBankDetails = "&bank=" + ($('input[name=bankdetails]:checked').val() || false),
                 _urlAppAvail = "&apprentices=" + _options.filter("#apprenticesavailable").val(),
                 _urlAppApplied = "&applied=" + _options.filter("#apprenticesapplied").val(),
                 _urlVRF = "&vrf=" + _options.filter("#vrf").val(),
                 _urlMVS = "&mvs=" + _options.filter("#mvsversion").val();
 
             //Queries combined
-            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlBankDetails + _urlAppAvail + _urlAppApplied + _urlVRF + _urlMVS;
+            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlAppAvail + _urlAppApplied + _urlVRF + _urlMVS;
 
             //URL text
             var _startURLText = _urlBase + _urlPageQueries,

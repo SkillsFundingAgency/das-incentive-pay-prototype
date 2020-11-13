@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% set _backlink = "./hub/home" %}
-{% if myData.mvs == "mvs" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
   {% set _backlink = "account-home" %}
 {% endif %}
 
