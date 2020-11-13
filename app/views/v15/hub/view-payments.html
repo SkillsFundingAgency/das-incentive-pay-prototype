@@ -37,10 +37,10 @@
       <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
     </div>
     {% elif myData.vrf == "inprogress" %}
-    <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
+    <!-- <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
       <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
       <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
-    </div>
+    </div> -->
     <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
       <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
       <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
@@ -78,7 +78,7 @@
     </details>
 
     {% if myData.mvs == "mvs" %}
-    <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
+    <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application or to change your organisation’s bank details.</p>
     {% else %}
     <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
     {% endif %}
@@ -105,7 +105,7 @@
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Corina Carver</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell" style="max-width:200px">
+          <td class="govuk-table__cell" style="max-width:100px">
             <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact your training provider to check that your information matches
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
@@ -115,8 +115,8 @@
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Jack Roberts</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell">18 February 2021<br><span style="color: #626a6e" >£750</span></td>
-          <td class="govuk-table__cell">18 November 2021<br><span style="color: #626a6e" >£750</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 February 2021<br><span style="color: #626a6e" >£750</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 November 2021<br><span style="color: #626a6e" >£750</span></td>
         </tr>
 
         <tr class="govuk-table__row">
@@ -131,7 +131,7 @@
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell">Apprentice withdrawn</td>
+          <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
 
@@ -139,7 +139,7 @@
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Michael Johnson</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell" style="max-width:200px">Training provider needs to confirm they have started their apprenticeship</td>
+          <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
 
@@ -149,15 +149,15 @@
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell">20 January 2021<br><span style="color: #626a6e" >£1,000 (paid)</span></td>
-          <td class="govuk-table__cell">20 September 2021<br><span style="color: #626a6e" >£1,000</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>20 January 2021<br><span style="color: #626a6e" >£1,000</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>20 September 2021<br><span style="color: #626a6e" >£1,000</span></td>
         </tr>
         {% else %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
           <td class="govuk-table__cell">5 September 2020</td>
-          <td class="govuk-table__cell">20 January 2021<br><span style="color: #626a6e" >£1,000 (paid)</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>20 January 2021<br><span style="color: #626a6e" >£1,000</span></td>
           <td class="govuk-table__cell">Application cancelled</td>
         </tr>
         {% endif %}
