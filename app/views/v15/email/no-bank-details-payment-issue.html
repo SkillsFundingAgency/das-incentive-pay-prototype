@@ -1,0 +1,54 @@
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>We cannot make the hire a new apprentice payment</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+        <p>You've not added your organisation’s bank details, so we cannot make the hire a new apprentice payment.</p>
+        <p>Either you or someone else at your organisation can add the bank details at https://accounts.manage-apprenticeships.service.gov.uk/service/index. You'll need to sign in with your apprenticeship service account.</p>
+        <p>We'll make the payment by Bacs on the 14th working day of the month, after we’ve confirmed your organisation’s bank details.</p>
+        <p>From</p>
+        <p>Apprenticeship Service</p>
+        <p>This is an automated message - do not reply.</p>
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
