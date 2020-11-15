@@ -7,7 +7,7 @@
 
         <p class="govuk-body" >
               <a href="setup?r=true" class="govuk-link govuk-link--no-visited-state">Reset to default values</a>
-          </p>  
+          </p>
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
     </div>
 </div>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="govuk-grid-column-one-half" >
-        
+
 
     </div>
 </div>
@@ -110,7 +110,7 @@
         <h2 class="govuk-heading-m">Full page list</h2>
         <table class="govuk-table">
 
-            <tbody class="govuk-table__body">   
+            <tbody class="govuk-table__body">
 
                 <tr class="govuk-table__row">
                     <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Campaign</h2></th>
@@ -257,7 +257,7 @@
                     <th class="govuk-table__cell">Application saved (bank details needed)</th>
                     <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="need-bank-information?r=t"><span class="govuk-!-font-weight-bold">/need-bank-information</span>?r=t</a></td>
                 </tr>
-                
+
                 <tr class="govuk-table__row">
                     <th class="govuk-table__cell">Application complete (bank details added)</th>
                     <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="confirmation?r=t"><span class="govuk-!-font-weight-bold">/confirmation</span>?r=t</a></td>
@@ -319,6 +319,11 @@
                 </tr>
 
                 <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">No bank details (payment issue)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/no-bank-details-payment-issue?r=t">/no-bank-details-payment-issue</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
                     <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4">Attachments</h2></th>
                 </tr>
 
@@ -364,10 +369,10 @@
 
         //SET VALUES
         function setValues(){
-            
+
             //Base URL
             var _urlBase = "https://das-incentive-pay-prototype.herokuapp.com/" + {{myData.version|dump|safe}} + "/";
-            
+
             //Queries
             var _urlComponents = "",
                 _urlReset = "r=t",
