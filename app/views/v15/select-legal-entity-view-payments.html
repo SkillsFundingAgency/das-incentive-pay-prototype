@@ -12,15 +12,10 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
-{% set _backlink = "guidance" %}
-{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
-  {% set _backlink = "select-legal-entity" %}
-{% endif %}
-
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: _backlink
+      href: "account-home"
     }) }}
 {% endblock %}
 
@@ -48,35 +43,32 @@
           </div>
           {% endif %}
 
-          <div class="govuk-form-group {% if myData.validationErrors.takenOnNewApprenticesAnswer %}govuk-form-group--error{% endif %}">
+          <div class="govuk-form-group {% if myData.validationErrors.selectLegalEntityAnswer %}govuk-form-group--error{% endif %}">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                      Have you taken on new apprentices who started their contract of employment between 1 August 2020 and 31 January 2021?
+                    Choose organisation
                     </h1>
                 </legend>
-                <span class="govuk-hint">
-                  You can only apply for new employees who joined your organisation between 1 August 2020 and 31 January 2021.
-                </span>
                 
-                {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
-                <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">
+                {% if myData.validationErrors.selectLegalEntityAnswer %}
+                <span id="selectLegalEntityAnswer-error" class="govuk-error-message">
                     <span class="govuk-visually-hidden">Error:</span>
-                    {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
+                    {{myData.validationErrors.selectLegalEntityAnswer.message}}
                 </span>
                 {% endif %}
 
-                <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios">
                   <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
-                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-1">
-                        Yes
+                      <input class="govuk-radios__input" id="selectLegalEntity-1" name="selectLegalEntityAnswer" type="radio" value="ABC LTD">
+                      <label class="govuk-label govuk-radios__label" for="selectLegalEntity-1">
+                        ABC LTD
                       </label>
                   </div>
                   <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
-                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
-                        No
+                      <input class="govuk-radios__input" id="selectLegalEntity-2" name="selectLegalEntityAnswer" type="radio" value="ABC ASSOCIATES LTD">
+                      <label class="govuk-label govuk-radios__label" for="selectLegalEntity-2">
+                        ABC ASSOCIATES LTD
                       </label>
                   </div>
                 </div>

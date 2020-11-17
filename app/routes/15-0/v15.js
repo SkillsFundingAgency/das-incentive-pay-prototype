@@ -101,8 +101,70 @@ module.exports = function (router,_myData) {
             req.session.myData.selectLegalEntityAnswerTemp = ''
 			res.redirect(301, v + '/taken-on-new-apprentices');
         }
+	});
+	
+
+	// Select org - for hub
+	router.get(v + '/select-legal-entity-hub', function (req, res) {
+        res.render(vx + '/select-legal-entity-hub', {
+            myData: req.session.myData
+        });
+    });
+    router.post(v + '/select-legal-entity-hub', function (req, res) {
+        req.session.myData.selectLegalEntityAnswerTemp = req.body.selectLegalEntityAnswer
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.selectLegalEntityAnswerTemp = req.session.myData.selectLegalEntityAnswerTemp || "ABC LTD"
+        }
+        if(!req.session.myData.selectLegalEntityAnswerTemp){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.selectLegalEntityAnswer = {
+                "anchor": "selectLegalEntity-1",
+                "message": "Select an organisation"
+            }
+        }
+
+        if(req.session.myData.validationError == "true") {
+            res.render(vx + '/select-legal-entity-hub', {
+                myData: req.session.myData
+            });
+        } else {
+            req.session.myData.selectLegalEntityAnswer = req.session.myData.selectLegalEntityAnswerTemp
+            req.session.myData.selectLegalEntityAnswerTemp = ''
+			res.redirect(301, v + '/hub/home');
+        }
+	});
+	
+	// Select org - for view payments
+	router.get(v + '/select-legal-entity-view-payments', function (req, res) {
+        res.render(vx + '/select-legal-entity-hub', {
+            myData: req.session.myData
+        });
+    });
+    router.post(v + '/select-legal-entity-view-payments', function (req, res) {
+        req.session.myData.selectLegalEntityAnswerTemp = req.body.selectLegalEntityAnswer
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.selectLegalEntityAnswerTemp = req.session.myData.selectLegalEntityAnswerTemp || "ABC LTD"
+        }
+        if(!req.session.myData.selectLegalEntityAnswerTemp){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.selectLegalEntityAnswer = {
+                "anchor": "selectLegalEntity-1",
+                "message": "Select an organisation"
+            }
+        }
+
+        if(req.session.myData.validationError == "true") {
+            res.render(vx + '/select-legal-entity-view-payments', {
+                myData: req.session.myData
+            });
+        } else {
+            req.session.myData.selectLegalEntityAnswer = req.session.myData.selectLegalEntityAnswerTemp
+            req.session.myData.selectLegalEntityAnswerTemp = ''
+			res.redirect(301, v + '/hub/view-payments');
+        }
     });
 
+	
 	// Apply - taken-on-new-apprentices
     router.get(v + '/taken-on-new-apprentices', function (req, res) {
         res.render(vx + '/taken-on-new-apprentices', {

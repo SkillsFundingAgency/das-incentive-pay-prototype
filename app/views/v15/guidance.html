@@ -59,9 +59,14 @@
       <li>your organisation’s bank account details</li>
       </ul>
 
+      {% set _forwardLink = "taken-on-new-apprentices" %}
+      {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+        {% set _forwardLink = "select-legal-entity" %}
+      {% endif %}
+
       {{ govukButton({
         text: "Start now",
-        href: "select-legal-entity",
+        href: _forwardLink,
         classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
         isStartButton: true
       }) }}
