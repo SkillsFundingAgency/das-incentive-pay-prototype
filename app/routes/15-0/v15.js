@@ -18,6 +18,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.apprenticesavailable = 6
 		req.session.myData.apprenticesapplied = 6
 		req.session.myData.mvs = "nonmvs"
+		req.session.myData.closing = "false"
 		
     }
 
@@ -41,6 +42,7 @@ module.exports = function (router,_myData) {
         req.session.myData.apprenticesavailable =  req.query.apprentices || req.session.myData.apprenticesavailable
         req.session.myData.apprenticesapplied =  req.query.applied || req.session.myData.apprenticesapplied
         req.session.myData.mvs =  req.query.mvs || req.session.myData.mvs
+        req.session.myData.closing =  req.query.closing || req.session.myData.closing
 		
         next()
 	});

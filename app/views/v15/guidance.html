@@ -8,6 +8,18 @@
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
   {% include "./includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+
 {% endblock %}
 
 {% set _backlink = "./hub/home" %}
@@ -28,6 +40,15 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Apply for the hire a new apprentice payment</h1>
+
+      {% if myData.closing == "true" %}
+      <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
+        <h3 class="das-panel__heading">We’re closing applications for the hire a new apprentice payment</h3>
+        <p class="govuk-body" style="color: #0b0c0c;">You need to apply before 20 April 2021.</p>
+      </div>
+     {% endif %}
+
+
       <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 January 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
       <p>The payment is in addition to the existing £1,000 you’ll already get for taking on an apprentice who is either:</p>
       <ul class="govuk-list govuk-list--bullet">
