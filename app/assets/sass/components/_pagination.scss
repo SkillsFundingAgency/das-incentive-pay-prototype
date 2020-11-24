@@ -28,7 +28,11 @@
 .pagination__summary {
   padding: 8px 0 0 0;
   margin: 20px 0 5px 0;
+}
+.pagination__summary_inline {
+  padding: 8px 0;
+  margin: 0;
   @media (min-width: 642px) {
-    // float: right;
+    float: right;
   }
 }

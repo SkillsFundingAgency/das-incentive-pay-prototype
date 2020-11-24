@@ -28,6 +28,11 @@ _myData.apprentices2.sort(function(a,b){
     return 0;
 });
 
+//Add commas to amounts
+_myData.apprentices2.forEach(function(_apprentice, index) {
+    _apprentice.amountCommas = _apprentice.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
 require('./routes/1-0/v1.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/2-0/v2.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/3-0/v3.js')(router,JSON.parse(JSON.stringify(_myData)));

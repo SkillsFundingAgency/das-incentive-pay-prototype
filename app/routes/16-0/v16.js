@@ -266,12 +266,15 @@ module.exports = function (router,_myData) {
             req.session.myData.selectNewApprenticesAnswer = req.session.myData.selectNewApprenticesAnswerTemp
 			req.session.myData.selectNewApprenticesAnswerTemp = ''
 
-			req.session.myData.selectedApprentices = []
+            req.session.myData.selectedApprentices = []
+            req.session.myData.selectedApprenticesTotalAmount = 0
 			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
 				if(req.session.myData.selectNewApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
-					req.session.myData.selectedApprentices.push(_apprentice)
+                    req.session.myData.selectedApprentices.push(_apprentice)
+                    req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount + _apprentice.amount
 				}
-			});
+            });
+            req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 			res.redirect(v + '/check-answers')
 		}
