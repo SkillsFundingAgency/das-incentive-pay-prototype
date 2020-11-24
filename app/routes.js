@@ -4,8 +4,29 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 var _myData = {
-    "includeValidation": "true"
+    "includeValidation": "true",
+    "apprentices": require(__dirname + '/data/apprentices.json'),
+    "apprentices2": require(__dirname + '/data/apprentices2.json'),
 }
+
+
+// Sort apprentices
+_myData.apprentices.list.sort(function(a,b){
+    if (a.name.toUpperCase() < b.name.toUpperCase()){
+        return -1
+    } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+        return 1
+    }
+    return 0;
+});
+_myData.apprentices2.sort(function(a,b){
+    if (a.name.toUpperCase() < b.name.toUpperCase()){
+        return -1
+    } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+        return 1
+    }
+    return 0;
+});
 
 require('./routes/1-0/v1.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/2-0/v2.js')(router,JSON.parse(JSON.stringify(_myData)));
@@ -24,5 +45,6 @@ require('./routes/13-0/v13.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/14-0/v14.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/15-0/v15.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/15-0-fitz/v15-fitz.js')(router,JSON.parse(JSON.stringify(_myData)));
+require('./routes/16-0/v16.js')(router,JSON.parse(JSON.stringify(_myData)));
 
 module.exports = router

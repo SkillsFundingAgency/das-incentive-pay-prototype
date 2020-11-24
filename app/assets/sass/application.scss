@@ -56,6 +56,26 @@ $govuk-assets-path: "/govuk/assets/";
 @import "patterns/app-interruption-card";
 @import "patterns/floating-menu";
 
+@import "components/pagination";
+
+//Grey panel
+.grey-panel {
+  padding: 15px 15px 1px 15px;
+}
+@media (min-width: 641px){
+  .grey-panel {
+      padding: 20px 20px 1px 20px;
+  }
+}
+.grey-panel-blocked {
+  background: govuk-colour("light-grey");
+}
+.grey-panel-bordered {
+  border: 1px solid $govuk-border-colour;
+}
+
+
+
 .no-bottom-header {
   margin-bottom: 0;
   border-bottom: 0;

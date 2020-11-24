@@ -1,0 +1,54 @@
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>Hire a new apprentice payment: applications closing</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+        <p>We’re closing applications for the hire a new apprentice payment.</p>
+        <p>If you’ve taken on new apprentices from 1 August 2020 to 31 January 2021, you need to apply before 30 April 2021.</p>
+        <p>Apply for the hire a new apprentice payment at https://accounts.manage-apprenticeships.service.gov.uk.</p>
+        <p>From</p>
+        <p>Apprenticeship Service</p>
+        <p>This is an automated message - do not reply.</p>
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

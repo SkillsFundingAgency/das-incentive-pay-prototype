@@ -1,0 +1,247 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+{% endblock %}
+
+{% set _backlink = "home" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../select-legal-entity-view-payments" %}
+{% endif %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: _backlink
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+
+    <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
+
+
+    {% if myData.vrf == "notadded" %}
+    <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+      <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
+      <p>We need your organisation’s bank details, so that we can make any hire a new apprentice payments.</p>
+      <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
+    </div>
+    {% elif myData.vrf == "inprogress" %}
+    <!-- <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
+      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
+      <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
+    </div> -->
+    <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
+      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
+      <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
+    </div> -->
+    {% endif %}
+
+    {% if myData.mvs == "mvslive" %}
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          When you'll get paid
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+      <p>You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days. Your training provider will confirm the apprenticeship start date and we’ll add 90 days to the last calendar day of the month.</p>
+      <p>We make payments on the 14th working day of each month, starting from January 2021. It will take longer to get your first payment for any apprentices who start their training in August or September.</p>
+      <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
+      <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
+      </ul>
+
+      </div>
+    </details>
+    {% else %}
+
+    <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. Your training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
+
+    <p class="govuk-body">Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Why your payment dates might change
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        
+        <p class="govuk-body">Your payment dates can change if your training provider:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>does not submit their information on time</li>
+          <li>gives us information that does not match what is in your apprenticeship service account (also known as a ‘data lock’)</li>
+          <li>changes an apprentice’s start date</li>
+        </ul>
+        
+        <p class="govuk-body">Your payment dates can also change if:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+          <li>you’ve not added your organisation’s bank details or we have not confirmed them</li>
+          <li>your apprentice takes a break in learning</li>
+        </ul>
+        
+      </div>
+    </details>
+
+    {% endif %}
+
+    {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+    <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
+    {% else %}
+    <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
+    {% endif %}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% if myData.mvs == "mvslive" %}
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Estimated payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Steven Smith</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Jack Roberts</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£1,500</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Michael Johnson</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+      </tbody>
+    </table>
+    {% else %}
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table govuk-!-margin-bottom-2 js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Corina Carver</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell" style="max-width:100px">
+            <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact your training provider to check that your information matches
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Jack Roberts</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 February 2021<br><span style="color: #626a6e" >£750</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 November 2021<br><span style="color: #626a6e" >£750</span></td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Jas Johal</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">Application cancelled</td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Michael Johnson</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+
+
+        {% if myData.removedapplication != true %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>20 January 2021<br><span style="color: #626a6e" >£1,000</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>20 September 2021<br><span style="color: #626a6e" >£1,000</span></td>
+        </tr>
+        {% else %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 12-345-6789</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>20 January 2021<br><span style="color: #626a6e" >£1,000</span></td>
+          <td class="govuk-table__cell">Application cancelled</td>
+        </tr>
+        {% endif %}
+        
+          
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<!-- <script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script> -->
+
+{% endblock %}
