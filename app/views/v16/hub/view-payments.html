@@ -35,9 +35,26 @@
 
 {% block content %}
 
+{% if myData.apprenticesapplied == "0" %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <h1 class="govuk-heading-xl">You do not have any hire a new apprentice payment applications</h1>
+
+    <p class="govuk-body">You can apply for new apprentices with a planned start date from 1 August 2020 to 31 January 2021.</p>
+
+    <a href="../guidance" class="govuk-button">Apply</a>
+  
+  </div>
+</div>
+
+{% else %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
     
 
     <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
@@ -125,11 +142,11 @@
   <div class="govuk-grid-column-full">
 
     {% if myData.mvs == "mvslive" %}
-    <table class="govuk-table">
+    <table class="govuk-table js-payments-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice name</th>
-          <th aria-sort="ascending" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
           <th aria-sort="none" scope="col" class="govuk-table__header">Estimated payment</th>
         </tr>
       </thead>
@@ -153,11 +170,11 @@
     </table>
     {% else %}
     <!-- mvs and nonmvs table -->
-    <table class="govuk-table govuk-!-margin-bottom-2 js-payments-table">
+    <table class="govuk-table govuk-!-margin-bottom-2">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th aria-sort="none" scope="col" class="govuk-table__header">Apprentice</th>
-          <th aria-sort="ascending" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Course</th>
           <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
           <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
           <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
@@ -234,14 +251,16 @@
   </div>
 </div>
 
+{% endif %}
+
 {% endblock %}
 
 {% block pageScripts %}
 
-<!-- <script>
+<script>
   new MOJFrontend.SortableTable({
     table: $(".js-payments-table")
   });
-</script> -->
+</script>
 
 {% endblock %}
