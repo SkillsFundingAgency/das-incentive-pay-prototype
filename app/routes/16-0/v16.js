@@ -15,7 +15,7 @@ module.exports = function (router,_myData) {
 		// Default setup
 		req.session.myData.legalagreement = "true"
 		req.session.myData.vrf = "notadded"
-		req.session.myData.apprenticesavailable = 6
+		req.session.myData.apprenticesavailable = 300
 		req.session.myData.apprenticesapplied = 6
 		req.session.myData.mvs = "nonmvs"
 		req.session.myData.closing = "false"
