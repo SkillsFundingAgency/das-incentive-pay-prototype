@@ -28,6 +28,26 @@ _myData.apprentices2.sort(function(a,b){
     return 0;
 });
 
+
+// var _testttt = [],
+//     _months = {}
+// _myData.apprentices2.forEach(function(_apprentice, index) {
+//     function randomBoolean(_chance){
+//         return Math.random() < _chance
+//     }
+//     if(randomBoolean(0.16)){
+//         _apprentice.startdate = "February 2021"
+//     } else {
+//         if(randomBoolean(0.16)){
+//             _apprentice.startdate = "March 2021"
+//         } 
+//     }
+//     _testttt.push(_apprentice)
+//     _months[_apprentice.startdate] = (_months[_apprentice.startdate] || 0) + 1
+// });
+// console.log(JSON.stringify(_testttt)) 
+// // console.log(_months) 
+
 //Add commas to amounts
 _myData.apprentices2.forEach(function(_apprentice, index) {
     _apprentice.amountCommas = _apprentice.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
