@@ -30,7 +30,7 @@
       
 
       <h3 class="govuk-heading-m">
-        {{myData.selectedApprentices.length}} apprentices<br>
+        {{myData.selectedApprentices.length}} apprentice{% if myData.selectedApprentices.length != 1 %}s{% endif %}<br>
         <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£{{myData.selectedApprenticesTotalAmount}} estimated total payment</span>
       </h3>
 

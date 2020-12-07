@@ -36,7 +36,19 @@
                 <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="legalagreement" name="legalagreement" type="checkbox" value="true" data-option="legalagreement" {% if myData.legalagreement == 'true' %}checked{% endif %}>
                     <label class="govuk-label govuk-checkboxes__label" for="legalagreement">
-                        Legal agreement signed
+                        Main legal agreement signed
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal agreement 2 -->
+        <div class="govuk-form-group legalagreement2">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="legalagreement2" name="legalagreement2" type="checkbox" value="true" data-option="legalagreement2" {% if myData.legalagreement2 == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="legalagreement2">
+                        Updated legal agreement signed
                     </label>
                 </div>
             </div>
@@ -53,7 +65,7 @@
             </select>
         </div>
 
-        <!-- Legal agreement -->
+        <!-- Deadline -->
         <div class="govuk-form-group closing">
             <div class="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
@@ -409,6 +421,7 @@
                 _urlReset = "r=t",
                 _urlPage = "account-home?",
                 _urlLegalAgreement = "&legal=" + ($('input[name=legalagreement]:checked').val() || false),
+                _urlLegalAgreement2 = "&legal2=" + ($('input[name=legalagreement2]:checked').val() || false),
                 _urlClosing = "&closing=" + ($('input[name=closing]:checked').val() || false),
                 // _urlBankDetails = "&bank=" + ($('input[name=bankdetails]:checked').val() || false),
                 _urlAppAvail = "&apprentices=" + _options.filter("#apprenticesavailable").val(),
@@ -417,7 +430,7 @@
                 _urlMVS = "&mvs=" + _options.filter("#mvsversion").val();
 
             //Queries combined
-            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlClosing + _urlAppAvail + _urlAppApplied + _urlVRF + _urlMVS;
+            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlLegalAgreement2 + _urlClosing + _urlAppAvail + _urlAppApplied + _urlVRF + _urlMVS;
 
             //URL text
             var _startURLText = _urlBase + _urlPageQueries,

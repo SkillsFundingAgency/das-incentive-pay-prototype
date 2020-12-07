@@ -14,6 +14,7 @@ module.exports = function (router,_myData) {
 		
 		// Default setup
 		req.session.myData.legalagreement = "true"
+		req.session.myData.legalagreement2 = "true"
 		req.session.myData.vrf = "notadded"
 		req.session.myData.apprenticesavailable = 300
 		req.session.myData.apprenticesapplied = 6
@@ -39,6 +40,7 @@ module.exports = function (router,_myData) {
 
 		//defaults for setup
         req.session.myData.legalagreement =  req.query.legal || req.session.myData.legalagreement
+        req.session.myData.legalagreement2 =  req.query.legal2 || req.session.myData.legalagreement2
         req.session.myData.vrf =  req.query.vrf || req.session.myData.vrf
         req.session.myData.apprenticesavailable =  req.query.apprentices || req.session.myData.apprenticesavailable
         req.session.myData.apprenticesapplied =  req.query.applied || req.session.myData.apprenticesapplied
@@ -287,7 +289,17 @@ module.exports = function (router,_myData) {
 		});
 	})
 	router.post(v + '/check-answers', function (req, res) {
-		res.redirect(v + '/sign-agreement')
+        var _newApprentices = false
+        req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
+            if(_apprentice.startdate == "February 2021" || _apprentice.startdate == "March 2021"){
+                _newApprentices = true
+            }
+        });
+        if(req.session.myData.legalagreement2 == "false" && _newApprentices){
+            res.redirect(v + '/shutter/legal-agreement-2')
+        } else {
+            res.redirect(v + '/sign-agreement')
+        }
 	})
 
 	// Apply - sign declaration
