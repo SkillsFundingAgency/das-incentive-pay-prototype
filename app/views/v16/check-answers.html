@@ -34,15 +34,12 @@
         <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£{{myData.selectedApprenticesTotalAmount}} estimated total payment</span>
       </h3>
 
-      <!-- <p class="govuk-body">Your payment amount may change if an apprentice has their 25th birthday before they start their apprenticeship.</p> -->
-
       <table class="govuk-table govuk-!-margin-bottom-2">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Apprentice</th>
             <th scope="col" class="govuk-table__header">Start date</th>
             <th scope="col" class="govuk-table__header">Course</th>
-            <!-- <th scope="col" class="govuk-table__header govuk-table__header--numeric">Payment amount</th> -->
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -51,11 +48,9 @@
               <th scope="row" class="govuk-table__header">
                 {{_apprentice.name}}<br>
                 <span class="govuk-!-font-weight-regular" style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span>
-                <!-- <span class="govuk-!-font-weight-regular">ULN: {{_apprentice.uln}}</span> -->
               </th>
               <td scope="row" class="govuk-table__cell">{{_apprentice.startdate}}</td>
               <td scope="row" class="govuk-table__cell">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
-              <!-- <td class="govuk-table__cell govuk-table__cell--numeric">£{{_apprentice.amountCommas}}</td> -->
             </tr>
             {% endfor %}
         </tbody>
@@ -70,22 +65,6 @@
           </ul>
       </nav>
       {% endif %}
-
-
-      <!-- <table class="govuk-table govuk-!-margin-bottom-6">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Total apprentices</th>
-            <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total payment amount</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">{{myData.selectedApprentices.length}} apprentices</td>
-              <td class="govuk-table__cell govuk-table__cell--numeric">£{{myData.selectedApprenticesTotalAmount}}</td>
-            </tr>
-        </tbody>
-      </table> -->
 
       <p class="govuk-body govuk-!-margin-top-4"><a href="{{_backLink}}" class="govuk-link govuk-link--no-visited-state">Change the apprentices you want to apply for</a></p>
 

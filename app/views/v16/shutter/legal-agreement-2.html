@@ -4,6 +4,8 @@
   Manage apprenticeships
 {% endset %}
 
+{% set _backLink = "javascript:window.history.go(-2);" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -13,17 +15,26 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">[to do - need to sign new agreement as feb/mar apprentices selected]</h1>
+      <h1 class="govuk-heading-l">You need to accept a new employer agreement</h1>
 
-      <form action="" method="post">
+      <p class="govuk-body">We’ve extended the hire a new apprentice application.</p>
 
-        {{ govukButton({
-          text: "View agreement"
-        }) }}
+      <p class="govuk-body">To apply for apprentices with an apprenticeship start date from 1 February 2021, you must accept a new employer agreement.</p>
 
-      </form>
+      <p class="govuk-body">The version you need to accept depends on whether you’ve already accepted the agreement we published on 13 August 2020. If you have:</p>
 
-      <p><a href="../account-home">Return to account home</a></p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>already accepted the 13 August 2020 agreement, you only need to accept a variation to it now</li>
+        <li>not accepted the 13 August 2020 agreement yet, you need to accept a new agreement</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a href="javascript:;" class="govuk-button">View agreement</a>
+      </p>
+
+      <p class="govuk-body"><a href="{{_backLink}}" class="govuk-link govuk-link--no-visited-state">Change which apprentices you want to apply for</a></p>
+
+      <!-- <p><a href="../account-home">Return to account home</a></p> -->
 
     </div>
   </div>
