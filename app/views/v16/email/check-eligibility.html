@@ -1,0 +1,74 @@
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>Hire a new apprentice: check your apprentices are eligible</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+
+        <p>Before we make your hire a new apprentice payment, check that the apprentices you’ve applied for are eligible.</p>
+
+        <p style="font-weight: bold;">Who is eligible</p>
+
+        <p>You can only apply for new apprentices who joined your organisation from 1 August 2020.</p>
+
+        <p>You cannot apply for an existing employee who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.</p>
+
+        <p style="font-weight: bold;">How to check</p>
+
+        <p>You can check which apprentices you’ve applied for in your apprenticeship service account (<a href="https://accounts.manage-apprenticeships.service.gov.uk" class="govuk-link govuk-link--no-visited-state">https://accounts.manage-apprenticeships.service.gov.uk</a>).</p>
+        
+        <p style="font-weight: bold;">What to do if an apprentice is not eligible</p>
+
+        <p>Contact us if you have applied for any apprentices who are not eligible for the payment. You can:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>call us on 0800 0150 600 (option 1 then option 2)</li>
+          <li>email us on <a href="#" class="govuk-link govuk-link--no-visited-state">helpdesk@manage-apprenticeships.service.gov.uk</a></li>
+        </ul>
+
+        <p>From</p>
+
+        <p>Apprenticeship Service</p>
+
+        <p>This is an automated message - do not reply.</p>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
