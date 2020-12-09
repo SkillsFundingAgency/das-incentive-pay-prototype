@@ -58,9 +58,17 @@ Manage apprenticeships
 
             <p class="govuk-body">We’re showing the apprentices in your account with a start date from August 2020 to March 2021. We’re not showing any apprentices that have an application.</p>
 
-            <p class="govuk-body">
-                Only select apprentices who started their contract of employment with {{myData.selectLegalEntityAnswer or "ABC LTD"}} from 1 August 2020 to 31 March 2021.
-            </p>
+            <p class="govuk-body">Only select new apprentices who joined your organisation from 1 August 2020 to 31 March 2020.</p>
+
+            <!-- <p class="govuk-body">Do not select existing employees who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.</p> -->
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                  <span class="govuk-warning-text__assistive">Warning</span>
+                  Do not select existing employees who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.
+                </strong>
+              </div>
 
             {% if _totalApprentices > _perPage %}
             <div class="month-filters-container grey-panel grey-panel-blocked govuk-!-margin-bottom-5">
@@ -101,7 +109,9 @@ Manage apprenticeships
                                 <input class="govuk-checkboxes__input" id="apprentice-{{_apprentice.id}}" name="apprentices" type="checkbox" value="{{_apprentice.id}}" aria-describedby="new-apprentices-item-hint" {% if _apprentice.selected %} checked {% endif %} />
                                 <label class="govuk-label govuk-checkboxes__label" for="apprentice-{{_apprentice.id}}">
                                     <span class="govuk-!-font-weight-bold">{{_apprentice.name}}</span> <span style="color: #505a5f">(ULN: {{_apprentice.uln}})</span><br>
+                                    {% if _totalApprentices > _perPage %}
                                     <span style="color: #505a5f">{{_apprentice.startdate}} <br>
+                                    {% endif %}
                                     {{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
                                 </label>
                             </div>

@@ -38,7 +38,9 @@
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Apprentice</th>
-            <th scope="col" class="govuk-table__header">Start date</th>
+            {% if myData.apprenticesavailable > 50 %}
+            <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
+            {% endif %}
             <th scope="col" class="govuk-table__header">Course</th>
           </tr>
         </thead>
@@ -49,7 +51,9 @@
                 {{_apprentice.name}}<br>
                 <span class="govuk-!-font-weight-regular" style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span>
               </th>
+              {% if myData.apprenticesavailable > 50 %}
               <td scope="row" class="govuk-table__cell">{{_apprentice.startdate}}</td>
+              {% endif %}
               <td scope="row" class="govuk-table__cell">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
             </tr>
             {% endfor %}
@@ -69,7 +73,7 @@
       <p class="govuk-body govuk-!-margin-top-4"><a href="{{_backLink}}" class="govuk-link govuk-link--no-visited-state">Change the apprentices you want to apply for</a></p>
 
       {{ govukWarningText({
-        text: "All apprentices must have started their contract of employment between 1 August 2020 and 31 March 2021.",
+        text: "All apprentices must have joined your organisation from 1 August 2020 to 31 March 2020.",
         iconFallbackText: "Warning"
       }) }}
 
