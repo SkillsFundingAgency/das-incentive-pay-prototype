@@ -51,6 +51,8 @@ _myData.apprentices2.sort(function(a,b){
 //Add commas to amounts
 _myData.apprentices2.forEach(function(_apprentice, index) {
     _apprentice.amountCommas = _apprentice.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    var _halfAmount = _apprentice.amount/2
+    _apprentice.halfamountCommas = _halfAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 });
 
 require('./routes/1-0/v1.js')(router,JSON.parse(JSON.stringify(_myData)));
