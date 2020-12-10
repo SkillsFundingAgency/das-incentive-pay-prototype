@@ -251,3 +251,31 @@
 </script>
 
 {% endblock %}
+
+
+{% block footer %}
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        
+        
+
+
+        {
+          href: "view-payments?applied=0",
+          text: "0"
+        },
+        {
+          href: "view-payments?applied=6",
+          text: "some"
+        },
+        {
+          href: "view-payments?applied=300",
+          text: "lots"
+        }
+      ]
+    }
+  }) }}
+
+{% endblock %}
