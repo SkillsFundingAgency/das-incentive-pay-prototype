@@ -1,0 +1,62 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% set _backLink = "javascript:window.history.go(-2);" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">You need to accept a new employer agreement</h1>
+
+      <p class="govuk-body">We’ve extended the application period for the hire a new apprentice payment.</p>
+
+      <p class="govuk-body">To apply for apprentices with an apprenticeship start date from 1 February 2021, you must accept a new employer agreement.</p>
+
+      <p class="govuk-body">The version you need to accept depends on whether you accepted the agreement on or after 9 January 2020. If you have:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>already accepted the 9 January 2020, you only need to accept a variation to it now</li>
+        <li>not accepted the 9 January 2020 agreement yet, you need to accept the 9 January 2020 agreement as amended by the 20 August 2020 and 1 February 2021 variations</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-margin-bottom-0">
+        <a href="javascript:;" class="govuk-button">View agreement</a>
+      </p>
+
+      <p class="govuk-body"><a href="{{_backLink}}" class="govuk-link govuk-link--no-visited-state">Change which apprentices you want to apply for</a></p>
+
+      <!-- <p><a href="../account-home">Return to account home</a></p> -->
+
+    </div>
+  </div>
+{% endblock %}
+
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          },
+          {
+            href: "../skip-legal",
+            text: "Skip (for test purposes)"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}

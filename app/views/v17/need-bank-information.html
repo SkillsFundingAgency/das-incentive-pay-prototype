@@ -1,0 +1,67 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "mvs/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+        <div class="govuk-panel govuk-panel--info">
+          <h1 class="govuk-panel__title">
+            Application saved
+          </h1>
+        </div>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+
+
+      <p class="govuk-body">We need your organisation’s bank details, so that we can make your hire a new apprentice payments. You can add the bank details:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>using the link we’ve sent to your email address</li>
+        <li>in the ‘hire a new apprentice payment applications’ section of your apprenticeship service account</li>
+      </ul>
+      <h2 class="govuk-heading-m">When you’ll get paid</h2>
+
+      <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. Your training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
+
+      <p class="govuk-body">Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+
+      <h2 class="govuk-heading-m">Your applications </h2>
+
+      <p class="govuk-body">You can view your applications and estimated payment dates in your apprenticeship service account.</p>
+
+      <a class="govuk-button" href="account-home">Return to account home</a>
+
+    </div>
+  </div>
+{% endblock %}
+
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          },
+          {
+            href: "email/need-to-add-bank-details",
+            text: "Email sent to user (for test purposes)"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}

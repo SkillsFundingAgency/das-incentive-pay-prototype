@@ -1,0 +1,84 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "../select-legal-entity-hub"
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Hire a new apprentice payment</h1>
+
+      {% if myData.vrf == "notadded" %}
+      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view your applications and add your organisation’s bank details.</p>
+      {% elif myData.vrf == "inprogress" %}
+      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment and view your applications.</p>
+      {% else %}
+      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view your applications and change your organisation’s bank details.</p>
+      {% endif %}
+
+        <hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        
+        {% if myData.vrf == "notadded" %}
+        <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 0px">
+          <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
+          <p>We need your organisation’s bank details, so that we can make any hire a new apprentice payments.</p>
+          <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <div class="cards govuk-!-margin-top-8" style="width: 66%">
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="../guidance" class="govuk-link--no-visited-state">Apply for the hire a new apprentice payment</a></h3>
+            <p>You can apply for the payment if you hire new apprentices from 1 August 2020 to 31 March 2021</p>
+            </div>
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="view-payments" class="govuk-link--no-visited-state">Your applications</a></h3>
+            <p>View your applications and estimated payments.</p>
+            </div>
+            {% if myData.vrf == "added" %}
+            <div class="card">
+            <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Change your bank details</a></h3>
+            <p>Change your organisation’s address, contact or bank account details.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
