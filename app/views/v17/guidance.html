@@ -4,6 +4,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -48,38 +52,63 @@
       </div>
      {% endif %}
 
-
-      <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 March 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
-      <p>The payment is in addition to the existing £1,000 you’ll already get for taking on an apprentice who is either:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li>aged 16 to 18 years old</li>
-      <li>under 25 and has an education, health and care plan or has been in the care of their local authority</li>
-      </ul>
-
-      <h2 class="govuk-heading-m">What you'll get</h2>
-      <p>For apprentices aged:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li>16 to 24, employers will receive £2,000</li>
-      <li>25 and over, employers will receive £1,500</li>
-      </ul>
-      <p>We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days.</p>
-      <p>Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
-      <p>We’ll need your organisation’s bank details, so that we can pay your organisation directly.</p>
-      <h2 class="govuk-heading-m">What you can use the payment for</h2>
-      <p>You can use the payment for anything to support your organisation’s costs.</p>
-      <p>The payment is different to the apprenticeship levy and you can use it to pay for recruiting and employing new apprentices.</p>
-      <h2 class="govuk-heading-m">Eligibility</h2>
-
-      <p>You cannot apply for an existing employee who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.</p>
-      <p>You can only apply for new apprentices who joined your organisation from 1 August 2020 to 31 March 2021.</p>
-
-
-      <h2 class="govuk-heading-m">Before you start</h2>
-      <p>You'll need:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li>to add the apprentices you want to apply for to your apprenticeship service account</li>
-      <li>your organisation’s bank details (someone else from your organisation can add them later)</li>
-      </ul>
+      {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+        <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 March 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
+        <p>The payment is in addition to the existing £1,000 you’ll already get for taking on an apprentice who is either:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>aged 16 to 18 years old</li>
+        <li>under 25 and has an education, health and care plan or has been in the care of their local authority</li>
+        </ul>
+        <h2 class="govuk-heading-m">What you’ll get</h2>
+        <p>For apprentices aged:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>16 to 24, employers will receive £2,000</li>
+        <li>25 and over, employers will receive £1,500</li>
+        </ul>
+        <p>We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days.</p>
+        <p>Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+        <p>We’ll need your organisation’s bank details, so that we can pay your organisation directly.</p>
+        <h2 class="govuk-heading-m">What you can use the payment for</h2>
+        <p>You can use the payment for anything to support your organisation’s costs.</p>
+        <p>The payment is different to the apprenticeship levy and you can use it to pay for recruiting and employing new apprentices.</p>
+        <h2 class="govuk-heading-m">Eligibility</h2>
+        <p>You cannot apply for an existing employee who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.</p>
+        <p>You can only apply for new apprentices who joined your organisation from 1 August 2020 to 31 March 2021.</p>
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You’ll need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>to add the apprentices you want to apply for to your apprenticeship service account</li>
+        <li>your organisation’s bank details (someone else from your organisation can add them later)</li>
+        </ul>
+      {% else %}
+        <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 March 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
+        <p>The payment is in addition to the existing £1,000 an employer will already get for taking on an apprentice who is either:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>aged 16 to 18 years old</li>
+        <li>under 25 and has an education, health and care plan or has been in the care of their local authority</li>
+        </ul>
+        <h2 class="govuk-heading-m">What you’ll get</h2>
+        <p>For apprentices aged:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>16 to 24, employers will receive £2,000</li>
+        <li>25 and over, employers will receive £1,500</li>
+        </ul>
+        <p>We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days.</p>
+        <p>Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+        <p>We’ll need {{_orgNamePlural}} bank details, so that we can pay them directly.</p>
+        <h2 class="govuk-heading-m">What you can use the payment for</h2>
+        <p>{{_orgName}} can use the payment for anything to support their costs.</p>
+        <p>The payment is different to the apprenticeship levy and {{_orgName}} can use it to pay for recruiting and employing new apprentices.</p>
+        <h2 class="govuk-heading-m">Eligibility</h2>
+        <p>{{_orgName}} cannot apply for an existing employee who joined their organisation before 1 August 2020, even if they started an apprenticeship after this date.</p>
+        <p>{{_orgName}} can only apply for new apprentices who joined their organisation from 1 August 2020 to 31 March 2021.</p>
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You’ll need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+        <li>to add the apprentices you want to apply for to your apprenticeship service account</li>
+        <li>{{_orgNamePlural}} bank details (someone else from {{_orgName}} can add them later)</li>
+        </ul>
+      {% endif %}
 
       {% set _forwardLink = "taken-on-new-apprentices" %}
       {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}

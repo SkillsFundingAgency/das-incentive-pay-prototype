@@ -4,6 +4,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -40,9 +44,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">You do not have any hire a new apprentice payment applications</h1>
+    <h1 class="govuk-heading-xl">{{_orgName}} does not have any hire a new apprentice payment applications</h1>
 
-    <p class="govuk-body">You can apply for new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
+    <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
 
     <a href="../guidance" class="govuk-button">Apply</a>
   
@@ -57,24 +61,15 @@
     
     
 
-    <h1 class="govuk-heading-xl">Your hire a new apprentice payment applications</h1>
+    <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
 
 
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
-      <h3 class="das-panel__heading">Add your organisation’s bank details</h3>
-      <p>We need your organisation’s bank details, so that we can make any hire a new apprentice payments.</p>
+      <h3 class="das-panel__heading">Add {{_orgNamePlural}} bank details</h3>
+      <p>We need {{_orgNamePlural}} bank details, so that we can make any hire a new apprentice payments.</p>
       <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
     </div>
-    {% elif myData.vrf == "inprogress" %}
-    <!-- <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
-      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
-      <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
-    </div> -->
-    <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
-      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
-      <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
-    </div> -->
     {% endif %}
 
     {% if myData.mvs == "mvslive" %}
@@ -99,31 +94,31 @@
 
     
 
-    <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. Your training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
+    <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
 
     <p class="govuk-body">Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-          Why your payment dates might change
+          Why estimated payment dates might change
         </span>
       </summary>
       <div class="govuk-details__text">
         
-        <p class="govuk-body">Your payment dates can change if your training provider:</p>
+        <p class="govuk-body">Estimated payment dates can change if the training provider:</p>
 
         <ul class="govuk-list govuk-list--bullet">
           <li>does not submit their information on time</li>
-          <li>gives us information that does not match what is in your apprenticeship service account (also known as a ‘data lock’)</li>
+          <li>gives us information that does not match what is in the apprenticeship service account (also known as a ‘data lock’)</li>
           <li>changes an apprentice’s start date</li>
         </ul>
         
-        <p class="govuk-body">Your payment dates can also change if:</p>
+        <p class="govuk-body">Estimated payment dates can also change if:</p>
         
         <ul class="govuk-list govuk-list--bullet">
-          <li>you’ve not added your organisation’s bank details or we have not confirmed them</li>
-          <li>your apprentice takes a break in learning</li>
+          <li>you’ve not added {{_orgNamePlural}} bank details or we have not confirmed them</li>
+          <li>an apprentice takes a break in learning</li>
         </ul>
         
       </div>
@@ -198,7 +193,7 @@
 
           {% if _apprentice.status == "paymentissue" %}
             <td class="govuk-table__cell" style="max-width:100px">
-              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact your training provider to check that your information matches
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
             </td>
             <td class="govuk-table__cell">&nbsp;</td>
 

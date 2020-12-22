@@ -6,6 +6,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -53,15 +57,15 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                      Do you have apprentices who are eligible for the payment?
+                      Does {{_orgName}} have apprentices who are eligible for the payment?
                     </h1>
                 </legend>
                 
                 <div class="govuk-hint">
-                  You cannot apply for an existing employee who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.
+                  {{_orgName}} cannot apply for an existing employee who joined their organisation before 1 August 2020, even if they started an apprenticeship after this date.
                 </div>
                 <div class="govuk-hint">
-                  You can only apply for new apprentices who joined your organisation from 1 August 2020 to 31 March 2021.
+                  {{_orgName}} can only apply for new apprentices who joined their organisation from 1 August 2020 to 31 March 2021.
                 </div>
                 
                 {% if myData.validationErrors.takenOnNewApprenticesAnswer %}

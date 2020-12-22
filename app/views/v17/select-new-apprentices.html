@@ -6,6 +6,10 @@
 Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block pageTitle %}
 {% if _inError == "true" %}Error: {% endif %}Manage apprenticeships
 {% endblock %}
@@ -56,17 +60,15 @@ Manage apprenticeships
                 Which apprentices do you want to apply for?
             </h1>
 
-            <p class="govuk-body">We’re showing the apprentices in your account with a start date from August 2020 to March 2021. We’re not showing any apprentices that have an application.</p>
+            <p class="govuk-body">We’re showing the apprentices in the account with a start date from August 2020 to March 2021. We’re not showing any apprentices that have an application.</p>
 
-            <p class="govuk-body">Only select new apprentices who joined your organisation from 1 August 2020 to 31 March 2021.</p>
-
-            <!-- <p class="govuk-body">Do not select existing employees who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.</p> -->
+            <p class="govuk-body">Only select new apprentices who joined {{_orgName}} from 1 August 2020 to 31 March 2021.</p>
 
             <div class="govuk-warning-text">
                 <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                 <strong class="govuk-warning-text__text">
                   <span class="govuk-warning-text__assistive">Warning</span>
-                  Do not select existing employees who joined your organisation before 1 August 2020, even if they started an apprenticeship after this date.
+                  Do not select existing employees who joined {{_orgName}} before 1 August 2020, even if they started an apprenticeship after this date.
                 </strong>
               </div>
 

@@ -4,6 +4,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -14,12 +18,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">You have applied for all of the apprentices in your account</h1>
-      <p class="govuk-body">You can apply for new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
-      <p class="govuk-body">If you have apprentices who are eligible for the hire a new apprentice payment, you can either:</p>
+      <h1 class="govuk-heading-l">{{_orgName}} has applied for all of the apprentices in their account</h1>
+      <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
+      <p class="govuk-body">If {{_orgName}} has apprentices who are eligible for the hire a new apprentice payment, you can either:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="#">add them to your apprenticeship service account</a></li>
-        <li><a href="../hub/view-payments">view your applications</a> to check if someone else has applied for them</li>
+        <li><a href="#">add them to the apprenticeship service account</a></li>
+        <li><a href="../hub/view-payments">view applications</a> to check if someone else has applied for them</li>
       </ul>
       <a class="govuk-button" href="../account-home">Return to account home</a>
 

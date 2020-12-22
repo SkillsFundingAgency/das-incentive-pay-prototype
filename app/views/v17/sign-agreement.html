@@ -4,6 +4,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -23,14 +27,14 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">Declaration</h1>
-      <p>You are about to submit your application for the hire a new apprentice payment.</p>
+      <p>You are about to submit {{_orgNamePlural}} application for the hire a new apprentice payment.</p>
       <p>By submitting this application, you declare that:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>all the information in this application is correct</li>
-        <li>all the apprentices in this application are new employees who joined your organisation from 1 August 2020 to 31 March 2021</li>
-        <li>you understand that your organisation must tell the Education and Skills Funding Agency about any change to any of the information provided</li>
+        <li>all the apprentices in this application are new employees who joined {{_orgName}} from 1 August 2020 to 31 March 2021</li>
+        <li>you understand that {{_orgName}} must tell the Education and Skills Funding Agency about any change to any of the information provided</li>
         <li>you have read and understood the agreement</li>
-        <li>you understand that if you have provided any inaccurate or misleading information, you may have to repay any relevant hire a new apprentice payments</li>
+        <li>you understand that if you have provided any inaccurate or misleading information, {{_orgName}} may have to repay any relevant hire a new apprentice payments</li>
       </ul>
     <form action="" method="post" class="form">
 

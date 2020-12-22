@@ -226,6 +226,31 @@ module.exports = function (router,_myData) {
             myData: req.session.myData
         });
     });
+    // Apply - shutter - legal agreement 2
+    router.get(v + '/shutter/legal-agreement-2', function (req, res) {
+        res.render(vx + '/shutter/legal-agreement-2', {
+            myData: req.session.myData
+        });
+    });
+
+    // Apply - shutter - cannot-apply
+	router.get(v + '/shutter/cannot-apply', function (req, res) {
+        res.render(vx + '/shutter/cannot-apply', {
+            myData: req.session.myData
+        });
+	});
+    // Apply - shutter - cannot-apply-2
+	router.get(v + '/shutter/cannot-apply-2', function (req, res) {
+        res.render(vx + '/shutter/cannot-apply-2', {
+            myData: req.session.myData
+        });
+	});
+    // Apply - shutter - cannot-apply-3
+	router.get(v + '/shutter/cannot-apply-3', function (req, res) {
+        res.render(vx + '/shutter/cannot-apply-3', {
+            myData: req.session.myData
+        });
+	});
 	
 	// Apply - select-new-apprentices - small list
     router.get(v + '/select-new-apprentices', function (req, res) {

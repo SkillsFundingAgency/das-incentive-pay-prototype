@@ -4,6 +4,10 @@
   Manage apprenticeships
 {% endset %}
 
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -13,10 +17,10 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">You cannot apply for this payment</h1>
-    <p>You can only apply for this payment if you have new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
+    <h1 class="govuk-heading-l">{{_orgName}} cannot apply for this payment</h1>
+    <p>{{_orgName}} can only apply for this payment if they have new apprentices with a planned start date from 1 August 2020 to 31 March 2021.</p>
 
-    <p>If you have apprentices who are eligible for this payment, you'll need to <a href="">add them to your apprenticeship service account</a>.</p>
+    <p>If {{_orgName}} has apprentices who are eligible for this payment, they need to <a href="">add them to their apprenticeship service account</a>.</p>
     <a class="govuk-button" href="../account-home">Return to account home</a>
     </div>
   </div>
