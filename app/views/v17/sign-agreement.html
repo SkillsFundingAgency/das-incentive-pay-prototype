@@ -34,6 +34,7 @@
         <li>all the apprentices in this application are new employees who joined {{_orgName}} from 1 August 2020 to 31 March 2021</li>
         <li>you understand that {{_orgName}} must tell the Education and Skills Funding Agency about any change to any of the information provided</li>
         <li>you have read and understood the agreement</li>
+        {% if myData.declaration == "v5" %}<li>{{_orgName}} accepts the 1 February 2021 variation to the agreement</li>{% endif %}
         <li>you understand that if you have provided any inaccurate or misleading information, {{_orgName}} may have to repay any relevant hire a new apprentice payments</li>
       </ul>
     <form action="" method="post" class="form">

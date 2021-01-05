@@ -47,6 +47,7 @@ module.exports = function (router,_myData) {
         req.session.myData.mvs =  req.query.mvs || req.session.myData.mvs
         req.session.myData.closing =  req.query.closing || req.session.myData.closing
         req.session.myData.page =  req.query.page || req.session.myData.page
+        req.session.myData.declaration =  req.query.declaration || ""
 		
         next()
 	});
