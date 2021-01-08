@@ -42,9 +42,9 @@
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Apprentice</th>
-            {% if myData.apprenticesavailable > 50 %}
+
             <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
-            {% endif %}
+
             <th scope="col" class="govuk-table__header">Course</th>
           </tr>
         </thead>
@@ -55,9 +55,11 @@
                 {{_apprentice.name}}<br>
                 <span class="govuk-!-font-weight-regular" style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span>
               </th>
-              {% if myData.apprenticesavailable > 50 %}
+
+
               <td scope="row" class="govuk-table__cell">{{_apprentice.startdate}}</td>
-              {% endif %}
+
+
               <td scope="row" class="govuk-table__cell">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
             </tr>
             {% endfor %}
