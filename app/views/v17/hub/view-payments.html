@@ -221,13 +221,13 @@
           {% else %}
 
             {% if _apprentice.firstpayment == "paid" %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>20 January 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>20 January 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% else %}
               <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 February 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% endif %}
 
             {% if _apprentice.secondpayment == "paid" %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Paid</span><br>18 November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>18 November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% else %}
               <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% endif %}
