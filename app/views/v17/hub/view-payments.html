@@ -70,6 +70,15 @@
       <p>We need {{_orgNamePlural}} bank details, so that we can make any hire a new apprentice payments.</p>
       <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
     </div>
+    {% elif myData.vrf == "inprogress" %}
+    <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
+      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
+      <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
+    </div>
+    <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
+      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
+      <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
+    </div> -->
     {% endif %}
 
     {% if myData.mvs == "mvslive" %}
@@ -199,6 +208,9 @@
 
           {% elif _apprentice.status == "cancelled" %}
             <td class="govuk-table__cell">Application cancelled</td>
+            <td class="govuk-table__cell">&nbsp;</td>
+          {% elif _apprentice.status == "paused" %}
+            <td class="govuk-table__cell">Application paused</td>
             <td class="govuk-table__cell">&nbsp;</td>
           {% elif _apprentice.status == "stopped" %} 
             <td class="govuk-table__cell">Apprenticeship paused or stopped</td>

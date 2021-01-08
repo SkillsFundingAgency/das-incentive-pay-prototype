@@ -1940,8 +1940,8 @@
       "startdate": "November 2020",
       "amount": 1500,
       "selected": false,
-      "applied": false,
-      "status": "",
+      "applied": true,
+      "status": "paused",
       "firstpayment": "",
       "secondpayment": ""
     },
