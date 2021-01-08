@@ -111,10 +111,14 @@ Manage apprenticeships
                                 <input class="govuk-checkboxes__input" id="apprentice-{{_apprentice.id}}" name="apprentices" type="checkbox" value="{{_apprentice.id}}" aria-describedby="new-apprentices-item-hint" {% if _apprentice.selected %} checked {% endif %} />
                                 <label class="govuk-label govuk-checkboxes__label" for="apprentice-{{_apprentice.id}}">
                                     <span class="govuk-!-font-weight-bold">{{_apprentice.name}}</span> <span style="color: #505a5f">(ULN: {{_apprentice.uln}})</span><br>
+
                                     {% if _totalApprentices > _perPage %}
-                                    <span style="color: #505a5f">{{_apprentice.startdate}} <br>
+                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span> 
+                                    {% else %}
+                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span> 
                                     {% endif %}
-                                    {{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
+                                    <br>
+                                    <span style="color: #505a5f">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
                                 </label>
                             </div>
                         {% endfor %}
