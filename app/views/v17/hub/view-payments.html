@@ -67,13 +67,13 @@
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
       <h3 class="das-panel__heading">Add {{_orgNamePlural}} bank details</h3>
-      <p>We need {{_orgNamePlural}} bank details, so that we can make any hire a new apprentice payments.</p>
+      <p>We need {{_orgNamePlural}} bank details, so that we can send any hire a new apprentice payments.</p>
       <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
     </div>
     {% elif myData.vrf == "inprogress" %}
     <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
       <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
-      <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
+      <p style="color: #0b0c0c;">We may contact someone from your organisation to confirm the information you’ve provided. We cannot send any payments until we’ve completed the review.</p>
     </div>
     <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
       <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
@@ -103,19 +103,19 @@
 
     
 
-    <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
+    <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
 
-    <p class="govuk-body">Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+    <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-          Why estimated payment dates might change
+          Why we might send the payment after the estimated date
         </span>
       </summary>
       <div class="govuk-details__text">
         
-        <p class="govuk-body">Estimated payment dates can change if the training provider:</p>
+        <p class="govuk-body">We might send the payment after the estimated date if the training provider:</p>
 
         <ul class="govuk-list govuk-list--bullet">
           <li>does not submit their information on time</li>
@@ -123,10 +123,10 @@
           <li>changes an apprentice’s start date</li>
         </ul>
         
-        <p class="govuk-body">Estimated payment dates can also change if:</p>
+        <p class="govuk-body">We also might send the payment after the estimated date if:</p>
         
         <ul class="govuk-list govuk-list--bullet">
-          <li>you’ve not added {{_orgNamePlural}} bank details or we have not confirmed them</li>
+          <li>{{_orgNamePlural}} does not add their bank details or if we have not confirmed them</li>
           <li>an apprentice takes a break in learning</li>
         </ul>
         
