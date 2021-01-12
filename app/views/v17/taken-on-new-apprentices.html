@@ -60,6 +60,18 @@
                       Does {{_orgName}} have apprentices who are eligible for the payment?
                     </h1>
                 </legend>
+
+                <!-- <div class="govuk-warning-text">
+                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                  <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+                  </strong>
+                </div> -->
+
+                <!-- <div class="govuk-hint">
+                  If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+                </div> -->
                 
                 <div class="govuk-hint">
                   {{_orgName}} cannot apply for an existing employee who joined their organisation before 1 August 2020, even if they started an apprenticeship after this date.
@@ -67,6 +79,8 @@
                 <div class="govuk-hint">
                   {{_orgName}} can only apply for new apprentices who joined their organisation from 1 August 2020 to 31 March 2021.
                 </div>
+
+                
                 
                 {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
                 <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">

@@ -80,6 +80,13 @@
         <li>to add the apprentices you want to apply for to your apprenticeship service account</li>
         <li>your organisation’s bank details (someone else from your organisation can add them later)</li>
         </ul>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+          </strong>
+        </div>
       {% else %}
         <p>The hire a new apprentice payment is available for employers that take on new apprentices from 1 August 2020 to 31 March 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
         <p>The payment is in addition to the existing £1,000 an employer will already get for taking on an apprentice who is either:</p>
@@ -108,6 +115,13 @@
         <li>to add the apprentices you want to apply for to the apprenticeship service account</li>
         <li>{{_orgNamePlural}} bank details (someone else from {{_orgName}} can add them later)</li>
         </ul>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+          </strong>
+        </div>
       {% endif %}
 
       {% set _forwardLink = "taken-on-new-apprentices" %}
