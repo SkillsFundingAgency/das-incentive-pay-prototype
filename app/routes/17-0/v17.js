@@ -187,7 +187,7 @@ module.exports = function (router,_myData) {
             req.session.myData.validationError = "true"
             req.session.myData.validationErrors.takenOnNewApprenticesAnswer = {
                 "anchor": "takenOnNewApprentices-1",
-                "message": "Select yes if you’ve taken on new apprentices who started their contract of employment between 1 August 2020 and 31 March 2021"
+                "message": "Select yes if you have apprentices who are eligible for the payment"
             }
         }
 
