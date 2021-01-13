@@ -106,7 +106,7 @@ module.exports = function (router,_myData) {
         } else {
             req.session.myData.selectLegalEntityAnswer = req.session.myData.selectLegalEntityAnswerTemp
             req.session.myData.selectLegalEntityAnswerTemp = ''
-			res.redirect(301, v + '/taken-on-new-apprentices');
+			res.redirect(301, v + '/guidance');
         }
 	});
 	
