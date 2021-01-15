@@ -195,6 +195,8 @@
 
         {% for _apprentice in myData.apprentices2 %}
         {% if (myData.apprenticesapplied > 6) or (myData.apprenticesapplied <= 6 and _apprentice.applied == true) %}
+        {% if _apprentice.status == "cancelled" and myData.mvs == "mvs" %}
+        {% else %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >{{_apprentice.name}}</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span></td>
           <td class="govuk-table__cell" style="max-width:200px">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
@@ -221,20 +223,21 @@
           {% else %}
 
             {% if _apprentice.firstpayment == "paid" %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>20 January 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>{% if myData.mvs != "mvs" %}20 {% endif %}January 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% else %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 February 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}February 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% endif %}
 
             {% if _apprentice.secondpayment == "paid" %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>18 November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% else %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>18 November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}November 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% endif %}
 
           {% endif %}
 
         </tr>
+        {% endif %}
         {% endif %}
         {% endfor %}
 
