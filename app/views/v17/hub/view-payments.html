@@ -194,7 +194,7 @@
       <tbody class="govuk-table__body">
 
         {% for _apprentice in myData.apprentices2 %}
-        {% if (myData.apprenticesapplied > 6) or (myData.apprenticesapplied <= 6 and _apprentice.applied == true) %}
+        {% if _apprentice.applied2 == true %}
         {% if _apprentice.status == "cancelled" and myData.mvs == "mvs" %}
         {% else %}
         <tr class="govuk-table__row">
@@ -218,6 +218,9 @@
             <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
             <td class="govuk-table__cell">&nbsp;</td>
           {% elif _apprentice.status == "toconfirm" %} 
+            <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+            <td class="govuk-table__cell">&nbsp;</td>
+          {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
             <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
             <td class="govuk-table__cell">&nbsp;</td>
           {% else %}
@@ -273,15 +276,15 @@
 
 
         {
-          href: "view-payments?applied=0",
+          href: "view-payments?applied=0&r=t",
           text: "0"
         },
         {
-          href: "view-payments?applied=6",
+          href: "view-payments?applied=6&r=t",
           text: "some"
         },
         {
-          href: "view-payments?applied=300",
+          href: "view-payments?applied=300&r=t",
           text: "lots"
         }
       ]

@@ -4,6 +4,7 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 var _myData = {
+    "appliedApprenticesSet": false,
     "includeValidation": "true",
     "apprentices": require(__dirname + '/data/apprentices.json'),
     "apprentices2": require(__dirname + '/data/apprentices2.json'),

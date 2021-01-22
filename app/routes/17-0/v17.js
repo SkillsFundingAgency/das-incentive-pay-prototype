@@ -16,11 +16,11 @@ module.exports = function (router,_myData) {
 		req.session.myData.legalagreement = "true"
 		req.session.myData.legalagreement2 = "true"
 		req.session.myData.vrf = "notadded"
-		req.session.myData.apprenticesavailable = 6
-		req.session.myData.apprenticesapplied = 6
+		req.session.myData.apprenticesavailable = 300
+		req.session.myData.apprenticesapplied = 0
 		req.session.myData.mvs = "nonmvs"
-		req.session.myData.closing = "false"
-		req.session.myData.page = 1
+		req.session.myData.closing = "true"
+        req.session.myData.page = 1
 		
     }
 
@@ -48,6 +48,46 @@ module.exports = function (router,_myData) {
         req.session.myData.closing =  req.query.closing || req.session.myData.closing
         req.session.myData.page =  req.query.page || req.session.myData.page
         req.session.myData.declaration =  req.query.declaration || ""
+
+        // Sort default applied apprentices
+        if(req.session.myData.appliedApprenticesSet == false){
+            req.session.myData.appliedApprenticesSet = true
+            req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+                if(req.session.myData.apprenticesapplied == 6){
+                    //set custom set
+                    //   "id": 301,
+                    //   "name": "Corina Carver",
+
+                    //   "id": 302,
+                    //   "name": "Jack Roberts",
+
+                    //   "id": 303,
+                    //   "name": "Jas Johal",
+
+                    //   "id": 139,
+                    //   "name": "Joaquim Pinto",
+
+                    //   "id": 304,
+                    //   "name": "John Peters",
+
+                    //   "id": 305,
+                    //   "name": "Michael Johnson",
+
+                    //   "id": 306,
+                    //   "name": "Steven Smith",
+
+                    if([301,302,303,139,304,305,306].includes(_apprentice.id)){
+                        _apprentice.applied2 = true
+                    }
+                } else if(req.session.myData.apprenticesapplied == 300){
+                    //set all
+                    _apprentice.applied2 = true
+                } else {
+                    //set none
+                    _apprentice.applied2 = false
+                }
+            });
+        }
 		
         next()
 	});
@@ -261,7 +301,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.availableApprentices = []
 		var _count = 0
 		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
-			if(_apprentice.applied == false && _count < req.session.myData.apprenticesavailable){
+			if(_apprentice.applied2 == false && _count < req.session.myData.apprenticesavailable){
 				req.session.myData.availableApprentices.push(_apprentice)
 				_count++
 			}
@@ -298,9 +338,12 @@ module.exports = function (router,_myData) {
             req.session.myData.selectedApprenticesTotalAmount = 0
 			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
 				if(req.session.myData.selectNewApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
+                    _apprentice.selected = true
                     req.session.myData.selectedApprentices.push(_apprentice)
                     req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount + _apprentice.amount
-				}
+                } else {
+                    _apprentice.selected = false
+                }
             });
             req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -335,6 +378,15 @@ module.exports = function (router,_myData) {
         });
 	});
 	router.post(v + '/sign-agreement', function (req, res) {
+
+        // set applied apprentices
+        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if(_apprentice.selected == true){
+                _apprentice.applied2 = true
+                req.session.myData.apprenticesapplied++
+            }
+        });
+
 		if(req.session.myData.vrf == "notadded"){
 			res.redirect(v + '/bank-details-needed')
 		} else {
@@ -395,7 +447,6 @@ module.exports = function (router,_myData) {
 	});
 	// Application complete
 	router.get(v + '/confirmation', function (req, res) {
-		req.session.myData.apprenticesapplied = req.session.myData.apprenticesavailable
 		res.render(vx + '/confirmation', {
 			myData: req.session.myData
 		});
