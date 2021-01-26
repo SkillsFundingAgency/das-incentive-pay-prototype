@@ -55,6 +55,10 @@ module.exports = function (router,_myData) {
             req.session.myData.apprentices2.forEach(function(_apprentice, index) {
                 if(req.session.myData.apprenticesapplied == 6){
                     //set custom set
+
+                    //   "id": 229,
+                    //   "name": "Pauline Fowler",
+
                     //   "id": 301,
                     //   "name": "Corina Carver",
 
@@ -76,7 +80,7 @@ module.exports = function (router,_myData) {
                     //   "id": 306,
                     //   "name": "Steven Smith",
 
-                    if([301,302,303,139,304,305,306].includes(_apprentice.id)){
+                    if([301,302,303,139,304,305,306,229].includes(_apprentice.id)){
                         _apprentice.applied2 = true
                     }
                 } else if(req.session.myData.apprenticesapplied == 300){

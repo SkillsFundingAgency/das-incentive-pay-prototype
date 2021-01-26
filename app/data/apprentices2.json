@@ -3428,9 +3428,9 @@
       "startdate": "December 2020",
       "amount": 2000,
       "selected": false,
-      "applied": false,
+      "applied": true,
 "applied2": false,
-      "status": "",
+      "status": "rejected",
       "firstpayment": "",
       "secondpayment": ""
     },

@@ -214,6 +214,9 @@
           {% elif _apprentice.status == "paused" %}
             <td class="govuk-table__cell">Application paused</td>
             <td class="govuk-table__cell">&nbsp;</td>
+          {% elif _apprentice.status == "rejected" %}
+              <td class="govuk-table__cell">Application rejected</td>
+              <td class="govuk-table__cell">&nbsp;</td>
           {% elif _apprentice.status == "stopped" %} 
             <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
             <td class="govuk-table__cell">&nbsp;</td>
