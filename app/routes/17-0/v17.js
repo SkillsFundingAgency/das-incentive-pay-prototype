@@ -465,16 +465,76 @@ module.exports = function (router,_myData) {
 
 	// Remove application
 	router.get(v + '/hub/remove-apprentice', function (req, res) {
+
+        req.session.myData.page = req.query.page || req.session.myData.page
+
+		req.session.myData.removableApprentices = []
+		var _count = 0
+		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+
+			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled"){
+				req.session.myData.removableApprentices.push(_apprentice)
+				_count++
+			}
+        });
+        
 		res.render(vx + '/hub/remove-apprentice', {
 			myData: req.session.myData
 		});
-	});
+    });
+	router.post(v + '/hub/remove-apprentice', function (req, res) {
+
+		req.session.myData.removeApprenticesAnswerTemp = req.body.apprentices
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.removeApprenticesAnswerTemp = req.session.myData.removeApprenticesAnswerTemp || "1"
+		}
+        if(req.session.myData.removeApprenticesAnswerTemp == "_unchecked"){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.removeApprenticesAnswer = {
+                "anchor": "apprentice-1",
+                "message": "[error message]"
+            }
+		}
+		
+		if(req.session.myData.validationError == "true") {
+            res.render(vx + '/hub/remove-apprentice', {
+                myData: req.session.myData
+            });
+        } else {
+            req.session.myData.removeApprenticesAnswer = req.session.myData.removeApprenticesAnswerTemp
+			req.session.myData.removeApprenticesAnswerTemp = ''
+
+            req.session.myData.selectedApprentices = []
+            req.session.myData.selectedApprenticesTotalAmount = 0
+			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+				if(req.session.myData.removeApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
+                    _apprentice.selected = true
+                    req.session.myData.selectedApprentices.push(_apprentice)
+                    // req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount + _apprentice.amount
+                } else {
+                    _apprentice.selected = false
+                }
+            });
+            // req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+			res.redirect(v + '/hub/confirmation')
+		}
+	})
 	// Remove application - check answers
 	router.get(v + '/hub/confirmation', function (req, res) {
 		res.render(vx + '/hub/confirmation', {
 			myData: req.session.myData
 		});
-	});
+    });
+    router.post(v + '/hub/confirmation', function (req, res) {
+        // set cancelled apprentices
+        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if(_apprentice.selected == true){
+                _apprentice.status = "cancelled"
+            }
+        });
+        res.redirect(v + '/hub/removed')
+	})
 	// Remove application - removed
 	router.get(v + '/hub/removed', function (req, res) {
 		req.session.myData.removedapplication = true
