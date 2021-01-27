@@ -458,6 +458,17 @@ module.exports = function (router,_myData) {
 
 	// View applications
 	router.get(v + '/hub/view-payments', function (req, res) {
+
+        req.session.myData.removableApprentices = []
+		var _count = 0
+		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+
+			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
+				req.session.myData.removableApprentices.push(_apprentice)
+				_count++
+			}
+        });
+
 		res.render(vx + '/hub/view-payments', {
 			myData: req.session.myData
 		});
@@ -472,7 +483,7 @@ module.exports = function (router,_myData) {
 		var _count = 0
 		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
 
-			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled"){
+			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
 				req.session.myData.removableApprentices.push(_apprentice)
 				_count++
 			}
