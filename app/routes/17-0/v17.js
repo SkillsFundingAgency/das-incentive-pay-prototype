@@ -503,7 +503,7 @@ module.exports = function (router,_myData) {
             req.session.myData.validationError = "true"
             req.session.myData.validationErrors.removeApprenticesAnswer = {
                 "anchor": "apprentice-1",
-                "message": "[error message]"
+                "message": "Select which apprentices you want to cancel an application for"
             }
 		}
 		

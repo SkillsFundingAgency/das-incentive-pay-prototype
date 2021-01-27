@@ -57,8 +57,12 @@ Manage apprenticeships
           {% endif %}
 
           <h1 class="govuk-heading-xl">
-              [title]
+            Which apprentices do you want to cancel an application for?
           </h1>
+
+          <p class="govuk-body">
+            Cancel an application if an apprentice is not eligible for the hire a new apprentice payment.
+          </p>
 
           <div class="govuk-form-group {% if myData.validationErrors.removeApprenticesAnswer %}govuk-form-group--error{% endif %}">
               <fieldset class="govuk-fieldset" >
@@ -146,7 +150,7 @@ Manage apprenticeships
           _first = (_page - 1) * {{_perPage}} + 1
           _last = _page * {{_perPage}}
 
-          _pagingLabel.text("Showing " + _first + " to " + _last + " of [apprentices]")
+          _pagingLabel.text("Showing " + _first + " to " + _last + " of all apprentices")
 
           if(_page > 1){
               _previouspage.show()

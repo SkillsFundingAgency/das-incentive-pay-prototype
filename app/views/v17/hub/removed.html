@@ -16,16 +16,24 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">Apprentices removed</h1>
+        {% if myData.selectedApprentices.length != 1 %}
+          <h1 class="govuk-panel__title">Applications cancelled</h1>
+        {% else %}
+          <h1 class="govuk-panel__title">Application cancelled</h1>
+        {% endif %}
       </div>
-     
-      <p>
-        We have sent you a confirmation email.
-      </p>
 
-      <p>You cannot apply for this apprentice again and we have removed them from your applications.</p>
-      
-      <p><a href="view-payments">View your applications and estimated payments.</a>
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      {% if myData.selectedApprentices.length != 1 %}
+        <p class="govuk-body">{{myData.selectedApprentices.length}} applications cancelled. You will not receive any hire a new apprentice payments for these apprentices and you cannot apply for them again.</p>
+      {% else %}
+        <p class="govuk-body">One application cancelled. You will not receive any hire a new apprentice payments for this apprentice and you cannot apply for them again.</p>
+      {% endif %}
+
+      <p class="govuk-body"><a href="view-payments" class="govuk-button">View applications</a>
+
+      <p class="govuk-body"><a href="feedback" class="govuk-link govuk-link--no-visited-state">What did you think of this service?</a> (takes 30 seconds)</p>
 
     </div>
   </div>
