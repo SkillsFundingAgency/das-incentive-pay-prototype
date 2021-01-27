@@ -10,13 +10,15 @@
   {% include "../includes/account-header.html" %}
 {% endblock %}
 
+{% set _cancelledCount = myData.selectedApprentices.length or 1 %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        {% if myData.selectedApprentices.length != 1 %}
+        {% if _cancelledCount != 1 %}
           <h1 class="govuk-panel__title">Applications cancelled</h1>
         {% else %}
           <h1 class="govuk-panel__title">Application cancelled</h1>
@@ -25,8 +27,8 @@
 
       <h2 class="govuk-heading-m">What happens next</h2>
 
-      {% if myData.selectedApprentices.length != 1 %}
-        <p class="govuk-body">{{myData.selectedApprentices.length}} applications cancelled. You will not receive any hire a new apprentice payments for these apprentices and you cannot apply for them again.</p>
+      {% if _cancelledCount != 1 %}
+        <p class="govuk-body">{{_cancelledCount}} applications cancelled. You will not receive any hire a new apprentice payments for these apprentices and you cannot apply for them again.</p>
       {% else %}
         <p class="govuk-body">One application cancelled. You will not receive any hire a new apprentice payments for this apprentice and you cannot apply for them again.</p>
       {% endif %}

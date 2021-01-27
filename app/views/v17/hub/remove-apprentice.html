@@ -150,7 +150,7 @@ Manage apprenticeships
           _first = (_page - 1) * {{_perPage}} + 1
           _last = _page * {{_perPage}}
 
-          _pagingLabel.text("Showing " + _first + " to " + _last + " of all apprentices")
+          _pagingLabel.text("Showing " + _first + " to " + _last + " of " + _totalCheckboxes + " apprentices")
 
           if(_page > 1){
               _previouspage.show()
