@@ -92,6 +92,14 @@ module.exports = function (router,_myData) {
                 }
             });
         }
+
+        //Set removable apprentices
+        req.session.myData.removableApprentices = []
+		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
+				req.session.myData.removableApprentices.push(_apprentice)
+			}
+        });
 		
         next()
 	});
@@ -458,17 +466,6 @@ module.exports = function (router,_myData) {
 
 	// View applications
 	router.get(v + '/hub/view-payments', function (req, res) {
-
-        req.session.myData.removableApprentices = []
-		var _count = 0
-		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
-
-			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
-				req.session.myData.removableApprentices.push(_apprentice)
-				_count++
-			}
-        });
-
 		res.render(vx + '/hub/view-payments', {
 			myData: req.session.myData
 		});
@@ -476,19 +473,7 @@ module.exports = function (router,_myData) {
 
 	// Remove application
 	router.get(v + '/hub/remove-apprentice', function (req, res) {
-
         req.session.myData.page = req.query.page || req.session.myData.page
-
-		req.session.myData.removableApprentices = []
-		var _count = 0
-		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
-
-			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
-				req.session.myData.removableApprentices.push(_apprentice)
-				_count++
-			}
-        });
-        
 		res.render(vx + '/hub/remove-apprentice', {
 			myData: req.session.myData
 		});
