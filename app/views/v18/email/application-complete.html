@@ -1,0 +1,53 @@
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>Your hire a new apprentice payment application</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+        <p>We’ve received your application for the hire a new apprentice payment.</p>
+        <p>We’ll review your information and may contact someone from your organisation to verify the information you’ve provided.</p>
+        <p>From</p>
+        <p>Apprenticeship Service</p>
+        <p>This is an automated message - do not reply.</p>
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

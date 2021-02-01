@@ -1,0 +1,51 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "./includes/account-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "check-answers"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Declaration</h1>
+      <p>You are about to submit {{_orgNamePlural}} application for the hire a new apprentice payment.</p>
+      <p>By submitting this application, you declare that:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>all the information in this application is correct</li>
+        <li>all the apprentices in this application are new employees who joined {{_orgName}} from 1 August 2020 to 31 March 2021</li>
+        <li>you understand that {{_orgName}} must tell the Education and Skills Funding Agency about any change to any of the information provided</li>
+        <li>you have read and understood the agreement</li>
+        {% if myData.declaration == "v5" %}<li>{{_orgName}} accepts the 1 February 2021 variation to the agreement</li>{% endif %}
+        <li>you understand that if you have provided any inaccurate or misleading information, {{_orgName}} may have to repay any relevant hire a new apprentice payments</li>
+      </ul>
+    <form action="" method="post" class="form">
+
+      {{ govukButton({
+        text: "Confirm and submit"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
