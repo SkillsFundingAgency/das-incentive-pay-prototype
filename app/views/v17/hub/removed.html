@@ -28,9 +28,9 @@
       <h2 class="govuk-heading-m">What happens next</h2>
 
       {% if _cancelledCount != 1 %}
-        <p class="govuk-body">{{_cancelledCount}} applications cancelled. You will not receive any hire a new apprentice payments for these apprentices and you cannot apply for them again.</p>
+        <p class="govuk-body">{{_cancelledCount}} applications cancelled. You will not receive any hire a new apprentice payments for these apprentices.</p>
       {% else %}
-        <p class="govuk-body">One application cancelled. You will not receive any hire a new apprentice payments for this apprentice and you cannot apply for them again.</p>
+        <p class="govuk-body">One application cancelled. You will not receive any hire a new apprentice payments for this apprentice.</p>
       {% endif %}
 
       <p class="govuk-body"><a href="view-payments" class="govuk-button">View applications</a>
