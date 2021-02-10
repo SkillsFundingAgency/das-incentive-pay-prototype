@@ -77,6 +77,10 @@
 
       <p class="govuk-body govuk-!-margin-top-4"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Change apprentices</a></p>
 
+      {{ govukWarningText({
+        text: "If you cancel an application, you will have to repay any payments that you’ve already received.",
+        iconFallbackText: "Warning"
+      }) }}
 
       <form method="post">
 

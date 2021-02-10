@@ -104,6 +104,11 @@ Manage apprenticeships
               </fieldset>
           </div>
 
+          {{ govukWarningText({
+            text: "If you cancel an application, you will have to repay any payments that you’ve already received.",
+            iconFallbackText: "Warning"
+          }) }}
+
           {{ govukButton({
               text: "Continue"
           }) }}
