@@ -2,415 +2,503 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl">Employer incentives prototypes</h1>
-    <!-- <p>We are designing a service to provide financial incentives to employers who newly employ apprentices from September 2020 onwards.</p> -->
-    {{ govukAccordion({
-      id: "accordion-default",
-      items: [
-        {
-          heading: {
-            text: "Version 18"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V18 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
 
-              <li>
-                Version 18:
-                <ul>
-                  <li><a href='v18/setup'>Start</a></li>
-                </ul>
-              </li>
-              
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 17"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V17 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Ready for UR</span>
-            <ul class='govuk-list govuk-list--bullet'>
 
-              <li>
-                Version 17:
-                <ul>
-                  <li><a href='v17/setup'>Start</a></li>
-                </ul>
-              </li>
-              
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 16"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V16 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
+    <table class="govuk-table">
+      <thead class="govuk-table__head" >
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Version</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Notes</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" >
+            <a href="v18/setup?r=t" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;18</a>
+          </td>
+          <td class="govuk-table__cell" style="min-width: 250px;" >
+            <strong class="govuk-tag" style="background: purple;">
+              IN PROGRESS
+            </strong>
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" >
+            <a href="v17/setup?r=t" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;17</a>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            2 - 5 February 2021
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
 
-              <li>
-                Version 16:
-                <ul>
-                  <li><a href='v16/setup'>Start</a></li>
-                </ul>
-              </li>
-              
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 15"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V15 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" >
+            <a href="v16/setup?r=t" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;16</a>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            11 - 22 December 2020.
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
 
-              <li>
-                Version 15:
-                <ul>
-                  <li><a href='v15/setup'>Start</a></li>
-                </ul>
-              </li>
-              
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 14"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V14 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v14/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v14/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v14/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v14/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v14/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v14/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
-            <li><a href='v14/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
-            <li><a href='v14/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
-            <li><a href='v14/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
-            <li><a href='v14/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
-            <li><a href='v14/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
-            <li><a href='v14/hub/home'>Incentive hub</a></li>
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 13"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V13 - incentive hub.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v13/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v13/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v13/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v13/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v13/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v13/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
-            <li><a href='v13/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
-            <li><a href='v13/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
-            <li><a href='v13/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
-            <li><a href='v13/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
-            <li><a href='v13/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
-            <li><a href='v13/hub/home'>Incentive hub</a></li>
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 12"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V12 - more post-MVS stuff.</h2>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Work in progress</span>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v12/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v12/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v12/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v12/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v12/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v12/guidance'>Guidance (start) page</a></li>
-            <li><a href='v12/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
-            <li><a href='v12/account-with-bank-skipped'>Account home - alert to finish adding bank details</a></li>
-            <li><a href='v12/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
-            <li><a href='v12/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
-            <li><a href='v12/email/still-need-to-add-bank-details'>Email when user has not completed VRF after a period of time</a></li>
-            <li><a href='v12/shutter/no-new-apprentices'>Shutter page - qualification question (do you have apprentices new to your organisation?)</a></li>
-            <li><a href='v12/shutter/cannot-apply'>Shutter page - no commitments (no commitments within account which have an eligible planned start date)</a></li>
-            <li><a href='v12/shutter/access-denied'>Shutter - account doesn't have permissions to apply or change bank details</a></li>
-            <li><a href='v12/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
-            <li><a href='v12/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
-            <li><a href='v12/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
-            <li><a href='v12/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
-            <li><a href='v12/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 11"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V11 - more post-MVS stuff.</h2>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Added 'bank details' alert in account home and some shutter pages.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v11/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v11/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v11/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v11/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v11/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v11/guidance'>Guidance (start) page</a></li>
-            <li><a href='v11/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
-            <li><a href='v11/account-with-bank-skipped'>Account home - alert to finish adding bank details</a></li>
-            <li><a href='v11/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
-            <li><a href='v11/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
-            <li><a href='v11/email/still-need-to-add-bank-details'>Email when user has not completed VRF after a period of time</a></li>
-            <li><a href='v11/shutter/no-new-apprentices'>Shutter page - qualification question (do you have apprentices new to your organisation?)</a></li>
-            <li><a href='v11/shutter/cannot-apply'>Shutter page - no commitments (no commitments within account which have an eligible planned start date)</a></li>
-            <li><a href='v11/shutter/access-denied'>Shutter - account doesn't have permissions to apply or change bank details</a></li>
-            <li><a href='v11/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
-            <li><a href='v11/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
-            <li><a href='v11/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
-            <li><a href='v11/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
-            </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 10 and MVS"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>MVS - apply MVS journey.</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>READY FOR BUILD</span>
-            <p>MVS - dev build - 13/08/2020.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='mvs/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='mvs/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='mvs/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='mvs/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='mvs/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='mvs/guidance'>Guidance (start) page</a></li>
-            <li><a href='mvs/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
-            <li><a href='mvs/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
-            <li><a href='mvs/shutter/no-new-apprentices'>Shutter page - qualification question</a></li>
-            <li><a href='mvs/shutter/cannot-apply'>Shutter - no commitments</a></li>
-            <li><a href='mvs/shutter/access-denied'>Shutter - permissions</a></li>
-            <li><a href='mvs/error/page-not-found'>Error - page not found</a></li>
-            <li><a href='mvs/payments/view-applications'>View applications - MVS</a></li>
-            <li><a href='mvs/payments/view-applications-empty'>View applications - no applications</a></li>
-            </ul>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell" >
+            <a href="v15/setup?r=t" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;15</a>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V10 - more post-MVS tweaks.</h2>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v10/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v10/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v10/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v10/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v10/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v10/guidance'>Guidance (start) page</a></li>
-            <li><a href='v10/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
-            <li><a href='v10/payments/view-payments'>View payments - first design.</a></li>
-            <li><a href='v10/lots-of-apprentices'>Lots of apprentices - added in start date to checkboxes and sorted by start date.</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;14</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v14/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v14/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v14/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v14/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v14/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v14/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
+              <li><a href='v14/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
+              <li><a href='v14/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
+              <li><a href='v14/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
+              <li><a href='v14/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
+              <li><a href='v14/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
+              <li><a href='v14/hub/home'>Incentive hub</a></li>
             </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 9"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V9 - content changes and updates to VRF pages, first 'view payments' design.</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Content tweaks and changes to VRF pages. Added in first thoughts design for 'view payments'.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v9/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v9/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v9/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v9/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v9/account-subsequent-application'>Start point: subsequent application</a></li>
-            <li><a href='v9/guidance'>Guidance (start) page</a></li>
-            <li><a href='v9/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
-            <li><a href='v9/payments/view-payments'>View payments - first design.</a></li>
-            <li><a href='v9/lots-of-apprentices'>Lots of apprentices - added in start date to checkboxes and sorted by start date.</a></li>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;13</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v13/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v13/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v13/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v13/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v13/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v13/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
+              <li><a href='v13/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
+              <li><a href='v13/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
+              <li><a href='v13/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
+              <li><a href='v13/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
+              <li><a href='v13/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
+              <li><a href='v13/hub/home'>Incentive hub</a></li>
             </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 8"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V8 - integration with business central</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Added integration with BC journey for VRF form. Changed CoA in service to declaration and updated content overall to reflect policy better.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v8/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v8/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v8/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
-            <li><a href='v8/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
-            <li><a href='v8/guidance'>Guidance (start) page</a></li>
-            <li><a href='v8/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;12</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v12/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v12/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v12/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v12/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v12/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v12/guidance'>Guidance (start) page</a></li>
+              <li><a href='v12/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
+              <li><a href='v12/account-with-bank-skipped'>Account home - alert to finish adding bank details</a></li>
+              <li><a href='v12/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+              <li><a href='v12/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
+              <li><a href='v12/email/still-need-to-add-bank-details'>Email when user has not completed VRF after a period of time</a></li>
+              <li><a href='v12/shutter/no-new-apprentices'>Shutter page - qualification question (do you have apprentices new to your organisation?)</a></li>
+              <li><a href='v12/shutter/cannot-apply'>Shutter page - no commitments (no commitments within account which have an eligible planned start date)</a></li>
+              <li><a href='v12/shutter/access-denied'>Shutter - account doesn't have permissions to apply or change bank details</a></li>
+              <li><a href='v12/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
+              <li><a href='v12/error/problem-with-service'>Error - problem with service when trying to submit (somethings changed somewhere so apply again)</a></li>
+              <li><a href='v12/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
+              <li><a href='v12/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
+              <li><a href='v12/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
             </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 5 - 7"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V7 - alternative 'save and complete later' journey</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <span class='govuk-tag govuk-tag--grey govuk-!-margin-bottom-4'>Alternative design</span>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Alternative version where the user has the opportunity to save and return later at the 'terms' and 'bank details' interactions. The application would not be submitted or completed until all data is collected.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v7/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v7/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v7/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
-            <li><a href='v7/account-subsequent-application'>Account dashboard to make subsequent application</a></li>
-            <li><a href='v7/guidance'>Guidance (start) page</a></li>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version&nbsp;11</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v11/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v11/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v11/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v11/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v11/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v11/guidance'>Guidance (start) page</a></li>
+              <li><a href='v11/lots-of-apprentices'>Select new apprentices with lots of learners</a></li>
+              <li><a href='v11/account-with-bank-skipped'>Account home - alert to finish adding bank details</a></li>
+              <li><a href='v11/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+              <li><a href='v11/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
+              <li><a href='v11/email/still-need-to-add-bank-details'>Email when user has not completed VRF after a period of time</a></li>
+              <li><a href='v11/shutter/no-new-apprentices'>Shutter page - qualification question (do you have apprentices new to your organisation?)</a></li>
+              <li><a href='v11/shutter/cannot-apply'>Shutter page - no commitments (no commitments within account which have an eligible planned start date)</a></li>
+              <li><a href='v11/shutter/access-denied'>Shutter - account doesn't have permissions to apply or change bank details</a></li>
+              <li><a href='v11/error/page-not-found'>Error - page not found (404 but can occur if the user tries to navigate to a page within the application after they've completed)</a></li>
+              <li><a href='v11/payments/view-applications-no-bank-details'>View applications and payment info - no VRF complete</a></li>
+              <li><a href='v11/payments/view-applications-in-progress'>View applications and payment info - VRF complete and in progress with BC</a></li>
+              <li><a href='v11/payments/view-applications-vendor-setup-complete'>View applications and payment info - VRF complete and BC vendor set up complete</a></li>
             </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            Added 'bank details' alert in account home and some shutter pages.
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V6 - added subsequent application</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <p>Added functionality to prototype to show subsequent application journey, where bank details would not be required.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v6/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v6/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v6/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
-            <li><a href='v6/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
-            <li><a href='v6/account-subsequent-application'>Account dashboard to make subsequent application</a></li>
-            <li><a href='v6/guidance'>Guidance (start) page</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 10 and MVS</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='mvs/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='mvs/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='mvs/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='mvs/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='mvs/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='mvs/guidance'>Guidance (start) page</a></li>
+              <li><a href='mvs/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+              <li><a href='mvs/email/reminder-bank-details'>Email when user is filling out bank details in application</a></li>
+              <li><a href='mvs/shutter/no-new-apprentices'>Shutter page - qualification question</a></li>
+              <li><a href='mvs/shutter/cannot-apply'>Shutter - no commitments</a></li>
+              <li><a href='mvs/shutter/access-denied'>Shutter - permissions</a></li>
+              <li><a href='mvs/error/page-not-found'>Error - page not found</a></li>
+              <li><a href='mvs/payments/view-applications'>View applications - MVS</a></li>
+              <li><a href='mvs/payments/view-applications-empty'>View applications - no applications</a></li>
             </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            MVS - apply MVS journey.<br>
+            MVS - dev build - 13/08/2020.
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V5 - iterated content and added initial campaign material</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Added campaign material. Iterated guidance to make clearer what the applicant needs. Iterated 'select apprentices' page to call out that the user is applying for these apprentices. Content tweaks on confirmation page for 'what happens next'.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v5/campaign/email'>Start point: campaign email</a></li>
-            <li><a href='v5/campaign/landing'>Campaign landing page</a></li>
-            <li><a href='v5/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
-            <li><a href='v5/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
-            <li><a href='v5/guidance'>Guidance (start) page</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">V10 - more post-MVS tweaks</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v10/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v10/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v10/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v10/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v10/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v10/guidance'>Guidance (start) page</a></li>
+              <li><a href='v10/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+              <li><a href='v10/payments/view-payments'>View payments - first design.</a></li>
+              <li><a href='v10/lots-of-apprentices'>Lots of apprentices - added in start date to checkboxes and sorted by start date.</a></li>
             </ul>
-            "
-          }
-        },
-        {
-          heading: {
-            text: "Version 1 - 4"
-          },
-          content: {
-            html:
-            "
-            <h2 class='govuk-heading-s'>V4 - non-linear journey allowing bank details to be completed later</h2>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Iterated to separate journey of adding bank details to applying. This version is designed to allowing a 'complete this later' for the bank account details during the application for incentive.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v4/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
-            <li><a href='v4/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
-            <li><a href='v4/guidance'>Guidance (start) page</a></li>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 9</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v9/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v9/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v9/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v9/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v9/account-subsequent-application'>Start point: subsequent application</a></li>
+              <li><a href='v9/guidance'>Guidance (start) page</a></li>
+              <li><a href='v9/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
+              <li><a href='v9/payments/view-payments'>View payments - first design.</a></li>
+              <li><a href='v9/lots-of-apprentices'>Lots of apprentices - added in start date to checkboxes and sorted by start date.</a></li>
             </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            Content changes and updates to VRF pages, first 'view payments' design
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V3 - non-linear journey requiring bank account before applying</h2>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Iterated to separate journey of adding bank details to applying. This version is designed to ensure this is done before applying for the incentive.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v3/account-no-bank'>Start point: financial area in employer account and banner</a></li>
-            <li><a href='v3/guidance'>Guidance (start) page</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 8</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v8/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v8/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v8/account-home-not-applied'>Start point: financial area in employer account and banner with legal agreement already signed</a></li>
+              <li><a href='v8/account-no-agreement'>Start point: financial area in employer account and banner with legal agreement NOT signed</a></li>
+              <li><a href='v8/guidance'>Guidance (start) page</a></li>
+              <li><a href='v8/email/need-to-add-bank-details'>Email to complete bank details when skipped</a></li>
             </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V8 - integration with business central<br>
+            Added integration with BC journey for VRF form. Changed CoA in service to declaration and updated content overall to reflect policy better
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V2 - linear journey</h2>
-            <span class='govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4'>Researched</span>
-            <p>Content iterations. Added a shutter page for employers with no apprentices in account that are 16-24/start date after September.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v2/account-home'>Start point 1: apprentices area in employer account</a></li>
-            <li><a href='v2/account-home-2'>Start point 2: finance section in employer account</a></li>
-            <li><a href='v2/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
-            <li><a href='v2/guidance'>Guidance (start) page</a></li>
-            <li><a href='v2/shutter/cannot-apply-yet'>Shutter page when no apprentices in account</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 7</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v7/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v7/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v7/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
+              <li><a href='v7/account-subsequent-application'>Account dashboard to make subsequent application</a></li>
+              <li><a href='v7/guidance'>Guidance (start) page</a></li>
             </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V7 - alternative 'save and complete later' journey<br><br>
+            Alternative version where the user has the opportunity to save and return later at the 'terms' and 'bank details' interactions. The application would not be submitted or completed until all data is collected.
+          </td>
+        </tr>
 
-            <hr class='govuk-section-break govuk-section-break--m govuk-section-break--visible'>
-
-            <h2 class='govuk-heading-s'>V1 - linear journey</h2>
-            <span class='govuk-tag govuk-tag--green govuk-!-margin-bottom-4'>Iterated</span>
-            <p>Initial prototype design. Content may iterate to add more body text to pages.</p>
-            <ul class='govuk-list govuk-list--bullet'>
-            <li><a href='v1/account-home'>Start point 1: apprentices area in employer account</a></li>
-            <li><a href='v1/account-home-2'>Start point 2: finance section in employer account</a></li>
-            <li><a href='v1/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
-            <li><a href='v1/guidance'>Guidance (start) page</a></li>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 6</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v6/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v6/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v6/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
+              <li><a href='v6/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
+              <li><a href='v6/account-subsequent-application'>Account dashboard to make subsequent application</a></li>
+              <li><a href='v6/guidance'>Guidance (start) page</a></li>
             </ul>
-            "
-          }
-        }
-      ]
-    }) }}
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V6 - added subsequent application<br><br>
+            Added functionality to prototype to show subsequent application journey, where bank details would not be required.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 5</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v5/campaign/email'>Start point: campaign email</a></li>
+              <li><a href='v5/campaign/landing'>Campaign landing page</a></li>
+              <li><a href='v5/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
+              <li><a href='v5/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
+              <li><a href='v5/guidance'>Guidance (start) page</a></li>
+            </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V5 - iterated content and added initial campaign material<br><br>
+            Added campaign material. Iterated guidance to make clearer what the applicant needs. Iterated 'select apprentices' page to call out that the user is applying for these apprentices. Content tweaks on confirmation page for 'what happens next'.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 4</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v4/account-home-not-applied'>Start point: financial area in employer account and banner - application not made yet</a></li>
+              <li><a href='v4/account-with-bank-skipped'>Account dashboard after application made with no bank details provided</a></li>
+              <li><a href='v4/guidance'>Guidance (start) page</a></li>
+            </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V4 - non-linear journey allowing bank details to be completed later<br><br>
+            Iterated to separate journey of adding bank details to applying. This version is designed to allowing a 'complete this later' for the bank account details during the application for incentive.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 3</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v3/account-no-bank'>Start point: financial area in employer account and banner</a></li>
+              <li><a href='v3/guidance'>Guidance (start) page</a></li>
+            </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V3 - non-linear journey requiring bank account before applying<br><br>
+            Iterated to separate journey of adding bank details to applying. This version is designed to ensure this is done before applying for the incentive.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 2</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v2/account-home'>Start point 1: apprentices area in employer account</a></li>
+              <li><a href='v2/account-home-2'>Start point 2: finance section in employer account</a></li>
+              <li><a href='v2/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
+              <li><a href='v2/guidance'>Guidance (start) page</a></li>
+              <li><a href='v2/shutter/cannot-apply-yet'>Shutter page when no apprentices in account</a></li>
+            </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V2 - linear journey<br><br>
+            Content iterations. Added a shutter page for employers with no apprentices in account that are 16-24/start date after September.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"  >
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-font-weight-bold">Version 1</p>
+            <ul class='govuk-list govuk-list--bullet govuk-!-font-size-14'>
+              <li><a href='v1/account-home'>Start point 1: apprentices area in employer account</a></li>
+              <li><a href='v1/account-home-2'>Start point 2: finance section in employer account</a></li>
+              <li><a href='v1/account-home-3'>Start point 3: account homepage and apprentices area in employer account</a></li>
+              <li><a href='v1/guidance'>Guidance (start) page</a></li>
+            </ul>
+          </td>
+          <td class="govuk-table__cell" >
+            <strong class="govuk-tag" style="background: green;">
+              TESTED
+            </strong>
+            <br>
+            [dates?]
+            <br>
+          </td>
+          <td class="govuk-table__cell" >
+            V1 - linear journey<br><br>
+            Initial prototype design. Content may iterate to add more body text to pages
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
   </div>
 </div>
 
