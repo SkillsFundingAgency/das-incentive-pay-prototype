@@ -24,8 +24,8 @@
       <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
 
       {% if myData.vrf == "notadded" or myData.vrf == "inprogress" %}
-      <p class="govuk-body">We cannot make any payments until we’ve verified {{_orgNamePlural}} bank details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
-      <h2 class="govuk-heading-m">After we’ve verified your bank details</h2>
+      <p class="govuk-body">We cannot make any payments until we’ve verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+      <h2 class="govuk-heading-m">After we’ve verified {{_orgNamePlural}} organisation and finance details</h2>
       {% endif %}
 
       <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
