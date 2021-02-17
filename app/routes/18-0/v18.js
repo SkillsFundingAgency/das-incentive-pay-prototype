@@ -414,7 +414,7 @@ module.exports = function (router,_myData) {
 	});
 	router.post(v + '/bank-details-needed', function (req, res) {
 		if (req.body["bank-now"] === 'yes') {
-			res.redirect(v + '/bc/start')
+			res.redirect(v + '/bc/contact-information')
 		} else {
 			res.redirect(v + '/need-bank-information')
 		}

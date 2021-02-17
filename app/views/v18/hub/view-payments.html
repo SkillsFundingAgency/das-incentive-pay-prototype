@@ -68,19 +68,15 @@
 
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
-      <h3 class="das-panel__heading">Add {{_orgNamePlural}} bank details</h3>
-      <p>We cannot make any payments until we’ve received and verified {{_orgNamePlural}} bank details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
-      <p><a href="../bc/start" class="das-panel__link">Add bank details</a></p>
+      <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
+      <p>We cannot make any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+      <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
     </div>
     {% elif myData.vrf == "inprogress" %}
     <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
-      <h3 class="das-panel__heading">We’re reviewing {{_orgNamePlural}} bank details</h3>
-      <p style="color: #0b0c0c;">We cannot make any payments until we’ve verified {{_orgNamePlural}} bank details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+      <h3 class="das-panel__heading">We’re reviewing {{_orgNamePlural}} organisation and finance details</h3>
+      <p style="color: #0b0c0c;">We cannot make any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
     </div>
-    <!-- <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px; background: #505a5f;">
-      <h3 class="das-panel__heading">We're reviewing your organisation’s bank details</h3>
-      <p>We may contact someone from your organisation to confirm the information you’ve provided. We cannot make any payments until we’ve completed the review.</p>
-    </div> -->
     {% endif %}
 
     {% if myData.mvs == "mvslive" %}
@@ -128,7 +124,7 @@
         <p class="govuk-body">We also might send the payment after the estimated date if:</p>
         
         <ul class="govuk-list govuk-list--bullet">
-          <li>{{_orgName}} does not add their bank details or if we have not confirmed them</li>
+          <li>{{_orgName}} does not add their organisation and finance details or if we have not verified them</li>
           <li>an apprentice takes a break in learning</li>
         </ul>
         
