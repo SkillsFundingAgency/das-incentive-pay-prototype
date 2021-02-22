@@ -43,7 +43,7 @@
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Apprentice</th>
 
-            <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
+            <th scope="col" class="govuk-table__header">Contract of employment start date</th>
 
             <th scope="col" class="govuk-table__header">Course</th>
           </tr>
@@ -57,7 +57,7 @@
               </th>
 
 
-              <td scope="row" class="govuk-table__cell">{{_apprentice.startdate}}</td>
+              <td scope="row" class="govuk-table__cell">12 {{_apprentice.startdate}}</td>
 
 
               <td scope="row" class="govuk-table__cell">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
@@ -76,7 +76,7 @@
       </nav>
       {% endif %}
 
-      <p class="govuk-body govuk-!-margin-top-4"><a href="{{_backLink}}" class="govuk-link govuk-link--no-visited-state">Change the apprentices you want to apply for</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="select-new-apprentices" class="govuk-link govuk-link--no-visited-state">Change the apprentices you want to apply for</a></p>
 
       {{ govukWarningText({
         text: "All apprentices must have joined " + _orgName + " from 1 August 2020 to 31 March 2021.",

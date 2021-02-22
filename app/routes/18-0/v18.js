@@ -20,6 +20,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.apprenticesapplied = 0
 		req.session.myData.mvs = "nonmvs"
 		req.session.myData.closing = "true"
+		req.session.myData.datedropout = "no"
         req.session.myData.page = 1
 		
     }
@@ -46,6 +47,7 @@ module.exports = function (router,_myData) {
         req.session.myData.apprenticesapplied =  req.query.applied || req.session.myData.apprenticesapplied
         req.session.myData.mvs =  req.query.mvs || req.session.myData.mvs
         req.session.myData.closing =  req.query.closing || req.session.myData.closing
+        req.session.myData.datedropout =  req.query.datedropout || req.session.myData.datedropout
         req.session.myData.page =  req.query.page || req.session.myData.page
         req.session.myData.declaration =  req.query.declaration || ""
 
@@ -347,21 +349,74 @@ module.exports = function (router,_myData) {
 			req.session.myData.selectNewApprenticesAnswerTemp = ''
 
             req.session.myData.selectedApprentices = []
+            req.session.myData.selectedApprenticesTotalAmountNumber = 0
             req.session.myData.selectedApprenticesTotalAmount = 0
 			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
 				if(req.session.myData.selectNewApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
                     _apprentice.selected = true
                     req.session.myData.selectedApprentices.push(_apprentice)
                     req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount + _apprentice.amount
+                    req.session.myData.selectedApprenticesTotalAmountNumber = req.session.myData.selectedApprenticesTotalAmountNumber + _apprentice.amount
                 } else {
                     _apprentice.selected = false
                 }
             });
             req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-			res.redirect(v + '/check-answers')
+            res.redirect(v + '/enter-start-dates')
 		}
-	})
+    })
+    
+    // Apply - enter start dates
+	router.get(v + '/enter-start-dates', function (req, res) {
+		res.render(vx + '/enter-start-dates', {
+			myData: req.session.myData
+		});
+    })
+    router.post(v + '/enter-start-dates', function (req, res) {
+        if(req.session.myData.datedropout == "all" || req.session.myData.datedropout == "some"){
+            res.redirect(v + '/enter-start-dates-dropout')
+        } else {
+            res.redirect(v + '/check-answers')
+        }
+    })
+    
+    // Apply - enter start dates dropout
+	router.get(v + '/enter-start-dates-dropout', function (req, res) {
+		res.render(vx + '/enter-start-dates-dropout', {
+			myData: req.session.myData
+		});
+    })
+    router.post(v + '/enter-start-dates-dropout', function (req, res) {
+        var _selectedApprentices = 0
+        req.session.myData.selectedApprentices = req.session.myData.selectedApprentices || []
+        req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
+            _selectedApprentices++
+        });
+        if(req.session.myData.datedropout == "all" || _selectedApprentices == 1){
+            req.session.myData.selectedApprentices = []
+            req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+                _apprentice.selected = false
+            })
+            res.redirect(v + '/hub/view-payments')
+        } else {
+
+            //remove first apprentice from list
+            var _toRemoveID = req.session.myData.selectedApprentices[0].id
+            req.session.myData.selectedApprentices.splice(0, 1);
+            //reset selected or not and total amount
+            // req.session.myData.selectedApprenticesTotalAmount = 0
+			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+                if(_toRemoveID.toString() == _apprentice.id.toString()){
+                    _apprentice.selected = false
+                    req.session.myData.selectedApprenticesTotalAmountNumber = req.session.myData.selectedApprenticesTotalAmountNumber - _apprentice.amount
+                }
+            });
+            req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmountNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            res.redirect(v + '/check-answers')
+        }
+    })
 
 	// Apply - check answers
 	router.get(v + '/check-answers', function (req, res) {
