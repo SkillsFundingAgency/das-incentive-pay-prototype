@@ -58,13 +58,25 @@ Manage apprenticeships
 
             <h1 class="govuk-heading-xl">
                 {% if _totalApprentices == 1 %}
-                When did {{_selectedApprentices[0].name}}’s contract of employment with {{_orgName}} start?
+                When did {{_selectedApprentices[0].name}} join {{_orgName}}?
                 {% else %}
-                When did their contract of employment with {{_orgName}} start?
+                When did they join {{_orgName}}?
                 {% endif %}
             </h1>
 
-            <p class="govuk-body govuk-!-margin-bottom-8"">Enter the date they joined {{_orgName}}, even if they started their apprenticeship after this date.</p>
+            {% if _totalApprentices == 1 %}
+            <p class="govuk-body">Enter the date {{_selectedApprentices[0].name}} joined {{_orgName}}, even if they started their apprenticeship after this date.</p>
+            {% else %}
+            <p class="govuk-body">Enter the date they joined {{_orgName}}, even if they started their apprenticeship after this date.</p>
+            {% endif %}
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    Do not enter the apprenticeship start date, unless it is the same as the date they joined {{_orgName}}.
+                </strong>
+            </div>
 
             <div class="govuk-form-group {% if myData.validationErrors.enterStartDatesAnswer %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset" >
@@ -84,7 +96,7 @@ Manage apprenticeships
                                         {{_apprentice.name}}
                                     </h2>
                                     <p class="govuk-body govuk-!-margin-bottom-0">
-                                        <span>ULN: {{_apprentice.uln}}</span>, <span>{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
+                                        <span>ULN: {{_apprentice.uln}}</span><br><span>{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
                                     </p>
                                 </legend>
                                 <div id="apprentice-{{_apprentice.id}}-hint" class="govuk-hint">

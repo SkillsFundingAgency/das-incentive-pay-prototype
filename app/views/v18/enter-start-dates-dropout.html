@@ -40,13 +40,13 @@
 
         <!-- 1 selected, they are ineligible -->
         {% if _oneSelected %}
-          <h1 class="govuk-heading-l">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
+          <h1 class="govuk-heading-xl">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
         <!-- more than 1 selected, 1 is ineligible -->
         {% elif _moreThanOneSelectedOneIneligible %}
-          <h1 class="govuk-heading-l">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
+          <h1 class="govuk-heading-xl">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
         <!-- more than 1 selected, All are ineligible -->
         {% elif _moreThanOneSelectedAllIneligible %}
-          <h1 class="govuk-heading-l">These apprentices are not eligible for the payment</h1>
+          <h1 class="govuk-heading-xl">These apprentices are not eligible for the payment</h1>
         <!-- more than 1 selected, > 1 but not all are ineligible -->
         <!-- NOT PROTOTYPED -->
         {% endif %}
