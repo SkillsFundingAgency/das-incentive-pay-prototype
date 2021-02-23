@@ -14,7 +14,7 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
-{% set _selectedApprentices = myData.selectedApprentices %}
+{% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
 {% set _totalApprentices = _selectedApprentices.length %}
 
 <!-- Dropout states -->
@@ -56,7 +56,7 @@
         {% if _moreThanOneSelectedAllIneligible %}
         <p class="govuk-body">The following apprentices are not eligible for the payment:</p>
         <ul class="govuk-list govuk-list--bullet">
-          {% for _apprentice in myData.selectedApprentices %}
+          {% for _apprentice in _selectedApprentices %}
           <li>{{_apprentice.name}} (joined on 1 July 2020)</li>
           {% endfor %}
         </ul>

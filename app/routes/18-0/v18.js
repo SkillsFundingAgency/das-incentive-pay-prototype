@@ -102,6 +102,15 @@ module.exports = function (router,_myData) {
 				req.session.myData.removableApprentices.push(_apprentice)
 			}
         });
+
+        //Set default selected apprentices (for deep links to work)
+        req.session.myData.defaultSelectedApprentices = []
+        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if (index < 3) {
+                _apprentice.selected = true
+                req.session.myData.defaultSelectedApprentices.push(_apprentice)
+            }
+        });
 		
         next()
 	});
@@ -426,11 +435,13 @@ module.exports = function (router,_myData) {
 	})
 	router.post(v + '/check-answers', function (req, res) {
         var _newApprentices = false
-        req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
-            if(_apprentice.startdate == "February 2021" || _apprentice.startdate == "March 2021"){
-                _newApprentices = true
-            }
-        });
+        if(req.session.myData.selectedApprentices){
+            req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
+                if(_apprentice.startdate == "February 2021" || _apprentice.startdate == "March 2021"){
+                    _newApprentices = true
+                }
+            });
+        }
         if(req.session.myData.legalagreement2 == "false" && _newApprentices){
             res.redirect(v + '/shutter/legal-agreement-2')
         } else {

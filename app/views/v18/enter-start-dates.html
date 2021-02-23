@@ -20,7 +20,7 @@ Manage apprenticeships
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
-{% set _selectedApprentices = myData.selectedApprentices %}
+{% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
 {% set _totalApprentices = _selectedApprentices.length %}
 
 <!-- Paging -->

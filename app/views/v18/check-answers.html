@@ -14,6 +14,10 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
+{% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
+{% set _totalApprentices = _selectedApprentices.length %}
+{% set _totalAmount = myData.selectedApprenticesTotalAmount or "6,000" %}
+
 <!-- Paging -->
 {% set _perPage = 10 %}
 
@@ -34,8 +38,8 @@
       
 
       <h3 class="govuk-heading-m">
-        {{myData.selectedApprentices.length}} apprentice{% if myData.selectedApprentices.length != 1 %}s{% endif %}<br>
-        <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£{{myData.selectedApprenticesTotalAmount}} estimated total payment</span>
+        {{_totalApprentices}} apprentice{% if _totalApprentices != 1 %}s{% endif %}<br>
+        <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£{{_totalAmount}} estimated total payment</span>
       </h3>
 
       <table class="govuk-table govuk-!-margin-bottom-2">
@@ -49,7 +53,7 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-            {% for _apprentice in myData.selectedApprentices %}
+            {% for _apprentice in _selectedApprentices %}
             <tr class="govuk-table__row apprentice-row" data-available="true">
               <th scope="row" class="govuk-table__header">
                 {{_apprentice.name}}<br>
@@ -66,7 +70,7 @@
         </tbody>
       </table>
 
-      {% if myData.selectedApprentices.length > _perPage %}
+      {% if _totalApprentices > _perPage %}
       <nav role="navigation" aria-label="Pagination" class="govuk-!-margin-bottom-0">
           <p class="pagination__summary "></p>
           <ul class="pagination govuk-list">
@@ -99,7 +103,7 @@
 <script>
     $(document).ready(function(){
 
-        var _totalRows = {{myData.selectedApprentices.length}},
+        var _totalRows = {{_totalApprentices}},
             _page = 1,
             _first = (_page - 1) * {{_perPage}} + 1,
             _last = _page * {{_perPage}},
