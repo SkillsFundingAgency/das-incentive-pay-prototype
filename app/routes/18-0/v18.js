@@ -107,7 +107,6 @@ module.exports = function (router,_myData) {
         req.session.myData.defaultSelectedApprentices = []
         req.session.myData.apprentices2.forEach(function(_apprentice, index) {
             if (index < 3) {
-                _apprentice.selected = true
                 req.session.myData.defaultSelectedApprentices.push(_apprentice)
             }
         });
