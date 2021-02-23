@@ -433,19 +433,58 @@ module.exports = function (router,_myData) {
 		});
 	})
 	router.post(v + '/check-answers', function (req, res) {
-        var _newApprentices = false
-        if(req.session.myData.selectedApprentices){
-            req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
-                if(_apprentice.startdate == "February 2021" || _apprentice.startdate == "March 2021"){
-                    _newApprentices = true
-                }
+        
+        var _orgName = req.session.myData.selectLegalEntityAnswer || "ABC LTD"
+
+        req.session.myData.allSelectedEligibleAnswerTemp = req.body.allSelectedEligibleAnswer
+        if(req.session.myData.includeValidation == "false"){
+            req.session.myData.allSelectedEligibleAnswerTemp = req.session.myData.allSelectedEligibleAnswerTemp || "yes"
+        }
+        if(!req.session.myData.allSelectedEligibleAnswerTemp){
+            req.session.myData.validationError = "true"
+            req.session.myData.validationErrors.allSelectedEligibleAnswer = {
+                "anchor": "allSelectedEligible-1",
+                "message": "Select yes if all of these apprentices joined " + _orgName + " from 1 August 2020"
+            }
+        }
+
+        if(req.session.myData.validationError == "true") {
+            res.render(vx + '/check-answers', {
+                myData: req.session.myData
             });
-        }
-        if(req.session.myData.legalagreement2 == "false" && _newApprentices){
-            res.redirect(v + '/shutter/legal-agreement-2')
         } else {
-            res.redirect(v + '/sign-agreement')
+            req.session.myData.allSelectedEligibleAnswer = req.session.myData.allSelectedEligibleAnswerTemp
+            req.session.myData.allSelectedEligibleAnswerTemp = ''
+            
+            var _newApprentices = false
+            if(req.session.myData.selectedApprentices){
+                req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
+                    if(_apprentice.startdate == "February 2021" || _apprentice.startdate == "March 2021"){
+                        _newApprentices = true
+                    }
+                });
+            }
+
+			// NO
+			if(req.session.myData.allSelectedEligibleAnswer == "no"){
+				res.redirect(v + '/not-all-selected-eligible')
+			} else {
+			//YES
+                if(req.session.myData.legalagreement2 == "false" && _newApprentices){
+                    res.redirect(v + '/shutter/legal-agreement-2')
+                } else {
+                    res.redirect(v + '/sign-agreement')
+                }
+			}
+
         }
+    })
+    
+    // Apply - not all selected eligible
+	router.get(v + '/not-all-selected-eligible', function (req, res) {
+		res.render(vx + '/not-all-selected-eligible', {
+			myData: req.session.myData
+		});
 	})
 
 	// Apply - sign declaration
