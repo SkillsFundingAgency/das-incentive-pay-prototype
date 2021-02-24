@@ -14,10 +14,12 @@
   {% include "./includes/account-header.html" %}
 {% endblock %}
 
+{% set _backLink = "javascript:window.history.back();" %}
+
 {% block beforeContent %}
     {{ govukBackLink({
       text: "Back",
-      href: "check-answers"
+      href: _backLink
     }) }}
 {% endblock %}
 

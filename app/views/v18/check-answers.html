@@ -68,7 +68,11 @@
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Apprentice</th>
 
+              {% if myData.compliance == "question" %}
+              <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
+              {% else %}
               <th scope="col" class="govuk-table__header">Joined organisation</th>
+              {% endif %}
 
               <th scope="col" class="govuk-table__header">Course</th>
             </tr>
@@ -81,9 +85,11 @@
                   <span class="govuk-!-font-weight-regular" style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span>
                 </th>
 
-
+                {% if myData.compliance == "question" %}
+                <td scope="row" class="govuk-table__cell">{{_apprentice.startdate}}</td>
+                {% else %}
                 <td scope="row" class="govuk-table__cell">12 {{_apprentice.startdate}}</td>
-
+                {% endif %}
 
                 <td scope="row" class="govuk-table__cell">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
               </tr>
@@ -103,7 +109,7 @@
 
         <p class="govuk-body govuk-!-margin-top-4"><a href="select-new-apprentices" class="govuk-link govuk-link--no-visited-state">Change the apprentices you want to apply for</a></p>
 
-
+        {% if myData.compliance == "question" %}
         <div class="govuk-form-group {% if myData.validationErrors.allSelectedEligibleAnswer %}govuk-form-group--error{% endif %}  govuk-!-margin-top-6">
           <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -134,7 +140,13 @@
                 </div>
               </div>
           </fieldset>
-      </div>
+       </div>
+       {% else %}
+        {{ govukWarningText({
+          text: "All apprentices must have joined " + _orgName + " from 1 August 2020 to 31 March 2021.",
+          iconFallbackText: "Warning"
+        }) }}
+       {% endif %}
 
         {{ govukButton({
           text: "Confirm"

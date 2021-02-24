@@ -20,7 +20,8 @@ module.exports = function (router,_myData) {
 		req.session.myData.apprenticesapplied = 0
 		req.session.myData.mvs = "nonmvs"
 		req.session.myData.closing = "true"
-		req.session.myData.datedropout = "no"
+        req.session.myData.datedropout = "no"
+		req.session.myData.compliance = "dates"
         req.session.myData.page = 1
 		
     }
@@ -48,6 +49,7 @@ module.exports = function (router,_myData) {
         req.session.myData.mvs =  req.query.mvs || req.session.myData.mvs
         req.session.myData.closing =  req.query.closing || req.session.myData.closing
         req.session.myData.datedropout =  req.query.datedropout || req.session.myData.datedropout
+        req.session.myData.compliance =  req.query.compliance || req.session.myData.compliance
         req.session.myData.page =  req.query.page || req.session.myData.page
         req.session.myData.declaration =  req.query.declaration || ""
 
@@ -371,7 +373,12 @@ module.exports = function (router,_myData) {
             });
             req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-            res.redirect(v + '/enter-start-dates')
+            if(req.session.myData.compliance == "question"){
+                res.redirect(v + '/check-answers')
+            } else {
+                res.redirect(v + '/enter-start-dates')
+            }
+            
 		}
     })
     
@@ -411,7 +418,13 @@ module.exports = function (router,_myData) {
 
             //remove first apprentice from list
             var _toRemoveID = req.session.myData.selectedApprentices[0].id
-            req.session.myData.selectedApprentices.splice(0, 1);
+
+            if(_selectedApprentices > 2) {
+                req.session.myData.selectedApprentices.splice(0, 1);
+                req.session.myData.selectedApprentices.splice(1, 1);
+            } else {
+                req.session.myData.selectedApprentices.splice(0, 1);
+            }
             //reset selected or not and total amount
             // req.session.myData.selectedApprenticesTotalAmount = 0
 			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
@@ -447,8 +460,7 @@ module.exports = function (router,_myData) {
                 "message": "Select yes if all of these apprentices joined " + _orgName + " from 1 August 2020"
             }
         }
-
-        if(req.session.myData.validationError == "true") {
+        if(req.session.myData.validationError == "true" && req.session.myData.compliance == "question") {
             res.render(vx + '/check-answers', {
                 myData: req.session.myData
             });
@@ -466,7 +478,7 @@ module.exports = function (router,_myData) {
             }
 
 			// NO
-			if(req.session.myData.allSelectedEligibleAnswer == "no"){
+			if(req.session.myData.allSelectedEligibleAnswer == "no" && req.session.myData.compliance == "question"){
 				res.redirect(v + '/not-all-selected-eligible')
 			} else {
 			//YES

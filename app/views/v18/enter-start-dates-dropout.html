@@ -24,7 +24,9 @@
 <!-- more than 1 selected, All are ineligible -->
 {% set _moreThanOneSelectedAllIneligible = _totalApprentices > 1 and myData.datedropout == "all" %}
 <!-- more than 1 selected, 1 is ineligible -->
-{% set _moreThanOneSelectedOneIneligible = _totalApprentices > 1 and myData.datedropout == "some" %}
+{% set _moreThanOneSelectedOneIneligible = _totalApprentices == 1 and myData.datedropout == "some" %}
+<!-- more than 1 selected, 2 are ineligible -->
+{% set _moreThanOneSelectedTwoIneligible = _totalApprentices > 2 and myData.datedropout == "some" %}
 
 {% block beforeContent %}
     {{ govukBackLink({
@@ -47,8 +49,9 @@
         <!-- more than 1 selected, All are ineligible -->
         {% elif _moreThanOneSelectedAllIneligible %}
           <h1 class="govuk-heading-xl">These apprentices are not eligible for the payment</h1>
-        <!-- more than 1 selected, > 1 but not all are ineligible -->
-        <!-- NOT PROTOTYPED -->
+        <!-- more than 2 selected, 2 not eligible -->
+        {% elif _moreThanOneSelectedTwoIneligible %}
+          <h1 class="govuk-heading-xl">Some apprentices are not eligible for the payment</h1>
         {% endif %}
 
         <p class="govuk-body">{{_orgName}} cannot apply for an existing employee who joined their organisation before 1 August 2020, even if they started an apprenticeship after this date.</p>
@@ -60,6 +63,15 @@
           <li>{{_apprentice.name}} (joined on 1 July 2020)</li>
           {% endfor %}
         </ul>
+        {% endif %}
+
+        {% if _moreThanOneSelectedTwoIneligible %}
+        <p class="govuk-body">The following apprentices are not eligible for the payment:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{_selectedApprentices[0].name}} (joined on 1 July 2020)</li>
+          <li>{{_selectedApprentices[1].name}} (joined on 1 July 2020)</li>
+        </ul>
+        <p class="govuk-body">We will remove these apprentices from the application. </p>
         {% endif %}
 
         {% if _oneSelected or _moreThanOneSelectedOneIneligible %}
