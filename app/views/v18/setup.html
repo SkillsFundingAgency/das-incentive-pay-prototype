@@ -71,8 +71,8 @@
                 Compliance (date input or question)
             </label>
             <select class="govuk-select" style="min-width: 100%" id="compliance" name="compliance" data-option="compliance">
-                <option {% if myData.compliance == "dates" %}selected{% endif %} value="no">Dates</option>
-                <option {% if myData.compliance == "question" %}selected{% endif %} value="some">Question (yes/no)</option>
+                <option {% if myData.compliance == "dates" %}selected{% endif %} value="dates">Dates</option>
+                <option {% if myData.compliance == "question" %}selected{% endif %} value="question">Question (yes/no)</option>
             </select>
         </div>
 
