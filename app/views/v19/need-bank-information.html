@@ -1,0 +1,72 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "mvs/includes/account-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <div class="govuk-panel govuk-panel--info">
+        <h1 class="govuk-panel__title">
+          Application saved
+        </h1>
+      </div>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">What happens next</h2>
+
+      <p class="govuk-body">We cannot make any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+
+      <p class="govuk-body">You can add {{_orgNamePlural}} organisation and finance details:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>using the link we’ve sent to your email address</li>
+        <li>in the ‘hire a new apprentice payment applications’ section of the apprenticeship service account</li>
+      </ul>
+      <h2 class="govuk-heading-m">After we’ve verified {{_orgNamePlural}} organisation and finance details</h2>
+
+      <p class="govuk-body">We’ll make the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
+
+      <p class="govuk-body">Payments are made by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+      <h2 class="govuk-heading-m">Your applications </h2>
+
+      <p class="govuk-body">You can view applications and estimated payment dates in the apprenticeship service account.</p>
+
+      <a class="govuk-button" href="hub/view-payments">View applications</a>
+
+    </div>
+  </div>
+{% endblock %}
+
+  {% block footer %}
+    {{ govukFooter({
+      meta: {
+        items: [
+          {
+            href: "https://govuk-prototype-kit.herokuapp.com/",
+            text: "GOV.UK Prototype Kit " + releaseVersion
+          },
+          {
+            href: "/prototype-admin/clear-data",
+            text: "Clear data"
+          },
+          {
+            href: "email/need-to-add-bank-details",
+            text: "Email sent to user (for test purposes)"
+          }
+        ]
+      }
+    }) }}
+  {% endblock %}

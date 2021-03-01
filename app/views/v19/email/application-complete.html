@@ -1,0 +1,64 @@
+{% extends "layout-notify-email.html" %} 
+
+{% set serviceName %}
+Email 
+{% endset %} 
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>Your hire a new apprentice payment application</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+        <p>We’ve received {{_orgNamePlural}} application for the hire a new apprentice payment.</p>
+        <p>We cannot make any payments until we’ve verified {{_orgNamePlural}} bank details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+        <p>You can view applications and estimated payment dates in the apprenticeship service account (<a href="#" class="
+          govuk-link govuk-link--no-visited-state">https://accounts.manage-apprenticeships.service.gov.uk/123456/bankdetails/123456/add-bank-details</a>).</p>
+        <p>From</p>
+        <p>Apprenticeship Service</p>
+        <p>This is an automated message - do not reply.</p>
+      </div>
+    </div>
+
+    <!-- <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p> -->
+  </div>
+</div>
+{% endblock %}
