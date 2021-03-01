@@ -27,10 +27,13 @@
 {% endblock %}
 
 {% block beforeContent %}
-    {{ govukBackLink({
-      text: "Back",
-      href: "../select-legal-entity-hub"
-    }) }}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../account-home">Home</a>
+    </li>
+  </ol>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -39,6 +42,7 @@
 
 
       <span class="govuk-caption-xl">{{_orgName}}</span>
+      <p class="govuk-body"><a href="../select-legal-entity-hub" class="govuk-link govuk-link--no-visited-state">Change organisation</a></p>
       <h1 class="govuk-heading-xl">Hire a new apprentice payment</h1>
 
       {% if myData.vrf == "notadded" %}
@@ -49,6 +53,8 @@
       <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view {{_orgNamePlural}} applications and change their organisation and finance details.
       </p>
       {% endif %}
+<!-- 
+      <p class="govuk-body"><a href="../select-legal-entity-hub" class="govuk-link govuk-link--no-visited-state">Change organisation</a></p> -->
 
         <hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
       </div>
