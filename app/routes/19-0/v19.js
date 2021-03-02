@@ -84,7 +84,10 @@ module.exports = function (router,_myData) {
                     //   "id": 306,
                     //   "name": "Steven Smith",
 
-                    if([301,302,303,139,304,305,306,229].includes(_apprentice.id)){
+                    //   "id": 299,
+                    //   "name": "Yi Chen",
+
+                    if([301,302,303,139,304,305,306,229,299].includes(_apprentice.id)){
                         _apprentice.applied2 = true
                     }
                 } else if(req.session.myData.apprenticesapplied == 300){
