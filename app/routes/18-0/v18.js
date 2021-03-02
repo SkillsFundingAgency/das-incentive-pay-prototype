@@ -105,6 +105,16 @@ module.exports = function (router,_myData) {
 			}
         });
 
+        //Set available apprentices
+        req.session.myData.availableApprentices = []
+		var _count = 0
+		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+			if(_apprentice.applied2 == false && _count < req.session.myData.apprenticesavailable){
+				req.session.myData.availableApprentices.push(_apprentice)
+				_count++
+			}
+		});
+
         //Set default selected apprentices (for deep links to work)
         req.session.myData.defaultSelectedApprentices = []
         req.session.myData.apprentices2.forEach(function(_apprentice, index) {
@@ -321,15 +331,6 @@ module.exports = function (router,_myData) {
     router.get(v + '/select-new-apprentices', function (req, res) {
 		
 		req.session.myData.page = req.query.page || req.session.myData.page
-
-		req.session.myData.availableApprentices = []
-		var _count = 0
-		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
-			if(_apprentice.applied2 == false && _count < req.session.myData.apprenticesavailable){
-				req.session.myData.availableApprentices.push(_apprentice)
-				_count++
-			}
-		});
 
         res.render(vx + '/select-new-apprentices', {
             myData: req.session.myData
