@@ -211,7 +211,16 @@
 
           {% set _firstPaymentHTML %}
             {% if _apprentice.firstpayment == "paid" %}
-              <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Payment sent</span><br>{% if myData.mvs != "mvs" %}20 {% endif %}January 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br>{% if myData.mvs != "mvs" %}20 {% endif %}January 2021<br>
+                <span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span>
+                {% if _apprentice.status == "cancelled" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Application cancelled<br><br>Payments reclaimed
+                {% elif _apprentice.status == "rejected" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Application rejected<br><br>Payments reclaimed
+                {% endif %}
+              </td>
             {% elif _apprentice.status == "paymentissue" %}
             <td class="govuk-table__cell" style="max-width:100px">
               <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
@@ -227,9 +236,9 @@
             {% elif _apprentice.status == "paused2" %} 
                 <td class="govuk-table__cell">Apprenticeship paused</td>
             {% elif _apprentice.status == "toconfirm" %} 
-            <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
             {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
-            <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
             {% else %}
               <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}February 2021<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
             {% endif %}
@@ -244,11 +253,17 @@
                   <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
                 </td>
               {% elif _apprentice.status == "cancelled" %}
-                <td class="govuk-table__cell">Application cancelled</td>
+                <td class="govuk-table__cell">
+                  Application cancelled
+                  <br><br>Payment reclaimed
+                </td>
               {% elif _apprentice.status == "paused" %}
                 <td class="govuk-table__cell">Application paused</td>
               {% elif _apprentice.status == "rejected" %}
-                <td class="govuk-table__cell">Application rejected</td>
+                <td class="govuk-table__cell">
+                  Application rejected
+                  <br><br>Payment reclaimed
+                </td>
               {% elif _apprentice.status == "stopped" %} 
                 <td class="govuk-table__cell">Apprenticeship stopped</td>
               {% elif _apprentice.status == "paused2" %} 

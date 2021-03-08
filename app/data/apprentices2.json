@@ -4283,10 +4283,10 @@
       "startdate": "October 2020",
       "amount": 2000,
       "selected": false,
-      "applied": false,
-"applied2": false,
-      "status": "",
-      "firstpayment": "",
+      "applied": true,
+      "applied2": false,
+      "status": "rejected",
+      "firstpayment": "paid",
       "secondpayment": ""
     },
     {
@@ -4298,11 +4298,11 @@
       "startdate": "January 2021",
       "amount": 1500,
       "selected": false,
-      "applied": false,
-"applied2": false,
-      "status": "",
-      "firstpayment": "",
-      "secondpayment": ""
+      "applied": true,
+      "applied2": false,
+      "status": "cancelled",
+      "firstpayment": "paid",
+      "secondpayment": "paid"
     },
     {
       "id": 288,
