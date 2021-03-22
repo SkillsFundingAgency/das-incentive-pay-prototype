@@ -74,13 +74,13 @@
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
       <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
-      <p>We cannot make any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+      <p>We cannot send any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 90 days and we may contact someone from {{_orgName}}.</p>
       <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
     </div>
     {% elif myData.vrf == "inprogress" %}
     <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
       <h3 class="das-panel__heading">We’re reviewing {{_orgNamePlural}} organisation and finance details</h3>
-      <p style="color: #0b0c0c;">We cannot make any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 3 months and we may contact someone from {{_orgName}}.</p>
+      <p style="color: #0b0c0c;">We cannot send any payments until we’ve verified {{_orgNamePlural}} organisation and finance details. This could take up to 90 days and we may contact someone from {{_orgName}}.</p>
     </div>
     {% endif %}
 
@@ -100,13 +100,19 @@
         </span>
       </summary>
       <div class="govuk-details__text">
-      <p>You’ll receive the first payment after the apprentice completes 90 days of their apprenticeship training and the second payment after 365 days. Your training provider will confirm the apprenticeship start date and we’ll add 90 days to the last calendar day of the month.</p>
-      <p>We make payments on the 14th working day of each month, starting from January 2021. It will take longer to get your first payment for any apprentices who start their training in August or September.</p>
-      <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
-      <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
-      </ul>
+        
+        <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+          <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+        </ul>
+        <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+        <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
+          <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
+        </ul>
 
       </div>
     </details>
@@ -114,9 +120,12 @@
 
     
 
-    <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. The first payment is after an apprentice completes 90 days of their apprenticeship and the second is after 365 days. The training provider needs to confirm to ESFA when an apprentice is ready for each payment.</p>
-
-    <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+    <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+        <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+      </ul>
+      <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
