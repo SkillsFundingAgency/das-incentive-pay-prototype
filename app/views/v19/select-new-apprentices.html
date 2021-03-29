@@ -72,7 +72,7 @@ Manage apprenticeships
                 </strong>
             </div>
 
-            {% if _totalApprentices > _perPage %}
+            {% if _totalApprentices > _perPage and myData.filters == "true" %}
             <div class="month-filters-container grey-panel grey-panel-blocked govuk-!-margin-bottom-5">
                 <h3 class="govuk-heading-m month-filtered" >Filter by apprenticeship start date</h3>
                 <ul class="govuk-list month-filters">
@@ -92,7 +92,9 @@ Manage apprenticeships
             </div>
             {% endif %}
 
+            {% if myData.filters == "true" %}
             <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state select-all-link" href="#">Select or deselect all apprentices</a></p>
+            {% endif %}
 
             <div class="govuk-form-group {% if myData.validationErrors.selectNewApprenticesAnswer %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset" >

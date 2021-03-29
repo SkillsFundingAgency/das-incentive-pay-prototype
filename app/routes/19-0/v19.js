@@ -23,6 +23,7 @@ module.exports = function (router,_myData) {
         req.session.myData.datedropout = "no"
 		req.session.myData.compliance = "dates"
         req.session.myData.page = 1
+		req.session.myData.filters = "true"
 		
     }
 
@@ -52,6 +53,7 @@ module.exports = function (router,_myData) {
         req.session.myData.compliance =  req.query.compliance || req.session.myData.compliance
         req.session.myData.page =  req.query.page || req.session.myData.page
         req.session.myData.declaration =  req.query.declaration || ""
+        req.session.myData.filters =  req.query.filters || req.session.myData.filters
 
         // Sort default applied apprentices
         if(req.session.myData.appliedApprenticesSet == false){
