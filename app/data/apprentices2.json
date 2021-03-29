@@ -4194,9 +4194,9 @@
       "amount": 2000,
       "selected": false,
       "applied": false,
-"applied2": false,
-      "status": "",
-      "firstpayment": "",
+      "applied2": false,
+      "status": "changed",
+      "firstpayment": "paid",
       "secondpayment": ""
     },
     {
@@ -4224,10 +4224,10 @@
       "amount": 1500,
       "selected": false,
       "applied": false,
-"applied2": false,
-      "status": "",
-      "firstpayment": "",
-      "secondpayment": ""
+      "applied2": false,
+      "status": "stopped",
+      "firstpayment": "paid",
+      "secondpayment": "paid"
     },
     {
       "id": 283,
@@ -4254,9 +4254,9 @@
       "amount": 1500,
       "selected": false,
       "applied": false,
-"applied2": false,
-      "status": "",
-      "firstpayment": "",
+      "applied2": false,
+      "status": "paused2",
+      "firstpayment": "paid",
       "secondpayment": ""
     },
     {
@@ -4269,7 +4269,7 @@
       "amount": 2000,
       "selected": false,
       "applied": false,
-"applied2": false,
+      "applied2": false,
       "status": "",
       "firstpayment": "",
       "secondpayment": ""
