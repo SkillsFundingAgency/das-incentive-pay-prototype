@@ -1,0 +1,118 @@
+{% extends "layout-account.html" %}
+
+{% set _inError = myData.validationError %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "./includes/account-header.html" %}
+{% endblock %}
+
+{% set _backlink = "guidance" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "guidance" %}
+{% endif %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: _backlink
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="" method="post" class="form">
+
+        {% if _inError == "true" %}
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+              <h2 class="govuk-error-summary__title" id="error-summary-title">
+                  There is a problem
+              </h2>
+              <div class="govuk-error-summary__body">
+                  <ul class="govuk-list govuk-error-summary__list">
+                      {% for name, item in myData.validationErrors %}
+                      <li>
+                          <a href="#{{item.anchor}}">{{item.message}}</a>
+                      </li>
+                      {% endfor %}
+                  </ul>
+              </div>
+          </div>
+          {% endif %}
+
+
+          <div class="govuk-form-group {% if myData.validationErrors.takenOnNewApprenticesAnswer %}govuk-form-group--error{% endif %}">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Does {{_orgName}} have apprentices who are eligible for the payment?
+                    </h1>
+                </legend>
+
+                <!-- <div class="govuk-warning-text">
+                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                  <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+                  </strong>
+                </div> -->
+
+                <!-- <div class="govuk-hint">
+                  If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
+                </div> -->
+                
+                <div class="govuk-hint">
+                  {{_orgName}} cannot apply for an existing employee who joined their organisation before 1 August 2020, even if they started an apprenticeship after this date.
+                </div>
+                <div class="govuk-hint">
+                  {{_orgName}} can only apply for new apprentices who joined their organisation from 1 August 2020 to 31 March 2021.
+                </div>
+
+                
+                
+                {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
+                <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span>
+                    {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
+                </span>
+                {% endif %}
+
+                <div class="govuk-radios govuk-radios--inline">
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
+                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-1">
+                        Yes
+                      </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
+                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
+                        No
+                      </label>
+                  </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button">
+            Continue
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
