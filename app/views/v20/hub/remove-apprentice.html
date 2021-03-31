@@ -59,6 +59,17 @@ Manage apprenticeships
           <h1 class="govuk-heading-xl">
             Which apprentices do you want to cancel an application for?
           </h1>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Do not cancel an apprentice’s application if they have stopped or completed their apprenticeship.
+              <br><br>
+              If you cancel an application, you will have to repay any payments that you’ve already received.
+            </strong>
+          </div>
+
+          <!-- <p class="govuk-body">Do not cancel an apprentice’s application if they have stopped or completed their apprenticeship.</p> -->
 
           <div class="govuk-form-group {% if myData.validationErrors.removeApprenticesAnswer %}govuk-form-group--error{% endif %}">
               <fieldset class="govuk-fieldset" >
@@ -104,10 +115,13 @@ Manage apprenticeships
               </fieldset>
           </div>
 
-          {{ govukWarningText({
-            text: "If you cancel an application, you will have to repay any payments that you’ve already received.",
-            iconFallbackText: "Warning"
-          }) }}
+          <!-- <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              If you cancel an application, you will have to repay any payments that you’ve already received.
+            </strong>
+          </div> -->
 
           {{ govukButton({
               text: "Continue"
