@@ -501,7 +501,7 @@ module.exports = function (router,_myData) {
             req.session.myData.validationError = "true"
             req.session.myData.validationErrors.allSelectedEligibleAnswer = {
                 "anchor": "allSelectedEligible-1",
-                "message": "Select yes if all of these apprentices joined " + _orgName + " from 1 August 2020"
+                "message": "Select yes if all of these apprentices joined " + _orgName + " from 1 April 2021"
             }
         }
         if(req.session.myData.validationError == "true" && req.session.myData.compliance == "question") {
