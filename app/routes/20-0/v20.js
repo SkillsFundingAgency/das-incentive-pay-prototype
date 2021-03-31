@@ -62,8 +62,41 @@ module.exports = function (router,_myData) {
                 if(req.session.myData.apprenticesapplied == 6){
                     //set custom set
 
-                    //   "id": 229,
-                    //   "name": "Pauline Fowler",
+                    //   "id": 299,
+                    //   "name": "Yi Chen",
+
+                    // "id": 287,
+                    // "name": "Timothy Steward",
+
+                    // "id": 286,
+                    // "name": "Timothy Jones",
+
+                    // "id": 270,
+                    // "name": "Stephen Knight",
+
+                    // "id": 282,
+                    // "name": "Terry Laughton",
+
+                    // "id": 284,
+                    // "name": "Thomas Woodman",
+
+                    // "id": 280,
+                    // "name": "Susan Wood",
+
+                    if([299,287,286,270,282,284,280].includes(_apprentice.id)){
+                        _apprentice.applied2 = true
+                    }
+                } else if(req.session.myData.apprenticesapplied == 300){
+                    //set all
+                    _apprentice.applied2 = true
+                } else {
+                    //set none
+                    _apprentice.applied2 = false
+                }
+            });
+            req.session.myData.apprentices3.forEach(function(_apprentice, index) {
+                if(req.session.myData.apprenticesapplied == 6){
+                    //set custom set
 
                     //   "id": 301,
                     //   "name": "Corina Carver",
@@ -86,28 +119,10 @@ module.exports = function (router,_myData) {
                     //   "id": 306,
                     //   "name": "Steven Smith",
 
-                    //   "id": 299,
-                    //   "name": "Yi Chen",
+                    //   "id": 229,
+                    //   "name": "Pauline Fowler",
 
-                    // "id": 287,
-                    // "name": "Timothy Steward",
-
-                    // "id": 286,
-                    // "name": "Timothy Jones",
-
-                    // "id": 270,
-                    // "name": "Stephen Knight",
-
-                    // "id": 282,
-                    // "name": "Terry Laughton",
-
-                    // "id": 284,
-                    // "name": "Thomas Woodman",
-
-                    // "id": 280,
-                    // "name": "Susan Wood",
-
-                    if([301,302,303,139,304,305,306,229,299,287,286,270,282,284,280].includes(_apprentice.id)){
+                    if([301,302,303,139,304,305,306,229].includes(_apprentice.id)){
                         _apprentice.applied2 = true
                     }
                 } else if(req.session.myData.apprenticesapplied == 300){
@@ -127,11 +142,16 @@ module.exports = function (router,_myData) {
 				req.session.myData.removableApprentices.push(_apprentice)
 			}
         });
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
+			if(_apprentice.applied2 == true && _apprentice.status != "rejected" && _apprentice.status != "cancelled" && (_apprentice.secondpayment != "paid")){
+				req.session.myData.removableApprentices.push(_apprentice)
+			}
+        });
 
         //Set available apprentices
         req.session.myData.availableApprentices = []
 		var _count = 0
-		req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+		req.session.myData.apprentices3.forEach(function(_apprentice, index) {
 			if(_apprentice.applied2 == false && _count < req.session.myData.apprenticesavailable){
 				req.session.myData.availableApprentices.push(_apprentice)
 				_count++
@@ -140,7 +160,7 @@ module.exports = function (router,_myData) {
 
         //Set default selected apprentices (for deep links to work)
         req.session.myData.defaultSelectedApprentices = []
-        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
             if (index < 3) {
                 req.session.myData.defaultSelectedApprentices.push(_apprentice)
             }
@@ -385,7 +405,7 @@ module.exports = function (router,_myData) {
             req.session.myData.selectedApprentices = []
             req.session.myData.selectedApprenticesTotalAmountNumber = 0
             req.session.myData.selectedApprenticesTotalAmount = 0
-			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+			req.session.myData.apprentices3.forEach(function(_apprentice, index) {
 				if(req.session.myData.selectNewApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
                     _apprentice.selected = true
                     req.session.myData.selectedApprentices.push(_apprentice)
@@ -434,7 +454,7 @@ module.exports = function (router,_myData) {
         });
         if(req.session.myData.datedropout == "all" || _selectedApprentices == 1){
             req.session.myData.selectedApprentices = []
-            req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            req.session.myData.apprentices3.forEach(function(_apprentice, index) {
                 _apprentice.selected = false
             })
             res.redirect(v + '/hub/view-payments')
@@ -451,7 +471,7 @@ module.exports = function (router,_myData) {
             }
             //reset selected or not and total amount
             // req.session.myData.selectedApprenticesTotalAmount = 0
-			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+			req.session.myData.apprentices3.forEach(function(_apprentice, index) {
                 if(_toRemoveID.toString() == _apprentice.id.toString()){
                     _apprentice.selected = false
                     req.session.myData.selectedApprenticesTotalAmountNumber = req.session.myData.selectedApprenticesTotalAmountNumber - _apprentice.amount
@@ -532,7 +552,7 @@ module.exports = function (router,_myData) {
 	router.post(v + '/sign-agreement', function (req, res) {
 
         // set applied apprentices
-        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
             if(_apprentice.selected == true){
                 _apprentice.applied2 = true
                 req.session.myData.apprenticesapplied++
@@ -606,6 +626,26 @@ module.exports = function (router,_myData) {
 
 	// View applications
 	router.get(v + '/hub/view-payments', function (req, res) {
+        req.session.myData.apprenticesAppliedList = []
+        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if(_apprentice.applied2 == true){
+                req.session.myData.apprenticesAppliedList.push(_apprentice)
+            }
+        });
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
+            if(_apprentice.applied2 == true){
+                req.session.myData.apprenticesAppliedList.push(_apprentice)
+            }
+        });
+        req.session.myData.apprenticesAppliedList.sort(function(a,b){
+            if (a.name.toUpperCase() < b.name.toUpperCase()){
+                return -1
+            } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+                return 1
+            }
+            return 0;
+        });
+        
 		res.render(vx + '/hub/view-payments', {
 			myData: req.session.myData
 		});
@@ -641,17 +681,22 @@ module.exports = function (router,_myData) {
 			req.session.myData.removeApprenticesAnswerTemp = ''
 
             req.session.myData.selectedApprentices = []
-            req.session.myData.selectedApprenticesTotalAmount = 0
 			req.session.myData.apprentices2.forEach(function(_apprentice, index) {
 				if(req.session.myData.removeApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
                     _apprentice.selected = true
                     req.session.myData.selectedApprentices.push(_apprentice)
-                    // req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount + _apprentice.amount
                 } else {
                     _apprentice.selected = false
                 }
             });
-            // req.session.myData.selectedApprenticesTotalAmount = req.session.myData.selectedApprenticesTotalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            req.session.myData.apprentices3.forEach(function(_apprentice, index) {
+				if(req.session.myData.removeApprenticesAnswer.indexOf(_apprentice.id.toString()) != -1){
+                    _apprentice.selected = true
+                    req.session.myData.selectedApprentices.push(_apprentice)
+                } else {
+                    _apprentice.selected = false
+                }
+            });
 
 			res.redirect(v + '/hub/confirmation')
 		}
@@ -665,6 +710,11 @@ module.exports = function (router,_myData) {
     router.post(v + '/hub/confirmation', function (req, res) {
         // set cancelled apprentices
         req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if(_apprentice.selected == true){
+                _apprentice.status = "cancelled"
+            }
+        });
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
             if(_apprentice.selected == true){
                 _apprentice.status = "cancelled"
             }

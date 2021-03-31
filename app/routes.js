@@ -8,6 +8,7 @@ var _myData = {
     "includeValidation": "true",
     "apprentices": require(__dirname + '/data/apprentices.json'),
     "apprentices2": require(__dirname + '/data/apprentices2.json'),
+    "apprentices3": require(__dirname + '/data/apprentices3.json')
 }
 
 
@@ -21,6 +22,14 @@ _myData.apprentices.list.sort(function(a,b){
     return 0;
 });
 _myData.apprentices2.sort(function(a,b){
+    if (a.name.toUpperCase() < b.name.toUpperCase()){
+        return -1
+    } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+        return 1
+    }
+    return 0;
+});
+_myData.apprentices3.sort(function(a,b){
     if (a.name.toUpperCase() < b.name.toUpperCase()){
         return -1
     } else if(a.name.toUpperCase() > b.name.toUpperCase()){
@@ -55,6 +64,12 @@ _myData.apprentices2.forEach(function(_apprentice, index) {
     var _halfAmount = _apprentice.amount/2
     _apprentice.halfamountCommas = _halfAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 });
+_myData.apprentices3.forEach(function(_apprentice, index) {
+    _apprentice.amountCommas = _apprentice.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    var _halfAmount = _apprentice.amount/2
+    _apprentice.halfamountCommas = _halfAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
 
 require('./routes/1-0/v1.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/2-0/v2.js')(router,JSON.parse(JSON.stringify(_myData)));
