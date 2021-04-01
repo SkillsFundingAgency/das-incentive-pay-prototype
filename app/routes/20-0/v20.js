@@ -98,31 +98,31 @@ module.exports = function (router,_myData) {
                 if(req.session.myData.apprenticesapplied == 6){
                     //set custom set
 
-                    //   "id": 301,
+                    //   "id": 999301,
                     //   "name": "Corina Carver",
 
-                    //   "id": 302,
+                    //   "id": 999302,
                     //   "name": "Jack Roberts",
 
-                    //   "id": 303,
+                    //   "id": 999303,
                     //   "name": "Jas Johal",
 
-                    //   "id": 139,
+                    //   "id": 999139,
                     //   "name": "Joaquim Pinto",
 
-                    //   "id": 304,
+                    //   "id": 999304,
                     //   "name": "John Peters",
 
-                    //   "id": 305,
+                    //   "id": 999305,
                     //   "name": "Michael Johnson",
 
-                    //   "id": 306,
+                    //   "id": 999306,
                     //   "name": "Steven Smith",
 
-                    //   "id": 229,
+                    //   "id": 999229,
                     //   "name": "Pauline Fowler",
 
-                    if([301,302,303,139,304,305,306,229].includes(_apprentice.id)){
+                    if([999301,999302,999303,999139,999304,999305,999306,999229].includes(_apprentice.id)){
                         _apprentice.applied2 = true
                     }
                 } else if(req.session.myData.apprenticesapplied == 300){
@@ -147,6 +147,14 @@ module.exports = function (router,_myData) {
 				req.session.myData.removableApprentices.push(_apprentice)
 			}
         });
+        req.session.myData.removableApprentices.sort(function(a,b){
+            if (a.name.toUpperCase() < b.name.toUpperCase()){
+                return -1
+            } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+                return 1
+            }
+            return 0;
+        });
 
         //Set available apprentices
         req.session.myData.availableApprentices = []
@@ -157,6 +165,27 @@ module.exports = function (router,_myData) {
 				_count++
 			}
 		});
+
+        //Set applied for apprentices
+        req.session.myData.apprenticesAppliedList = []
+        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
+            if(_apprentice.applied2 == true){
+                req.session.myData.apprenticesAppliedList.push(_apprentice)
+            }
+        });
+        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
+            if(_apprentice.applied2 == true){
+                req.session.myData.apprenticesAppliedList.push(_apprentice)
+            }
+        });
+        req.session.myData.apprenticesAppliedList.sort(function(a,b){
+            if (a.name.toUpperCase() < b.name.toUpperCase()){
+                return -1
+            } else if(a.name.toUpperCase() > b.name.toUpperCase()){
+                return 1
+            }
+            return 0;
+        });
 
         //Set default selected apprentices (for deep links to work)
         req.session.myData.defaultSelectedApprentices = []
@@ -626,26 +655,6 @@ module.exports = function (router,_myData) {
 
 	// View applications
 	router.get(v + '/hub/view-payments', function (req, res) {
-        req.session.myData.apprenticesAppliedList = []
-        req.session.myData.apprentices2.forEach(function(_apprentice, index) {
-            if(_apprentice.applied2 == true){
-                req.session.myData.apprenticesAppliedList.push(_apprentice)
-            }
-        });
-        req.session.myData.apprentices3.forEach(function(_apprentice, index) {
-            if(_apprentice.applied2 == true){
-                req.session.myData.apprenticesAppliedList.push(_apprentice)
-            }
-        });
-        req.session.myData.apprenticesAppliedList.sort(function(a,b){
-            if (a.name.toUpperCase() < b.name.toUpperCase()){
-                return -1
-            } else if(a.name.toUpperCase() > b.name.toUpperCase()){
-                return 1
-            }
-            return 0;
-        });
-        
 		res.render(vx + '/hub/view-payments', {
 			myData: req.session.myData
 		});
