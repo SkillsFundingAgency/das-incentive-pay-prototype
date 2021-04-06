@@ -110,9 +110,10 @@
       {% endif %}
 
 
-      {% set _forwardLink = "taken-on-new-apprentices" %}
-      {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
-        {% set _forwardLink = "taken-on-new-apprentices" %}
+      {% set _forwardLink = "select-new-apprentices" %}
+
+      {% if req.session.myData.legalagreement == "false" %}
+        {% set _forwardLink = "shutter/legal-agreement" %}
       {% endif %}
 
       {{ govukButton({
