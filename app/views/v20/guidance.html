@@ -112,7 +112,7 @@
 
       {% set _forwardLink = "select-new-apprentices" %}
 
-      {% if req.session.myData.legalagreement == "false" %}
+      {% if myData.legalagreement == "false" %}
         {% set _forwardLink = "shutter/legal-agreement" %}
       {% endif %}
 
