@@ -80,11 +80,12 @@
         <!-- Compliance -->
         <div class="govuk-form-group compliance">
             <label class="govuk-label" >
-                Compliance (date input or question)
+                Compliance (date input or question or none)
             </label>
             <select class="govuk-select" style="min-width: 100%" id="compliance" name="compliance" data-option="compliance">
                 <option {% if myData.compliance == "dates" %}selected{% endif %} value="dates">Dates</option>
                 <option {% if myData.compliance == "question" %}selected{% endif %} value="question">Question (yes/no)</option>
+                <option {% if myData.compliance == "datesno" %}selected{% endif %} value="datesno">None</option>
             </select>
         </div>
 

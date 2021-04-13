@@ -448,6 +448,8 @@ module.exports = function (router,_myData) {
 
             if(req.session.myData.compliance == "question"){
                 res.redirect(v + '/check-answers')
+            } else if(req.session.myData.compliance == "datesno"){
+                res.redirect(v + '/check-answers')
             } else {
                 res.redirect(v + '/enter-start-dates')
             }
