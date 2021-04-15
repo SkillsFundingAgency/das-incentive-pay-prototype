@@ -68,7 +68,7 @@
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Apprentice</th>
 
-              {% if myData.compliance == "question" %}
+              {% if myData.compliance == "question" or myData.compliance == "datesno" %}
               <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
               {% else %}
               <th scope="col" class="govuk-table__header">Joined organisation</th>
