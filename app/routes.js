@@ -50,13 +50,13 @@ _myData.apprentices3.sort(function(a,b){
 //     } else {
 //         if(randomBoolean(0.16)){
 //             _apprentice.startdate = "March 2021"
-//         } 
+//         }
 //     }
 //     _testttt.push(_apprentice)
 //     _months[_apprentice.startdate] = (_months[_apprentice.startdate] || 0) + 1
 // });
-// console.log(JSON.stringify(_testttt)) 
-// // console.log(_months) 
+// console.log(JSON.stringify(_testttt))
+// // console.log(_months)
 
 //Add commas to amounts
 _myData.apprentices2.forEach(function(_apprentice, index) {
@@ -93,5 +93,6 @@ require('./routes/17-0/v17.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/18-0/v18.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/19-0/v19.js')(router,JSON.parse(JSON.stringify(_myData)));
 require('./routes/20-0/v20.js')(router,JSON.parse(JSON.stringify(_myData)));
+require('./routes/21-0/v21.js')(router,JSON.parse(JSON.stringify(_myData)));
 
 module.exports = router
