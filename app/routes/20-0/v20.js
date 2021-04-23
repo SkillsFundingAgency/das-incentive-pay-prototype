@@ -11,7 +11,7 @@ module.exports = function (router,_myData) {
 
 	function reset(req){
 		req.session.myData = JSON.parse(JSON.stringify(_myData))
-
+		
 		// Default setup
 		req.session.myData.legalagreement = "true"
 		req.session.myData.legalagreement2 = "true"
@@ -24,7 +24,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.compliance = "dates"
         req.session.myData.page = 1
 		req.session.myData.filters = "true"
-
+		
     }
 
     // Every GET and POST
@@ -194,10 +194,10 @@ module.exports = function (router,_myData) {
                 req.session.myData.defaultSelectedApprentices.push(_apprentice)
             }
         });
-
+		
         next()
 	});
-
+	
 	// Prototype setup
     router.get(v + '/setup', function (req, res) {
         res.render(vx + '/setup', {
@@ -255,7 +255,7 @@ module.exports = function (router,_myData) {
 			res.redirect(301, v + '/guidance');
         }
 	});
-
+	
 
 	// Select org - for hub
 	router.get(v + '/select-legal-entity-hub', function (req, res) {
@@ -286,7 +286,7 @@ module.exports = function (router,_myData) {
 			res.redirect(301, v + '/hub/home');
         }
 	});
-
+	
 	// Select org - for view payments
 	router.get(v + '/select-legal-entity-view-payments', function (req, res) {
         res.render(vx + '/select-legal-entity-hub', {
@@ -317,7 +317,7 @@ module.exports = function (router,_myData) {
         }
     });
 
-
+	
 	// Apply - taken-on-new-apprentices
     router.get(v + '/taken-on-new-apprentices', function (req, res) {
         res.render(vx + '/taken-on-new-apprentices', {
@@ -359,14 +359,14 @@ module.exports = function (router,_myData) {
 
         }
 	});
-
+	
 	// Apply - shutter - no new apprentices
     router.get(v + '/shutter/no-new-apprentices', function (req, res) {
         res.render(vx + '/shutter/no-new-apprentices', {
             myData: req.session.myData
         });
 	});
-
+	
 	// Apply - shutter - legal agreement
     router.get(v + '/shutter/legal-agreement', function (req, res) {
         res.render(vx + '/shutter/legal-agreement', {
@@ -398,10 +398,10 @@ module.exports = function (router,_myData) {
             myData: req.session.myData
         });
 	});
-
+	
 	// Apply - select-new-apprentices - small list
     router.get(v + '/select-new-apprentices', function (req, res) {
-
+		
 		req.session.myData.page = req.query.page || req.session.myData.page
 
         res.render(vx + '/select-new-apprentices', {
@@ -422,7 +422,7 @@ module.exports = function (router,_myData) {
                 "message": "Select the apprentices you want to apply for"
             }
 		}
-
+		
 		if(req.session.myData.validationError == "true") {
             res.render(vx + '/select-new-apprentices', {
                 myData: req.session.myData
@@ -453,10 +453,10 @@ module.exports = function (router,_myData) {
             } else {
                 res.redirect(v + '/enter-start-dates')
             }
-
+            
 		}
     })
-
+    
     // Apply - enter start dates
 	router.get(v + '/enter-start-dates', function (req, res) {
 		res.render(vx + '/enter-start-dates', {
@@ -470,7 +470,7 @@ module.exports = function (router,_myData) {
             res.redirect(v + '/check-answers')
         }
     })
-
+    
     // Apply - enter start dates dropout
 	router.get(v + '/enter-start-dates-dropout', function (req, res) {
 		res.render(vx + '/enter-start-dates-dropout', {
@@ -521,7 +521,7 @@ module.exports = function (router,_myData) {
 		});
 	})
 	router.post(v + '/check-answers', function (req, res) {
-
+        
         var _orgName = req.session.myData.selectLegalEntityAnswer || "ABC LTD"
 
         req.session.myData.allSelectedEligibleAnswerTemp = req.body.allSelectedEligibleAnswer
@@ -542,7 +542,7 @@ module.exports = function (router,_myData) {
         } else {
             req.session.myData.allSelectedEligibleAnswer = req.session.myData.allSelectedEligibleAnswerTemp
             req.session.myData.allSelectedEligibleAnswerTemp = ''
-
+            
             var _newApprentices = false
             if(req.session.myData.selectedApprentices){
                 req.session.myData.selectedApprentices.forEach(function(_apprentice, index) {
@@ -566,7 +566,7 @@ module.exports = function (router,_myData) {
 
         }
     })
-
+    
     // Apply - not all selected eligible
 	router.get(v + '/not-all-selected-eligible', function (req, res) {
 		res.render(vx + '/not-all-selected-eligible', {
@@ -682,7 +682,7 @@ module.exports = function (router,_myData) {
                 "message": "Select which apprentices you want to cancel an application for"
             }
 		}
-
+		
 		if(req.session.myData.validationError == "true") {
             res.render(vx + '/hub/remove-apprentice', {
                 myData: req.session.myData
