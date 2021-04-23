@@ -1,0 +1,413 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% set _removableApprenticesCount = myData.removableApprentices.length %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+{% endblock %}
+
+{% set _backlink = "home" %}
+{% set _backlinkText = "Hire a new apprentice payments" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../account-home" %}
+  {% set _backlinkText = "Home" %}
+{% endif %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="{{_backlink}}">{{_backlinkText}}</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+{% if myData.apprenticesapplied == "0" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{_orgName}} does not have any hire a new apprentice payment applications</h1>
+
+    <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 April 2021 to 30 September 2021.</p>
+
+    <a href="../guidance" class="govuk-button">Apply</a>
+  
+  </div>
+</div>
+
+{% else %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+    
+
+    <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
+
+
+    {% if myData.vrf == "notadded" %}
+    <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+      <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
+      <p>We cannot send any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
+      <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
+    </div>
+    {% elif myData.vrf == "inprogress" %}
+    <div class="das-panel das-panel--interruption" style="color: #0b0c0c; text-align: left; margin-top: 0; margin-bottom: 25px; background: #f3f2f1;">
+      <h3 class="das-panel__heading">We’re reviewing {{_orgNamePlural}} organisation and finance details</h3>
+      <p style="color: #0b0c0c;">We cannot send any payments until we’ve verified {{_orgNamePlural}} organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
+    </div>
+    {% endif %}
+
+    {% if myData.legalagreement2 == "false" %}
+    <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+      <h3 class="das-panel__heading">{{_orgName}} needs to accept a new employer agreement </h3>
+      <p>{{_orgName}} has a hire a new apprentice payment that is not covered by the existing agreement. We cannot send these payments until someone from {{_orgName}} accepts a new agreement.</p>
+      <p><a href="#" class="das-panel__link">View agreement</a></p>
+    </div>
+    {% endif %}
+
+    {% if myData.mvs == "mvslive" %}
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          When you'll get paid
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        
+        <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+          <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+        </ul>
+        <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+        <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
+          <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
+        </ul>
+
+      </div>
+    </details>
+    {% else %}
+
+    
+
+    <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+        <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+      </ul>
+      <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Why we might send the payment after the estimated date
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        
+        <p class="govuk-body">We might send the payment after the estimated date if the training provider:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>does not submit their information on time</li>
+          <li>gives us information that does not match what is in the apprenticeship service account (also known as a ‘data lock’)</li>
+          <li>changes an apprentice’s start date</li>
+        </ul>
+        
+        <p class="govuk-body">We also might send the payment after the estimated date if:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{_orgName}} does not add their organisation and finance details or if we have not verified them</li>
+          <li>an apprentice takes a break in learning</li>
+        </ul>
+        
+      </div>
+    </details>
+
+    <!-- <h3 class="govuk-heading-m">
+      6 apprentices<br>
+      <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£3,000 estimated total payment</span>
+    </h3> -->
+
+    {% endif %}
+
+    {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+    <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
+    {% else %}
+      {% if _removableApprenticesCount > 0 %}
+      <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
+      {% endif %}
+    {% endif %}
+
+    <!-- <p class="govuk-body"><a href="../guidance" class="govuk-button">Apply</a></p> -->
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% if myData.mvs == "mvslive" %}
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice name</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Estimated payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Steven Smith</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Jack Roberts</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£1,500</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Michael Johnson</td>
+          <td class="govuk-table__cell">5 September 2020</td>
+          <td class="govuk-table__cell">£2,000</td>
+        </tr>
+      </tbody>
+    </table>
+    {% else %}
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        {% for _apprentice in myData.apprenticesAppliedList %}
+
+        {% if _apprentice.status == "cancelled" and myData.mvs == "mvs" %}
+        {% else %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >{{_apprentice.name}}</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
+          
+          
+          <td class="govuk-table__cell">
+            {% if _apprentice.phase == 2 %}
+            9 April 2021
+            {% else %}
+            5 September 2020
+            {% endif %}
+          </td>
+
+          {% set _firstPaymentHTML %}
+            {% if _apprentice.firstpayment == "paid" %}
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br>{% if myData.mvs != "mvs" %}20 {% endif %}January 2021<br>
+                <span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span>
+
+                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "changed" %}
+                  <br>Payment reclaimed
+                {% endif %}
+
+                {% if _apprentice.status == "cancelled" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Application cancelled
+                {% elif _apprentice.status == "rejected" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Application rejected
+                {% elif _apprentice.status == "stopped" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Apprenticeship paused or&nbsp;stopped
+                {% elif _apprentice.status == "paused2" and _apprentice.secondpayment == "paid" %}
+                  <br><br>Apprenticeship paused or&nbsp;stopped
+                {% elif _apprentice.status == "changed" %}
+                  <br><br><span class="govuk-!-font-weight-bold" >
+                    Estimated</span><br>
+                    {% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}July 2021{% else %}February 2021{% endif %}
+                    <br><span style="color: #626a6e" >£750</span>
+                {% endif %}
+
+              </td>
+            {% elif _apprentice.status == "paymentissue" %}
+            <td class="govuk-table__cell" style="max-width:100px">
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
+            </td>
+            {% elif _apprentice.status == "agreement" and myData.legalagreement2 == "false" %}
+            <td class="govuk-table__cell" style="max-width:100px">
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Accept a <a href="#" class="govuk-link govuk-link govuk-link--no-visited-state">new employer agreement</a>
+            </td>
+            {% elif _apprentice.status == "cancelled" %}
+            <td class="govuk-table__cell">Application cancelled</td>
+            {% elif _apprentice.status == "paused" %}
+            <td class="govuk-table__cell">Application paused</td>
+            {% elif _apprentice.status == "rejected" %}
+              <td class="govuk-table__cell">Application rejected</td>
+            {% elif _apprentice.status == "stopped" %} 
+              <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+            {% elif _apprentice.status == "paused2" %}
+                <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+            {% elif _apprentice.status == "toconfirm" %} 
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+            {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+            {% else %}
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Estimated</span><br>
+                  {% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}July 2021{% else %}February 2021{% endif %}
+                  <br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}
+                </span>
+              </td>
+            {% endif %}
+          {% endset %}
+
+          {% set _secondPaymentHTML %}
+            {% if _apprentice.secondpayment == "paid" %}
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Payment sent</span><br>
+                  {% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}
+                  <br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}
+                </span>
+                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" %}
+                <br>Payment reclaimed
+                {% endif %}
+              </td>
+            {% elif _apprentice.firstpayment == "paid" %}
+              {% if _apprentice.status == "paymentissue" %}
+                <td class="govuk-table__cell" style="max-width:100px">
+                  <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
+                </td>
+              {% elif _apprentice.status == "agreement" and myData.legalagreement2 == "false" %}
+                <td class="govuk-table__cell" style="max-width:100px">
+                  <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Accept a <a href="#" class="govuk-link govuk-link govuk-link--no-visited-state">new employer agreement</a>
+                </td>
+              {% elif _apprentice.status == "cancelled" %}
+                <td class="govuk-table__cell">
+                  Application cancelled
+                </td>
+              {% elif _apprentice.status == "paused" %}
+                <td class="govuk-table__cell">Application paused</td>
+              {% elif _apprentice.status == "rejected" %}
+                <td class="govuk-table__cell">
+                  Application rejected
+                </td>
+              {% elif _apprentice.status == "stopped" %} 
+                <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+              {% elif _apprentice.status == "paused2" %} 
+                <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+              {% elif _apprentice.status == "toconfirm" %} 
+                <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              {% elif _apprentice.status == "changed" %}
+                <td class="govuk-table__cell">
+                  <span class="govuk-!-font-weight-bold" >
+                    Estimated</span><br>
+                    {% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}
+                    <br><span style="color: #626a6e" >£750
+                  </span>
+                </td>
+              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+                <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              {% else %}
+                <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              {% endif %}
+            {% else %}
+              {% if _apprentice.status == "paymentissue" or _apprentice.status == "agreement" or _apprentice.status == "cancelled" or _apprentice.status == "paused" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "toconfirm"%}
+                <td class="govuk-table__cell">&nbsp;</td>
+              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+                <td class="govuk-table__cell">&nbsp;</td>
+              {% else %}
+                <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
+              {% endif %}
+            {% endif %}
+          {% endset %}
+
+          {{_firstPaymentHTML|safe}}
+          {{_secondPaymentHTML|safe}}
+
+        </tr>
+        {% endif %}
+
+        {% endfor %}
+
+      </tbody>
+    </table>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script>
+
+{% endblock %}
+
+
+{% block footer %}
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        
+        
+
+
+        {
+          href: "view-payments?applied=0&r=t",
+          text: "0"
+        },
+        {
+          href: "view-payments?applied=6&r=t",
+          text: "some"
+        },
+        {
+          href: "view-payments?applied=300&r=t",
+          text: "lots"
+        }
+      ]
+    }
+  }) }}
+
+{% endblock %}
