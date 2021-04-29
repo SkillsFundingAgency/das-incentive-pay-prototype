@@ -55,7 +55,7 @@
 
       <h2 class="govuk-heading-m">Apprentices who joined your organisation before 1 April 2021</h2>
       <p class="govuk-body">The application deadline for these apprentices has closed.</p>
-      
+
       <h2 class="govuk-heading-m">Apprentices who joined your organisation from 1 April 2021</h2>
       <p class="govuk-body">Employers will receive £3,000 for new employees of any age who start their apprenticeship from 1 April 2021 to 30 September 2021.</p>
 
@@ -82,7 +82,7 @@
       {% if myData.compliance == "question" %}
       <p class="govuk-body">You'll need to add the apprentices you want to apply for to the apprenticeship service account.</p>
       {% else %}
-      <p class="govuk-body">You'll need to:</p> 
+      <p class="govuk-body">You'll need to:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>add the apprentices you want to apply for to the apprenticeship service account.</li>
         <li>know the date each apprentice joined your organisation</li>
@@ -96,7 +96,7 @@
         <li>VAT number (if {{_orgName}} has one)</li>
         <li>remittance email address</li>
         <li>finance director or finance lead’s contact details</li>
-        <li>bank account details</li>    
+        <li>bank account details</li>
       </ul>
 
       {% if myData.legalagreement2 != "true" %}
@@ -110,7 +110,7 @@
       {% endif %}
 
 
-      {% set _forwardLink = "select-new-apprentices" %}
+      {% set _forwardLink = "taken-on-new-apprentices" %}
 
       {% if myData.legalagreement == "false" %}
         {% set _forwardLink = "shutter/legal-agreement" %}

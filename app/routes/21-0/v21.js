@@ -1,4 +1,4 @@
-// Routes for v16
+// Routes for v21
 var v = '/v21';
 var vx = 'v21';
 var apprentices = require('../../data/apprentices.json');
@@ -356,7 +356,6 @@ module.exports = function (router,_myData) {
 					res.redirect(v + '/select-new-apprentices')
 				}
 			}
-
         }
 	});
 
@@ -596,7 +595,29 @@ module.exports = function (router,_myData) {
 			res.redirect(v + '/confirmation')
 		}
 	})
+  //OLD BK
+	// Bank details - needed
+	//router.get(v + '/bank-details-needed', function (req, res) {
+  //      res.render(vx + '/bank-details-needed', {
+  //          myData: req.session.myData
+  //      });
+//	});
+	//router.post(v + '/bank-details-needed', function (req, res) {
+		//If the radio button is Yes
+	//	if (req.body["bank-now"] === 'yes') {
+	//		res.redirect(v + '/bc/contact-information')
+	//	} else {
+			//If the radio button is no
+			//Needs to point to start
+	//		res.redirect(v + '/need-bank-information')
+	//	}
+//	})
+//END BK
 
+
+
+
+//NEW
 	// Bank details - needed
 	router.get(v + '/bank-details-needed', function (req, res) {
         res.render(vx + '/bank-details-needed', {
@@ -604,9 +625,13 @@ module.exports = function (router,_myData) {
         });
 	});
 	router.post(v + '/bank-details-needed', function (req, res) {
+		//If the radio button is Yes
 		if (req.body["bank-now"] === 'yes') {
-			res.redirect(v + '/bc/contact-information')
+			res.redirect(v + '/bc/start')
+			//res.redirect(v + '/bc/contact-information')
 		} else {
+			//If the radio button is no
+			//Needs to point to start
 			res.redirect(v + '/need-bank-information')
 		}
 	})
@@ -616,6 +641,12 @@ module.exports = function (router,_myData) {
             myData: req.session.myData
         });
 	});
+
+
+
+
+
+
 	// Bank details - contact info
 	router.get(v + '/bc/contact-information', function (req, res) {
         res.render(vx + '/bc/contact-information', {
