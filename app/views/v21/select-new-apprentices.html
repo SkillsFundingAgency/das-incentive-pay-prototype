@@ -62,13 +62,14 @@ Manage apprenticeships
 
             <p class="govuk-body">We’re showing the apprentices in the account with a start date from April 2021 to September 2021. We’re not showing any apprentices that you have already applied for.</p>
 
-            <p class="govuk-body">Only select new apprentices who joined {{_orgName}} from 1 April 2021 to 30 September 2021.</p>
+            <p class="govuk-body">Only select new apprentices with an employment start date at {{_orgName}} from 1 April 2021 to 30 September 2021.</p>
+            <p>          You must not select existing employees who joined {{_orgName}} before 1 April 2021, even if they started an apprenticeship after this date, unless these apprentices were previously employed under the Kickstart Scheme.</p>
 
             <div class="govuk-warning-text">
                 <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                 <strong class="govuk-warning-text__text">
                     <span class="govuk-warning-text__assistive">Warning</span>
-                    Do not select existing employees who joined {{_orgName}} before 1 April 2021, even if they started an apprenticeship after this date.
+                    The ESFA will terminate payments and reclaim any funds paid for apprentices identified as ineligible.
                 </strong>
             </div>
 
@@ -123,9 +124,9 @@ Manage apprenticeships
                                     <span class="govuk-!-font-weight-bold">{{_apprentice.name}}</span> <span style="color: #505a5f">(ULN: {{_apprentice.uln}})</span><br>
 
                                     {% if _totalApprentices > _perPage %}
-                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span> 
+                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span>
                                     {% else %}
-                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span> 
+                                    <span style="color: #505a5f">{{_apprentice.startdate}} (apprenticeship start date)</span>
                                     {% endif %}
                                     <br>
                                     <span style="color: #505a5f">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
