@@ -67,7 +67,7 @@ Manage apprenticeships
             {% if _totalApprentices == 1 %}
             <p class="govuk-body">Enter the employment start date {{_selectedApprentices[0].name}} joined {{_orgName}}, as shown on their employment contract.</p>
             <p class="govuk-body">This is the date the apprentice joined {{_orgName}} and may be different to the apprenticeship start date. </p>
-            <p class="govuk-body">{{_orgName}} can only apply for new apprentices who joined their organisation from 1 April 2021 to 30 September 2021.</p>
+            <p class="govuk-body">{{_orgName}} can only apply for  {{_selectedApprentices[0].name}} if they joined their organisation from 1 April 2021 to 30 September 2021.</p>
 
             {% else %}
             <p class="govuk-body">Enter the employment start date at {{_orgName}} for each apprentice, as shown on their employment contract.</p>
@@ -80,7 +80,7 @@ Manage apprenticeships
                 <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                 <strong class="govuk-warning-text__text">
                     <span class="govuk-warning-text__assistive">Warning</span>
-                    The ESFA will be undertaking checks of apprentice employment date and will terminate payments and reclaim any funds paid for apprentices identified as ineligible. <br /> Understand more about <a href="https://www.gov.uk/guidance/incentive-payments-for-hiring-a-new-apprentice" target="_blank">eligibility for the payment.<a/>
+                    The ESFA will stop payments and reclaim any funds paid for apprentices identified as ineligible.
                 </strong>
             </div>
 
