@@ -487,7 +487,7 @@ module.exports = function (router,_myData) {
             req.session.myData.apprentices3.forEach(function(_apprentice, index) {
                 _apprentice.selected = false
             })
-            res.redirect(v + '/hub/view-payments')
+            res.redirect(v + '/hub/home')
         } else {
 
             //remove first apprentice from list
