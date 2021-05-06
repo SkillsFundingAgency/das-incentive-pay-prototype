@@ -41,22 +41,25 @@
       <form method="post" class="form">
 
         <!-- 1 selected, they are ineligible -->
-        {% if _oneSelected %}
+    <!--{% if _oneSelected %}
           <h1 class="govuk-heading-xl">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
-        <!-- more than 1 selected, 1 is ineligible -->
+
         {% elif _moreThanOneSelectedOneIneligible %}
           <h1 class="govuk-heading-xl">{{_selectedApprentices[0].name}} is not eligible for the payment</h1>
-        <!-- more than 1 selected, All are ineligible -->
+
         {% elif _moreThanOneSelectedAllIneligible %}
           <h1 class="govuk-heading-xl">These apprentices are not eligible for the payment</h1>
-        <!-- more than 2 selected, 2 not eligible -->
+
         {% elif _moreThanOneSelectedTwoIneligible %}
           <h1 class="govuk-heading-xl">Some apprentices are not eligible for the payment</h1>
-        {% endif %}
+        {% endif %}-->
+
+
+        <h1 class="govuk-heading-xl">One or more apprentices are not eligible for the payment</h1>
 
         <p class="govuk-body">{{_orgName}} cannot apply for an existing employee who joined their organisation before 1 April 2021, even if they started an apprenticeship after this date.</p>
 
-        {% if _moreThanOneSelectedAllIneligible %}
+      <!--  {% if _moreThanOneSelectedAllIneligible %}
         <p class="govuk-body">The following apprentices are not eligible for the payment:</p>
         <ul class="govuk-list govuk-list--bullet">
           {% for _apprentice in _selectedApprentices %}
@@ -80,8 +83,14 @@
 
         {% if _moreThanOneSelectedOneIneligible %}
         <p class="govuk-body">We will remove {{_selectedApprentices[0].name}} from the application.</p>
-        {% endif %}
-        
+        {% endif %}-->
+
+        <p class="govuk-body">The following are not eligible for the payment:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{_selectedApprentices[0].name}} (joined on 1 July 2020)</li>
+          <li>{{_selectedApprentices[1].name}} (joined on 1 July 2020)</li>
+        </ul>
+        <p class="govuk-body">We will remove these apprentices from the application. </p>
 
         {% if _oneSelected or _moreThanOneSelectedAllIneligible %}
 
