@@ -74,7 +74,8 @@ Manage apprenticeships
             </div>
 
             {% if _totalApprentices > _perPage and myData.filters == "true" %}
-            <div class="month-filters-container grey-panel grey-panel-blocked govuk-!-margin-bottom-5">
+
+            <!--<div class="month-filters-container grey-panel grey-panel-blocked govuk-!-margin-bottom-5">
                 <h3 class="govuk-heading-m month-filtered" >Filter by apprenticeship start date</h3>
                 <ul class="govuk-list month-filters">
                     <li><a class="govuk-link govuk-link--no-visited-state" href="#" >April 2021</a></li>
@@ -88,11 +89,11 @@ Manage apprenticeships
             <div class="month-filtered-container grey-panel grey-panel-blocked govuk-!-margin-bottom-5" style="display: none;">
                 <h3 class="govuk-heading-m month-filtered" >Filtered</h3>
                 <p class="govuk-body" ><a class="govuk-link govuk-link--no-visited-state clear-month-filter" href="#" >Clear filter</a></p>
-            </div>
+            </div>-->
             {% endif %}
 
             {% if myData.filters == "true" %}
-            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state select-all-link" href="#">Select or deselect all apprentices</a></p>
+          <!--  <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state select-all-link" href="#">Select or deselect all apprentices</a></p>-->
             {% endif %}
 
             <div class="govuk-form-group {% if myData.validationErrors.selectNewApprenticesAnswer %}govuk-form-group--error{% endif %}">
