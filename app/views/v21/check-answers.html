@@ -18,7 +18,7 @@
 
 {% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
 {% set _totalApprentices = _selectedApprentices.length %}
-{% set _totalAmount = myData.selectedApprenticesTotalAmount or "6,000" %}
+{% set _totalAmount = myData.selectedApprenticesTotalAmount or "3,000" %}
 
 <!-- Paging -->
 {% set _perPage = 10 %}
@@ -56,7 +56,7 @@
           {% endif %}
 
         <h1 class="govuk-heading-xl">Confirm apprentices</h1>
-        
+
 
         <h3 class="govuk-heading-m">
           {{_totalApprentices}} apprentice{% if _totalApprentices != 1 %}s{% endif %}<br>
@@ -117,7 +117,7 @@
                     Did all of these apprentices join {{_orgName}} from 1 April 2021?
                   </h1>
               </legend>
-              
+
               {% if myData.validationErrors.allSelectedEligibleAnswer %}
               <span id="allSelectedEligibleAnswer-error" class="govuk-error-message">
                   <span class="govuk-visually-hidden">Error:</span>
