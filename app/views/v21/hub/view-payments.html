@@ -53,10 +53,10 @@
 
     <h1 class="govuk-heading-xl">{{_orgName}} does not have any hire a new apprentice payment applications</h1>
 
-    <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 April 2021 to 30 September 2021.</p>
+    <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 April 2021 to 30 November 2021.</p>
 
     <a href="../guidance" class="govuk-button">Apply</a>
-  
+
   </div>
 </div>
 
@@ -65,8 +65,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    
-    
+
+
 
     <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
 
@@ -100,7 +100,7 @@
         </span>
       </summary>
       <div class="govuk-details__text">
-        
+
         <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
         <ul class="govuk-list govuk-list--bullet">
           <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
@@ -118,7 +118,7 @@
     </details>
     {% else %}
 
-    
+
 
     <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
       <ul class="govuk-list govuk-list--bullet">
@@ -134,7 +134,7 @@
         </span>
       </summary>
       <div class="govuk-details__text">
-        
+
         <p class="govuk-body">We might send the payment after the estimated date if the training provider:</p>
 
         <ul class="govuk-list govuk-list--bullet">
@@ -142,14 +142,14 @@
           <li>gives us information that does not match what is in the apprenticeship service account (also known as a ‘data lock’)</li>
           <li>changes an apprentice’s start date</li>
         </ul>
-        
+
         <p class="govuk-body">We also might send the payment after the estimated date if:</p>
-        
+
         <ul class="govuk-list govuk-list--bullet">
           <li>{{_orgName}} does not add their organisation and finance details or if we have not verified them</li>
           <li>an apprentice takes a break in learning</li>
         </ul>
-        
+
       </div>
     </details>
 
@@ -224,8 +224,8 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >{{_apprentice.name}}</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span></td>
           <td class="govuk-table__cell" style="max-width:200px">{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</td>
-          
-          
+
+
           <td class="govuk-table__cell">
             {% if _apprentice.phase == 2 %}
             9 April 2021
@@ -275,13 +275,13 @@
             <td class="govuk-table__cell">Application paused</td>
             {% elif _apprentice.status == "rejected" %}
               <td class="govuk-table__cell">Application rejected</td>
-            {% elif _apprentice.status == "stopped" %} 
+            {% elif _apprentice.status == "stopped" %}
               <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
             {% elif _apprentice.status == "paused2" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
-            {% elif _apprentice.status == "toconfirm" %} 
+            {% elif _apprentice.status == "toconfirm" %}
               <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
-            {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+            {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %}
               <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
             {% else %}
               <td class="govuk-table__cell">
@@ -325,11 +325,11 @@
                 <td class="govuk-table__cell">
                   Application rejected
                 </td>
-              {% elif _apprentice.status == "stopped" %} 
+              {% elif _apprentice.status == "stopped" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
-              {% elif _apprentice.status == "paused2" %} 
+              {% elif _apprentice.status == "paused2" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
-              {% elif _apprentice.status == "toconfirm" %} 
+              {% elif _apprentice.status == "toconfirm" %}
                 <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
               {% elif _apprentice.status == "changed" %}
                 <td class="govuk-table__cell">
@@ -339,7 +339,7 @@
                     <br><span style="color: #626a6e" >£750
                   </span>
                 </td>
-              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %}
                 <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
               {% else %}
                 <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
@@ -347,7 +347,7 @@
             {% else %}
               {% if _apprentice.status == "paymentissue" or _apprentice.status == "agreement" or _apprentice.status == "cancelled" or _apprentice.status == "paused" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "toconfirm"%}
                 <td class="govuk-table__cell">&nbsp;</td>
-              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %} 
+              {% elif _apprentice.startdate == "December 2020" or _apprentice.startdate == "January 2021" or _apprentice.startdate == "February 2021" or _apprentice.startdate == "March 2021" %}
                 <td class="govuk-table__cell">&nbsp;</td>
               {% else %}
                 <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Estimated</span><br>{% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}<br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span></td>
@@ -390,8 +390,8 @@
   {{ govukFooter({
     meta: {
       items: [
-        
-        
+
+
 
 
         {
