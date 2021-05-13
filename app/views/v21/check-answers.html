@@ -18,7 +18,12 @@
 
 {% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
 {% set _totalApprentices = _selectedApprentices.length %}
-{% set _totalAmount = myData.selectedApprenticesTotalAmount or "3,000" %}
+
+<!--{% set _totalAmount = myData.selectedApprenticesTotalAmount or "3,000" %}-->
+
+
+<!--Ricky-->
+{% set _totalAmount = _selectedApprentices.length * 3 +",000" %}
 
 <!-- Paging -->
 {% set _perPage = 10 %}
@@ -60,6 +65,8 @@
 
         <h3 class="govuk-heading-m">
           {{_totalApprentices}} apprentice{% if _totalApprentices != 1 %}s{% endif %}<br>
+
+
           <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£{{_totalAmount}} estimated total payment</span>
         </h3>
 
