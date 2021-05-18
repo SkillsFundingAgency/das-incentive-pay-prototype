@@ -160,16 +160,16 @@
 
     {% endif %}
 
-    {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  <!--  {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
     <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
     {% else %}
       {% if _removableApprenticesCount > 0 %}
       <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
       {% endif %}
-    {% endif %}
+    {% endif %}-->
 
     <!-- <p class="govuk-body"><a href="../guidance" class="govuk-button">Apply</a></p> -->
-
+  <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
   </div>
 </div>
 
@@ -219,7 +219,7 @@
 
         {% for _apprentice in myData.apprenticesAppliedList %}
 
-        {% if _apprentice.status == "cancelled" and myData.mvs == "mvs" %}
+        {% if _apprentice.status == "cancelled" and myData.mvs !== "mvs" %}
         {% else %}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >{{_apprentice.name}}</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: {{_apprentice.uln}}</span></td>
@@ -241,14 +241,18 @@
                 <br>{% if myData.mvs != "mvs" %}20 {% endif %}January 2021<br>
                 <span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}</span>
 
-                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "changed" %}
+            <!--    {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "changed" %}
                   <br>Payment reclaimed
+                {% endif %}-->
+                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" or _apprentice.status == "changed" %}
+
                 {% endif %}
+
 
                 {% if _apprentice.status == "cancelled" and _apprentice.secondpayment == "paid" %}
                   <br><br>Application cancelled
                 {% elif _apprentice.status == "rejected" and _apprentice.secondpayment == "paid" %}
-                  <br><br>Application rejected
+                  <br><br>Application paused or stopped
                 {% elif _apprentice.status == "stopped" and _apprentice.secondpayment == "paid" %}
                   <br><br>Apprenticeship paused or&nbsp;stopped
                 {% elif _apprentice.status == "paused2" and _apprentice.secondpayment == "paid" %}
@@ -272,9 +276,9 @@
             {% elif _apprentice.status == "cancelled" %}
             <td class="govuk-table__cell">Application cancelled</td>
             {% elif _apprentice.status == "paused" %}
-            <td class="govuk-table__cell">Application paused</td>
+            <td class="govuk-table__cell">Application paused or stopped</td>
             {% elif _apprentice.status == "rejected" %}
-              <td class="govuk-table__cell">Application rejected</td>
+              <td class="govuk-table__cell">Application paused</td>
             {% elif _apprentice.status == "stopped" %}
               <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
             {% elif _apprentice.status == "paused2" %}
@@ -302,8 +306,11 @@
                   {% if myData.mvs != "mvs" %}18 {% endif %}{% if _apprentice.phase == 2 %}April 2022{% else %}November 2021{% endif %}
                   <br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}
                 </span>
-                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" %}
+                <!--{% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" %}
                 <br>Payment reclaimed
+                {% endif %}-->
+                {% if _apprentice.status == "cancelled" or _apprentice.status == "rejected" or _apprentice.status == "stopped" or _apprentice.status == "paused2" %}
+
                 {% endif %}
               </td>
             {% elif _apprentice.firstpayment == "paid" %}
@@ -320,10 +327,10 @@
                   Application cancelled
                 </td>
               {% elif _apprentice.status == "paused" %}
-                <td class="govuk-table__cell">Application paused</td>
+                <td class="govuk-table__cell">Application paused or stopped</td>
               {% elif _apprentice.status == "rejected" %}
                 <td class="govuk-table__cell">
-                  Application rejected
+                  Application paused
                 </td>
               {% elif _apprentice.status == "stopped" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
