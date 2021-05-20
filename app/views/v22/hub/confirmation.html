@@ -31,7 +31,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">Confirm apprentices</h1>
-      
+
 
       <h3 class="govuk-heading-m">
         {{myData.selectedApprentices.length}} apprentice{% if myData.selectedApprentices.length != 1 %}s{% endif %}
@@ -81,7 +81,7 @@
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
           <span class="govuk-warning-text__assistive">Warning</span>
-          Do not cancel an apprentice’s application if they have stopped or completed their apprenticeship, unless they’re not eligible for the payment.
+          Only cancel ineligible applications. Don’t cancel the application just because the apprentice has now stopped or finished the apprenticeship. 
           <br><br>
           If you cancel an application, {{_orgName}} will have to repay any payments that they’ve already received.
         </strong>

@@ -267,7 +267,7 @@
               </td>
             {% elif _apprentice.status == "paymentissue" %}
             <td class="govuk-table__cell" style="max-width:100px">
-              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Information mismatch with your training provider, please contact them
             </td>
             {% elif _apprentice.status == "agreement" and myData.legalagreement2 == "false" %}
             <td class="govuk-table__cell" style="max-width:100px">
@@ -316,7 +316,7 @@
             {% elif _apprentice.firstpayment == "paid" %}
               {% if _apprentice.status == "paymentissue" %}
                 <td class="govuk-table__cell" style="max-width:100px">
-                  <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Contact the training provider to check that your information matches
+                  <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Information mismatch with your training provider, please contact them
                 </td>
               {% elif _apprentice.status == "agreement" and myData.legalagreement2 == "false" %}
                 <td class="govuk-table__cell" style="max-width:100px">
