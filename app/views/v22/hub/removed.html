@@ -26,8 +26,11 @@
           <h1 class="govuk-panel__title">{{_cancelledCount}} applications cancelled</h1>
         {% else %}
           <h1 class="govuk-panel__title">One application cancelled</h1>
+
         {% endif %}
       </div>
+      <p>You've cancelled the following for the hire a new apprentice payment.</p>
+        <p><strong>ULN: 1899230256</strong></p>
 
       <h2 class="govuk-heading-m">What happens next</h2>
 
@@ -36,7 +39,7 @@
       {% else %}
         <p>For the application you’ve cancelled, {{_orgName}} will:</p>
       {% endif %}
-      
+
       <ul class="govuk-list govuk-list--bullet">
         <li>not receive any more payments</li>
         <li>have to repay any payments that they’ve already received</li>
