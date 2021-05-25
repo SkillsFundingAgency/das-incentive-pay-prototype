@@ -29,8 +29,68 @@
 
         {% endif %}
       </div>
-      <p>You've cancelled the following for the hire a new apprentice payment.</p>
+      <p>You've cancelled the following for the hire a new apprentice payment:</p>
+      {% if _cancelledCount == 1 %}
         <p><strong>ULN: 1899230256</strong></p>
+
+        {% endif %}
+
+
+          {% if _cancelledCount == 1 %}
+            <p><strong>ULN: 1699230256</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 2 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 3 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 4 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+            <p><strong>ULN: 1821204945</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 5 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+            <p><strong>ULN: 1821204945</strong></p>
+            <p><strong>ULN: 1860204324</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 6 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+            <p><strong>ULN: 1821204945</strong></p>
+            <p><strong>ULN: 1860204324</strong></p>
+            <p><strong>ULN: 1890204776</strong></p>
+          {% endif %}
+          {% if _cancelledCount == 7 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+            <p><strong>ULN: 1821204945</strong></p>
+            <p><strong>ULN: 1860204324</strong></p>
+            <p><strong>ULN: 1890204776</strong></p>
+            <p><strong>ULN: 1900030383</strong></p>
+          {% endif %}
+          {% if _cancelledCount >= 8 %}
+            <p><strong>ULN: 1699230256</strong></p>
+            <p><strong>ULN: 1797673773</strong></p>
+            <p><strong>ULN: 1798232356</strong></p>
+            <p><strong>ULN: 1821204945</strong></p>
+            <p><strong>ULN: 1860204324</strong></p>
+            <p><strong>ULN: 1890204776</strong></p>
+            <p><strong>ULN: 1900030383</strong></p>
+            <p><strong>ULN: 1923476224</strong></p>
+          {% endif %}
+
+
+
 
       <h2 class="govuk-heading-m">What happens next</h2>
 
