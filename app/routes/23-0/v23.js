@@ -24,7 +24,7 @@ module.exports = function (router,_myData) {
 		req.session.myData.compliance = "dates"
         req.session.myData.page = 1
 		req.session.myData.filters = "true"
-
+  
     }
 
     // Every GET and POST
