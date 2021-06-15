@@ -47,8 +47,71 @@
 <div class="govuk-grid-row">
 <h1 class="govuk-heading-xl">View your payments and applications</h1>
 <p>View all your payments and alerts. You can also view which payments are pending, sent and paused.</p>
-<br />
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    You currently have <a href="index2#past-day">3 Alerts</a> for payments and applications that may need attention.
+  </strong>
 </div>
+
+
+
+<br />
+
+
+<form method="get" action="/10005760/apprentices">
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <!--  <div class="govuk-form-group">
+                  <label for="searchTerm" class="govuk-label">Search apprentice name or unique learner number (ULN)</label>
+                  <div class="das-search-form__group">
+                      <input class="govuk-input das-search-form__input" id="searchTerm" name="searchTerm" type="text">
+                      <div class="das-search-form__button-wrap">
+                          <button class="govuk-button das-search-form__button" type="submit">Search</button>
+                      </div>
+                  </div>
+              </div>-->
+          </div>
+      </div>
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+              <div class="das-pane govuk-!-margin-bottom-3">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-form-group">
+
+                          <div class="govuk-grid-column-one-third">
+                            <label class="govuk-label" for="selectedEmployer">Apprentice</label>
+                            <input type="search" value="{% if myData.searchapplied == true %}{{myData.searchTerm}}{% endif %}" id="search-training" name="q" title="Search" class="govuk-input search-input" >
+                          </div>
+                          <div class="govuk-grid-column-one-third">
+                            <label class="govuk-label" for="selectedEmployer">ULN</label>
+                            <input type="search" value="{% if myData.searchapplied == true %}{{myData.searchTerm}}{% endif %}" id="search-training" name="q" title="Search" class="govuk-input search-input" >
+                          </div>
+                          <div class="govuk-grid-column-one-third">
+                            <label class="govuk-label" for="selectedEmployer">Current Status</label>
+                            <select class="govuk-select govuk-!-width-full" id="selectedCourse" name="selectedCourse">
+                            <option label="All" aria-label="All courses" value="">All</option>
+                            <option label="Alert" aria-label="All courses" value="">Alert</option>
+                            <option label="Pending" aria-label="All courses" value="">Pending</option>
+                            <option label="Payment Sent" aria-label="All courses" value="">Payment Sent</option>
+                            <option label="Inactive" aria-label="All courses" value="">Inactive</option>
+                              </select>
+                          </div>
+                    </div>
+                  <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-one-third">
+
+                      </div>
+                  </div>
+                  <button class="govuk-button govuk-!-margin-0" type="submit">Apply filters</button>
+              </div>
+          </div>
+      </div>
+  </form><br />
+
+  </div>
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
 
