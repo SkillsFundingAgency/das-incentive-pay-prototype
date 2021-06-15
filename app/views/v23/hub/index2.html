@@ -8,6 +8,8 @@
 {% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
 {% set _orgNamePlural = _orgName + "’s" %}
 
+{% set _removableApprenticesCount = myData.removableApprentices.length %}
+
 {% block header %}
   {% include "includes/cookie-banner.html" %}
   {% include "includes/header-bar.html" %}
@@ -23,20 +25,16 @@
   type="text/css"
   href="https://das-pp-frnt-end.azureedge.net/css/main.css"
 />
-
 {% endblock %}
+
+{% set _backlink = "home" %}
+{% set _backlinkText = "Hire a new apprentice payments" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../account-home" %}
+  {% set _backlinkText = "Home" %}
+{% endif %}
 
 {% block beforeContent %}
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="../account-home">Home</a>
-    </li>
-  </ol>
-</div>
-{% endblock %}
-
-{% block content %}
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
       <li class="govuk-breadcrumbs__list-item">
@@ -44,6 +42,25 @@
       </li>
     </ol>
   </div>
+{% endblock %}
+
+{% block content %}
+
+{% if myData.apprenticesapplied == "0" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{_orgName}} does not have any hire a new apprentice payment applications</h1>
+
+    <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 April 2021 to 30 November 2021.</p>
+
+    <a href="../guidance" class="govuk-button">Apply</a>
+
+  </div>
+</div>
+
+{% else %}
 <div class="govuk-grid-row">
 <h1 class="govuk-heading-xl">View your payments and applications</h1>
 <p>View all your payments and alerts. You can also view which payments are pending, sent and paused.</p>
@@ -55,6 +72,58 @@
     You currently have <a href="index2#past-day">3 Alerts</a> for payments and applications that may need attention.
   </strong>
 </div>
+
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      How the payments are made
+    </span>
+  </summary>
+    <div class="govuk-details__text">
+<p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice. We’ll send the: </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+    <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+  </ul>
+  <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+</div>
+</details>
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Why we might send the payment after the estimated date
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+
+    <p class="govuk-body">We might send the payment after the estimated date if the training provider:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>does not submit their information on time</li>
+      <li>gives us information that does not match what is in the apprenticeship service account (also known as a ‘data lock’)</li>
+      <li>changes an apprentice’s start date</li>
+    </ul>
+
+    <p class="govuk-body">We also might send the payment after the estimated date if:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>{{_orgName}} does not add their organisation and finance details or if we have not verified them</li>
+      <li>an apprentice takes a break in learning</li>
+    </ul>
+
+  </div>
+</details>
+
+<!-- <h3 class="govuk-heading-m">
+  6 apprentices<br>
+  <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£3,000 estimated total payment</span>
+</h3> -->
+
+{% endif %}
+
+
 
 
 
