@@ -79,7 +79,7 @@
         text: "Application date"
       },
       value: {
-        html: '<p>9 April 2021</p>'
+        html: '<p>29 March 2021</p>'
       }
     },
     {
@@ -88,7 +88,8 @@
       },
       value: {
         html: '<td class="govuk-table__cell" style="max-width:100px">
-          <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Information mismatch with your training provider, please contact them
+          <strong class="govuk-tag govuk-tag--red">Payment issue</strong>
+          <br><br>Information mismatch with your training provider, please contact them
         </td>'
       }
     },
@@ -96,11 +97,13 @@
       key: {
         html: '<p><strong>History</strong></p>
         <p>21 April 2021</p>
-        <p>9 April 2021</p>'
+        <p>9 April 2021</p>
+        <p>29 March 2021</p>'
       },
       value: {
         html: '<p>&nbsp;</p>
-        <p style="padding-top:6px;">Payment issue</p>
+        <p style="padding-top:6px;">Payment issue. Information mismatch with your training provider, please contact them.</p>
+        <p style="padding-top:6px;">Training provider needs to confirm they have started their apprenticeship</p>
         <p style="padding-top:10px;">Application submitted</p>'
 
 
@@ -124,26 +127,7 @@
 {% block footer %}
 
   {{ govukFooter({
-    meta: {
-      items: [
-
-
-
-
-        {
-          href: "view-payments?applied=0&r=t",
-          text: "0"
-        },
-        {
-          href: "view-payments?applied=6&r=t",
-          text: "some"
-        },
-        {
-          href: "view-payments?applied=300&r=t",
-          text: "lots"
-        }
-      ]
-    }
+    
   }) }}
 
 {% endblock %}
