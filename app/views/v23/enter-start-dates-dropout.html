@@ -93,7 +93,16 @@
           <li>{{_selectedApprentices[1].name}} (joined on 1 July 2020)</li>
         </ul>
         <p class="govuk-body">They will be removed from the application. If you need to correct the details, go back to edit.</p>
-
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Are you applying for apprentices who you previously recruited under the Kickstart scheme?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+          If you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices regardless of their employment start date. Please use the apprenticeship start date.
+          </div>
+        </details>
         {% if _oneSelected or _moreThanOneSelectedAllIneligible %}
 
           {{ govukButton({
