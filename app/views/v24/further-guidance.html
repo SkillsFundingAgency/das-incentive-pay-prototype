@@ -1,0 +1,142 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "./includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+
+{% endblock %}
+
+{% set _backlink = "./hub/home" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "guidance" %}
+{% endif %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: _backlink
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Apply for the hire a new apprentice payment</h1>
+
+      <p class="govuk-body">The hire a new apprentice payment is available for employers that take on new apprentices from 1 April 2021 to 30 September 2021. Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Did the apprentice join your organisation from 1 April 2021?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+<p class="govuk-body">Employers will receive &pound;3,000 for new apprentices of any age who have an employment start date of 1 April 2021 to 30 September 2021.They must have an apprenticeship start date of 1 April 2021 to 30 November 2021.</p>
+<p class="govuk-body">Employers are also able to apply for new apprentices who they recruited under the Kickstart scheme.</p>
+        </div>
+      </details>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Did the apprentice join your organisation before 1 April 2021?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+      <p class="govuk-body">The application deadline for these apprentices has closed.</p>
+        </div>
+      </details>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            When will you get paid?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+      <p class="govuk-body">We’ll send the payment in 2 equal instalments for each apprentice.<br /> We’ll send the:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>first payment after an apprentice completes 90 days of their apprenticeship</li>
+        <li>second payment after an apprentice completes 365 days of their apprenticeship</li>
+      </ul>
+      <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+      <p class="govuk-body">We cannot send any payments until we’ve received and verified {{_orgNamePlural}}  organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
+        </div>
+      </details>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What can you use the payment for?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+      <p class="govuk-body">{{_orgName}} can spend it on anything to support their organisation’s costs. {{_orgName}} does not have to pay it back.</p>
+        </div>
+      </details>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Who is eligible?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+      <p class="govuk-body">{{_orgName}} can only apply for new apprentices who joined your organisation from 1 April 2021 to 30 September 2021.</p>
+      <p class="govuk-body">{{_orgName}} cannot apply for an existing employee who joined your organisation before 1 April 2021, even if they started an apprenticeship after this date.</p>
+      <p class="govuk-body">The payment is in addition to the existing £1,000 an employer will already get for taking on an apprentice who is either:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>aged 16 to 18 years old</li>
+              <li>under 25 and has an education, health and care plan or has been in the care of their local authority</li>
+            </ul>
+
+        </div>
+      </details>
+
+
+
+
+
+
+      {% set _forwardLink = "taken-on-new-apprentices" %}
+
+      {% if myData.legalagreement == "false" %}
+        {% set _forwardLink = "shutter/legal-agreement" %}
+      {% endif %}
+
+      {{ govukButton({
+        text: "Continue",
+        href: _forwardLink,
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}
