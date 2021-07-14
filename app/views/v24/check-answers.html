@@ -60,7 +60,7 @@
           </div>
           {% endif %}
 
-        <h1 class="govuk-heading-xl">Confirm apprentices</h1>
+        <h1 class="govuk-heading-xl">Apprentices you are applying for</h1>
 
 
         <h3 class="govuk-heading-m">
@@ -150,13 +150,22 @@
        </div>
        {% else %}
         {{ govukWarningText({
-          text: "All apprentices must have joined " + _orgName + " from 1 April 2021 to 30 September 2021.",
+          text: "All apprentices must have an employment start date from April 2021 to September 2021.",
           iconFallbackText: "Warning"
         }) }}
        {% endif %}
-
+       <details class="govuk-details" data-module="govuk-details">
+         <summary class="govuk-details__summary">
+           <span class="govuk-details__summary-text">
+             Are you applying for apprentices who you previously recruited under the Kickstart scheme?
+           </span>
+         </summary>
+         <div class="govuk-details__text">
+           If you can prove that you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices using their apprenticeship start date instead of the employment start date.
+         </div>
+       </details>
         {{ govukButton({
-          text: "Confirm"
+          text: "Continue"
         }) }}
 
       </form>
