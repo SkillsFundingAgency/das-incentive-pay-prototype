@@ -78,7 +78,7 @@
               {% if myData.compliance == "question" or myData.compliance == "datesno" %}
               <th scope="col" class="govuk-table__header">Apprenticeship start date</th>
               {% else %}
-              <th scope="col" class="govuk-table__header">Joined organisation</th>
+              <th scope="col" class="govuk-table__header">Employment start date</th>
               {% endif %}
 
               <th scope="col" class="govuk-table__header">Course</th>
@@ -150,7 +150,7 @@
        </div>
        {% else %}
         {{ govukWarningText({
-          text: "All apprentices must have an employment start date from April 2021 to September 2021.",
+          text: "We will stop payments and reclaim any funds paid for apprentices identified as ineligible.",
           iconFallbackText: "Warning"
         }) }}
        {% endif %}
