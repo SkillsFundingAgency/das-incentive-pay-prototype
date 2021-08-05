@@ -89,8 +89,10 @@
 
         <p class="govuk-body">The following are not eligible for the payment:</p>
         <ul class="govuk-list govuk-list--bullet">
-          <li>{{_selectedApprentices[0].name}} (joined on 1 July 2020)</li>
-          <li>{{_selectedApprentices[1].name}} (joined on 1 July 2020)</li>
+
+          {% for _apprentice in _selectedApprentices %}
+          <li>{{_apprentice.name}} (joined in {{_apprentice.startdate}})</li>
+          {% endfor %}
         </ul>
         <p class="govuk-body">They will be removed from the application. If you need to correct the details, go back to edit.</p>
         <details class="govuk-details" data-module="govuk-details">
