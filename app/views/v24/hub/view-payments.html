@@ -50,27 +50,16 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-xl">{{_orgName}} does not have any hire a new apprentice payment applications</h1>
-
     <p class="govuk-body">{{_orgName}} can apply for new apprentices with a planned start date from 1 April 2021 to 30 November 2021.</p>
-
     <a href="../guidance" class="govuk-button">Apply</a>
-
   </div>
 </div>
-
 {% else %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-
-
-
     <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
-
-
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
       <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
@@ -100,36 +89,28 @@
         </span>
       </summary>
       <div class="govuk-details__text">
-
-        <p class="govuk-body">We'll send the payment in 2 equal instalments for each apprentice. You'll become eligible for your payments after your apprentice completes:</p>
+        <p class="govuk-body">We'll send the payment in 2 equal instalments for each apprentice.To be eligible, your apprentice must complete:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>90 days of their apprenticeship for your first payment</li>
           <li>365 days of their apprenticeship for your second payment</li>
         </ul>
-        <p class="govuk-body">If your apprentice has already completed 90 days of their apprenticeship when you apply, it will take 21 days until you're eligible for your first payment.</p>
-
-        <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
-
-        <p>For example, if your training provider confirms an apprentice started their apprenticeship training on:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>1 September 2020 - we’ll make the first payment on 14 January 2021</li>
-          <li>4 January 2021 - we’ll make the first payment on 14 April 2021</li>
-        </ul>
-
+        <p class="govuk-body">Once the apprenticeship information has been checked, we will process the payments.</p>
+        <p class="govuk-body">Payments will be made on the 14th working day of the month, it can take up to 3 days for the payments to reach your account.</p>
+        <p class="govuk-body">You can track when your payments are due to be paid below.</p>
       </div>
     </details>
     {% else %}
 
-
-
-    <p class="govuk-body">We'll send the payment in 2 equal instalments for each apprentice. You'll become eligible for your payments after your apprentice completes:</p>
+    <p class="govuk-body">We'll send the payment in 2 equal instalments for each apprentice.To be eligible, your apprentice must complete:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>90 days of their apprenticeship for your first payment</li>
       <li>365 days of their apprenticeship for your second payment</li>
     </ul>
-    <p class="govuk-body">If your apprentice has already completed 90 days of their apprenticeship when you apply, it will take 21 days until you're eligible for your first payment.</p>
+    <p class="govuk-body">Once the apprenticeship information has been checked, we will process the payments.</p>
 
-      <p class="govuk-body">Payments are sent by Bacs on the 14th working day of the month. It usually takes 3 working days to process.</p>
+    <p class="govuk-body">Payments will be made on the 14th working day of the month, it can take up to 3 days for the payments to reach your account.</p>
+
+    <p class="govuk-body">You can track when your payments are due to be paid below.</p>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
@@ -138,22 +119,17 @@
         </span>
       </summary>
       <div class="govuk-details__text">
-
         <p class="govuk-body">We might send the payment after the estimated date if the training provider:</p>
-
         <ul class="govuk-list govuk-list--bullet">
           <li>does not submit their information on time</li>
           <li>gives us information that does not match what is in the apprenticeship service account (also known as a ‘data lock’)</li>
           <li>changes an apprentice’s start date</li>
         </ul>
-
         <p class="govuk-body">We also might send the payment after the estimated date if:</p>
-
         <ul class="govuk-list govuk-list--bullet">
           <li>{{_orgName}} does not add their organisation and finance details or if we have not verified them</li>
           <li>an apprentice takes a break in learning</li>
         </ul>
-
       </div>
     </details>
 
