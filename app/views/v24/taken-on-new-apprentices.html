@@ -13,7 +13,7 @@
 
 
 {% block pageTitle %}
-Eligible apprentices at {{_orgName %}}
+Eligible apprentices at {{ _orgName }}
 {% endblock %}
 
 
@@ -64,7 +64,7 @@ Eligible apprentices at {{_orgName %}}
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                      Eligible apprentices at {{_orgName %}}
+                      Eligible apprentices at {{_orgName }}
                     </h1>
                 </legend>
 
@@ -117,7 +117,7 @@ Eligible apprentices at {{_orgName %}}
                     {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
                 </span>
                 {% endif %}
-                <h2>Do you have eligible apprentices?</h2>
+                <h2 class="govuk-heading-m">Do you have eligible apprentices?</h2>
                 <div class="govuk-radios govuk-radios--inline">
                   <div class="govuk-radios__item">
                       <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
