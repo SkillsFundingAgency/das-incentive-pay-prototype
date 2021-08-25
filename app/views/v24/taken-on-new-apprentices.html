@@ -6,9 +6,14 @@
   Manage apprenticeships
 {% endset %}
 
+
 <!-- Org name -->
 {% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
 {% set _orgNamePlural = _orgName + "’s" %}
+
+{% set pageTitle %}
+  Eligible apprentices at {{_orgName %}}
+{% endset %}
 
 {% block header %}
   {% include "includes/cookie-banner.html" %}
@@ -57,7 +62,7 @@
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                      Does {{_orgName}} have apprentices who are eligible for the payment?
+                      Eligible apprentices at {{_orgName %}}
                     </h1>
                 </legend>
 
@@ -110,7 +115,7 @@
                     {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
                 </span>
                 {% endif %}
-
+                <h2>Do you have eligible apprentices?</h2>
                 <div class="govuk-radios govuk-radios--inline">
                   <div class="govuk-radios__item">
                       <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
