@@ -101,16 +101,6 @@ Eligible apprentices at {{ _orgName }}
                     </div>
                   </details>
 
-
-
-
-                  <div class="govuk-warning-text">
-                      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                      <strong class="govuk-warning-text__text">
-                          <span class="govuk-warning-text__assistive">Warning</span>
-                          We will stop payments and reclaim any funds paid for apprentices identified as ineligible.
-                      </strong>
-                  </div>
                 {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
                 <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">
                     <span class="govuk-visually-hidden">Error:</span>
@@ -134,7 +124,13 @@ Eligible apprentices at {{ _orgName }}
                 </div>
             </fieldset>
         </div>
-
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                We will stop payments and reclaim any funds paid for apprentices identified as ineligible.
+            </strong>
+        </div>
         <button type="submit" class="govuk-button">
             Continue
         </button>
