@@ -11,9 +11,11 @@
 {% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
 {% set _orgNamePlural = _orgName + "’s" %}
 
-{% set pageTitle %}
-  Eligible apprentices at {{_orgName %}}
-{% endset %}
+
+{% block pageTitle %}
+Eligible apprentices at {{_orgName %}}
+{% endblock %}
+
 
 {% block header %}
   {% include "includes/cookie-banner.html" %}
