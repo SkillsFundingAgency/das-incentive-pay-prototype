@@ -43,7 +43,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">Before you start</h1>
+      <h1 class="govuk-heading-xl">Apply for the hire a new apprentice payment</h1>
+
+      <p class="govuk-body">Employers can now apply for a payment of £3000 for new apprentices recruited from 1 October 2021.</p>
+      <p class="govuk-body">Employers can apply for the payment after they add new apprentices to their apprenticeship service account.</p>
+      <p class="govuk-body">The payment is in addition to the existing £1,000 an employer will already get for taking on an apprentice who is either:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+      <li>aged 16 to 18 years old</li>
+      <li>under 25 and has an education, health and care plan or has been in the care of their local authority</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Eligibility</h2>
+      <p class="govuk-body">Employers can also now apply for £3000 when they recruit eligible new apprentices after 30 September 2020.</p>
+      <p class="govuk-body">The incentive payments can now be claimed as follows:</p>
+      <p class="govuk-body">For apprentices with an employment start date from 1 April 2021 to 30 September 2021, applications close on 30 November 2021.
+      They must also have an apprenticeship start date from 1 April 2021 to 30 November 2021.</p>
+      <p class="govuk-body">In addition, for apprentices with an employment start date from 1 October 2021 to 31 January 2022, applications close on 31 March 2022. They must also have an apprenticeship start date from 1 October 2021 to 31 March 2022.</p>
+      <p>Employers are also able to apply for new apprentices who they recruited under the Kickstart scheme.</p>
+      <h2 class="govuk-heading-m">When you’ll get paid</h2>
+      <p class="govuk-body">We'll send the payment in 2 equal instalments for each apprentice.
+To be eligible, your apprentice must complete:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>90 days of their apprenticeship for your first payment</li>
+        <li>365 days of their apprenticeship for your second payment</li>
+      </ul>
+      <p class="govuk-body">Once the apprenticeship information has been checked, we will process the payments.</p>
+      <p class="govuk-body">Payments will be made on the 14th working day of the month, it can take up to 3 days for the payments to reach your account.</p>
+      <p class="govuk-body">You can track when your payments are due to be paid on your view applications page.</p>
+      <p class="govuk-body">We cannot send any payments until we’ve received and verified {{_orgNamePlural}} organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
+
+      <h2 class="govuk-heading-m">What you can use the payment for</h2>
+      <p class="govuk-body">{{_orgName}} can spend it on anything to support their organisation’s costs. {{_orgName}} does not have to pay it back.</p>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
 
       {% if myData.compliance == "question" %}
       <p class="govuk-body">You'll need to add the apprentices you want to apply for to the apprenticeship service account.</p>
@@ -51,11 +84,11 @@
       <p class="govuk-body">You'll need to:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>add the apprentices you want to apply for to the apprenticeship service account.</li>
-        <li>know the employment start date and apprenticeship start date for each apprentice</li>
+        <li>know the date each apprentice joined your organisation</li>
       </ul>
       {% endif %}
 
-      <p class="govuk-body">You can add {{_orgNamePlural}} organisation and finance details when you apply, or someone else from {{_orgName}} can add them later. You only need to add the finance details once.  This includes {{_orgNamePlural}}:</p>
+      <p class="govuk-body">You can add {{_orgNamePlural}} organisation and finance details when you apply, or someone else from {{_orgName}} can add them later. This includes {{_orgNamePlural}}:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>legal name, registered address and contact details</li>
         <li>Companies House number (if {{_orgName}} has one)</li>
@@ -76,7 +109,7 @@
       {% endif %}
 
 
-      {% set _forwardLink = "further-guidance" %}
+      {% set _forwardLink = "taken-on-new-apprentices" %}
 
       {% if myData.legalagreement == "false" %}
         {% set _forwardLink = "shutter/legal-agreement" %}
