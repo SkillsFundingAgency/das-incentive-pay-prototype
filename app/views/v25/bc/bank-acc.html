@@ -1,0 +1,94 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+
+{% endset %}
+
+{% block header %}
+  {% include "includes/header-bar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+   <h1 class="govuk-heading-xl">Bank account details</h1>
+
+   {{ govukInput({
+     label: {
+       text: "Name on the account"
+     },
+     id: "name-on-the-account",
+     name: "name-on-the-account",
+     attributes: {
+       spellcheck: "false"
+     }
+   }) }}
+
+   {{ govukInput({
+     label: {
+       text: "Name of the bank"
+     },
+     id: "name-of-bank",
+     name: "name-of-bank",
+     attributes: {
+       spellcheck: "false"
+     }
+   }) }}
+
+   {{ govukInput({
+     label: {
+       text: "Sort code"
+     },
+     classes: "govuk-input--width-5",
+     hint: {
+       text: "Must be 6 digits long"
+     },
+     id: "sort-code",
+     name: "sort-code",
+     inputmode: "numeric",
+     pattern: "[0-9]*",
+     attributes: {
+       spellcheck: "false"
+     }
+   }) }}
+
+   {{ govukInput({
+     label: {
+       text: "Account number"
+     },
+     classes: "govuk-input--width-10",
+     hint: {
+       text: "Must be between 6 and 8 digits long"
+     },
+     id: "account-number",
+     name: "account-number",
+     inputmode: "numeric",
+     pattern: "[0-9]*",
+     attributes: {
+       spellcheck: "false"
+     }
+   }) }}
+
+      <form action="" method="post">
+
+        {{ govukButton({
+          text: "Continue",
+          href: "complete"
+        }) }}
+
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,267 @@
+{% extends "layout-account.html" %}
+
+{% set _inError = myData.validationError %}
+
+{% set serviceName %}
+Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block pageTitle %}
+{% if _inError == "true" %}Error: {% endif %}Manage apprenticeships
+{% endblock %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "./includes/account-header.html" %}
+{% endblock %}
+
+{% set _selectedApprentices = myData.selectedApprentices or myData.defaultSelectedApprentices %}
+{% set _totalApprentices = _selectedApprentices.length %}
+
+<!-- Paging -->
+{% set _perPage = 10 %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "select-new-apprentices"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" class="form">
+
+            {% if _inError == "true" %}
+            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                    There is a problem
+                </h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        {% for name, item in myData.validationErrors %}
+                        <li>
+                            <a href="#{{item.anchor}}">{{item.message}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+            <h1 class="govuk-heading-xl">
+                {% if _totalApprentices == 1 %}
+                When did {{_selectedApprentices[0].name}} join {{_orgName}}?
+                {% else %}
+                When did they join {{_orgName}}?
+                {% endif %}
+            </h1>
+
+            {% if _totalApprentices == 1 %}
+            <p class="govuk-body">{{_orgName}} can apply for {{_selectedApprentices[0].name}} if they have an employment start date from 1 April 2021 to 30 September 2021, applications close on 30 November 2021.<br />
+            They must also have an apprenticeship start date from 1 April 2021 to 30 November 2021.
+           </p>
+           <p class="govuk-body">In addition, {{_orgName}} can apply for {{_selectedApprentices[0].name}} if they have an employment start date from 1 October 2021 to 31 January 2022, applications close on 31 March 2022. <br />
+           They must also have an apprenticeship start date from 1 October 2021 to 31 March 2022.
+           </p>
+            <p class="govuk-body">Enter the date shown on their employment contract.</p>
+            <p class="govuk-body">This is the date the apprentice joined {{_orgName}} and may be different to the apprenticeship start date.</p>
+
+            {% else %}
+            <p class="govuk-body">{{_orgName}} can apply for each apprentice if they have an employment start date from 1 April 2021 to 30 September 2021, applications close on 30 November 2021.<br />
+            They must also have an apprenticeship start date from 1 April 2021 to 30 November 2021.
+            </p>
+
+            <p class="govuk-body">In addition, {{_orgName}} can apply for each apprentice if they have an employment start date from 1 October 2021 to 31 January 2022, applications close on 31 March 2022.<br />
+              They must also have an apprenticeship start date from 1 October 2021 to 31 March 2022.</p>
+
+
+            <p class="govuk-body">Enter the date shown on their employment contract.</p>
+            <p class="govuk-body">This is the date the apprentice joined {{_orgName}} and may be different to the apprenticeship start date.</p>
+            {% endif %}
+
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Are you applying for apprentices who you previously recruited under the Kickstart scheme?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+              If you can prove that you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices using their apprenticeship start date instead of the employment start date.
+              </div>
+            </details>
+
+
+
+            <div class="govuk-warning-text">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    We will stop payments and reclaim any funds paid for apprentices identified as ineligible.
+                </strong>
+            </div>
+
+            <div class="govuk-form-group {% if myData.validationErrors.enterStartDatesAnswer %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset" >
+
+                    {% if myData.validationErrors.enterStartDatesAnswer %}
+                    <span id="selectNewApprentices-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>
+                        {{myData.validationErrors.enterStartDatesAnswer.message}}
+                    </span>
+                    {% endif %}
+
+                    {% for _apprentice in _selectedApprentices %}
+                        <div class="govuk-form-group apprentice-date-input govuk-!-margin-bottom-8" data-available="true">
+                            <fieldset class="govuk-fieldset" role="group" aria-describedby="apprentice-{{_apprentice.id}}-hint">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                    <h2 class="govuk-fieldset__heading">
+                                        {{_apprentice.name}}
+                                    </h2>
+                                    <p class="govuk-body govuk-!-margin-bottom-0">
+                                        <span>ULN: {{_apprentice.uln}}</span><br><span>{{_apprentice.course}} (level&nbsp;{{_apprentice.courselevel}})</span>
+                                    </p>
+                                </legend>
+                                <div id="apprentice-{{_apprentice.id}}-hint" class="govuk-hint">
+                                For example, 12 08 2021
+                                </div>
+                                <div class="govuk-date-input" id="apprentice-{{_apprentice.id}}">
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="apprentice-{{_apprentice.id}}-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="apprentice-{{_apprentice.id}}-day" name="apprentice-{{_apprentice.id}}-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="apprentice-{{_apprentice.id}}-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="apprentice-{{_apprentice.id}}-month" name="apprentice-{{_apprentice.id}}-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="apprentice-{{_apprentice.id}}-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="apprentice-{{_apprentice.id}}-year" name="apprentice-{{_apprentice.id}}-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                                </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    {% endfor %}
+
+                    {% if _totalApprentices > _perPage %}
+                    <!-- <nav role="navigation" aria-label="Pagination" class="govuk-!-margin-bottom-4">
+                        <p class="pagination__summary "></p>
+                        <ul class="pagination govuk-list">
+                            <li class="pagination__item previouspage"><a class="pagination__link govuk-link govuk-link--no-visited-state" href="#" aria-label="Previous page">Previous</a></li>
+                            <li class="pagination__item nextpage"><a style="padding-left:0" class="pagination__link govuk-link govuk-link--no-visited-state" href="#" aria-label="Next page">Next</a></li>
+                        </ul>
+                    </nav> -->
+                    {% endif %}
+
+                </fieldset>
+            </div>
+
+            {{ govukButton({
+                text: "Continue"
+            }) }}
+
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<!-- <script>
+    $(document).ready(function(){
+
+        var _totalDateInputs = 0,
+            _page = 1,
+            _first = (_page - 1) * {{_perPage}} + 1,
+            _last = _page * {{_perPage}},
+            _pagingLabel = $(".pagination__summary"),
+
+            _dateInputContainers = $(".apprentice-date-input"),
+            _previouspage = $(".previouspage"),
+            _nextpage = $(".nextpage"),
+            _totalItems = {{_totalApprentices}}
+
+        //Set total
+        function _setTotalAvailability(){
+            _totalDateInputs = 0
+            _dateInputContainers.each(function(index) {
+                var _this = $(this)
+                _this.data("available","true")
+                _totalDateInputs++
+            });
+        }
+        _setTotalAvailability()
+
+        // Paging
+        function _paging(){
+            _first = (_page - 1) * {{_perPage}} + 1
+            _last = _page * {{_perPage}}
+            if(_last > _totalItems){
+                _last = _totalItems
+            }
+
+            _pagingLabel.text("Showing " + _first + " to " + _last + " of " + _totalItems + " apprentices")
+
+            if(_page > 1){
+                _previouspage.show()
+            } else {
+                _previouspage.hide()
+            }
+            if(_page < (_totalDateInputs / {{_perPage}})){
+                _nextpage.show()
+            } else {
+                _nextpage.hide()
+            }
+        }
+        _paging()
+        _nextpage.on("click", function() {
+            event.preventDefault();
+            _page++
+            _paging()
+            dateInputVisibility()
+        });
+        _previouspage.on("click", function() {
+            event.preventDefault();
+            _page--
+            _paging()
+            dateInputVisibility()
+        });
+
+        // hide date inputs based on page
+        function dateInputVisibility(){
+            var _count = 0
+            _dateInputContainers.each(function(index) {
+                var _this = $(this)
+                if(_this.data("available") == "true"){
+                    _count++
+                    if(_count >= _first && _count <= _last){
+                        _this.show()
+                    } else {
+                        _this.hide()
+                    }
+                } else {
+                    _this.hide()
+                }
+            });
+        }
+        dateInputVisibility()
+
+    });
+</script> -->
+{% endblock %}
