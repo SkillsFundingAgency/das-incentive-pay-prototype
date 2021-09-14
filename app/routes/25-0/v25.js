@@ -345,10 +345,19 @@ module.exports = function (router,_myData) {
             req.session.myData.takenOnNewApprenticesAnswer = req.session.myData.takenOnNewApprenticesAnswerTemp
 			req.session.myData.takenOnNewApprenticesAnswerTemp = ''
 
+
+			if(req.session.myData.apprenticesavailable == "0"){
+				res.redirect(v + '/shutter/cannot-apply?r=t')
+
+
+
+
+			}
 			// NO
 			if(req.session.myData.takenOnNewApprenticesAnswer == "no"){
 				res.redirect(v + '/shutter/no-new-apprentices')
-			} else {
+			}
+			else {
 			//YES
 				if(req.session.myData.legalagreement == "false"){
 					res.redirect(v + '/shutter/legal-agreement')

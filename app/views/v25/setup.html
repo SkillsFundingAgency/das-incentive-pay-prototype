@@ -72,6 +72,7 @@
                 Number of apprentices available
             </label>
             <select class="govuk-select" style="min-width: 100%" id="apprenticesavailable" name="apprenticesavailable" data-option="apprenticesavailable">
+                <option {% if myData.apprenticesavailable == "0" %}selected{% endif %} value="0">None</option>
               <option {% if myData.apprenticesavailable == "6" %}selected{% endif %} value="6">Some</option>
               <option {% if myData.apprenticesavailable == "300" %}selected{% endif %} value="300">Lots</option>
             </select>
