@@ -149,12 +149,9 @@
           </fieldset>
        </div>
        {% else %}
-        {{ govukWarningText({
-          text: "We will stop payments and reclaim any funds paid for apprentices identified as ineligible.",
-          iconFallbackText: "Warning"
-        }) }}
+
        {% endif %}
-       <details class="govuk-details" data-module="govuk-details">
+    <!--   <details class="govuk-details" data-module="govuk-details">
          <summary class="govuk-details__summary">
            <span class="govuk-details__summary-text">
              Are you applying for apprentices who you previously recruited under the Kickstart scheme?
@@ -163,7 +160,29 @@
          <div class="govuk-details__text">
            If you can prove that you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices using their apprenticeship start date instead of the employment start date.
          </div>
-       </details>
+       </details>-->
+
+       <h2 class="govuk-heading-m">Can you confirm these apprentices are eligible?</h2>
+       <div class="govuk-radios govuk-radios--inline" style="margin-bottom:20px;">
+         <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
+             <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-1">
+               Yes
+             </label>
+         </div>
+         <div class="govuk-radios__item">
+             <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
+             <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
+               No
+             </label>
+         </div>
+       </div>
+       {{ govukWarningText({
+         text: "We will stop payments and reclaim any funds paid for apprentices identified as ineligible.",
+         iconFallbackText: "Warning"
+       }) }}
+
+
         {{ govukButton({
           text: "Continue"
         }) }}
