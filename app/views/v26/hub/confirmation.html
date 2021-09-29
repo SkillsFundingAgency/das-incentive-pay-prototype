@@ -52,7 +52,7 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-            {% for _apprentice in myData.selectedApprentices | groupby('_apprentice.name') %}
+            {% for _apprentice in myData.selectedApprentices %}
             <tr class="govuk-table__row apprentice-row" data-available="true">
               <th scope="row" class="govuk-table__header">
                 {{_apprentice.name}}<br>
