@@ -60,7 +60,7 @@
           </div>
           {% endif %}
 
-        <h1 class="govuk-heading-xl">Confirm apprentices/h1>
+        <h1 class="govuk-heading-xl">Confirm apprentices</h1>
 
 
         <h3 class="govuk-heading-m">
@@ -170,14 +170,13 @@
                Yes
              </label>
          </div>
-        <div class="govuk-radios__item">
+      <!--   <div class="govuk-radios__item">
              <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
              <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
                No
              </label>
          </div>
-       </div>
-       -->
+       </div>-->
        {{ govukWarningText({
          text: "We will stop payments and reclaim any funds paid for apprentices identified as ineligible.",
          iconFallbackText: "Warning"
@@ -185,7 +184,7 @@
 
 
         {{ govukButton({
-          text: "Continue"
+          text: "Confirm"
         }) }}
 
       </form>
