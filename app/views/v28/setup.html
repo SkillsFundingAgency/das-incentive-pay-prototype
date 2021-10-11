@@ -1,0 +1,540 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-m">Prototype {{myData.version}} setup</h1>
+
+        <p class="govuk-body" >
+              <a href="setup?r=true" class="govuk-link govuk-link--no-visited-state">Reset to default values</a>
+          </p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+
+        <h2 class="govuk-heading-l">MVS Version</h2>
+
+    <!--    <div class="govuk-form-group mvsversion">
+            <label class="govuk-label" >
+                Version
+            </label>--><div style="display:none">
+            <select class="govuk-select" style="min-width: 100%" id="mvsversion" name="mvsversion" data-option="mvsversion">
+                <option selected value="nonmvs">MVS</option>
+
+            </select>
+        </div>
+
+
+        <h2 class="govuk-heading-l">Applying</h2>
+
+        <!-- Legal agreement -->
+        <div class="govuk-form-group legalagreement">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="legalagreement" name="legalagreement" type="checkbox" value="true" data-option="legalagreement" {% if myData.legalagreement == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="legalagreement">
+                        Main legal agreement signed
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal agreement 2
+        <div class="govuk-form-group legalagreement2">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="legalagreement2" name="legalagreement2" type="checkbox" value="true" data-option="legalagreement2" {% if myData.legalagreement2 == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="legalagreement2">
+                        Updated legal agreement signed
+                    </label>
+                </div>
+            </div>
+        </div>-->
+  <input class="govuk-checkboxes__input" id="legalagreement2" name="legalagreement2" type="checkbox" value="true" data-option="legalagreement2" checked>
+        <!-- Number of apprentices available -->
+
+
+        <!-- Filters -->
+        <div class="govuk-form-group filters">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="filters" name="filters" type="checkbox" value="true" data-option="filters" {% if myData.filters == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="filters">
+                        Filters visible
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-form-group apprenticesavailable">
+            <label class="govuk-label" >
+                Number of apprentices available
+            </label>
+            <select class="govuk-select" style="min-width: 100%" id="apprenticesavailable" name="apprenticesavailable" data-option="apprenticesavailable">
+              <option {% if myData.apprenticesavailable == "6" %}selected{% endif %} value="6">Some</option>
+              <option {% if myData.apprenticesavailable == "300" %}selected{% endif %} value="300">Lots</option>
+            </select>
+        </div>
+        <!-- Compliance
+        <div class="govuk-form-group compliance">
+            <label class="govuk-label" >
+                Compliance (date input or question or none)
+            </label>--><div style="display:none">
+            <select class="govuk-select" style="min-width: 100%" id="compliance" name="compliance" data-option="compliance">
+                <option selected value="dates">Dates</option>
+              <!--  <option {% if myData.compliance == "question" %}selected{% endif %} value="question">Question (yes/no)</option>
+                <option {% if myData.compliance == "datesno" %}selected{% endif %} value="datesno">None</option>-->
+            </select>
+        </div>
+
+        <!-- Date dropout -->
+        <div class="govuk-form-group datedropout">
+            <label class="govuk-label" >
+                Dropout on date input page
+            </label>
+            <select class="govuk-select" style="min-width: 100%" id="datedropout" name="datedropout" data-option="datedropout">
+                <option {% if myData.datedropout == "no" %}selected{% endif %} value="no">No</option>
+                <option {% if myData.datedropout == "some" %}selected{% endif %} value="some">Some ineligible</option>
+                <option {% if myData.datedropout == "all" %}selected{% endif %} value="all">All ineligible</option>
+            </select>
+        </div>
+
+        <!-- Deadline -->
+        <!-- <div class="govuk-form-group closing">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="closing" name="closing" type="checkbox" value="true" data-option="closing" {% if myData.closing == 'true' %}checked{% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="closing">
+                        Deadline closing soon
+                    </label>
+                </div>
+            </div>
+        </div> -->
+
+        <h2 class="govuk-heading-l">Your applications</h2>
+
+        <!-- Apprentices applied for -->
+        <div class="govuk-form-group apprenticesapplied">
+            <label class="govuk-label" >
+                Apprentices applied for
+            </label>
+            <select class="govuk-select" style="min-width: 100%" id="apprenticesapplied" name="apprenticesapplied" data-option="apprenticesapplied">
+              <option {% if myData.apprenticesapplied == "0" %}selected{% endif %} value="0">0</option>
+              <option {% if myData.apprenticesapplied == "6" %}selected{% endif %} value="6">Some</option>
+              <option {% if myData.apprenticesapplied == "300" %}selected{% endif %} value="300">Lots</option>
+            </select>
+        </div>
+
+        <!-- VRF -->
+        <div class="govuk-form-group vrf">
+            <label class="govuk-label" >
+                VRF (bank details)
+            </label>
+            <select class="govuk-select" style="min-width: 100%" id="vrf" name="vrf" data-option="vrf">
+              <option {% if myData.vrf == "added" %}selected{% endif %} value="added">Added</option>
+              <option {% if myData.vrf == "notadded" %}selected{% endif %} value="notadded">Not added</option>
+              <option {% if myData.vrf == "inprogress" %}selected{% endif %} value="inprogress">In progress</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half" >
+
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <p class="govuk-body govuk-!-margin-top-6 " id="start-url" style="display:none">
+            <a href="#" role="button" draggable="false" class="govuk-button govuk-!-font-size-24">Start prototype</a>
+        </p>
+
+        <p class="govuk-body" >
+            <span class="govuk-!-font-weight-bold">Shareable link to start prototype:</span><br>
+            <span class="govuk-body" id="start-url-label" style="display:none; word-wrap: break-word"></span>
+        </p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-m">Full page list</h2>
+        <table class="govuk-table">
+
+            <tbody class="govuk-table__body">
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Campaign</h2></th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Campaign email</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="campaign/email?r=t">/<span class="govuk-!-font-weight-bold">campaign/email</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Campaign landing page</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="campaign/landing?r=t">/<span class="govuk-!-font-weight-bold">campaign/landing</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Account/hub</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Account home</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="account-home?r=t">/<span class="govuk-!-font-weight-bold">account-home</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Account home (mvs)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="account-home?r=t&mvs=mvs">/<span class="govuk-!-font-weight-bold">account-home</span>?r=t&mvs=mvs</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Hub home</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/home?r=t"><span class="govuk-!-font-weight-bold">/hub/home</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >View applications</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Dropout: View applications (0 applications AND 0 apprentices)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/cannot-apply-3?r=t"><span class="govuk-!-font-weight-bold">/shutter/cannot-apply-3</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Hub - view applications (VRF not added)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/view-payments?r=t&vrf=notadded"><span class="govuk-!-font-weight-bold">/hub/view-payments</span>?r=t&vrf=notadded</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Hub - view applications (VRF in progress)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/view-payments?r=t&vrf=inprogress"><span class="govuk-!-font-weight-bold">/hub/view-payments</span>?r=t&vrf=inprogress</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Hub - view applications (VRF added)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/view-payments?r=t&vrf=added"><span class="govuk-!-font-weight-bold">/hub/view-payments</span>?r=t&vrf=added</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >View applications - remove application/change vrf</h2></th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remove application</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/remove-apprentice?r=t&applied=6"><span class="govuk-!-font-weight-bold">/hub/remove-apprentice</span>?r=t&applied=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remove application (lots listed)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/remove-apprentice?r=t&applied=300"><span class="govuk-!-font-weight-bold">/hub/remove-apprentice</span>?r=t&applied=300</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remove application - check answers</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/confirmation?r=t&applied=6"><span class="govuk-!-font-weight-bold">/hub/confirmation</span>?r=t&applied=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remove application - confirmation</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="hub/removed?r=t&applied=6"><span class="govuk-!-font-weight-bold">/hub/removed</span>?r=t&applied=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Change bank details - start</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/start?r=t&vrf=added"><span class="govuk-!-font-weight-bold">/bc/start</span>?r=t&vrf=added</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Apply</h2></th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Start</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="guidance?r=t"><span class="govuk-!-font-weight-bold">/guidance</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Choose organisation</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="select-legal-entity?r=t"><span class="govuk-!-font-weight-bold">/select-legal-entity</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Dropout: No apprentices</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/cannot-apply?r=t"><span class="govuk-!-font-weight-bold">/shutter/cannot-apply</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Dropout: Apprentices but all applied for</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/cannot-apply-2?r=t"><span class="govuk-!-font-weight-bold">/shutter/cannot-apply-2</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Taken on new apprentices?</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="taken-on-new-apprentices?r=t"><span class="govuk-!-font-weight-bold">/taken-on-new-apprentices</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">No new apprentices</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/no-new-apprentices?r=t"><span class="govuk-!-font-weight-bold">/shutter/no-new-apprentices</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Legal agreement not signed</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/legal-agreement?r=t&legal=false"><span class="govuk-!-font-weight-bold">/shutter/legal-agreement</span>?r=t&legal=false</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Legal agreement 2 not signed</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/legal-agreement-2?r=t&legal2=false"><span class="govuk-!-font-weight-bold">/shutter/legal-agreement-2</span>?r=t&legal=false</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Select apprentices (small list)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="select-new-apprentices?r=t&apprentices=6"><span class="govuk-!-font-weight-bold">/select-new-apprentices</span>?r=t&apprentices=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Select apprentices (long list)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="select-new-apprentices?r=t&apprentices=300"><span class="govuk-!-font-weight-bold">/select-new-apprentices</span>?r=t&apprentices=300</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Enter start dates</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="enter-start-dates?r=t&apprentices=6"><span class="govuk-!-font-weight-bold">/enter-start-dates</span>?r=t&apprentices=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Enter start dates - dropout</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="enter-start-dates-dropout?r=t&apprentices=6"><span class="govuk-!-font-weight-bold">/enter-start-dates-dropout</span>?r=t&apprentices=6</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Check answers</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="check-answers?r=t"><span class="govuk-!-font-weight-bold">/check-answers</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Not all selected eligible (dropout)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="not-all-selected-eligible?r=t"><span class="govuk-!-font-weight-bold">/not-all-selected-eligible</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Sign declaration</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="sign-agreement?r=t"><span class="govuk-!-font-weight-bold">/sign-agreement</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Add bank details?</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bank-details-needed?r=t"><span class="govuk-!-font-weight-bold">/bank-details-needed</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Apply - bank details</h2></th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Add bank details - start</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/start?r=t"><span class="govuk-!-font-weight-bold">/bc/start</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Bank details - contact information</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/contact-information?r=t"><span class="govuk-!-font-weight-bold">/bc/contact-information</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Bank details - organisation information</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/organisation-information?r=t"><span class="govuk-!-font-weight-bold">/bc/organisation-information</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Bank details - bank account information</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/bank-acc?r=t"><span class="govuk-!-font-weight-bold">/bc/bank-acc</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Bank details - complete</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="bc/complete?r=t"><span class="govuk-!-font-weight-bold">/bc/complete</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Apply - saved/complete</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application saved (bank details needed)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="need-bank-information?r=t"><span class="govuk-!-font-weight-bold">/need-bank-information</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application complete (bank details added)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="confirmation?r=t"><span class="govuk-!-font-weight-bold">/confirmation</span>?r=t</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4" >Apply - feedback</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Feedback</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="feedback?r=t"><span class="govuk-!-font-weight-bold">/feedback</span>?r=t</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Feedback confirmation</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="feedback-confirmation?r=t"><span class="govuk-!-font-weight-bold">/feedback-confirmation</span>?r=t</a></td>
+                </tr>
+
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4">Emails</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application complete</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/application-complete?r=t">/application-complete</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application closing</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/application-closing?r=t">/application-closing</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application extended</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/application-extended?r=t">/application-extended</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Check eligibility</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/check-eligibility?r=t">/check-eligibility</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Estimated payment</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/estimated-payment?r=t">/estimated-payment</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Changed estimated payment</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/changed-estimated-payment?r=t">/changed-estimated-payment</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Need bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/need-bank-details?r=t">/need-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">May need bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/may-need-bank-details?r=t">/may-need-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Skipped bank details</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/skipped-bank-details?r=t">/skipped-bank-details</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remittance</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/remittance?r=t">/remittance</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remittance - ESFA</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/ESFA-remittance?r=t">/ESFA-remittance</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Removed apprentice</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/removed-apprentice?r=t">/removed-apprentice</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Application rejected</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/application-rejected?r=t">/application-rejected?</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">No bank details (payment issue)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/no-bank-details-payment-issue?r=t">/no-bank-details-payment-issue</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Legal agreement (payment issue)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/agreement-payment-issue?r=t">/agreement-payment-issue</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Legal agreement (upcoming payment issue)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/agreement-upcoming-payment-issue?r=t">/agreement-upcoming-payment-issue</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Data locks (employers)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/data-locks-employers?r=t">/data-locks-employers</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Data locks (providers)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/data-locks-provider?r=t">/data-locks-provider</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">View payments</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="email/view-payments?r=t">/view-payments</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4">Attachments</h2></th>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Remittance PDF</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="/public/downloads/remittance-advice-2.pdf">remittance-advice-2.pdf</a></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell" colspan="2"> <h2 class="govuk-heading-m govuk-!-margin-top-4">Errors</h2></th>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Page not found (404)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="error/page-not-found?r=t">/page-not-found</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Problem with service</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="error/problem-with-service?r=t">/problem-with-service</a></td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__cell">Access denied (403)</th>
+                    <td class="govuk-table__cell" ><a class="govuk-link govuk-link--no-visited-state" href="shutter/access-denied?r=t">/access-denied</a></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    $(document).ready(function(){
+
+        var _startURL = $("#start-url a"),
+            _startURLLabel = $("#start-url-label"),
+            _options = $("[data-option]");
+
+        _options.change(function(){
+            setValues()
+        }).trigger("change");
+
+        //SET VALUES
+        function setValues(){
+
+            //Base URL
+            var _urlBase = "https://das-incentive-pay-prototype.herokuapp.com/" + {{myData.version|dump|safe}} + "/";
+
+            //Queries
+            var _urlComponents = "",
+                _urlReset = "r=t",
+                _urlPage = "account-home?",
+                _urlLegalAgreement = "&legal=" + ($('input[name=legalagreement]:checked').val() || false),
+                _urlLegalAgreement2 = "&legal2=" + ($('input[name=legalagreement2]:checked').val() || false),
+                // _urlClosing = "&closing=" + ($('input[name=closing]:checked').val() || false),
+                // _urlBankDetails = "&bank=" + ($('input[name=bankdetails]:checked').val() || false),
+                _urlFilters = "&filters=" + ($('input[name=filters]:checked').val() || false),
+                _urlCompliance = "&compliance=" + _options.filter("#compliance").val(),
+                _urlDateDropout = "&datedropout=" + _options.filter("#datedropout").val(),
+                _urlAppAvail = "&apprentices=" + _options.filter("#apprenticesavailable").val(),
+                _urlAppApplied = "&applied=" + _options.filter("#apprenticesapplied").val(),
+                _urlVRF = "&vrf=" + _options.filter("#vrf").val(),
+                _urlMVS = "&mvs=" + _options.filter("#mvsversion").val();
+
+            //Queries combined
+            var _urlPageQueries = _urlPage + _urlReset + _urlLegalAgreement + _urlLegalAgreement2 + _urlAppAvail + _urlAppApplied + _urlVRF + _urlMVS + _urlDateDropout + _urlCompliance + _urlFilters;
+
+            //URL text
+            var _startURLText = _urlBase + _urlPageQueries,
+                _startURLHREF =  _urlPageQueries;
+
+            // update label
+            _startURLLabel
+                .text(_startURLText)
+                .show()
+
+            //update link
+            _startURL
+                .attr("href", _startURLHREF)
+                .parent().show()
+        }
+
+    });
+</script>
+{% endblock %}

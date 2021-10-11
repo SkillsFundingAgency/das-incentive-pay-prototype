@@ -1,0 +1,59 @@
+{% extends "layout-notify-email.html" %} {% set serviceName %} Email {% endset
+%} {% block content %}
+<style>
+  .govuk-width-container {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .govuk-template__body {
+    background: transparent;
+  }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="email-message">
+      <table class="email-message-meta">
+        <tbody>
+          <tr>
+            <th scope="row">From</th>
+            <td>Apprenticeship Service (apprenticeship-service.gov.uk)</td>
+          </tr>
+
+          <tr>
+            <th scope="row">To</th>
+            <td>
+              <span class="placeholder-no-brackets">name@example.com</span>
+            </td>
+          </tr>
+
+          <tr class="email-message-meta">
+            <th scope="row">Subject</th>
+            <td>Estimated hire a new apprentice payment date</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="email-message-body">
+        <p>Dear <span class="placeholder-no-brackets">EMPLOYER LTD</span>,</p>
+        <p>Your training provider has confirmed that your apprentice has started their apprenticeship training.</p>
+        <p>Your estimated hire a new apprentice payment date is 20 January 2021. Your payment date can change if:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your apprentice takes a break in learning</li>
+          <li>your training provider gives us information that’s different to the information in your apprenticeship service account (also known as a ‘data lock’)</li>
+          <li>we cannot verify your organisation’s bank account details</li>
+        </ul>
+        <p>You can view your applications and estimated payments in your apprenticeship service account at https://accounts.manage-apprenticeships.service.gov.uk.</p>
+        <p>From</p>
+        <p>Apprenticeship Service</p>
+        <p>This is an automated message - do not reply.</p>
+      </div>
+    </div>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Return to application</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
