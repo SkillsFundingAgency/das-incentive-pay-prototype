@@ -437,3 +437,7 @@ $govuk-assets-path: "/govuk/assets/";
 .das-selected-apprentices-table {
   display: none;
 }
+
+.govuk-notification-banner__content > * {
+  max-width: 100% !important;
+}
