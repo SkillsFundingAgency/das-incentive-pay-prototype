@@ -24,6 +24,12 @@
   href="https://das-pp-frnt-end.azureedge.net/css/main.css"
 />
 
+<style>
+  .govuk-notification-banner__content > * {
+max-width: 100%
+}
+</style>
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -38,8 +44,29 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
 
+    <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            There is still time to apply for the hire a new apprentice payment.
+          </p>
+          <p class="govuk-body"> 
+            If you’ve taken on new apprentices from 1 April 2021 to 30 September 2021, you need to <u>apply before 30 November 2021</u>.
+          </p>
+          <p class="govuk-body"> 
+            You will be able to apply for apprentices you have hired from 1 October 2021 to 31 January 2022 <u>once applications open in January 2022</u>.            
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="govuk-grid-column-full">
 
       <span class="govuk-caption-xl">{{_orgName}}</span>
       <p class="govuk-body"><a href="../select-legal-entity-hub" class="govuk-link govuk-link--no-visited-state">Change organisation</a></p>
