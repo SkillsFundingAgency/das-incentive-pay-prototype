@@ -45,27 +45,6 @@ max-width: 100%
 {% block content %}
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-three-quarters">
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            There is still time to apply for the hire a new apprentice payment.
-          </p>
-          <p class="govuk-body"> 
-            If you’ve taken on new apprentices from 1 April 2021 to 30 September 2021, you need to apply before 30 November 2021.
-          </p>
-          <p class="govuk-body"> 
-            You will be able to apply for apprentices you have hired from 1 October 2021 to 31 January 2022 <a href="https://www.gov.uk/guidance/incentive-payments-for-hiring-a-new-apprentice" class="govuk-link govuk-link--no-visited-state">once applications open in January 2022</a>.            
-          </p>
-        </div>
-      </div>
-    </div>
-    
     <div class="govuk-grid-column-full">
 
       <span class="govuk-caption-xl">{{_orgName}}</span>
@@ -88,7 +67,7 @@ max-width: 100%
     </div>
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-grid-column-three-quarters">  
 
         {% if myData.vrf == "notadded" and myData.apprenticesapplied > 0 %}
         <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
@@ -99,13 +78,30 @@ max-width: 100%
 
           <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
         </div>
-        {% endif %}
-
-        {% if myData.legalagreement2 == "false" and myData.apprenticesapplied > 0 %}
+        {% elseif myData.legalagreement2 == "false" and myData.apprenticesapplied > 0 %}
         <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
           <h3 class="das-panel__heading">{{_orgName}} needs to accept a new employer agreement </h3>
           <p>{{_orgName}} has a hire a new apprentice payment that is not covered by the existing agreement. We cannot send these payments until someone from {{_orgName}} accepts a new agreement.</p>
           <p><a href="#" class="das-panel__link">View agreement</a></p>
+        </div>
+        {% else %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="margin-bottom:0;">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              There is still time to apply for the hire a new apprentice payment.
+            </p>
+            <p class="govuk-body"> 
+              If you’ve taken on new apprentices from 1 April 2021 to 30 September 2021, you need to apply before 30 November 2021.
+            </p>
+            <p class="govuk-body"> 
+              You will be able to apply for apprentices you have hired from 1 October 2021 to 31 January 2022 <a href="https://www.gov.uk/guidance/incentive-payments-for-hiring-a-new-apprentice" class="govuk-link govuk-link--no-visited-state">once applications open in January 2022</a>.            
+            </p>
+          </div>
         </div>
         {% endif %}
 
