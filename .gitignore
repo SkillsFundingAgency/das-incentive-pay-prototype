@@ -10,14 +10,3 @@ lib/extensions/_extensions.scss
 public
 node_modules/*
 .tmuxp.*
-package-lock.json
-.idea/
-app/views/v23/hub/view-payments-original.html
-app/views/v23/hub/view-payments1.html
-app/views/v23/hub/view-payments3.html
-app/views/v23/hub/view-payments4.html
-app/views/v23/hub/view-payments5.html
-app/views/v23/hub/view-payments6.html
-app/views/v23/hub/view-payments7.html
-app/views/v23/hub/old-payments
-app/views/v24/video1
