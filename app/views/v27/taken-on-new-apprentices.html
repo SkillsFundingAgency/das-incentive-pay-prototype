@@ -52,83 +52,67 @@
           </div>
           {% endif %}
 
+          <h1 class="govuk-heading-l">
+            Eligible apprentices at {{_orgName}}
+          </h1>
+
+          <p class="govuk-body">{{_orgName}} can only apply for apprentices with an employment start date from 1 April 2021 to 30 September 2021.
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Are you applying for apprentices who you previously recruited under the Kickstart scheme?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              If you can prove that you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices using their 
+              apprenticeship start date instead of the employment start date.
+            </div>
+          </details>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              We will stop payments and reclaim any funds paid for apprentices identified as ineligible.
+            </strong>
+          </div>
+
 
           <div class="govuk-form-group {% if myData.validationErrors.takenOnNewApprenticesAnswer %}govuk-form-group--error{% endif %}">
             <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                      Does {{_orgName}} have apprentices who are eligible for the payment?
-                    </h1>
-                </legend>
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Do you have eligible apprentices?
+                  </h2>
+              </legend>
 
+              {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
+              <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span>
+                {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
+              </span>
+              {% endif %}
 
-
-                <!-- <div class="govuk-warning-text">
-                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                  <strong class="govuk-warning-text__text">
-                    <span class="govuk-warning-text__assistive">Warning</span>
-                    If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
-                  </strong>
-                </div> -->
-
-                <!-- <div class="govuk-hint">
-                  If you’re applying for apprentices with a start date from 1 February 2021, you need to <a href="#" class="govuk-link govuk-link--no-visited-state">sign a new employer agreement</a>.
-                </div> -->
-
-              <!--  <div class="govuk-hint">-->
-
-              <!--  </div>
-                <div class="govuk-hint">-->
-                  <p>{{_orgName}} can only apply for new apprentices who joined their organisation from 1 April 2021 to 30 September 2021.</p>
-                  <p>{{_orgName}} cannot apply for apprentices who joined their organisation before 1 April 2021, even if they started an apprenticeship after this date.</p>
-
-                  <details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        Are you applying for apprentices who you previously recruited under the Kickstart scheme?
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text">
-                      If you can prove that you recruited an apprentice under the Kickstart scheme, you can apply for these apprentices using their apprenticeship start date instead of the employment start date.
-                    </div>
-                  </details>
-
-
-
-
-                  <div class="govuk-warning-text">
-                      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                      <strong class="govuk-warning-text__text">
-                          <span class="govuk-warning-text__assistive">Warning</span>
-                          We will stop payments and reclaim any funds paid for apprentices identified as ineligible.
-                      </strong>
-                  </div>
-                {% if myData.validationErrors.takenOnNewApprenticesAnswer %}
-                <span id="takenOnNewApprenticesAnswer-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span>
-                    {{myData.validationErrors.takenOnNewApprenticesAnswer.message}}
-                </span>
-                {% endif %}
-
-                <div class="govuk-radios govuk-radios--inline">
-                  <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
-                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-1">
-                        Yes
-                      </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
-                      <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
-                        No
-                      </label>
-                  </div>
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="takenOnNewApprentices-1" name="takenOnNewApprenticesAnswer" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-1">
+                      Yes
+                    </label>
                 </div>
-            </fieldset>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="takenOnNewApprentices-2" name="takenOnNewApprenticesAnswer" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="takenOnNewApprentices-2">
+                      No
+                    </label>
+                </div>
+              </div>
+          </fieldset>
         </div>
 
         <button type="submit" class="govuk-button">
-            Continue
+          Continue
         </button>
 
       </form>
