@@ -229,9 +229,11 @@
 
           <td class="govuk-table__cell">
             {% if _apprentice.phase == 2 %}
-            9 April 2021
+            {# 9 April 2021 #}
+            9 December 2021
             {% else %}
-            5 September 2020
+            {# 5 September 2020 #}
+            5 October 2021
             {% endif %}
           </td>
 
@@ -300,7 +302,8 @@
               <td class="govuk-table__cell">
                 <span class="govuk-!-font-weight-bold" >
                   Estimated</span><br>
-                  {% if myData.mvs != "mvs" %}<!--18--> {% endif %}{% if _apprentice.phase == 2 %}July 2021{% else %}February 2021{% endif %}
+                  {# {% if myData.mvs != "mvs" %}<!--18--> {% endif %}{% if _apprentice.phase == 2 %}July 2021{% else %}February 2021{% endif %} #}
+                  {% if myData.mvs != "mvs" %}<!--18--> {% endif %}{% if _apprentice.phase == 2 %}March 2022{% else %}January 2022{% endif %}
                   <br><span style="color: #626a6e" >£{{_apprentice.halfamountCommas}}
                 </span>
               </td>
