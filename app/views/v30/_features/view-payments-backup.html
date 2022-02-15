@@ -58,6 +58,10 @@
       <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
     </div>
 
+
+
+
+
     {% if myData.mvs == "mvslive" %}
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
@@ -154,7 +158,7 @@
 
 {# TABS FROM HERE #}
 
-{% set allCasesHTML %}
+{% set allStatusesHTML %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <!-- mvs and nonmvs table -->
@@ -333,7 +337,7 @@
 </div>
 {% endset -%}
 
-{% set pausedStoppedAndRejectedHTML %}
+{% set pausedStoppedOrRejectedHTML %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <!-- mvs and nonmvs table -->
@@ -410,8 +414,7 @@
 </div>
 {% endset -%}
 
-{# Employer actions #}
-{% set employerActionsHTML %}
+{% set paymentIssueHTML %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <!-- mvs and nonmvs table -->
@@ -426,53 +429,16 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        {# Corina Carver #}
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold"><a href="corina-carver" class="govuk-link">Corina Carver</a></span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6297953451</span></td>
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" ><a href="corina-carver" class="govuk-link">Corina Carver</a></span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6297953451</span></td>
           <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
           <td class="govuk-table__cell">
             9 December 2021
           </td>
-          <td class="govuk-table__cell" style="max-width:100px">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number
-          </td>
-          <td class="govuk-table__cell">&nbsp;</td>
-        </tr>
-        {# Steven Smith #}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9205398553</span></td>
-          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
-          <td class="govuk-table__cell">
-            9 December 2021
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number and PAYE scheme
-          </td>
-          <td class="govuk-table__cell">&nbsp;</td>
-        </tr>
-        {# Johan Johns #}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">Johan Jones</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6966492075</span></td>
-          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
-          <td class="govuk-table__cell">
-            9 December 2021
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Employer action</strong><br>Accept new employer agreement
-          </td>
-          <td class="govuk-table__cell">&nbsp;</td>
-        </tr>
-        {# John Peters #}
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 8669153109</span></td>
-          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
-          <td class="govuk-table__cell">
-            9 December 2021
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check ILA with training provider
-          </td>
-          <td class="govuk-table__cell">&nbsp;</td>
+            <td class="govuk-table__cell" style="max-width:100px">
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Information mismatch with your training provider, please contact them
+            </td>
+              <td class="govuk-table__cell">&nbsp;</td>
         </tr>
       </tbody>
     </table>
@@ -480,8 +446,7 @@
 </div>
 {% endset -%}
 
-{# Payments #}
-{% set paymentsHTML %}
+{% set paymentSentEstimatedHTML %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <!-- mvs and nonmvs table -->
@@ -637,31 +602,38 @@
 {{ govukTabs({
   items: [
     {
-      label: "All cases",
-      id: "all-cases",
+      label: "All statuses",
+      id: "all-statuses",
       panel: {
-        html: allCasesHTML
+        html: allStatusesHTML
       }
     },
     {
-      label: "Employer actions",
-      id: "employer-actions",
+      label: "Paused, stopped or rejected",
+      id: "paused-stopped-or-rejected",
       panel: {
-        html: employerActionsHTML
+        html: pausedStoppedOrRejectedHTML
       }
     },
     {
-      label: "Payments",
-      id: "payments",
+      label: "Issue",
+      id: "payment-issue",
       panel: {
-        html: paymentsHTML
+        html: paymentIssueHTML
       }
     },
     {
-      label: "Paused, stopped and rejected",
-      id: "paused-stopped-and-rejected",
+      label: "Sent or estimated",
+      id: "payment-sent-estimated",
       panel: {
-        html: pausedStoppedAndRejectedHTML
+        html: paymentSentEstimatedHTML
+      }
+    },
+    {
+      label: "Confirmation",
+      id: "confirmation",
+      panel: {
+        html: confirmationHTML
       }
     }
   ]
@@ -685,11 +657,16 @@
 
 {% endblock %}
 
+
 {% block footer %}
 
   {{ govukFooter({
     meta: {
       items: [
+
+
+
+
         {
           href: "view-payments?applied=0&r=t",
           text: "0"
