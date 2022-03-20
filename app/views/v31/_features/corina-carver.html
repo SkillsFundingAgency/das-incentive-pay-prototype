@@ -1,0 +1,207 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% set _removableApprenticesCount = myData.removableApprentices.length %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+{% endblock %}
+
+{% set _backlink = "home" %}
+{% set _backlinkText = "Hire a new apprentice payments" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../account-home" %}
+  {% set _backlinkText = "Home" %}
+{% endif %}
+
+{% block beforeContent %}
+{#  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="{{_backlink}}">{{_backlinkText}}</a>
+      </li>
+    </ol>
+  </div>
+  #}
+{{ govukBackLink({
+  text: "Back",
+  href: "view-payments"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+<div class="govuk-width-container " id="landing-page-section">
+    <h1 class="govuk-heading-xl">Corina Carver</h1>
+     <div class="govuk-grid-row govuk-!-margin-top-6">
+          <div class="govuk-grid-column-two-thirds">
+              <table class="govuk-table data-table">
+                  <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Training provider</th>
+                      <td class="govuk-table__cell">Quest training</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">Level</th>
+                      <td class="govuk-table__cell">Level 4 </td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">
+                          <div>Planned start date
+
+                          </div>
+                      </th>
+                      <td class="govuk-table__cell"> January 2021</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                       <th scope="row" class="govuk-table__header">
+                         Planned training end date
+                       </th>
+                       <td class="govuk-table__cell">January 2023<br /></td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                      <th scope="row" class="govuk-table__header">
+                          <div>Delivery method
+
+                          </div>
+                      </th>
+                      <td class="govuk-table__cell"> Flexi jobs</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                       <th scope="row" class="govuk-table__header">
+                            <div>
+                                Status
+                            </div>
+                       </th>
+                       <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--turquoise">Active</span> </td>
+                  </tr>
+
+                  </tbody>
+              </table>
+<br>
+<div>
+  <h2 class="govuk-heading-m">Payment statuses timeline</h2>
+
+
+  {{ hmrcTimeline({
+    headinglevel: "2",
+    events: [
+      {
+        title: 'Application date',
+        datetime: '2021-12-09',
+        time: '9 December 2021',
+        content: "Nullam id dolor id nibh ultricies vehicula ut id elit."
+      },
+      {
+        title: 'Payment issue',
+        datetime: '2022-01-22',
+        time: '21 January 2022',
+        content: "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+      }
+    ]
+  }) }}
+</div>
+{#
+              <div>
+                  <h2 class="govuk-heading-m">Roles and responsibilities</h2>
+                  <p>
+                      You can read through the <a href="../3-roles/1-apprentice-role-2a.html">roles and responsibilities</a> for you, your employer and your training provider.
+                  </p>
+              </div>
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          </div>
+         <div class="govuk-grid-column-one-third">
+             <h2 class="govuk-heading-m">My overall progress</h2>
+<p>This shows your progress against the knowledge, skills and behaviours (KSBs) needed to complete a Game programmer apprenticeship.</p>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header app-custom-class">Status</th>
+        <th scope="col" class="govuk-table__header app-custom-class">KSBs</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--turquoise">In progress</span></td>
+        <th scope="row" class="govuk-table__header">12</th>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--grey">To do</span></td>
+        <th scope="row" class="govuk-table__header">23</th>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell"><span class="govuk-tag govuk-tag--blue">Complete</span></td>
+        <th scope="row" class="govuk-table__header">45</th>
+    </tr>
+    </tbody>
+</table>
+<br>
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+         More about your progress
+        </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p>This shows your progress against the knowledge, skills and behaviours (KSBs) needed to complete a Game programmer apprenticeship.<br>
+        <a class="govuk-link" href="Ksb-list-tracked-3">View all progress</a>
+    </p>
+  </div>
+</details>
+<hr class="govuk-section-break govuk-section-break--l">
+             <a class="govuk-link" href="Ksb-list">View all KSBs on this standard</a>
+         </div>
+     </div>
+     </div>
+     #}
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script>
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [
+       {
+          href: "view-payments?applied=0&r=t",
+          text: "0"
+        },
+        {
+          href: "view-payments?applied=6&r=t",
+          text: "some"
+        },
+        {
+          href: "view-payments?applied=300&r=t",
+          text: "lots"
+        }
+      ]
+    }
+  }) }}
+
+{% endblock %}

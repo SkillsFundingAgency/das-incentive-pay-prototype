@@ -1,0 +1,660 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% set _removableApprenticesCount = myData.removableApprentices.length %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+{% endblock %}
+
+{% set _backlink = "home" %}
+{% set _backlinkText = "Hire a new apprentice payments" %}
+{% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+  {% set _backlink = "../account-home" %}
+  {% set _backlinkText = "Home" %}
+{% endif %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="{{_backlink}}">{{_backlinkText}}</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
+ 
+  
+
+    {% if myData.mvs == "mvslive" %}
+    
+    {% else %}
+
+
+
+
+        <p class="govuk-body">
+          
+<a href="checkpayeandni"class="govuk-link--no-visited-state" target="_blank">Check your PAYE number and an apprentice’s NI number? (opens in a new tab)</a>
+        </p>
+   
+<br><br>
+
+    <!-- <h3 class="govuk-heading-m">
+      6 apprentices<br>
+      <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£3,000 estimated total payment</span>
+    </h3> -->
+
+
+
+   {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
+    <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
+    {% else %}
+      {% if _removableApprenticesCount > 0 %}
+      <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
+      {% endif %}
+    {% endif %}
+
+    <!-- <p class="govuk-body"><a href="../guidance" class="govuk-button">Apply</a></p> -->
+<!--  <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>-->
+  </div>
+</div>
+
+{##}
+
+{# TABS FROM HERE #}
+
+{% set allCasesHTML %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header govuk-!-width-one-quarter">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header govuk-!-width-one-quarter">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header govuk-!-width-one-quarter">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {# Corina Carver #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold"><a href="corina-carver" class="govuk-link">Corina Carver</a></span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6297953451</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+          <td class="govuk-table__cell" style="max-width:100px">
+            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number and PAYE Scheme
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+       {# Corina Carver ORIGINAL #}
+        {#<tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" ><a href="corina-carver" class="govuk-link">Corina Carver</a></span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6297953451</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+            <td class="govuk-table__cell" style="max-width:100px">
+              <strong class="govuk-tag govuk-tag--red">Payment issue</strong><br><br>Information mismatch with your training provider, please contact them
+            </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>#}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Jack Roberts</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3758052381</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Estimated</span><br>
+                  <!--18--> March 2022
+                  <br><span style="color: #626a6e" >£1,500
+                </span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Joaquim Pinto</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3789030987</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+            <td class="govuk-table__cell">Application paused or stopped</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 8669153109</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Michael Johnson</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 2258844117</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Pauline Fowler</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6966492075</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">Application paused</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Stephen Knight</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 4544218521</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Estimated</span><br>      
+                  <!--18--> January 2022
+                  <br><span style="color: #626a6e" >£1,000
+                </span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9205398553</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,500</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Susan Wood</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9121061808</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Childcare (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>          
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,000</span>
+           </td>
+           <td class="govuk-table__cell">&nbsp;</td>
+        </tr>       
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Terry Laughton</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 5562418095</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£750</span>
+                  <br><br>Apprenticeship paused or&nbsp;stopped
+              </td>
+                <td class="govuk-table__cell">
+                  <span class="govuk-!-font-weight-bold" >
+                    Payment sent</span><br>
+                    <!--18--> November 2021
+                    <br><span style="color: #626a6e" >£750
+                  </span>
+                </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Thomas Woodman</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9291569319</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£750</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Timothy Jones</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3603949722</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Police Community Support Officer (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,000</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Yi Chen</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 2488844925</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+                <td class="govuk-table__cell">Application rejected</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endset -%}
+
+{% set pausedStoppedAndRejectedHTML %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Joaquim Pinto</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3789030987</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+            <td class="govuk-table__cell">Application paused or stopped</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 8669153109</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Pauline Fowler</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6966492075</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">Application paused</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Terry Laughton</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 5562418095</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£750</span>
+                  <br><br>Apprenticeship paused or&nbsp;stopped
+              </td>
+                <td class="govuk-table__cell">
+                  <span class="govuk-!-font-weight-bold" >
+                    Payment sent</span><br>
+                    <!--18--> November 2021
+                    <br><span style="color: #626a6e" >£750
+                  </span>
+                </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Yi Chen</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 2488844925</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+                <td class="govuk-table__cell">Application rejected</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endset -%}
+
+{# Employer actions #}
+{% set employerActionsHTML %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header govuk-!-width-one-quarter">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header govuk-!-width-one-quarter">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header govuk-!-width-one-quarter">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {# Corina Carver #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold"><a href="corina-carver" class="govuk-link">Corina Carver</a></span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6297953451</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+          <td class="govuk-table__cell" style="max-width:100px">
+            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number and PAYE Scheme
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        {# Steven Smith #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9205398553</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number and PAYE scheme
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        {# Johan Johns #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">Johan Jones</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 6966492075</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Employer action</strong><br>Accept new employer agreement
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        {# John Peters #}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold">John Peters</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 8669153109</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check ILA with training provider
+          </td>
+          <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endset -%}
+
+{# Payments #}
+{% set paymentsHTML %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body"> 
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Jack Roberts</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3758052381</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Estimated</span><br>
+                  <!--18--> March 2022
+                  <br><span style="color: #626a6e" >£1,500
+                </span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Stephen Knight</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 4544218521</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >
+                  Estimated</span><br>      
+                  <!--18--> January 2022
+                  <br><span style="color: #626a6e" >£1,000
+                </span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Steven Smith</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9205398553</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Non-destructive testing (NDT) operator (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,500</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Susan Wood</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9121061808</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Childcare (level&nbsp;2)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>          
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,000</span>
+           </td>
+           <td class="govuk-table__cell">&nbsp;</td>
+        </tr>       
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Terry Laughton</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 5562418095</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Relationship Manager (Banking) (level&nbsp;6)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£750</span>
+                  <br><br>Apprenticeship paused or&nbsp;stopped
+              </td>
+                <td class="govuk-table__cell">
+                  <span class="govuk-!-font-weight-bold" >
+                    Payment sent</span><br>
+                    <!--18--> November 2021
+                    <br><span style="color: #626a6e" >£750
+                  </span>
+                </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Thomas Woodman</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 9291569319</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Gas Technician (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£750</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Timothy Jones</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 3603949722</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Police Community Support Officer (level&nbsp;4)</td>
+          <td class="govuk-table__cell">
+            5 October 2021
+          </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-!-font-weight-bold" >Payment sent</span>
+                <br><!--20--> January 2021<br>
+                <span style="color: #626a6e" >£1,000</span>
+              </td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endset -%}
+
+{% set confirmationHTML %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- mvs and nonmvs table -->
+    <table class="govuk-table js-payments-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th aria-sort="ascending" scope="col" class="govuk-table__header">Apprentice</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Course</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Application date</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">First payment</th>
+          <th aria-sort="none" scope="col" class="govuk-table__header">Second payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><span class="govuk-!-font-weight-bold" >Michael Johnson</span><br><span style="color: #626a6e; white-space: nowrap;" >ULN: 2258844117</span></td>
+          <td class="govuk-table__cell" style="max-width:200px">Water Treatment Technician (level&nbsp;3)</td>
+          <td class="govuk-table__cell">
+            9 December 2021
+          </td>
+              <td class="govuk-table__cell" style="max-width:100px">Training provider needs to confirm they have started their apprenticeship</td>
+              <td class="govuk-table__cell">&nbsp;</td>
+        </tr>
+       </tbody>
+    </table>
+  </div>
+</div>
+{% endset -%}
+
+{{ govukTabs({
+  items: [
+    {
+      label: "All cases",
+      id: "all-cases",
+      panel: {
+        html: allCasesHTML
+      }
+    },
+    {
+      label: "Employer actions",
+      id: "employer-actions",
+      panel: {
+        html: employerActionsHTML
+      }
+    },
+    {
+      label: "Payments",
+      id: "payments",
+      panel: {
+        html: paymentsHTML
+      }
+    },
+    {
+      label: "Paused, stopped and rejected",
+      id: "paused-stopped-and-rejected",
+      panel: {
+        html: pausedStoppedAndRejectedHTML
+      }
+    }
+  ]
+}) }}
+
+{##}
+
+
+
+{% endif %}
+
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+  new MOJFrontend.SortableTable({
+    table: $(".js-payments-table")
+  });
+</script>
+
+{% endblock %}
+
+{% block footer %}
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "view-payments?applied=0&r=t",
+          text: "0"
+        },
+        {
+          href: "view-payments?applied=6&r=t",
+          text: "some"
+        },
+        {
+          href: "view-payments?applied=300&r=t",
+          text: "lots"
+        }
+      ]
+    }
+  }) }}
+
+{% endblock %}
