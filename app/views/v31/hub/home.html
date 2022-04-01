@@ -85,16 +85,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters">
 
-        {% if myData.vrf == "notadded" and myData.apprenticesapplied > 0 %}
-        <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
-          <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
-
-          <p>We cannot send any payments until we’ve received and verified {{_orgNamePlural}}  organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
-
-
-          <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
-        </div>
-        {% endif %}
+        
 
         {% if myData.legalagreement2 == "false" and myData.apprenticesapplied > 0 %}
         <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
