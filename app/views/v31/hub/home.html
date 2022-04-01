@@ -68,11 +68,11 @@
       <h1 class="govuk-heading-xl">Hire a new apprentice payment</h1>
 
       {% if myData.vrf == "notadded" %}
-      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view {{_orgNamePlural}} applications or add their organisation and finance details.</p>
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications or add their organisation and finance details.</p>
       {% elif myData.vrf == "inprogress" %}
-      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment and view {{_orgNamePlural}} applications.</p>
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications.</p>
       {% else %}
-      <p class="govuk-body govuk-!-margin-bottom-6">Apply for the payment, view {{_orgNamePlural}} applications and change their organisation and finance details.
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications or change their organisation and finance details.
       </p>
       {% endif %}
 <!--
@@ -111,20 +111,23 @@
       <div class="govuk-grid-column-full">
 
         <div class="cards govuk-!-margin-top-8" style="width: 66%">
-            <div class="card">
-            <h3 class="govuk-heading-m"><a href="../guidance" class="govuk-link--no-visited-state">Apply for the hire a new apprentice payment</a></h3>
-            <p>{{_orgName}} can apply for a payment of &pound;3,000 for eligible new apprentices.</p>
-            </div>
+          {% if myData.vrf == "added" %}
+          <div class="card">
+          <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Change organisation and finance details</a></h3>
+          <p>Change {{_orgNamePlural}} address, contact or bank account details.</p>
+          </div>
+          {% endif %}
+          {% if myData.vrf == "notadded" %}
+          <div class="card">
+          <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Add organisation and finance details</a></h3>
+          <p>Add {{_orgNamePlural}}  finance details to receive incentive payments.</p>
+          </div>
+          {% endif %}
             <div class="card">
             <h3 class="govuk-heading-m"><a href="view-payments" class="govuk-link--no-visited-state">View applications</a></h3>
             <p>View {{_orgNamePlural}} applications and estimated payments.</p>
             </div>
-            {% if myData.vrf == "added" %}
-            <div class="card">
-            <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Change organisation and finance details</a></h3>
-            <p>Change {{_orgNamePlural}} address, contact or bank account details.</p>
-            </div>
-            {% endif %}
+           
         </div>
     </div>
   </div>
