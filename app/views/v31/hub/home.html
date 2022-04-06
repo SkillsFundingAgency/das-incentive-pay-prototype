@@ -102,6 +102,10 @@
       <div class="govuk-grid-column-full">
 
         <div class="cards govuk-!-margin-top-8" style="width: 66%">
+          <div class="card">
+            <h3 class="govuk-heading-m"><a href="view-payments" class="govuk-link--no-visited-state">View applications</a></h3>
+            <p>View {{_orgNamePlural}} applications and estimated payments.</p>
+            </div>
           {% if myData.vrf == "added" %}
           <div class="card">
           <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Change organisation and finance details</a></h3>
@@ -114,10 +118,7 @@
           <p>Add {{_orgNamePlural}}  finance details to receive incentive payments.</p>
           </div>
           {% endif %}
-            <div class="card">
-            <h3 class="govuk-heading-m"><a href="view-payments" class="govuk-link--no-visited-state">View applications</a></h3>
-            <p>View {{_orgNamePlural}} applications and estimated payments.</p>
-            </div>
+           
            
         </div>
     </div>
