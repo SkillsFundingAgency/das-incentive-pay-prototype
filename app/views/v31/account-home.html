@@ -116,13 +116,13 @@
 
 
 <main role="main" id="content">
-    {% if myData.closing == "true" %}
+  
     <!-- <div class="info-summary">
         <h2 class="heading-medium">
             We’re closing the hire a new apprentice payment application. You must <a href="guidance">apply for the payment</a> before 30 April 2021.
         </h2>
     </div> -->
-    {% endif %}
+   
 <!-- <div class="info-summary"><h2 class="heading-medium">Coronavirus (COVID-19): to find out how we can support you,
 	including changes we’re making to help your apprentices continue learning,
 	
@@ -132,10 +132,7 @@
 <br>
 
 
-
-
-
-{% if data['closeoutbanners'] === 'Yes' %}
+{% if myData.closing == "true" %}
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
     <div class="govuk-notification-banner__header">
     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -156,13 +153,18 @@
     </div>
 
 </div>
-             {% else %}
-            
+                                         {% else %}
+                                   
 
 
 
-      
-             {% endif %}
+
+                                         {% endif %}
+
+
+
+
+
 
 <br>
 <h1 class="heading-secondary dashboard-heading">
