@@ -292,9 +292,9 @@
               {% elif _apprentice.status == "cancelled" %}
               <td class="govuk-table__cell">Application cancelled</td>
               {% elif _apprentice.status == "paused" %}
-              <td class="govuk-table__cell">Application paused or stopped</td>
+              <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
               {% elif _apprentice.status == "rejected" %}
-                <td class="govuk-table__cell">Application paused</td>
+                <td class="govuk-table__cell">Apprenticeship paused</td>
               {% elif _apprentice.status == "stopped" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
               {% elif _apprentice.status == "paused2" %}
@@ -364,10 +364,10 @@
                       Application cancelled
                     </td>
                   {% elif _apprentice.status == "paused" %}
-                    <td class="govuk-table__cell">Application paused or stopped</td>
+                    <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
                   {% elif _apprentice.status == "rejected" %}
                     <td class="govuk-table__cell">
-                      Application paused
+                      Apprenticeship paused
                     </td>
                   {% elif _apprentice.status == "stopped" %}
                     <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
@@ -424,7 +424,7 @@
 {##                                                                         ##}
 {#############################################################################}
 
-{# BEGIN TAB: EMPLOYER ACTIONS #}
+{# BEGIN TAB: YOUR ACTIONS #}
 {% set employerActionsHTML %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
@@ -493,7 +493,7 @@
   </div>
 </div>
 {% endset -%}
-{# END TAB: EMPLOYER ACTIONS #}
+{# END TAB: YOUR ACTIONS #}
 
 {# BEGIN TAB: PAYMENTS #}
 {% set paymentsHTML %}
@@ -715,9 +715,9 @@
               {% elif _apprentice.status == "cancelled" %}
               <td class="govuk-table__cell">Application cancelled</td>
               {% elif _apprentice.status == "paused" %}
-              <td class="govuk-table__cell">Application paused or stopped</td>
+              <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
               {% elif _apprentice.status == "rejected" %}
-                <td class="govuk-table__cell">Application paused</td>
+                <td class="govuk-table__cell">Apprenticeship paused</td>
               {% elif _apprentice.status == "stopped" %}
                 <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
               {% elif _apprentice.status == "paused2" %}
@@ -746,10 +746,10 @@
                       Application cancelled
                     </td>
                   {% elif _apprentice.status == "paused" %}
-                    <td class="govuk-table__cell">Application paused or stopped</td>
+                    <td class="govuk-table__cell">Apprenticeship paused or stopped</td>
                   {% elif _apprentice.status == "rejected" %}
                     <td class="govuk-table__cell">
-                      Application paused
+                      Apprenticeship paused
                     </td>
                   {% elif _apprentice.status == "stopped" and _apprentice.firstpayment != "paid" %}
                     <td class="govuk-table__cell">Apprenticeship paused or&nbsp;stopped</td>
@@ -799,7 +799,7 @@
       }
     },
     {
-      label: "Employer actions",
+      label: "Your actions",
       id: "employer-actions",
       panel: {
         html: employerActionsHTML
