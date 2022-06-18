@@ -1,0 +1,99 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% set _removableApprenticesCount = myData.removableApprentices.length %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+{% endblock %}
+
+
+
+{% block beforeContent %}
+{#  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="{{_backlink}}">{{_backlinkText}}</a>
+      </li>
+    </ol>
+  </div>
+  #}
+{{ govukBackLink({
+  text: "Home",
+  href: "/v31/account-home"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<h1 class="govuk-heading-l">Sorry, applications for incentive payments have closed</h1>
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+        </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          Applications for the hire a new apprentice incentive payment closed on 20 May 2022. 
+        </p>
+        <p class="govuk-body"> 
+         
+View applications submitted before the deadline and change your payment details in your apprenticeship account.  
+
+        </p>
+       
+        <a class="govuk-link--no-visited-state" href="/v31/select-legal-entity-hub">View your hire a new apprentice payments</a>
+      </div>
+  
+</div>
+
+<a class="govuk-link--no-visited-state" href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application" target="_blank">View guidance on incentive payments for hiring a new apprentice (opens in a new tab)</a>
+</div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [
+       {
+          href: "view-payments?applied=0&r=t",
+          text: "0"
+        },
+        {
+          href: "view-payments?applied=6&r=t",
+          text: "some"
+        },
+        {
+          href: "view-payments?applied=300&r=t",
+          text: "lots"
+        }
+      ]
+    }
+  }) }}
+
+{% endblock %}

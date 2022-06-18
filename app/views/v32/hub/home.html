@@ -1,0 +1,156 @@
+{% extends "layout-account.html" %}
+
+{% set serviceName %}
+  Manage apprenticeships
+{% endset %}
+
+<!-- Org name -->
+{% set _orgName = myData.selectLegalEntityAnswer or "ABC LTD" %}
+{% set _orgNamePlural = _orgName + "’s" %}
+
+{% block header %}
+  {% include "includes/cookie-banner.html" %}
+  {% include "includes/header-bar.html" %}
+  {% include "../includes/account-header.html" %}
+
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="https://accounts.pp-eas.apprenticeships.education.gov.uk/bundles/screen?v=PrJDgwMjeYj_6FGrqGb_oKqRAlrtULR-T0oXC2oEIpI1"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://das-pp-frnt-end.azureedge.net/css/main.css"
+/>
+
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../account-home">Home</a>
+    </li>
+  </ol>
+</div>
+<br>
+
+
+
+
+
+
+<br>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+      <span class="govuk-caption-xl">{{_orgName}}</span>
+      <p class="govuk-body"><a href="../select-legal-entity-hub" class="govuk-link govuk-link--no-visited-state">Change organisation</a></p>
+      <h1 class="govuk-heading-xl">Hire a new apprentice payment</h1>
+
+      {% if myData.vrf == "notadded" %}
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications or add their organisation and finance details.</p>
+      {% elif myData.vrf == "inprogress" %}
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications.</p>
+      {% else %}
+      <p class="govuk-body govuk-!-margin-bottom-6">View {{_orgNamePlural}} applications or change their organisation and finance details.
+      </p>
+      {% endif %}
+<!--
+      <p class="govuk-body"><a href="../select-legal-entity-hub" class="govuk-link govuk-link--no-visited-state">Change organisation</a></p> -->
+      {% if myData.closing == "false" %}
+
+      <div class="govuk-inset-text">
+        Applications for the hire a new apprentice incentive payment closed on 20 May 2022. 
+        <br><a class="govuk-link--no-visited-state" target="_blank" href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application">View guidance on incentive payments for hiring a new apprentice (opens in a new tab)</a>
+      </div>
+
+      {% endif %}
+        <hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
+      </div>
+    </div>
+
+    {% if myData.closing == "true" %}
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+        </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+            Applications for incentive payments close 20 May 2022
+        </p>
+        <p class="govuk-body"> 
+          You must submit applications for incentive payments for hiring a new apprentice by 20 May 2022. Training providers can’t apply on your behalf.
+        </p>
+        <p class="govuk-body"> 
+          Employers can apply for a payment of £3000 for a new apprentice with an employment start date of 1 October 2021 to 31 January 2022. These apprentices must also have an apprenticeship start date of 1 October 2021 to 31 March 2022 registered on your account.
+    
+        </p>
+        </div>
+    
+    </div>
+                                             {% else %}
+                                       
+                                      
+    
+    
+    
+                                             {% endif %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {% if myData.vrf == "notadded" and myData.apprenticesapplied > 0 %}
+        <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+          <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
+
+          <p>We cannot send any payments until we’ve received and verified {{_orgNamePlural}}  organisation and finance details. This could take up to 80 days and we may contact someone from {{_orgName}}.</p>
+
+
+          <p><a href="../bc/start" class="das-panel__link">Add organisation and finance details</a></p>
+        </div>
+        {% endif %}
+
+        {% if myData.legalagreement2 == "false" and myData.apprenticesapplied > 0 %}
+        <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
+          <h3 class="das-panel__heading">{{_orgName}} needs to accept a new employer agreement </h3>
+          <p>{{_orgName}} has a hire a new apprentice payment that is not covered by the existing agreement. We cannot send these payments until someone from {{_orgName}} accepts a new agreement.</p>
+          <p><a href="#" class="das-panel__link">View agreement</a></p>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <div class="cards govuk-!-margin-top-8" style="width: 66%">
+          <div class="card">
+            <h3 class="govuk-heading-m"><a href="view-payments" class="govuk-link--no-visited-state">View applications</a></h3>
+            <p>View {{_orgNamePlural}} applications and estimated payments.</p>
+            </div>
+          {% if myData.vrf == "added" %}
+          <div class="card">
+          <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Change organisation and finance details</a></h3>
+          <p>Change {{_orgNamePlural}} address, contact or bank account details.</p>
+          </div>
+          {% endif %}
+          {% if myData.vrf == "notadded" %}
+          <div class="card">
+          <h3 class="govuk-heading-m"><a href="../bc/start" class="govuk-link--no-visited-state">Add organisation and finance details</a></h3>
+          <p>Add {{_orgNamePlural}}  finance details to receive incentive payments.</p>
+          </div>
+          {% endif %}
+           
+           
+        </div>
+    </div>
+  </div>
+{% endblock %}
