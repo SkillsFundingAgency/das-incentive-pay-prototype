@@ -91,7 +91,7 @@
       <p><a href="#" class="das-panel__link">View agreement</a></p>
     </div>
     {% endif %}
-
+    <!-- 
     {% if myData.mvs == "mvslive" %}
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
@@ -164,12 +164,193 @@
       </div>
     </details>
 
+
+  -->
+
+
+
+
+
+
+  </div>
+</div>
+
+<style>
+
+
+.app-home-statuses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-auto-rows: 1fr;
+}
+
+
+  @media (min-width: 40.0625em) {
+.app-home-statuses--3-up {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.app-home-statuses--3-up {
+    grid-template-columns: 1fr 1fr;
+}}
+@media (min-width: 40.0625em) {
+.app-home-statuses {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}}
+
+
+
+
+
+.status-card--in-training, .status-card--in-training:link, .status-card--in-training:visited {
+    color: #fff;
+    background: #1d70b8;
+}
+
+
+.status-card, .status-card:visited {
+    color: inherit;
+}
+@media (min-width: 40.0625em) {
+.status-card {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+}}
+.status-card {
+    background-color: #f3f2f1;
+    padding: 20px;
+    text-decoration: none;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+
+
+@media (min-width: 40.0625em){
+.status-card__count, .status-card__count:link, .status-card__count:visited {
+    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 1.11111;
+}}
+@supports (font-variant-numeric: tabular-nums){
+.status-card__count, .status-card__count:link, .status-card__count:visited {
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-variant-numeric: tabular-nums;
+}}
+.status-card__count, .status-card__count:link, .status-card__count:visited {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: "tnum" 1;
+    font-feature-settings: "tnum" 1;
+    font-weight: 700;
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.04167;
+}
+.status-card__count {
+    display: block;
+}
+
+
+.status-card__count, .status-card__count:link, .status-card__count:visited {
+    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 1.11111;}
+
+
+
+
+    .paid {
+      color: #005a30;
+    background: #cce2d8;
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+
+    
+    }
+
+    .pending {
+      color: #594d00;
+    background: #fff7bf;
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+}
+    .resolved {
+      color: #942514;
+    background: #f6d7d2;
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+    }
+</style>
+
+
+
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h2 class="govuk-heading-l">Payments overview</h2>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-full">
+  
+        <div class="app-home-statuses app-home-statuses--3-up govuk-!-margin-bottom-4">
+  
+          
+          <p class="status-card status-card--in-training paid">
+            <span class="status-card__count">100K</span>
+            <span class="status-card__status">Paid to date</span><span class="govuk-visually-hidden">. View these records.</span>
+          </p>
+  
+          
+         <p class="status-card status-card--in-training pending">
+            <span class="status-card__count">50K</span>
+            <span class="status-card__status">Pending</span><span class="govuk-visually-hidden">. View these records.</span>
+         </p>
+  
+          
+          
+          
+         <p class="status-card status-card--in-training resolved">
+            <span class="status-card__count">25K</span>
+            <span class="status-card__status">To be resolved</span><span class="govuk-visually-hidden">. View these records.</span>
+         </p>
+  
+
+          
+        </div>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+
+
+
+
+
+
     <!-- <h3 class="govuk-heading-m">
       6 apprentices<br>
       <span class="govuk-!-font-weight-regular govuk-!-font-size-19">£3,000 estimated total payment</span>
     </h3> -->
 
     {% endif %}
+    
 
    {% if myData.mvs == "mvs" or myData.mvs == "mvslive" %}
     <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
@@ -181,9 +362,6 @@
 
     <!-- <p class="govuk-body"><a href="../guidance" class="govuk-button">Apply</a></p> -->
 <!--  <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>-->
-  </div>
-</div>
-
 {#####################}
 {### TAB INTERFACE ###}
 {#####################}
