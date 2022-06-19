@@ -292,14 +292,26 @@
     font-size: 1.1875rem;
     line-height: 1.31579;
     }
+
+
+    .app-tag--record-resolved {
+    background-color: #fff;
+    color: #942514;
+    outline: 1px solid #942514;
+    outline-offset: -1px;
+    margin-bottom: 2%;
+}
+
+.govuk-section-break  {
+  opacity: 0.5;
+}
 </style>
 
 
 
-    <div class="govuk-grid-column-full">
+ 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-    </div>
-
+ 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
         <h2 class="govuk-heading-l">Payments overview</h2>
@@ -315,13 +327,13 @@
           
           <p class="status-card status-card--in-training paid">
             <span class="status-card__count">100K</span>
-            <span class="status-card__status">Paid to date</span><span class="govuk-visually-hidden">. View these records.</span>
+            <span class="status-card__status">Paid to date</span><span class="govuk-visually-hidden">Amount of momney paid to date.</span>
           </p>
   
           
          <p class="status-card status-card--in-training pending">
             <span class="status-card__count">50K</span>
-            <span class="status-card__status">Pending</span><span class="govuk-visually-hidden">. View these records.</span>
+            <span class="status-card__status">Pending</span><span class="govuk-visually-hidden">Amount of money that is pending.</span>
          </p>
   
           
@@ -329,7 +341,7 @@
           
          <p class="status-card status-card--in-training resolved">
             <span class="status-card__count">25K</span>
-            <span class="status-card__status">To be resolved</span><span class="govuk-visually-hidden">. View these records.</span>
+            <span class="status-card__status">To be resolved</span><span class="govuk-visually-hidden">Amount of money that has issues to be resolved.</span>
          </p>
   
 
@@ -338,7 +350,7 @@
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </div>
     </div>
-
+<br><br>
 
 
 
@@ -356,7 +368,7 @@
     <p class="govuk-body"><a href="https://help.apprenticeships.education.gov.uk/hc/en-gb#contact-us" class="govuk-link govuk-link--no-visited-state">Contact us</a> to cancel an application.</p>
     {% else %}
       {% if _removableApprenticesCount > 0 %}
-      <p class="govuk-body"><a href="remove-apprentice" class="govuk-link govuk-link--no-visited-state">Cancel an application</a></p>
+     <button  onclick="window.location.href='remove-apprentice'" class="govuk-button govuk-button--warning" data-module="govuk-button">Cancel an application</button>
       {% endif %}
     {% endif %}
 
@@ -636,7 +648,10 @@
             9 December 2021
           </td>
           <td class="govuk-table__cell" style="max-width:100px">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number and PAYE scheme
+            <strong class="govuk-tag app-tag--record-resolved">
+              Confirm eligibility
+            </strong>
+            <br><a class="govuk-link--no-visited-state"  href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application" target="_blank">Check and update National Insurance number and PAYE scheme (opens in a new tab)</a>
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
@@ -648,7 +663,10 @@
             9 December 2021
           </td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update National Insurance number
+            <strong class="govuk-tag app-tag--record-resolved">
+              Confirm eligibility
+            </strong>
+            <br><a class="govuk-link--no-visited-state" href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application" target="_blank">Check and update National Insurance number (opens in a new tab)</a>
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
@@ -660,7 +678,10 @@
             9 December 2021
           </td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check and update PAYE scheme
+            <strong class="govuk-tag app-tag--record-resolved">
+              Confirm eligibility
+            </strong>
+            <br><a class="govuk-link--no-visited-state"  href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application" target="_blank">Check and update PAYE scheme (opens in a new tab)</a>
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
@@ -672,7 +693,10 @@
             9 December 2021
           </td>
           <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">Confirm eligibility</strong><br>Check ILA with training provider
+            <strong class="govuk-tag app-tag--record-resolved">
+              Confirm eligibility
+            </strong>
+            <br>Check ILA with training provider
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
@@ -684,7 +708,10 @@
             1 January 2022
           </td>
           <td class="govuk-table__cell">
-            <strong>PAYMENT ISSUE</strong><br>Accept a new employer agreement
+            <strong class="govuk-tag app-tag--record-resolved">
+              Confirm eligibility
+            </strong>
+            <br>Accept a new employer agreement 
           </td>
           <td class="govuk-table__cell">&nbsp;</td>
         </tr>
