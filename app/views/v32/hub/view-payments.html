@@ -71,6 +71,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Hire a new apprentice payment applications</h1>
+    
     {% if myData.vrf == "notadded" %}
     <div class="das-panel das-panel--interruption" style="text-align: left; margin-top: 0; margin-bottom: 25px">
       <h3 class="das-panel__heading">Add {{_orgNamePlural}} organisation and finance details </h3>
@@ -91,6 +92,33 @@
       <p><a href="#" class="das-panel__link">View agreement</a></p>
     </div>
     {% endif %}
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          When will I receive my payment?
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        We'll send the payment in 2 equal instalments for each apprentice. To be eligible, your apprentice must complete:
+<br><br>
+        90 days of their apprenticeship for your first payment<br>
+        365 days of their apprenticeship for your second payment
+        <br><br>
+        We will complete our checks, including cross-referencing the PAYE information. If the application is eligible, we will process the payments.
+        
+      </div>
+    </details>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What do the payment statuses mean?
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <p class="govuk-body">To understand the statuses of your payments, you can <a href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/4403316291090-Incentive-payment-for-hiring-a-new-apprentice-view-your-application" target="_blank" class="govuk-link--no-visited-state">read this guide (opens in a new tab)</a>.</p>
+      </div>
+    </details>
     <!-- 
     {% if myData.mvs == "mvslive" %}
     <details class="govuk-details" data-module="govuk-details">
